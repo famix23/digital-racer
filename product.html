@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Premium Account: 66 Collection, Level 7 X-Suits, Super Car - Digital Racer</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --bg: #060b14;          
+  --surface: #0c1424;     
+  --surface2: #141f36;    
+  --line: #1c2a45;        
+  --accent: #d4af37;      
+  --accent-dim: #aa8c2c;  
+  --gold: #f3c93e;        
+  --text: #ffffff;        
+  --muted: #9ba4b5;       
+  --success: #25D366;
+  --cyan: #00f5df;
+  --radius: 12px;         
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--text);
+  font-family:'Open Sans', sans-serif;
+  font-size: 16px; 
+  line-height: 1.6;
+}
+h1,h2,h3{font-family:'Montserrat', sans-serif;}
+
+/* ---------- Navbar ---------- */
+nav {
+  background: var(--surface);
+  border-bottom: 1px solid var(--line);
+  padding: 16px 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+}
+.logo {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--gold);
+  text-decoration: none;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.logo::before {
+  content: "";
+  display: block;
+  width: 12px; height: 12px;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+}
+.back-link {
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s;
+}
+.back-link:hover { color: var(--gold); }
+
+/* ---------- Product Layout ---------- */
+.pdp-wrapper {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: 40px;
+}
+
+/* ---------- Left: Image Gallery ---------- */
+.gallery-section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.main-image {
+  width: 100%;
+  aspect-ratio: 16/9;
+  background: var(--surface2);
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  color: var(--muted);
+  overflow: hidden;
+  position: relative;
+}
+/* Placeholder for actual image */
+.main-image::after {
+  content: "Main Account Screenshot Here";
+}
+.thumbnail-strip {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 12px;
+}
+.thumb {
+  aspect-ratio: 1;
+  background: var(--surface);
+  border: 2px solid transparent;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: border-color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  color: var(--muted);
+}
+.thumb:hover, .thumb.active {
+  border-color: var(--accent);
+}
+
+/* ---------- Right: Product Info ---------- */
+.info-section {
+  background: var(--surface);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  height: fit-content;
+  position: sticky;
+  top: 100px;
+}
+.category {
+  color: var(--accent);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+  display: inline-block;
+}
+.product-title {
+  font-size: 1.8rem;
+  line-height: 1.3;
+  margin-bottom: 16px;
+}
+.price-block {
+  margin-bottom: 24px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.price {
+  font-size: 2.2rem;
+  font-weight: 800;
+  color: var(--gold);
+}
+.price span { font-size: 1.2rem; color: var(--muted); font-weight: 600; }
+
+/* Specs Grid (ZeusX Style) */
+.specs-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+.spec-item {
+  background: var(--surface2);
+  padding: 12px 16px;
+  border-radius: 8px;
+  border: 1px solid var(--line);
+}
+.spec-label {
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+.spec-val {
+  font-weight: 700;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+/* Action Buttons */
+.buy-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: linear-gradient(90deg, var(--success), #1EBE5D);
+  color: #fff;
+  border: none;
+  padding: 18px;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
+  transition: all 0.2s ease;
+  margin-bottom: 16px;
+}
+.buy-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+}
+.trust-box {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: rgba(212, 175, 55, 0.05);
+  border: 1px solid rgba(212, 175, 55, 0.2);
+  padding: 16px;
+  border-radius: 8px;
+}
+.trust-box p { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
+.trust-box strong { color: var(--gold); }
+
+/* ---------- Bottom: Description ---------- */
+.description-section {
+  grid-column: 1 / 2;
+  background: var(--surface);
+  padding: 40px;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  margin-bottom: 60px;
+}
+.description-section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.description-section h2::before {
+  content: ""; width: 5px; height: 20px; background: var(--accent); border-radius: 2px;
+}
+.desc-content ul {
+  list-style-type: none;
+  margin-bottom: 20px;
+}
+.desc-content li {
+  margin-bottom: 10px;
+  padding-left: 24px;
+  position: relative;
+  color: var(--muted);
+}
+.desc-content li::before {
+  content: "✔";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-weight: bold;
+}
+.desc-content p { margin-bottom: 16px; color: var(--text); }
+.highlight-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+.h-tag {
+  background: var(--surface2);
+  color: var(--cyan);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  border: 1px solid var(--line);
+}
+
+@media(max-width: 900px) {
+  .pdp-wrapper { grid-template-columns: 1fr; }
+  .info-section { position: static; }
+  .description-section { grid-column: 1 / -1; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">DIGITAL RACER</a>
+  <a href="catalog.html" class="back-link">← Back to Store</a>
+</nav>
+
+<div class="pdp-wrapper">
+  
+  <!-- Left Side: Image Gallery -->
+  <div class="gallery-section">
+    <div class="main-image">
+      <!-- Insert <img src="main-screenshot.jpg" style="width:100%; height:100%; object-fit:cover;"> here -->
+    </div>
+    <div class="thumbnail-strip">
+      <div class="thumb active">Thumb 1</div>
+      <div class="thumb">Thumb 2</div>
+      <div class="thumb">Thumb 3</div>
+      <div class="thumb">Thumb 4</div>
+      <div class="thumb">+5 More</div>
+    </div>
+  </div>
+
+  <!-- Right Side: Sticky Info Panel -->
+  <div class="info-section">
+    <span class="category">PUBG Mobile Accounts</span>
+    <h1 class="product-title">66 Collection Level 7 X-Suits with Super Car & Glacier M416</h1>
+    
+    <div class="price-block">
+      <div class="price"><span>PKR</span> 45,000</div>
+    </div>
+
+    <!-- Account Details Grid (ZeusX Style) -->
+    <div class="specs-grid">
+      <div class="spec-item">
+        <div class="spec-label">Account Level</div>
+        <div class="spec-val">Level 78</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Server</div>
+        <div class="spec-val">Global (Asia)</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Rank</div>
+        <div class="spec-val">Conqueror S19</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Linked To</div>
+        <div class="spec-val">Twitter + Email (Clean)</div>
+      </div>
+    </div>
+
+    <a href="https://wa.me/923000000000?text=Hi%2C%20I%20want%20to%20buy%20the%20Level%207%20X-Suit%20Account%20for%20PKR%2045000" class="buy-btn" target="_blank">
+      💬 Chat to Buy
+    </a>
+
+    <div class="trust-box">
+      <div style="font-size: 24px;">🛡️</div>
+      <p><strong>Digital Racer Guarantee:</strong> Full account access will be transferred immediately upon payment confirmation via Easypaisa or JazzCash.</p>
+    </div>
+  </div>
+
+  <!-- Bottom: Detailed Description -->
+  <div class="description-section">
+    <h2>Account Description</h2>
+    <div class="desc-content">
+      <p>Selling my highly stacked personal PUBG Mobile account. This account has been maintained since Season 3 and includes some of the rarest items in the game.</p>
+      
+      <ul>
+        <li><strong>X-Suits:</strong> Pharaoh (Level 7 Max), Poseidon (Level 4)</li>
+        <li><strong>Gun Skins:</strong> M416 Glacier (Level 5 - Hit Effect), AKM Hellfire (Max)</li>
+        <li><strong>Vehicles:</strong> McLaren 570S (Pearlescent), Koenigsegg Gemera</li>
+        <li><strong>Mythic Fashion:</strong> 66 Mythic items included (Title Unlocked)</li>
+        <li><strong>Inventory:</strong> 400+ gun skins, 150+ parachute skins, 40+ vehicle finishes.</li>
+      </ul>
+
+      <p><em>Note: Serious buyers only. I am willing to share screens or send screen recordings of the inventory upon request on WhatsApp. Scammers stay away.</em></p>
+
+      <div class="highlight-tags">
+        <span class="h-tag">#M416Glacier</span>
+        <span class="h-tag">#Level7XSuit</span>
+        <span class="h-tag">#SuperCar</span>
+        <span class="h-tag">#MythicFashion</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
