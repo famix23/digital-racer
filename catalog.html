@@ -20,7 +20,6 @@
   --text: #ffffff;        
   --muted: #9ba4b5;       
   
-  /* Category Tag Colors */
   --c-account: #00f5df;
   --c-uc: #ffcc33;
   --c-car: #ff3800;
@@ -59,6 +58,7 @@ nav { background: var(--surface); border-bottom: 1px solid var(--line); padding:
 .filter-option { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; cursor: pointer; color: var(--text); font-size: 0.95rem; transition: color 0.2s; }
 .filter-option:hover { color: var(--gold); }
 .filter-option input[type="checkbox"] { accent-color: var(--accent); width: 18px; height: 18px; cursor: pointer; }
+
 .price-range { display: flex; gap: 10px; align-items: center; }
 .price-range input { width: 100%; background: var(--bg); border: 1px solid var(--line); color: var(--text); padding: 10px 12px; border-radius: 6px; font-family: inherit; outline: none; transition: border-color 0.2s; }
 .price-range input:focus { border-color: var(--accent); }
@@ -107,7 +107,7 @@ nav { background: var(--surface); border-bottom: 1px solid var(--line); padding:
 
 <div class="breadcrumb">
   <a href="index.html">Home</a> <span>/</span> 
-  PUBG Mobile Store <span>/</span> 
+  <a href="index.html">PUBG Mobile Store</a> <span>/</span> 
   All Products
 </div>
 
@@ -116,47 +116,48 @@ nav { background: var(--surface); border-bottom: 1px solid var(--line); padding:
   <aside class="sidebar">
     <div class="filter-header">
       Filters
-      <button class="clear-btn">Clear All</button>
+      <button class="clear-btn" id="clear-filters">Clear All</button>
     </div>
 
-    <!-- MAIN CATEGORIES FILTER (Only the 3 allowed) -->
+    <!-- MAIN CATEGORIES FILTER -->
     <div class="filter-group">
       <h4>Main Categories</h4>
-      <label class="filter-option"><input type="checkbox" checked> 👤 PUBG Accounts</label>
-      <label class="filter-option"><input type="checkbox" checked> 🪙 PUBG UC</label>
-      <label class="filter-option"><input type="checkbox" checked> 🚗 PUBG Car Cards</label>
+      <label class="filter-option"><input type="checkbox" class="cat-filter" value="Account" checked> 👤 PUBG Accounts</label>
+      <label class="filter-option"><input type="checkbox" class="cat-filter" value="UC Top-Up" checked> 🪙 PUBG UC</label>
+      <label class="filter-option"><input type="checkbox" class="cat-filter" value="Car Card" checked> 🚗 PUBG Car Cards</label>
     </div>
 
     <div class="filter-group">
       <h4>Price Range (PKR)</h4>
       <div class="price-range">
-        <input type="number" placeholder="Min">
+        <input type="number" id="price-min" placeholder="Min">
         <span>-</span>
-        <input type="number" placeholder="Max">
+        <input type="number" id="price-max" placeholder="Max">
       </div>
     </div>
 
     <div class="filter-group">
       <h4>Delivery Time</h4>
-      <label class="filter-option"><input type="checkbox"> ⚡ Instant Delivery</label>
-      <label class="filter-option"><input type="checkbox"> ⏳ 10 - 30 Mins</label>
-      <label class="filter-option"><input type="checkbox"> 🕒 1 - 2 Hours</label>
+      <label class="filter-option"><input type="checkbox" class="del-filter" value="Instant"> ⚡ Instant Delivery</label>
+      <label class="filter-option"><input type="checkbox" class="del-filter" value="10"> ⏳ 10 - 30 Mins</label>
+      <label class="filter-option"><input type="checkbox" class="del-filter" value="Hour"> 🕒 1 - 2 Hours</label>
     </div>
   </aside>
 
   <main class="main-content">
+    
     <div class="catalog-header">
       <div>
         <h1>Digital Racer Store</h1>
-        <div class="results-count">Showing Premium Accounts, UC & Car Cards</div>
+        <div class="results-count" id="results-count">Loading products...</div>
       </div>
       <div class="sort-box">
         <label>Sort by:</label>
-        <select>
-          <option>Trending First</option>
-          <option>Price: Low to High</option>
-          <option>Price: High to Low</option>
-          <option>Newest Arrivals</option>
+        <select id="sort-select">
+          <option value="trending">Trending First</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="newest">Newest Arrivals</option>
         </select>
       </div>
     </div>
@@ -169,58 +170,140 @@ nav { background: var(--surface); border-bottom: 1px solid var(--line); padding:
 </div>
 
 <script>
-  // Fetch the inventory data saved by the CMS
+  let allProducts = [];
+
+  // Helper to draw a single card
+  function createCardHTML(product) {
+    let tagColor = '';
+    if(product.category === 'Account') tagColor = 't-account';
+    if(product.category === 'UC Top-Up') tagColor = 't-uc';
+    if(product.category === 'Car Card') tagColor = 't-car';
+
+    const bgImage = product.thumbnail ? `background-image: url('${product.thumbnail}');` : '';
+    const fallbackEmoji = !product.thumbnail ? '📦' : '';
+
+    return `
+      <a href="product.html?item=${encodeURIComponent(product.title)}" class="product-card">
+        <div class="prod-image" style="${bgImage}">
+          ${fallbackEmoji}
+          <span class="img-badge">${product.badge || ''}</span>
+        </div>
+        <div class="prod-details">
+          <div class="prod-tags">
+            <span class="tag ${tagColor}">${product.category ? product.category.toUpperCase() : 'STORE ITEM'}</span>
+            <span class="tag" style="color:var(--muted); border-color:var(--line);">${product.tag || 'GLOBAL'}</span>
+          </div>
+          <div class="prod-title">${product.title}</div>
+          <div class="prod-footer">
+            <div class="prod-price"><span>Rs.</span> ${product.price}</div>
+            <div class="prod-view-btn">View</div>
+          </div>
+        </div>
+      </a>
+    `;
+  }
+
+  // Draw the grid with an array of products
+  function renderProducts(productsToRender) {
+    const container = document.getElementById('product-container');
+    const countLabel = document.getElementById('results-count');
+    
+    container.innerHTML = ''; 
+    countLabel.innerText = `Showing ${productsToRender.length} products`;
+
+    if (productsToRender.length === 0) {
+      container.innerHTML = '<p style="color: var(--muted); grid-column: 1 / -1;">No products found matching your filters.</p>';
+      return;
+    }
+
+    const html = productsToRender.map(p => createCardHTML(p)).join('');
+    container.insertAdjacentHTML('beforeend', html);
+  }
+
+  // The master filtering and sorting function
+  function applyFilters() {
+    // 1. Get Selected Categories
+    const catCheckboxes = document.querySelectorAll('.cat-filter:checked');
+    const selectedCats = Array.from(catCheckboxes).map(cb => cb.value);
+
+    // 2. Get Selected Delivery Times
+    const delCheckboxes = document.querySelectorAll('.del-filter:checked');
+    const selectedDel = Array.from(delCheckboxes).map(cb => cb.value);
+
+    // 3. Get Prices
+    const minPrice = parseInt(document.getElementById('price-min').value) || 0;
+    const maxPrice = parseInt(document.getElementById('price-max').value) || Infinity;
+
+    // 4. Filter the array
+    let filtered = allProducts.filter(p => {
+      // Check Category
+      if (!selectedCats.includes(p.category)) return false;
+
+      // Check Price (clean out commas first)
+      const priceNum = parseInt(p.price.replace(/,/g, '')) || 0;
+      if (priceNum < minPrice || priceNum > maxPrice) return false;
+
+      // Check Delivery Time (matches badge text)
+      if (selectedDel.length > 0) {
+        const badgeTxt = (p.badge || '').toLowerCase();
+        let matchDel = false;
+        if (selectedDel.includes('Instant') && badgeTxt.includes('instant')) matchDel = true;
+        if (selectedDel.includes('10') && badgeTxt.includes('10')) matchDel = true;
+        if (selectedDel.includes('Hour') && badgeTxt.includes('hour')) matchDel = true;
+        if (!matchDel) return false;
+      }
+
+      return true;
+    });
+
+    // 5. Apply Sorting
+    const sortVal = document.getElementById('sort-select').value;
+    if (sortVal === 'price-asc') {
+      filtered.sort((a, b) => parseInt(a.price.replace(/,/g, '')) - parseInt(b.price.replace(/,/g, '')));
+    } else if (sortVal === 'price-desc') {
+      filtered.sort((a, b) => parseInt(b.price.replace(/,/g, '')) - parseInt(a.price.replace(/,/g, '')));
+    } else if (sortVal === 'newest') {
+      filtered.reverse(); // The JSON loads oldest first, so reverse is newest
+    }
+
+    // 6. Render
+    renderProducts(filtered);
+  }
+
+  // Attach Event Listeners to all buttons and inputs
+  document.querySelectorAll('.cat-filter').forEach(cb => cb.addEventListener('change', applyFilters));
+  document.querySelectorAll('.del-filter').forEach(cb => cb.addEventListener('change', applyFilters));
+  document.getElementById('price-min').addEventListener('input', applyFilters);
+  document.getElementById('price-max').addEventListener('input', applyFilters);
+  document.getElementById('sort-select').addEventListener('change', applyFilters);
+
+  // Clear All Filters Button
+  document.getElementById('clear-filters').addEventListener('click', () => {
+    document.querySelectorAll('.cat-filter').forEach(cb => cb.checked = true);
+    document.querySelectorAll('.del-filter').forEach(cb => cb.checked = false);
+    document.getElementById('price-min').value = '';
+    document.getElementById('price-max').value = '';
+    document.getElementById('sort-select').value = 'trending';
+    applyFilters();
+  });
+
+  // Fetch initial data
   fetch('/inventory.json')
     .then(response => {
       if (!response.ok) throw new Error('Inventory not found. Add products in the admin panel first!');
       return response.json();
     })
     .then(data => {
-      const container = document.getElementById('product-container');
-      container.innerHTML = ''; 
-
-      const products = data.items;
-
-      if (!products || products.length === 0) {
-        container.innerHTML = '<p style="color: var(--muted); grid-column: 1 / -1;">No products available yet. Add some in the admin panel!</p>';
-        return;
-      }
-
-      products.forEach(product => {
-        let tagColor = '';
-        if(product.category === 'Account') tagColor = 't-account';
-        if(product.category === 'UC Top-Up') tagColor = 't-uc';
-        if(product.category === 'Car Card') tagColor = 't-car';
-
-        const bgImage = product.thumbnail ? `background-image: url('${product.thumbnail}');` : '';
-        const fallbackEmoji = !product.thumbnail ? '📦' : '';
-
-        const cardHTML = `
-          <a href="product.html?item=${encodeURIComponent(product.title)}" class="product-card">
-            <div class="prod-image" style="${bgImage}">
-              ${fallbackEmoji}
-              <span class="img-badge">${product.badge || ''}</span>
-            </div>
-            <div class="prod-details">
-              <div class="prod-tags">
-                <span class="tag ${tagColor}">${product.category ? product.category.toUpperCase() : 'STORE ITEM'}</span>
-                <span class="tag" style="color:var(--muted); border-color:var(--line);">${product.tag || 'GLOBAL'}</span>
-              </div>
-              <div class="prod-title">${product.title}</div>
-              <div class="prod-footer">
-                <div class="prod-price"><span>Rs.</span> ${product.price}</div>
-                <div class="prod-view-btn">View</div>
-              </div>
-            </div>
-          </a>
-        `;
-        container.insertAdjacentHTML('beforeend', cardHTML);
-      });
+      // Save data globally so we can filter it later without re-downloading
+      allProducts = data.items || [];
+      // Run the initial filter to render the grid
+      applyFilters();
     })
     .catch(error => {
       console.error(error);
       document.getElementById('product-container').innerHTML = 
         `<p style="color: var(--muted); grid-column: 1 / -1;">${error.message}</p>`;
+      document.getElementById('results-count').innerText = "0 products";
     });
 </script>
 
