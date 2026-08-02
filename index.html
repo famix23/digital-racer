@@ -92,29 +92,36 @@ header p.tag{ color:var(--muted); margin-top:20px; max-width:650px; margin-left:
 .sidebar a:hover::after{color:var(--gold);}
 .main-content{flex:1;min-width:0;}
 
+/* Updated Larger Marquee */
 .marquee-box{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px 0; overflow:hidden; position:relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
 .marquee-box .label{ position:absolute; top:16px; left:24px; font-size:0.85rem; letter-spacing:2px; color:var(--muted); z-index:2; background:var(--surface); padding-right:12px; font-weight: 600; }
-.marquee-track{ display:flex; gap:20px; width:max-content; animation:scroll 26s linear infinite; margin-top:24px; padding:0 24px; }
+.marquee-track{ display:flex; gap:20px; width:max-content; animation:scroll 30s linear infinite; margin-top:24px; padding:0 24px; }
 .marquee-box:hover .marquee-track{animation-play-state:paused;}
 @keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-.chip{ flex-shrink:0; width:190px; height:120px; border-radius:12px; border:1px solid var(--line); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:10px; font-size:0.9rem; color:var(--text); font-weight:600; background:linear-gradient(160deg, var(--surface2), var(--surface)); box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.2s, border-color 0.2s; }
-.chip:hover { transform: scale(1.05); border-color: var(--accent); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); }
-.chip .icon{font-size:2rem;} 
 
-.spotlight-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:24px; }
-.spot-card{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:28px; position:relative; overflow:hidden; transition:all .3s ease; box-shadow: 0 8px 24px rgba(0,0,0,0.2); }
-.spot-card:hover{ transform:translateY(-6px); border-color:var(--accent); box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15); }
-.spot-card .glow{ position:absolute; top:-40px; right:-40px; width:120px; height:120px; border-radius:50%; filter:blur(45px); opacity:0.25; background:var(--accent); }
-.spot-card .icon-badge{ width:54px; height:54px; border-radius:12px; display:flex; align-items:center; justify-content:center; font-size:1.8rem; background:var(--surface2); margin-bottom:18px; border: 1px solid rgba(212, 175, 55, 0.2); }
-.spot-card h3{font-size:1.3rem; margin-bottom:10px; font-weight:700;} 
-.spot-card p{color:var(--muted); font-size:0.95rem; line-height:1.6; margin-bottom:20px;} 
-.spot-card .price-tag{ display:inline-block; font-size:1rem; color:var(--gold); font-weight:700; margin-bottom:20px; }
-.spot-card a.cta{ display:block; text-align: center; background:linear-gradient(90deg, var(--accent), var(--gold)); color:var(--bg); padding:14px 20px; border-radius:8px; text-decoration:none; font-size:0.95rem; font-weight:700; letter-spacing:1px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25); transition: all 0.2s ease; }
-.spot-card a.cta:hover{ transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); filter: brightness(1.05); }
+/* Larger Marquee Image Chips */
+.chip{ 
+  flex-shrink:0; width:260px; height:150px; border-radius:12px; border:1px solid var(--line); 
+  display:flex; flex-direction:column; justify-content:flex-end; 
+  background-size: cover; background-position: center; background-color: var(--surface2);
+  position: relative; overflow: hidden; text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.2s, border-color 0.2s; 
+}
+.chip:hover { transform: scale(1.05); border-color: var(--accent); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); z-index: 10; }
+.chip-overlay {
+  background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%);
+  width: 100%; padding: 30px 14px 14px; text-align: left;
+}
+.chip-title {
+  font-size: 0.95rem; color: #fff; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block;
+}
+.chip-price {
+  font-size: 0.8rem; color: var(--gold); font-weight: 600; margin-top: 4px; display: block;
+}
 
-/* Updated Dynamic Product Grid Styling (Matches Catalog) */
-section.catalog{padding:60px 0 20px;}
-section.catalog h2{ font-size:1.6rem; margin-bottom:24px; display:flex; align-items:center; gap:12px; font-weight:700; color: var(--text); }
+/* Dynamic Product Grid Styling */
+section.catalog{padding:40px 0 10px;}
+section.catalog h2{ font-size:1.5rem; margin-bottom:24px; display:flex; align-items:center; gap:12px; font-weight:700; color: var(--text); }
 section.catalog h2::before{ content:""; width:6px; height:24px; background:var(--accent); border-radius:3px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
 .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:24px; }
 
@@ -142,7 +149,7 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
 .cta-bar{ position:fixed; bottom:0; left:0; right:0; background:linear-gradient(90deg, #25D366, #1EBE5D); text-align:center; padding:18px; font-weight:700; font-size: 1.05rem; z-index:20; box-shadow: 0 -5px 20px rgba(37,211,102,0.25); }
 .cta-bar a{color:#fff;text-decoration:none; display: block; width: 100%;}
 
-@media(max-width:900px){ .spotlight-grid{grid-template-columns:1fr;} }
+@media(max-width:900px){ .grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); } }
 @media(max-width:800px){ .layout-wrap{flex-direction:column;} .sidebar{width:100%;position:static;} .grid { grid-template-columns: repeat(auto-fill, minmax(100%, 1fr)); } }
 </style>
 </head>
@@ -172,6 +179,7 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
 <div class="layout-wrap">
   <aside class="sidebar">
     <h3>HOT ITEMS</h3>
+    <a href="#latest">🔥 Just Added</a>
     <a href="#uc">UC / Top Up</a>
     <a href="#accounts">Accounts For Sale</a>
     <a href="#skins">Car Cards</a>
@@ -179,52 +187,23 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
 
   <div class="main-content">
 
+    <!-- Dynamic Large Marquee -->
     <div class="marquee-box">
-      <span class="label">LATEST & HOT SELLING ITEMS</span>
-      <div class="marquee-track">
-        <div class="chip"><span class="icon">🚗</span>Ferrari Car Skin</div>
-        <div class="chip"><span class="icon">🪙</span>660 UC Pack</div>
-        <div class="chip"><span class="icon">👤</span>Premium Account</div>
-        <div class="chip"><span class="icon">🚗</span>Koenigsegg Card</div>
-        <div class="chip"><span class="icon">🪙</span>8100 UC Pack</div>
-        <div class="chip"><span class="icon">👤</span>Conqueror Account</div>
-        <div class="chip"><span class="icon">🚗</span>Ferrari Car Skin</div>
-        <div class="chip"><span class="icon">🪙</span>660 UC Pack</div>
-        <div class="chip"><span class="icon">👤</span>Premium Account</div>
-        <div class="chip"><span class="icon">🚗</span>Koenigsegg Card</div>
-        <div class="chip"><span class="icon">🪙</span>8100 UC Pack</div>
-        <div class="chip"><span class="icon">👤</span>Conqueror Account</div>
+      <span class="label">LATEST ARRIVALS</span>
+      <div class="marquee-track" id="dynamic-marquee">
+        <p style="color: var(--muted); padding: 0 24px;">Loading marquee...</p>
       </div>
     </div>
 
-    <div class="spotlight-grid">
-      <div class="spot-card c1">
-        <div class="glow"></div>
-        <div class="icon-badge">🚗</div>
-        <h3>Car Cards</h3>
-        <p>Latest car skins including Ferrari, Dacia Glory & rare UAZ sets — updated as new drops release.</p>
-        <span class="price-tag">From Rs. 600</span><br>
-        <a class="cta" href="#skins">View Car Cards</a>
+    <!-- Replaces the Red Outlined Section: Top 3 Newest Products overall -->
+    <section class="catalog" id="latest" style="padding-top: 30px;">
+      <h2 style="color: var(--gold);">🔥 Just Added</h2>
+      <div class="grid" id="grid-latest">
+        <p style="color: var(--muted); grid-column: 1 / -1;">Loading latest items...</p>
       </div>
-      <div class="spot-card c2">
-        <div class="glow"></div>
-        <div class="icon-badge">🪙</div>
-        <h3>UC Top Up</h3>
-        <p>Instant UC delivery on your ID, priced cheaper than the in-game store and local market resellers.</p>
-        <span class="price-tag">From Rs. 150</span><br>
-        <a class="cta" href="#uc">View UC Packs</a>
-      </div>
-      <div class="spot-card c3">
-        <div class="glow"></div>
-        <div class="icon-badge">👤</div>
-        <h3>Accounts</h3>
-        <p>Verified accounts ranked from starter to premium, each with rare skins and screenshots shown before sale.</p>
-        <span class="price-tag">From Rs. 1500</span><br>
-        <a class="cta" href="#accounts">View Accounts</a>
-      </div>
-    </div>
+    </section>
 
-    <!-- Dynamic Highlighted Listings -->
+    <!-- Dynamic Category Grids -->
     <section class="catalog" id="uc">
       <h2>PUBG Mobile UC Top-ups</h2>
       <div class="grid" id="grid-uc">
@@ -252,6 +231,10 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
 <footer>
   <p>© 2026 Digital Racer. All prices in PKR, subject to change. Contact us on <a href="https://wa.me/923000000000" target="_blank">WhatsApp</a> or Instagram for order confirmation.</p>
   <p style="margin-top:12px;">Payments: Easypaisa • JazzCash</p>
+  <!-- Admin Hidden Link -->
+  <p style="margin-top:24px; font-size: 0.75rem;">
+    <a href="/admin/" style="color: var(--line); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--line)'">Admin Login</a>
+  </p>
 </footer>
 
 <div class="cta-bar">
@@ -273,62 +256,93 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
 
 <!-- Fetch and Render Live Inventory Script -->
 <script>
+  // Reusable function to create the HTML for a standard product card
+  function createCardHTML(product) {
+    let tagColor = '';
+    if(product.category === 'Account') tagColor = 't-account';
+    if(product.category === 'UC Top-Up') tagColor = 't-uc';
+    if(product.category === 'Car Card') tagColor = 't-car';
+
+    const bgImage = product.thumbnail ? `background-image: url('${product.thumbnail}');` : '';
+    const fallbackEmoji = !product.thumbnail ? '📦' : '';
+
+    return `
+      <a href="product.html?item=${encodeURIComponent(product.title)}" class="product-card">
+        <div class="prod-image" style="${bgImage}">
+          ${fallbackEmoji}
+          <span class="img-badge">${product.badge || ''}</span>
+        </div>
+        <div class="prod-details">
+          <div class="prod-tags">
+            <span class="tag ${tagColor}">${product.category ? product.category.toUpperCase() : 'STORE ITEM'}</span>
+            <span class="tag" style="color:var(--muted); border-color:var(--line);">${product.tag || 'GLOBAL'}</span>
+          </div>
+          <div class="prod-title">${product.title}</div>
+          <div class="prod-footer">
+            <div class="prod-price"><span>Rs.</span> ${product.price}</div>
+            <div class="prod-view-btn">View</div>
+          </div>
+        </div>
+      </a>
+    `;
+  }
+
   fetch('/inventory.json')
     .then(response => response.json())
     .then(data => {
       const products = data.items || [];
 
-      // Filter products by category and limit to newest 4 so the homepage stays clean
+      if (products.length === 0) {
+        // If inventory is totally empty
+        ['grid-latest', 'grid-uc', 'grid-accounts', 'grid-skins', 'dynamic-marquee'].forEach(id => {
+          document.getElementById(id).innerHTML = `<p style="color: var(--muted); padding: 0 24px;">No products available yet. Add items in the admin panel!</p>`;
+        });
+        return;
+      }
+
+      // 1. Populate the Enlarged Image Marquee (Top 8 items)
+      const marqueeTrack = document.getElementById('dynamic-marquee');
+      const marqueeItems = products.slice(0, 8);
+      let marqueeHTML = '';
+      
+      marqueeItems.forEach(p => {
+        const bg = p.thumbnail ? `background-image: url('${p.thumbnail}');` : '';
+        marqueeHTML += `
+          <a href="product.html?item=${encodeURIComponent(p.title)}" class="chip" style="${bg}">
+            <div class="chip-overlay">
+              <span class="chip-title">${p.title}</span>
+              <span class="chip-price">Rs. ${p.price}</span>
+            </div>
+          </a>
+        `;
+      });
+      // Duplicate it so the CSS scroll animation loops perfectly
+      marqueeTrack.innerHTML = marqueeHTML + marqueeHTML;
+
+
+      // 2. Populate the "Just Added" Spotlight Grid (Replacing the red outline)
+      const gridLatest = document.getElementById('grid-latest');
+      const top3 = products.slice(0, 3); // Get the 3 absolute newest items
+      gridLatest.innerHTML = top3.map(p => createCardHTML(p)).join('');
+
+
+      // 3. Populate Category Grids (Max 4 items per row to keep homepage clean)
       const ucProducts = products.filter(p => p.category === 'UC Top-Up').slice(0, 4);
       const accProducts = products.filter(p => p.category === 'Account').slice(0, 4);
       const carProducts = products.filter(p => p.category === 'Car Card').slice(0, 4);
 
-      // Reusable function to draw the cards
-      function renderGrid(items, containerId, categoryLabel) {
+      function renderCategoryGrid(items, containerId, label) {
         const container = document.getElementById(containerId);
-        container.innerHTML = ''; 
-
         if (items.length === 0) {
-          container.innerHTML = `<p style="color: var(--muted); grid-column: 1 / -1;">New ${categoryLabel}s coming soon!</p>`;
-          return;
+          container.innerHTML = `<p style="color: var(--muted); grid-column: 1 / -1;">New ${label}s coming soon!</p>`;
+        } else {
+          container.innerHTML = items.map(p => createCardHTML(p)).join('');
         }
-
-        items.forEach(product => {
-          let tagColor = '';
-          if(product.category === 'Account') tagColor = 't-account';
-          if(product.category === 'UC Top-Up') tagColor = 't-uc';
-          if(product.category === 'Car Card') tagColor = 't-car';
-
-          const bgImage = product.thumbnail ? `background-image: url('${product.thumbnail}');` : '';
-          const fallbackEmoji = !product.thumbnail ? '📦' : '';
-
-          const cardHTML = `
-            <a href="product.html?item=${encodeURIComponent(product.title)}" class="product-card">
-              <div class="prod-image" style="${bgImage}">
-                ${fallbackEmoji}
-                <span class="img-badge">${product.badge || ''}</span>
-              </div>
-              <div class="prod-details">
-                <div class="prod-tags">
-                  <span class="tag ${tagColor}">${product.category ? product.category.toUpperCase() : 'STORE ITEM'}</span>
-                  <span class="tag" style="color:var(--muted); border-color:var(--line);">${product.tag || 'GLOBAL'}</span>
-                </div>
-                <div class="prod-title">${product.title}</div>
-                <div class="prod-footer">
-                  <div class="prod-price"><span>Rs.</span> ${product.price}</div>
-                  <div class="prod-view-btn">View</div>
-                </div>
-              </div>
-            </a>
-          `;
-          container.insertAdjacentHTML('beforeend', cardHTML);
-        });
       }
 
-      // Draw the three grids
-      renderGrid(ucProducts, 'grid-uc', 'UC Pack');
-      renderGrid(accProducts, 'grid-accounts', 'Account');
-      renderGrid(carProducts, 'grid-skins', 'Car Skin');
+      renderCategoryGrid(ucProducts, 'grid-uc', 'UC Pack');
+      renderCategoryGrid(accProducts, 'grid-accounts', 'Account');
+      renderCategoryGrid(carProducts, 'grid-skins', 'Car Skin');
     })
     .catch(error => console.error("Error loading homepage inventory:", error));
 </script>
