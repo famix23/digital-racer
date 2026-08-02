@@ -1,0 +1,20 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (master or main)
+
+media_folder: "images" # Folder where your uploaded screenshots will be saved
+public_folder: "/images"
+
+collections:
+  - name: "products"
+    label: "PUBG Products"
+    folder: "_products"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Price (PKR)", name: "price", widget: "string"}
+      - {label: "Category", name: "category", widget: "select", options: ["Account", "UC Top-Up", "Car Card", "Hacks & Sensitivity"]}
+      - {label: "Main Thumbnail", name: "thumbnail", widget: "image"}
+      - {label: "Screenshot Gallery", name: "gallery", widget: "list", field: {label: "Image", name: "image", widget: "image"}}
+      - {label: "Product Description", name: "body", widget: "markdown"}
