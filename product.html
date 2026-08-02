@@ -3,11 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Premium Account: 66 Collection, Level 7 X-Suits, Super Car - Digital Racer</title>
+<title>Product Details - Digital Racer</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<!-- Markdown Parser for CMS Descriptions -->
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 
 <style>
 :root{
@@ -102,10 +104,8 @@ nav {
   color: var(--muted);
   overflow: hidden;
   position: relative;
-}
-/* Placeholder for actual image */
-.main-image::after {
-  content: "Main Account Screenshot Here";
+  background-size: cover;
+  background-position: center;
 }
 .thumbnail-strip {
   display: grid;
@@ -125,9 +125,7 @@ nav {
   font-size: 0.8rem;
   color: var(--muted);
 }
-.thumb:hover, .thumb.active {
-  border-color: var(--accent);
-}
+.thumb:hover, .thumb.active { border-color: var(--accent); }
 
 /* ---------- Right: Product Info ---------- */
 .info-section {
@@ -165,32 +163,6 @@ nav {
   color: var(--gold);
 }
 .price span { font-size: 1.2rem; color: var(--muted); font-weight: 600; }
-
-/* Specs Grid (ZeusX Style) */
-.specs-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-  margin-bottom: 30px;
-}
-.spec-item {
-  background: var(--surface2);
-  padding: 12px 16px;
-  border-radius: 8px;
-  border: 1px solid var(--line);
-}
-.spec-label {
-  font-size: 0.75rem;
-  color: var(--muted);
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  margin-bottom: 4px;
-}
-.spec-val {
-  font-weight: 700;
-  color: var(--text);
-  font-size: 0.95rem;
-}
 
 /* Action Buttons */
 .buy-btn {
@@ -252,38 +224,15 @@ nav {
   content: ""; width: 5px; height: 20px; background: var(--accent); border-radius: 2px;
 }
 .desc-content ul {
-  list-style-type: none;
   margin-bottom: 20px;
+  padding-left: 20px;
 }
 .desc-content li {
   margin-bottom: 10px;
-  padding-left: 24px;
-  position: relative;
   color: var(--muted);
 }
-.desc-content li::before {
-  content: "✔";
-  position: absolute;
-  left: 0;
-  color: var(--accent);
-  font-weight: bold;
-}
 .desc-content p { margin-bottom: 16px; color: var(--text); }
-.highlight-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-.h-tag {
-  background: var(--surface2);
-  color: var(--cyan);
-  padding: 6px 12px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  border: 1px solid var(--line);
-}
+.desc-content strong { color: var(--gold); }
 
 @media(max-width: 900px) {
   .pdp-wrapper { grid-template-columns: 1fr; }
@@ -303,83 +252,89 @@ nav {
   
   <!-- Left Side: Image Gallery -->
   <div class="gallery-section">
-    <div class="main-image">
-      <!-- Insert <img src="main-screenshot.jpg" style="width:100%; height:100%; object-fit:cover;"> here -->
+    <div class="main-image" id="main-img">
+      <!-- Background image injected by JS -->
     </div>
-    <div class="thumbnail-strip">
-      <div class="thumb active">Thumb 1</div>
-      <div class="thumb">Thumb 2</div>
-      <div class="thumb">Thumb 3</div>
-      <div class="thumb">Thumb 4</div>
-      <div class="thumb">+5 More</div>
+    <div class="thumbnail-strip" style="display: none;" id="thumb-strip">
+      <!-- Hidden until we set up multiple image uploads -->
     </div>
   </div>
 
   <!-- Right Side: Sticky Info Panel -->
   <div class="info-section">
-    <span class="category">PUBG Mobile Accounts</span>
-    <h1 class="product-title">66 Collection Level 7 X-Suits with Super Car & Glacier M416</h1>
+    <span class="category" id="prod-category">Loading Category...</span>
+    <h1 class="product-title" id="prod-title">Loading Product Details...</h1>
     
     <div class="price-block">
-      <div class="price"><span>PKR</span> 45,000</div>
+      <div class="price"><span>PKR</span> <span id="prod-price">...</span></div>
     </div>
 
-    <!-- Account Details Grid (ZeusX Style) -->
-    <div class="specs-grid">
-      <div class="spec-item">
-        <div class="spec-label">Account Level</div>
-        <div class="spec-val">Level 78</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Server</div>
-        <div class="spec-val">Global (Asia)</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Rank</div>
-        <div class="spec-val">Conqueror S19</div>
-      </div>
-      <div class="spec-item">
-        <div class="spec-label">Linked To</div>
-        <div class="spec-val">Twitter + Email (Clean)</div>
-      </div>
-    </div>
-
-    <a href="https://wa.me/923000000000?text=Hi%2C%20I%20want%20to%20buy%20the%20Level%207%20X-Suit%20Account%20for%20PKR%2045000" class="buy-btn" target="_blank">
+    <a href="#" class="buy-btn" id="wa-btn" target="_blank">
       💬 Chat to Buy
     </a>
 
     <div class="trust-box">
       <div style="font-size: 24px;">🛡️</div>
-      <p><strong>Digital Racer Guarantee:</strong> Full account access will be transferred immediately upon payment confirmation via Easypaisa or JazzCash.</p>
+      <p><strong>Digital Racer Guarantee:</strong> Full access/items will be transferred immediately upon payment confirmation via Easypaisa or JazzCash.</p>
     </div>
   </div>
 
   <!-- Bottom: Detailed Description -->
   <div class="description-section">
-    <h2>Account Description</h2>
-    <div class="desc-content">
-      <p>Selling my highly stacked personal PUBG Mobile account. This account has been maintained since Season 3 and includes some of the rarest items in the game.</p>
-      
-      <ul>
-        <li><strong>X-Suits:</strong> Pharaoh (Level 7 Max), Poseidon (Level 4)</li>
-        <li><strong>Gun Skins:</strong> M416 Glacier (Level 5 - Hit Effect), AKM Hellfire (Max)</li>
-        <li><strong>Vehicles:</strong> McLaren 570S (Pearlescent), Koenigsegg Gemera</li>
-        <li><strong>Mythic Fashion:</strong> 66 Mythic items included (Title Unlocked)</li>
-        <li><strong>Inventory:</strong> 400+ gun skins, 150+ parachute skins, 40+ vehicle finishes.</li>
-      </ul>
-
-      <p><em>Note: Serious buyers only. I am willing to share screens or send screen recordings of the inventory upon request on WhatsApp. Scammers stay away.</em></p>
-
-      <div class="highlight-tags">
-        <span class="h-tag">#M416Glacier</span>
-        <span class="h-tag">#Level7XSuit</span>
-        <span class="h-tag">#SuperCar</span>
-        <span class="h-tag">#MythicFashion</span>
-      </div>
+    <h2>Product Description</h2>
+    <div class="desc-content" id="prod-desc">
+      Loading description...
     </div>
   </div>
 
 </div>
+
+<!-- The Magic Script that loads the product data -->
+<script>
+  // 1. Get the product name from the URL
+  const urlParams = new URLSearchParams(window.location.search);
+  const itemName = urlParams.get('item');
+
+  // 2. Fetch the inventory file saved by the CMS
+  fetch('/inventory.json')
+    .then(response => response.json())
+    .then(data => {
+      // 3. Find the exact item we clicked on
+      const product = data.items.find(p => p.title === itemName);
+
+      if (product) {
+        // 4. Update the page with the product's actual data
+        document.title = `${product.title} - Digital Racer`;
+        document.getElementById('prod-title').innerText = product.title;
+        document.getElementById('prod-price').innerText = product.price;
+        document.getElementById('prod-category').innerText = product.category || 'Store Item';
+        
+        // Render the image
+        if (product.thumbnail) {
+          document.getElementById('main-img').style.backgroundImage = `url('${product.thumbnail}')`;
+        } else {
+          document.getElementById('main-img').innerText = "No Image Available";
+        }
+
+        // Render the Description using Marked.js so bolding and bullets work
+        if (product.body) {
+          document.getElementById('prod-desc').innerHTML = marked.parse(product.body);
+        } else {
+          document.getElementById('prod-desc').innerHTML = "<p>No detailed description provided for this item.</p>";
+        }
+
+        // Generate the dynamic WhatsApp Link
+        const message = `Hi, I want to buy: ${product.title} for PKR ${product.price}`;
+        const waUrl = `https://wa.me/923000000000?text=${encodeURIComponent(message)}`;
+        document.getElementById('wa-btn').href = waUrl;
+        
+      } else {
+        document.getElementById('prod-title').innerText = "Product not found";
+        document.getElementById('prod-desc').innerHTML = "<p>Sorry, this item may have been removed.</p>";
+      }
+    })
+    .catch(error => console.error("Error loading product:", error));
+</script>
 
 </body>
 </html>
