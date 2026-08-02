@@ -25,6 +25,12 @@
   --gold: #f3c93e;        
   --text: #ffffff;        
   --muted: #9ba4b5;       
+  
+  /* Category Tag Colors */
+  --c-account: #00f5df;
+  --c-uc: #ffcc33;
+  --c-car: #ff3800;
+
   --radius: 12px;         
 }
 *{box-sizing:border-box;margin:0;padding:0;}
@@ -106,17 +112,30 @@ header p.tag{ color:var(--muted); margin-top:20px; max-width:650px; margin-left:
 .spot-card a.cta{ display:block; text-align: center; background:linear-gradient(90deg, var(--accent), var(--gold)); color:var(--bg); padding:14px 20px; border-radius:8px; text-decoration:none; font-size:0.95rem; font-weight:700; letter-spacing:1px; text-transform: uppercase; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.25); transition: all 0.2s ease; }
 .spot-card a.cta:hover{ transform: translateY(-2px); box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4); filter: brightness(1.05); }
 
+/* Updated Dynamic Product Grid Styling (Matches Catalog) */
 section.catalog{padding:60px 0 20px;}
 section.catalog h2{ font-size:1.6rem; margin-bottom:24px; display:flex; align-items:center; gap:12px; font-weight:700; color: var(--text); }
 section.catalog h2::before{ content:""; width:6px; height:24px; background:var(--accent); border-radius:3px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
 .grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:24px; }
-.item{ background:var(--surface); border-radius:12px; padding:26px; border:1px solid var(--line); transition:all .3s ease; display: flex; flex-direction: column; box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
-.item:hover{ transform:translateY(-6px); border-color:var(--accent); box-shadow: 0 12px 25px rgba(212, 175, 55, 0.1); }
-.item h3{font-size:1.2rem; margin-bottom:8px; font-weight:700;}
-.item .price{color:var(--gold); font-weight:700; font-size:1.2rem; margin:8px 0 12px;}
-.item p{color:var(--muted); font-size:0.95rem; line-height:1.6; margin-bottom:20px; flex-grow: 1;}
-.item a.order{ display:block; text-align: center; background:linear-gradient(90deg, #25D366, #1EBE5D); color:#fff; padding:14px 16px; border-radius:8px; text-decoration:none; font-size:0.95rem; font-weight:700; text-transform: uppercase; letter-spacing: 0.5px; box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2); transition: all 0.2s ease; }
-.item a.order:hover{ transform: translateY(-2px); box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4); filter: brightness(1.05); }
+
+.product-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; text-decoration: none; color: inherit; box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
+.product-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15); }
+.prod-image { width: 100%; aspect-ratio: 16/9; background: var(--surface2); position: relative; display: flex; align-items: center; justify-content: center; color: var(--muted); font-size: 2.5rem; border-bottom: 1px solid var(--line); background-size: cover; background-position: center; }
+.prod-image .img-badge { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: #fff; border: 1px solid rgba(255,255,255,0.1); }
+.prod-details { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+.prod-tags { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
+.tag { background: var(--bg); border: 1px solid; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.tag.t-account { color: var(--c-account); border-color: rgba(0, 245, 223, 0.3); }
+.tag.t-uc { color: var(--c-uc); border-color: rgba(255, 204, 51, 0.3); }
+.tag.t-car { color: var(--c-car); border-color: rgba(255, 56, 0, 0.3); }
+
+.prod-title { font-size: 1.05rem; font-weight: 600; line-height: 1.5; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--line); padding-top: 16px; }
+.prod-price { font-size: 1.4rem; font-weight: 800; color: var(--gold); }
+.prod-price span { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
+.prod-view-btn { background: var(--surface2); color: var(--text); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: all 0.2s; }
+.product-card:hover .prod-view-btn { background: linear-gradient(90deg, var(--accent), var(--gold)); color: var(--bg); box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3); }
 
 footer{ text-align:center; padding:60px 20px 120px; color:var(--muted); border-top:1px solid var(--line); margin-top:60px; font-size:0.95rem; }
 footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
@@ -160,7 +179,6 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
 
   <div class="main-content">
 
-    <!-- Focused 3-Category Marquee -->
     <div class="marquee-box">
       <span class="label">LATEST & HOT SELLING ITEMS</span>
       <div class="marquee-track">
@@ -170,7 +188,6 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
         <div class="chip"><span class="icon">🚗</span>Koenigsegg Card</div>
         <div class="chip"><span class="icon">🪙</span>8100 UC Pack</div>
         <div class="chip"><span class="icon">👤</span>Conqueror Account</div>
-        <!-- duplicate set for seamless loop -->
         <div class="chip"><span class="icon">🚗</span>Ferrari Car Skin</div>
         <div class="chip"><span class="icon">🪙</span>660 UC Pack</div>
         <div class="chip"><span class="icon">👤</span>Premium Account</div>
@@ -180,7 +197,6 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
       </div>
     </div>
 
-    <!-- 3 Spotlight Cards (Already perfectly aligned) -->
     <div class="spotlight-grid">
       <div class="spot-card c1">
         <div class="glow"></div>
@@ -208,58 +224,25 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
       </div>
     </div>
 
-    <!-- Static Highlighted Listings -->
+    <!-- Dynamic Highlighted Listings -->
     <section class="catalog" id="uc">
       <h2>PUBG Mobile UC Top-ups</h2>
-      <div class="grid">
-        <div class="item">
-          <h3>325 UC</h3>
-          <div class="price">Rs. 700</div>
-          <p>Popular pack for battle pass and crate purchases.</p>
-          <a class="order" href="https://wa.me/923000000000?text=Hi%2C%20I%20want%20to%20order%20325%20UC" target="_blank">Order on WhatsApp</a>
-        </div>
-        <div class="item">
-          <h3>660 UC</h3>
-          <div class="price">Rs. 1400</div>
-          <p>Great value pack for regular players.</p>
-          <a class="order" href="https://wa.me/923000000000?text=Hi%2C%20I%20want%20to%20order%20660%20UC" target="_blank">Order on WhatsApp</a>
-        </div>
+      <div class="grid" id="grid-uc">
+        <p style="color: var(--muted); grid-column: 1 / -1;">Loading live UC inventory...</p>
       </div>
     </section>
 
     <section class="catalog" id="accounts">
       <h2>PUBG Mobile Accounts</h2>
-      <div class="grid">
-        <div class="item">
-          <h3>Starter Account</h3>
-          <div class="price">Rs. 1500</div>
-          <p>Fresh account, low level, clean history. Good for new players.</p>
-          <a class="order" href="https://wa.me/923000000000?text=Hi%2C%20I%20want%20info%20on%20Starter%20Account" target="_blank">Ask on WhatsApp</a>
-        </div>
-        <div class="item">
-          <h3>Premium Loaded Account</h3>
-          <div class="price">Rs. 15000+</div>
-          <p>Rare mythic skins, multiple X-Suits, high-tier rank.</p>
-          <a class="order" href="https://wa.me/923000000000?text=Hi%2C%20I%20want%20info%20on%20Premium%20Account" target="_blank">Ask on WhatsApp</a>
-        </div>
+      <div class="grid" id="grid-accounts">
+        <p style="color: var(--muted); grid-column: 1 / -1;">Loading live Account inventory...</p>
       </div>
     </section>
 
     <section class="catalog" id="skins">
       <h2>Car Skins</h2>
-      <div class="grid">
-        <div class="item">
-          <h3>Ferrari Car Skin</h3>
-          <div class="price">Rs. 800</div>
-          <p>Exclusive Ferrari-themed vehicle skin.</p>
-          <a class="order" href="https://wa.me/923000000000?text=Hi%2C%20I%20want%20the%20Ferrari%20Car%20Skin" target="_blank">Order on WhatsApp</a>
-        </div>
-        <div class="item">
-          <h3>Koenigsegg Skin</h3>
-          <div class="price">Rs. 1200</div>
-          <p>Premium Koenigsegg sports car card.</p>
-          <a class="order" href="https://wa.me/923000000000?text=Hi%2C%20I%20want%20the%20Koenigsegg%20Skin" target="_blank">Order on WhatsApp</a>
-        </div>
+      <div class="grid" id="grid-skins">
+        <p style="color: var(--muted); grid-column: 1 / -1;">Loading live Car Card inventory...</p>
       </div>
     </section>
 
@@ -286,6 +269,68 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
       }
     });
   }
+</script>
+
+<!-- Fetch and Render Live Inventory Script -->
+<script>
+  fetch('/inventory.json')
+    .then(response => response.json())
+    .then(data => {
+      const products = data.items || [];
+
+      // Filter products by category and limit to newest 4 so the homepage stays clean
+      const ucProducts = products.filter(p => p.category === 'UC Top-Up').slice(0, 4);
+      const accProducts = products.filter(p => p.category === 'Account').slice(0, 4);
+      const carProducts = products.filter(p => p.category === 'Car Card').slice(0, 4);
+
+      // Reusable function to draw the cards
+      function renderGrid(items, containerId, categoryLabel) {
+        const container = document.getElementById(containerId);
+        container.innerHTML = ''; 
+
+        if (items.length === 0) {
+          container.innerHTML = `<p style="color: var(--muted); grid-column: 1 / -1;">New ${categoryLabel}s coming soon!</p>`;
+          return;
+        }
+
+        items.forEach(product => {
+          let tagColor = '';
+          if(product.category === 'Account') tagColor = 't-account';
+          if(product.category === 'UC Top-Up') tagColor = 't-uc';
+          if(product.category === 'Car Card') tagColor = 't-car';
+
+          const bgImage = product.thumbnail ? `background-image: url('${product.thumbnail}');` : '';
+          const fallbackEmoji = !product.thumbnail ? '📦' : '';
+
+          const cardHTML = `
+            <a href="product.html?item=${encodeURIComponent(product.title)}" class="product-card">
+              <div class="prod-image" style="${bgImage}">
+                ${fallbackEmoji}
+                <span class="img-badge">${product.badge || ''}</span>
+              </div>
+              <div class="prod-details">
+                <div class="prod-tags">
+                  <span class="tag ${tagColor}">${product.category ? product.category.toUpperCase() : 'STORE ITEM'}</span>
+                  <span class="tag" style="color:var(--muted); border-color:var(--line);">${product.tag || 'GLOBAL'}</span>
+                </div>
+                <div class="prod-title">${product.title}</div>
+                <div class="prod-footer">
+                  <div class="prod-price"><span>Rs.</span> ${product.price}</div>
+                  <div class="prod-view-btn">View</div>
+                </div>
+              </div>
+            </a>
+          `;
+          container.insertAdjacentHTML('beforeend', cardHTML);
+        });
+      }
+
+      // Draw the three grids
+      renderGrid(ucProducts, 'grid-uc', 'UC Pack');
+      renderGrid(accProducts, 'grid-accounts', 'Account');
+      renderGrid(carProducts, 'grid-skins', 'Car Skin');
+    })
+    .catch(error => console.error("Error loading homepage inventory:", error));
 </script>
 
 </body>
