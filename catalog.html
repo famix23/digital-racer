@@ -419,158 +419,75 @@ nav {
       </div>
     </div>
 
-    <div class="products-grid">
-      
-      <!-- Card 1: Account -->
-      <a href="product.html" class="product-card">
-        <div class="prod-image">
-          👤
-          <span class="img-badge">📷 8 Screens</span>
-        </div>
-        <div class="prod-details">
-          <div class="prod-tags">
-            <span class="tag t-account">ACCOUNT</span>
-            <span class="tag" style="color:var(--muted); border-color:var(--line);">Global</span>
-          </div>
-          <div class="prod-title">66 Collection Level 7 X-Suits with Super Car & Glacier M416</div>
-          <div class="prod-footer">
-            <div class="prod-price"><span>Rs.</span> 45,000</div>
-            <div class="prod-view-btn">View</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 2: UC -->
-      <a href="#" class="product-card">
-        <div class="prod-image" style="background: linear-gradient(135deg, var(--surface2), #3a2b00);">
-          🪙
-          <span class="img-badge">⚡ Instant</span>
-        </div>
-        <div class="prod-details">
-          <div class="prod-tags">
-            <span class="tag t-uc">UC TOP-UP</span>
-          </div>
-          <div class="prod-title">8100 UC Pack (Direct to Player ID) - Safest Method</div>
-          <div class="prod-footer">
-            <div class="prod-price"><span>Rs.</span> 14,500</div>
-            <div class="prod-view-btn">View</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 3: Car Card -->
-      <a href="#" class="product-card">
-        <div class="prod-image" style="background: linear-gradient(135deg, var(--surface2), #3a0e00);">
-          🚗
-          <span class="img-badge">Gift via ID</span>
-        </div>
-        <div class="prod-details">
-          <div class="prod-tags">
-            <span class="tag t-car">CAR CARD</span>
-          </div>
-          <div class="prod-title">Koenigsegg Gemera (Dawn) Exclusive Car Skin Card</div>
-          <div class="prod-footer">
-            <div class="prod-price"><span>Rs.</span> 2,500</div>
-            <div class="prod-view-btn">View</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 4: Hacks / Config -->
-      <a href="#" class="product-card">
-        <div class="prod-image" style="background: linear-gradient(135deg, var(--surface2), #26003a);">
-          ⚙️
-          <span class="img-badge">🛡️ Anti-Ban</span>
-        </div>
-        <div class="prod-details">
-          <div class="prod-tags">
-            <span class="tag t-hack">HACKS & SENSITIVITY</span>
-          </div>
-          <div class="prod-title">VIP ESP + Auto-Aim Hack (Root/Non-Root) 1 Month Key</div>
-          <div class="prod-footer">
-            <div class="prod-price"><span>Rs.</span> 3,000</div>
-            <div class="prod-view-btn">View</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 5: Account -->
-      <a href="product.html" class="product-card">
-        <div class="prod-image">
-          👤
-          <span class="img-badge">📷 3 Screens</span>
-        </div>
-        <div class="prod-details">
-          <div class="prod-tags">
-            <span class="tag t-account">ACCOUNT</span>
-            <span class="tag" style="color:var(--muted); border-color:var(--line);">Level 65</span>
-          </div>
-          <div class="prod-title">Starter Mythic Account | Level 3 Joker X-Suit | AKM Hellfire</div>
-          <div class="prod-footer">
-            <div class="prod-price"><span>Rs.</span> 12,500</div>
-            <div class="prod-view-btn">View</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 6: Hacks / Config -->
-      <a href="#" class="product-card">
-        <div class="prod-image" style="background: linear-gradient(135deg, var(--surface2), #26003a);">
-          🎯
-          <span class="img-badge">File Download</span>
-        </div>
-        <div class="prod-details">
-          <div class="prod-tags">
-            <span class="tag t-hack">HACKS & SENSITIVITY</span>
-          </div>
-          <div class="prod-title">Zero-Recoil 90FPS Sensitivity Config (Works on all Androids)</div>
-          <div class="prod-footer">
-            <div class="prod-price"><span>Rs.</span> 500</div>
-            <div class="prod-view-btn">View</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 7: UC -->
-      <a href="#" class="product-card">
-        <div class="prod-image" style="background: linear-gradient(135deg, var(--surface2), #3a2b00);">
-          🪙
-          <span class="img-badge">⚡ Instant</span>
-        </div>
-        <div class="prod-details">
-          <div class="prod-tags">
-            <span class="tag t-uc">UC TOP-UP</span>
-          </div>
-          <div class="prod-title">660 + 60 Free Bonus UC Pack (Battle Pass Ready)</div>
-          <div class="prod-footer">
-            <div class="prod-price"><span>Rs.</span> 1,400</div>
-            <div class="prod-view-btn">View</div>
-          </div>
-        </div>
-      </a>
-
-      <!-- Card 8: Car Card -->
-      <a href="#" class="product-card">
-        <div class="prod-image" style="background: linear-gradient(135deg, var(--surface2), #3a0e00);">
-          🚗
-          <span class="img-badge">Gift via ID</span>
-        </div>
-        <div class="prod-details">
-          <div class="prod-tags">
-            <span class="tag t-car">CAR CARD</span>
-          </div>
-          <div class="prod-title">Ferrari (Rosso Corsa) Skin Drop Card</div>
-          <div class="prod-footer">
-            <div class="prod-price"><span>Rs.</span> 1,200</div>
-            <div class="prod-view-btn">View</div>
-          </div>
-        </div>
-      </a>
-
+    <div class="products-grid" id="product-container">
+      <p style="color: var(--muted); grid-column: 1 / -1;">Loading live inventory...</p>
     </div>
   </main>
 
 </div>
+
+<script>
+  // Fetch the inventory data saved by the CMS
+  fetch('/inventory.json')
+    .then(response => {
+      if (!response.ok) throw new Error('Inventory not found. Add products in the admin panel first!');
+      return response.json();
+    })
+    .then(data => {
+      const container = document.getElementById('product-container');
+      container.innerHTML = ''; // Clear loading text
+
+      // Access the items list defined in config.yml
+      const products = data.items;
+
+      if (!products || products.length === 0) {
+        container.innerHTML = '<p style="color: var(--muted); grid-column: 1 / -1;">No products available yet. Add some in the admin panel!</p>';
+        return;
+      }
+
+      // Loop through each product and draw the card
+      products.forEach(product => {
+        
+        // Match the category to our CSS tag colors
+        let tagColor = '';
+        if(product.category === 'Account') tagColor = 't-account';
+        if(product.category === 'UC Top-Up') tagColor = 't-uc';
+        if(product.category === 'Car Card') tagColor = 't-car';
+        if(product.category === 'Hacks & Sensitivity') tagColor = 't-hack';
+
+        // Handle the background image
+        const bgImage = product.thumbnail ? `background-image: url('${product.thumbnail}'); background-size: cover; background-position: center;` : '';
+        const fallbackEmoji = !product.thumbnail ? '📦' : '';
+
+        // Build the HTML card dynamically
+        const cardHTML = `
+          <a href="product.html?item=${encodeURIComponent(product.title)}" class="product-card">
+            <div class="prod-image" style="${bgImage}">
+              ${fallbackEmoji}
+              <span class="img-badge">${product.badge || ''}</span>
+            </div>
+            <div class="prod-details">
+              <div class="prod-tags">
+                <span class="tag ${tagColor}">${product.category ? product.category.toUpperCase() : 'STORE ITEM'}</span>
+                <span class="tag" style="color:var(--muted); border-color:var(--line);">${product.tag || 'GLOBAL'}</span>
+              </div>
+              <div class="prod-title">${product.title}</div>
+              <div class="prod-footer">
+                <div class="prod-price"><span>Rs.</span> ${product.price}</div>
+                <div class="prod-view-btn">View</div>
+              </div>
+            </div>
+          </a>
+        `;
+        container.insertAdjacentHTML('beforeend', cardHTML);
+      });
+    })
+    .catch(error => {
+      console.error(error);
+      document.getElementById('product-container').innerHTML = 
+        `<p style="color: var(--muted); grid-column: 1 / -1;">${error.message}</p>`;
+    });
+</script>
 
 </body>
 </html>
