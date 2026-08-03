@@ -200,13 +200,22 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     if (e.key === 'Enter') handleSearch();
   });
 
+  function formatImagePath(rawPath) {
+    if (!rawPath) return "";
+    let cleanPath = rawPath.trim();
+    if (cleanPath.startsWith('http://') || cleanPath.startsWith('https://') || cleanPath.startsWith('/')) {
+      return cleanPath;
+    }
+    return '/' + cleanPath;
+  }
+
   if (!itemName) {
     document.getElementById('prod-title').innerText = "Asset Not Found";
   } else {
     fetch('/inventory.json')
       .then(response => response.json())
       .then(data => {
-        const products = data.items || [];
+        const products = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []);
         const product = products.find(p => p.title === itemName);
 
         if (product) {
@@ -217,8 +226,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           document.getElementById('prod-price').innerText = `Rs. ${product.price}`;
           document.getElementById('prod-tag').innerText = product.tag || 'GLOBAL';
           
-          // Comprehensive check covering all common CMS description field names
-          const descText = product.description || product.desc || product.body || product.details || product.content || "";
+          const descText = product.description || product.desc || product.body || product.details || product.content || product.text || "";
           if (descText && descText.trim() !== "") {
             document.getElementById('desc-card-wrapper').style.display = 'block';
             document.getElementById('prod-desc').innerText = descText;
@@ -226,8 +234,11 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
             document.getElementById('desc-card-wrapper').style.display = 'none';
           }
 
-          if (product.thumbnail) {
-            document.getElementById('prod-img-container').innerHTML = `<img src="${product.thumbnail}" alt="${product.title}">`;
+          const rawImg = product.image || product.thumbnail || product.img || product.photo || product.picture || "";
+          const prodImg = formatImagePath(rawImg);
+
+          if (prodImg) {
+            document.getElementById('prod-img-container').innerHTML = `<img src="${prodImg}" alt="${product.title}" onerror="this.parentElement.innerHTML='<div style=\\'color: var(--muted);\\'>Image Failed to Load</div>'">`;
           } else {
             document.getElementById('prod-img-container').innerHTML = `<div style="color: var(--muted);">No Image Available</div>`;
           }
@@ -239,15 +250,18 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           const related = products.filter(p => p.title !== itemName).slice(0, 4);
           const relGrid = document.getElementById('related-grid');
           if (related.length > 0) {
-            relGrid.innerHTML = related.map(p => `
-              <a href="product.html?item=${encodeURIComponent(p.title)}" class="rel-card">
-                <img src="${p.thumbnail || ''}" class="rel-img" alt="${p.title}" onerror="this.style.display='none'">
-                <div class="rel-content">
-                  <div class="rel-title">${p.title}</div>
-                  <div class="rel-price">Rs. ${p.price}</div>
-                </div>
-              </a>
-            `).join('');
+            relGrid.innerHTML = related.map(p => {
+              const relImg = formatImagePath(p.image || p.thumbnail || p.img || p.photo || p.picture || "");
+              return `
+                <a href="product.html?item=${encodeURIComponent(p.title)}" class="rel-card">
+                  <img src="${relImg}" class="rel-img" alt="${p.title}" onerror="this.style.display='none'">
+                  <div class="rel-content">
+                    <div class="rel-title">${p.title}</div>
+                    <div class="rel-price">Rs. ${p.price}</div>
+                  </div>
+                </a>
+              `;
+            }).join('');
           } else {
             relGrid.innerHTML = `<p style="color: var(--muted);">No other assets available.</p>`;
           }
