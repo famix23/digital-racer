@@ -24,7 +24,7 @@
 body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
 h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-/* Navigation with Search Bar */
+/* Navigation */
 nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 5vw; border-bottom: 1px solid var(--border); background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; gap: 20px; flex-wrap: wrap; }
 .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; white-space: nowrap; }
 .logo span { color: var(--accent); }
@@ -135,7 +135,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   let currentSort = 'default';
   let searchQuery = '';
 
-  // Check URL parameters on load for incoming searches
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.has('search')) {
     searchQuery = urlParams.get('search').toLowerCase();
@@ -153,8 +152,18 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     if (e.key === 'Enter') handleNavbarSearch();
   });
 
+  function formatImagePath(rawPath) {
+    if (!rawPath) return "";
+    let cleanPath = rawPath.trim();
+    if (cleanPath.startsWith('http://') || cleanPath.startsWith('https://') || cleanPath.startsWith('/')) {
+      return cleanPath;
+    }
+    return '/' + cleanPath;
+  }
+
   function createCardHTML(product) {
-    const bgImage = product.thumbnail ? product.thumbnail : '';
+    const rawImg = product.image || product.thumbnail || product.img || product.photo || product.picture || "";
+    const bgImage = formatImagePath(rawImg);
     const badgeHtml = product.badge ? `<div class="prod-badge">${product.badge}</div>` : '';
     
     return `
@@ -180,7 +189,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       ? [...allProducts] 
       : allProducts.filter(p => p.category === currentCategory);
 
-    // Filter by search query if present
     if (searchQuery) {
       result = result.filter(p => p.title.toLowerCase().includes(searchQuery) || (p.description && p.description.toLowerCase().includes(searchQuery)));
     }
@@ -208,10 +216,10 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     });
   }
 
-  fetch('/inventory.json')
+  fetch('inventory.json')
     .then(response => response.json())
     .then(data => {
-      allProducts = data.items || [];
+      allProducts = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []);
       processAndRender();
     })
     .catch(error => console.error("Error loading inventory:", error));
