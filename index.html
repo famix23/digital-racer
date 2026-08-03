@@ -24,7 +24,7 @@
 body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
 h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-/* Navigation with Search Bar */
+/* Navigation */
 nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 5vw; border-bottom: 1px solid var(--border); background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; gap: 20px; flex-wrap: wrap; }
 .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; white-space: nowrap; }
 .logo span { color: var(--accent); }
@@ -159,8 +159,18 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     if (e.key === 'Enter') handleSearch();
   });
 
+  function formatImagePath(rawPath) {
+    if (!rawPath) return "";
+    let cleanPath = rawPath.trim();
+    if (cleanPath.startsWith('http://') || cleanPath.startsWith('https://') || cleanPath.startsWith('/')) {
+      return cleanPath;
+    }
+    return '/' + cleanPath;
+  }
+
   function createCardHTML(product) {
-    const bgImage = product.thumbnail ? product.thumbnail : '';
+    const rawImg = product.image || product.thumbnail || product.img || product.photo || product.picture || "";
+    const bgImage = formatImagePath(rawImg);
     const badgeHtml = product.badge ? `<div class="prod-badge">${product.badge}</div>` : '';
     
     return `
@@ -181,14 +191,17 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     `;
   }
 
-  fetch('/inventory.json')
+  fetch('inventory.json')
     .then(response => response.json())
     .then(data => {
-      const products = data.items || [];
+      const products = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []);
 
-      const accProducts = products.filter(p => p.category === 'Account').slice(0, 4);
-      const carProducts = products.filter(p => p.category === 'Car Card').slice(0, 4);
-      const ucProducts = products.filter(p => p.category === 'UC Top-Up').slice(0, 4);
+      const accProducts = products.filter(p => (p.category || '').toLowerCase().includes('account')).slice(0, 4);
+      const carProducts = products.filter(p => {
+        const cat = (p.category || '').toLowerCase();
+        return cat.includes('car') || cat.includes('skin') || cat.includes('card');
+      }).slice(0, 4);
+      const ucProducts = products.filter(p => (p.category || '').toLowerCase().includes('uc')).slice(0, 4);
 
       function renderGrid(items, containerId, label) {
         const container = document.getElementById(containerId);
