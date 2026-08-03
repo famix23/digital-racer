@@ -3,19 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!-- Dynamic SEO Meta Tags Default -->
 <title>Digital Racer — Asset Details</title>
+<meta name="description" id="meta-desc" content="Browse verified PUBG accounts, car skins, and UC top-ups at Digital Racer.">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --bg: #050505;
   --surface: #111111;
-  --border: #2a2a2a;
+  --surface2: #181818;
+  --border: #222222;
   --text: #ffffff;
-  --muted: #9ba4b5;
+  --muted: #888888;
   --accent: #d4af37;
 }
 
@@ -23,47 +26,41 @@
 body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
 h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-/* Clean Navbar */
-nav { padding: 24px 5vw; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: var(--bg); }
-.logo { font-size: 1.1rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 16px 5vw; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+.logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--text); text-decoration: none; }
 .logo span { color: var(--accent); }
-.back-nav { color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; transition: color 0.3s; }
-.back-nav:hover { color: var(--accent); }
+.nav-link { color: var(--muted); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; transition: color 0.2s; }
+.nav-link:hover { color: var(--accent); }
 
-/* Centered Product Container */
 .product-container { max-width: 1200px; margin: 50px auto; padding: 0 5vw; display: grid; grid-template-columns: 1.2fr 1fr; gap: 50px; align-items: start; }
 
-/* Image Box */
-.image-box { width: 100%; aspect-ratio: 4/3; background: var(--surface); border: 1px solid var(--border); border-radius: 4px; overflow: hidden; position: relative; }
+.image-box { width: 100%; aspect-ratio: 4/3; background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; position: relative; }
 .image-box img { width: 100%; height: 100%; object-fit: cover; }
 
-/* Details Box */
 .details-box { display: flex; flex-direction: column; }
-.p-category { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-weight: 600; font-size: 0.85rem; margin-bottom: 12px; }
-.p-title { font-size: clamp(1.8rem, 3vw, 2.8rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; text-transform: uppercase; letter-spacing: -1px; }
-.p-price { font-size: 2rem; color: var(--accent); font-weight: 700; font-family: 'Montserrat', sans-serif; margin-bottom: 24px; }
+.p-category { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-weight: 700; font-size: 0.75rem; margin-bottom: 10px; }
+.p-title { font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 900; line-height: 1.1; margin-bottom: 16px; text-transform: uppercase; letter-spacing: -1px; }
+.p-price { font-size: 2rem; color: var(--accent); font-weight: 800; font-family: 'Montserrat', sans-serif; margin-bottom: 24px; }
 
-/* Description */
 .desc-section { margin-bottom: 30px; border-top: 1px solid var(--border); padding-top: 20px; }
-.desc-title { font-size: 0.85rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; color: var(--text); }
+.desc-title { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px; color: var(--text); }
 .p-desc { font-size: 0.95rem; color: var(--muted); line-height: 1.6; }
 
-/* Meta Info */
 .meta-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 30px; padding-top: 20px; border-top: 1px solid var(--border); }
 .meta-item span:first-child { display: block; font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 6px; }
 .meta-item span:last-child { font-size: 1.05rem; font-weight: 600; font-family: 'Montserrat', sans-serif; color: var(--text); }
 
-/* WhatsApp CTA Button */
 .whatsapp-btn {
   display: flex; align-items: center; justify-content: center; gap: 10px;
   background: var(--accent); color: #000; padding: 16px 28px;
   font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase;
   letter-spacing: 1px; text-decoration: none; font-size: 0.95rem; border-radius: 4px;
-  transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
+  transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
-.whatsapp-btn:hover { background: #fff; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(255,255,255,0.25); }
+.whatsapp-btn:hover { background: #fff; transform: translateY(-2px); }
 
-/* Mobile Adjustments */
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 30px 5vw; text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 80px; }
+
 @media(max-width: 900px) {
   .product-container { grid-template-columns: 1fr; gap: 30px; margin: 20px auto; }
 }
@@ -73,12 +70,12 @@ nav { padding: 24px 5vw; display: flex; justify-content: space-between; align-it
 
 <nav>
   <a href="index.html" class="logo">Digital<span>.</span>Racer</a>
-  <a href="catalog.html" class="back-nav">← Back</a>
+  <a href="catalog.html" class="nav-link">← Catalog</a>
 </nav>
 
 <div class="product-container">
   <div class="image-box" id="prod-img-container">
-    <!-- Image injected by script -->
+    <!-- Image injected -->
   </div>
   
   <div class="details-box">
@@ -109,6 +106,10 @@ nav { padding: 24px 5vw; display: flex; justify-content: space-between; align-it
   </div>
 </div>
 
+<footer>
+  <p>© 2026 Digital Racer. All rights reserved.</p>
+</footer>
+
 <script>
   const urlParams = new URLSearchParams(window.location.search);
   const itemName = urlParams.get('item');
@@ -123,14 +124,19 @@ nav { padding: 24px 5vw; display: flex; justify-content: space-between; align-it
         const product = products.find(p => p.title === itemName);
 
         if (product) {
+          // Dynamic SEO Optimization Updates
+          document.title = `${product.title} — Digital Racer`;
+          
+          const metaDesc = document.getElementById('meta-desc');
+          const descriptionText = product.description || `Acquire ${product.title} securely at Digital Racer. Instant global delivery.`;
+          if (metaDesc) metaDesc.setAttribute('content', descriptionText);
+
           document.getElementById('prod-title').innerText = product.title;
           document.getElementById('prod-category').innerText = product.category || 'Asset';
           document.getElementById('prod-price').innerText = `Rs. ${product.price}`;
           document.getElementById('prod-tag').innerText = product.tag || 'GLOBAL';
           document.getElementById('prod-badge').innerText = product.badge || 'Instant';
-          
-          const defaultDesc = "Premium digital asset with full access. Inventory details are available in the listing image. Contact for more information or serious offers only.";
-          document.getElementById('prod-desc').innerText = product.description || defaultDesc;
+          document.getElementById('prod-desc').innerText = descriptionText;
 
           if (product.thumbnail) {
             document.getElementById('prod-img-container').innerHTML = `<img src="${product.thumbnail}" alt="${product.title}">`;
@@ -138,13 +144,14 @@ nav { padding: 24px 5vw; display: flex; justify-content: space-between; align-it
             document.getElementById('prod-img-container').innerHTML = `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color: var(--border);">No Image</div>`;
           }
 
-          const waNumber = "923000000000"; // CHANGE TO YOUR NUMBER
+          const waNumber = "923000000000"; // CHANGE TO YOUR ACTUAL WHATSAPP NUMBER
           const message = `Hello Digital Racer! I want to acquire: ${product.title} for Rs. ${product.price}.`;
           document.getElementById('buy-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
         } else {
           document.getElementById('prod-title').innerText = "Asset Not Found";
         }
-      });
+      })
+      .catch(error => console.error("Error loading inventory:", error));
   }
 </script>
 </body>
