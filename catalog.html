@@ -2,80 +2,84 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Digital Racer — Full Archive</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Racer — Full Catalog</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --bg: #050505;
   --surface: #111111;
-  --border: #2a2a2a;
+  --surface2: #181818;
+  --border: #222222;
   --text: #ffffff;
-  --muted: #7a7a7a;
+  --muted: #888888;
   --accent: #d4af37;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
-html { scroll-behavior: initial; }
-body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
 h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-/* Custom Cursor */
-.cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; top: 0; left: 0; transform: translate(-50%, -50%); z-index: 9999; pointer-events: none; }
-.cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(212, 175, 55, 0.5); position: fixed; border-radius: 50%; top: 0; left: 0; transform: translate(-50%, -50%); z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s, background 0.2s; }
-
-/* Navigation */
-nav { padding: 40px 10vw; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
-.logo { font-size: 1.1rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+/* Top Navigation */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5vw; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+.logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--text); text-decoration: none; }
 .logo span { color: var(--accent); }
+.nav-link { color: var(--muted); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; transition: color 0.2s; }
+.nav-link:hover { color: var(--accent); }
 
 /* Header & Filters */
-.header-area { padding: 80px 10vw 40px; }
-.page-title { font-size: clamp(3rem, 6vw, 5rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 40px; }
-.filters { display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 40px; }
-.filter-btn { background: transparent; border: 1px solid var(--border); color: var(--muted); padding: 10px 24px; font-family: 'Montserrat', sans-serif; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; transition: all 0.3s ease; }
-.filter-btn.active, .filter-btn:hover { border-color: var(--accent); color: var(--accent); }
+.catalog-header { padding: 60px 5vw 30px; max-width: 1300px; margin: 0 auto; }
+.page-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 30px; }
+.page-title span { color: var(--accent); }
 
-/* Grid & Cards */
-.catalog-section { padding: 0 10vw 120px; min-height: 50vh; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 50px; }
+.filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
+.filter-btn { background: var(--surface); border: 1px solid var(--border); color: var(--muted); padding: 10px 20px; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+.filter-btn.active, .filter-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(212, 175, 55, 0.05); }
 
-.product-card { display: block; text-decoration: none; color: var(--text); position: relative; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
-.card-image-wrap { width: 100%; aspect-ratio: 4/5; overflow: hidden; background: var(--surface); position: relative; border-radius: 2px; margin-bottom: 24px; }
-.card-image { width: 100%; height: 100%; object-fit: cover; transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s; filter: grayscale(100%) contrast(1.1); }
-.product-card:hover .card-image { transform: scale(1.08); filter: grayscale(0%); }
-.product-card:hover { transform: translateY(-15px); }
-.card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.card-category { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-.card-title { font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 8px; line-height: 1.3;}
-.card-price { font-size: 1.1rem; color: var(--muted); font-weight: 300; }
-.badge { position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.8); backdrop-filter: blur(4px); padding: 6px 12px; font-size: 0.7rem; letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent); color: var(--accent); }
+/* Grid */
+.container { max-width: 1300px; margin: 0 auto; padding: 0 5vw 80px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: border-color 0.3s; opacity: 0; transform: translateY(20px); }
+.product-card:hover { border-color: var(--accent); }
+.prod-img-wrap { width: 100%; aspect-ratio: 4/3; background: var(--surface2); position: relative; overflow: hidden; }
+.prod-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s ease; }
+.product-card:hover .prod-img { transform: scale(1.05); }
+.prod-badge { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.8); border: 1px solid var(--accent); color: var(--accent); padding: 4px 10px; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
 
-/* Mobile Adjustments */
+.prod-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+.prod-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+.prod-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 16px; }
+.prod-price { font-size: 1.25rem; font-weight: 800; color: var(--accent); font-family: 'Montserrat', sans-serif; }
+.prod-btn { background: var(--surface2); color: var(--text); padding: 8px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border: 1px solid var(--border); transition: all 0.2s; }
+.product-card:hover .prod-btn { background: var(--accent); color: #000; border-color: var(--accent); }
+
+/* Footer */
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 5vw; text-align: center; color: var(--muted); font-size: 0.9rem; }
+
 @media(max-width: 768px) {
-  * { cursor: auto !important; }
-  .cursor-dot, .cursor-outline { display: none; }
-  .header-area, .catalog-section { padding-left: 5vw; padding-right: 5vw; }
-  nav { padding-left: 5vw; padding-right: 5vw; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .catalog-header { padding: 40px 4vw 20px; }
+  .container { padding: 0 4vw 60px; }
+  .prod-content { padding: 12px; }
+  .prod-title { font-size: 0.95rem; }
+  .prod-price { font-size: 1.05rem; }
 }
 </style>
 </head>
 <body>
 
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
-
 <nav>
   <a href="index.html" class="logo">Digital<span>.</span>Racer</a>
-  <a href="index.html" style="color:var(--text); text-decoration:none; font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;">Back to Home</a>
+  <a href="index.html" class="nav-link">← Home</a>
 </nav>
 
-<div class="header-area">
-  <h1 class="page-title reveal-text">The Archive.</h1>
+<div class="catalog-header">
+  <h1 class="page-title">Full <span>Archive</span></h1>
   <div class="filters">
     <button class="filter-btn active" data-filter="all">All Assets</button>
     <button class="filter-btn" data-filter="Account">Accounts</button>
@@ -84,61 +88,39 @@ nav { padding: 40px 10vw; display: flex; justify-content: space-between; align-i
   </div>
 </div>
 
-<section class="catalog-section">
+<div class="container">
   <div class="grid" id="full-catalog">
-    <p style="color: var(--muted); font-size: 1.2rem; font-weight: 300;">Loading assets...</p>
+    <p style="color: var(--muted);">Loading inventory...</p>
   </div>
-</section>
+</div>
 
-<!-- Scripts -->
-<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<footer>
+  <p>© 2026 Digital Racer. All rights reserved.</p>
+</footer>
+
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 
 <script>
-  // Cursor Logic
-  const cursorDot = document.querySelector('.cursor-dot');
-  const cursorOutline = document.querySelector('.cursor-outline');
-  window.addEventListener('mousemove', (e) => {
-    const posX = e.clientX; const posY = e.clientY;
-    cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
-    cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
-  });
-  document.addEventListener('mouseover', (e) => {
-    if(e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
-      cursorOutline.style.width = '60px'; cursorOutline.style.height = '60px';
-      cursorOutline.style.background = 'rgba(212, 175, 55, 0.1)'; cursorOutline.style.borderColor = 'rgba(212, 175, 55, 0.8)';
-    }
-  });
-  document.addEventListener('mouseout', (e) => {
-    if(e.target.tagName === 'A' || e.target.tagName === 'BUTTON' || e.target.closest('a') || e.target.closest('button')) {
-      cursorOutline.style.width = '40px'; cursorOutline.style.height = '40px';
-      cursorOutline.style.background = 'transparent'; cursorOutline.style.borderColor = 'rgba(212, 175, 55, 0.5)';
-    }
-  });
-
-  // Lenis
-  const lenis = new Lenis({ autoRaf: true });
-
-  // Title Animation
-  gsap.from('.reveal-text', { y: 50, opacity: 0, duration: 1, ease: 'power4.out', delay: 0.2 });
-
-  // Fetch & Filter Logic
   let allProducts = [];
 
-  function createAgencyCard(product) {
+  function createCardHTML(product) {
     const bgImage = product.thumbnail ? product.thumbnail : '';
-    const badgeHtml = product.badge ? `<div class="badge">${product.badge}</div>` : '';
+    const badgeHtml = product.badge ? `<div class="prod-badge">${product.badge}</div>` : '';
+    
     return `
       <a href="product.html?item=${encodeURIComponent(product.title)}" class="product-card item-card" data-category="${product.category}">
-        <div class="card-image-wrap">
-          <img src="${bgImage}" class="card-image" alt="${product.title}" onerror="this.style.display='none'">
+        <div class="prod-img-wrap">
+          <img src="${bgImage}" class="prod-img" alt="${product.title}" onerror="this.style.display='none'">
           ${badgeHtml}
         </div>
-        <div class="card-meta">
-          <span class="card-category">${product.category || 'Asset'}</span>
-          <span class="card-price">Rs. ${product.price}</span>
+        <div class="prod-content">
+          <div class="prod-category">${product.category || 'Asset'}</div>
+          <div class="prod-title">${product.title}</div>
+          <div class="prod-footer">
+            <div class="prod-price">Rs. ${product.price}</div>
+            <div class="prod-btn">View</div>
+          </div>
         </div>
-        <h3 class="card-title">${product.title}</h3>
       </a>
     `;
   }
@@ -146,11 +128,19 @@ nav { padding: 40px 10vw; display: flex; justify-content: space-between; align-i
   function renderCatalog(products) {
     const container = document.getElementById('full-catalog');
     if (products.length === 0) {
-      container.innerHTML = `<p style="color: var(--muted); font-size: 1.2rem; font-weight: 300;">No assets found in this category.</p>`;
+      container.innerHTML = `<p style="color: var(--muted);">No assets found in this category.</p>`;
       return;
     }
-    container.innerHTML = products.map(p => createAgencyCard(p)).join('');
-    gsap.from('.item-card', { y: 40, opacity: 0, duration: 0.8, stagger: 0.05, ease: 'power3.out' });
+    container.innerHTML = products.map(p => createCardHTML(p)).join('');
+    
+    // Animate cards smoothly into view
+    gsap.to('.item-card', {
+      opacity: 1,
+      y: 0,
+      duration: 0.6,
+      stagger: 0.05,
+      ease: 'power3.out'
+    });
   }
 
   fetch('/inventory.json')
@@ -158,14 +148,16 @@ nav { padding: 40px 10vw; display: flex; justify-content: space-between; align-i
     .then(data => {
       allProducts = data.items || [];
       renderCatalog(allProducts);
-    });
+    })
+    .catch(error => console.error("Error loading inventory:", error));
 
-  // Filter Buttons
+  // Filter Buttons Logic
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');
       const filter = e.target.getAttribute('data-filter');
+      
       if (filter === 'all') {
         renderCatalog(allProducts);
       } else {
@@ -175,5 +167,6 @@ nav { padding: 40px 10vw; display: flex; justify-content: space-between; align-i
     });
   });
 </script>
+
 </body>
 </html>
