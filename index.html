@@ -17,18 +17,26 @@
   --border: #222222;
   --text: #ffffff;
   --muted: #888888;
-  --accent: #d4af37; /* Luxury Gold */
+  --accent: #d4af37;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
 h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-/* Navigation */
-nav { display: flex; justify-content: space-between; align-items: center; padding: 22px 5vw; border-bottom: 1px solid var(--border); background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; }
-.logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+/* Navigation with Search Bar */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 5vw; border-bottom: 1px solid var(--border); background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; gap: 20px; flex-wrap: wrap; }
+.logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; white-space: nowrap; }
 .logo span { color: var(--accent); }
-.nav-link { color: var(--muted); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; transition: color 0.2s; }
+
+.nav-search { display: flex; align-items: center; background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 6px 12px; width: 300px; max-width: 100%; transition: border-color 0.2s; }
+.nav-search:focus-within { border-color: var(--accent); }
+.nav-search input { background: transparent; border: none; outline: none; color: var(--text); font-size: 0.85rem; width: 100%; font-family: 'Open Sans', sans-serif; }
+.nav-search input::placeholder { color: var(--muted); }
+.nav-search button { background: transparent; border: none; color: var(--accent); cursor: pointer; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-left: 8px; }
+
+.nav-links { display: flex; gap: 20px; align-items: center; }
+.nav-link { color: var(--muted); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; transition: color 0.2s; white-space: nowrap; }
 .nav-link:hover { color: var(--accent); }
 
 /* Compact Luxury Header */
@@ -66,7 +74,9 @@ section { margin-bottom: 60px; }
 
 footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 5vw; text-align: center; color: var(--muted); font-size: 0.85rem; letter-spacing: 1px; }
 
-@media(max-width: 768px) {
+@media(max-width: 850px) {
+  nav { flex-direction: column; align-items: stretch; }
+  .nav-search { width: 100%; }
   .grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
   .container { padding: 30px 4vw; }
 }
@@ -76,7 +86,15 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 
 <nav>
   <a href="index.html" class="logo">Digital<span>.</span>Racer</a>
-  <a href="catalog.html" class="nav-link">Full Catalog →</a>
+  
+  <div class="nav-search">
+    <input type="text" id="search-input" placeholder="Search accounts, skins, UC...">
+    <button id="search-btn">Search</button>
+  </div>
+
+  <div class="nav-links">
+    <a href="catalog.html" class="nav-link">Catalog</a>
+  </div>
 </nav>
 
 <header>
@@ -128,6 +146,18 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 
 <script>
   gsap.registerPlugin(ScrollTrigger);
+
+  function handleSearch() {
+    const query = document.getElementById('search-input').value.trim();
+    if (query) {
+      window.location.href = `catalog.html?search=${encodeURIComponent(query)}`;
+    }
+  }
+
+  document.getElementById('search-btn').addEventListener('click', handleSearch);
+  document.getElementById('search-input').addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') handleSearch();
+  });
 
   function createCardHTML(product) {
     const bgImage = product.thumbnail ? product.thumbnail : '';
