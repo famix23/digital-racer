@@ -39,57 +39,51 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .nav-link { color: var(--muted); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; transition: color 0.2s; white-space: nowrap; }
 .nav-link:hover { color: var(--accent); }
 
-/* Main Wrapper & Card Layout */
-.main-wrapper { max-width: 1050px; margin: 50px auto; padding: 0 5vw; }
-.product-card-main { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; display: grid; grid-template-columns: 1fr 1fr; overflow: hidden; box-shadow: 0 15px 35px rgba(0,0,0,0.6); align-items: stretch; }
+/* Main Wrapper Layout */
+.main-wrapper { max-width: 1200px; margin: 40px auto; padding: 0 5vw; }
 
-/* Image Pane */
-.image-pane { background: var(--surface2); width: 100%; min-height: 420px; display: flex; align-items: center; justify-content: center; border-right: 1px solid var(--border); overflow: hidden; position: relative; }
-.image-pane img { width: 100%; height: 100%; object-fit: cover; display: block; }
+/* Top Title Area */
+.product-header-section { margin-bottom: 30px; }
+.breadcrumb { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+.breadcrumb a { color: var(--muted); text-decoration: none; }
+.breadcrumb a:hover { color: var(--accent); }
+.main-title { font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 900; text-transform: uppercase; line-height: 1.25; color: var(--text); word-break: break-word; }
 
-/* Details Content Pane */
-.details-pane { padding: 35px; display: flex; flex-direction: column; justify-content: space-between; }
-.p-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2.5px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+/* Two Column Content Grid */
+.product-grid-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; align-items: start; }
 
-/* Strictly 2-line max, smaller bold title */
-.p-title { 
-  font-size: 1.15rem; 
-  font-weight: 700; 
-  line-height: 1.35; 
-  margin-bottom: 16px; 
-  text-transform: uppercase; 
-  color: var(--text); 
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-}
+/* Left Column */
+.left-column { display: flex; flex-direction: column; gap: 25px; }
+.image-box { width: 100%; aspect-ratio: 16/10; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.image-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
 
-.p-price-box { margin-bottom: 18px; }
-.p-price-label { font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 4px; }
-.p-price { font-size: 1.6rem; color: var(--accent); font-weight: 800; font-family: 'Montserrat', sans-serif; }
+.desc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 25px; }
+.desc-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; color: var(--accent); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
+.desc-content { font-size: 0.9rem; color: var(--muted); line-height: 1.7; word-break: break-word; white-space: pre-line; }
 
-.specs-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 18px; padding: 12px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
-.spec-item span:first-child { display: block; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.spec-item span:last-child { font-size: 0.85rem; font-weight: 600; font-family: 'Montserrat', sans-serif; }
+/* Right Column (Buy Box Card) */
+.buy-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; gap: 20px; position: sticky; top: 90px; }
+.buy-price-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; }
+.buy-price { font-size: 2.2rem; font-weight: 900; color: var(--accent); font-family: 'Montserrat', sans-serif; margin-top: 4px; }
 
-/* Admin Description Box */
-.desc-box { margin-bottom: 20px; background: var(--surface2); border: 1px solid var(--border); padding: 14px; border-radius: 6px; }
-.desc-title { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 6px; color: var(--accent); }
-.p-desc { font-size: 0.85rem; color: var(--muted); line-height: 1.6; word-break: break-word; white-space: pre-line; }
+.specs-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 0; }
+.mini-spec span:first-child { display: block; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
+.mini-spec span:last-child { font-size: 0.9rem; font-weight: 600; font-family: 'Montserrat', sans-serif; }
 
-/* WhatsApp CTA */
 .whatsapp-btn {
   display: flex; align-items: center; justify-content: center; gap: 10px;
-  background: var(--accent); color: #000; padding: 14px 20px;
+  background: var(--accent); color: #000; padding: 16px 20px;
   font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 1px; text-decoration: none; font-size: 0.85rem; border-radius: 4px;
+  letter-spacing: 1px; text-decoration: none; font-size: 0.9rem; border-radius: 6px;
   transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
 }
 .whatsapp-btn:hover { background: #fff; transform: translateY(-2px); }
 
+.guarantee-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 14px; font-size: 0.8rem; color: var(--muted); line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
+.guarantee-box span { color: var(--accent); font-weight: 700; }
+
 /* Related Section */
-.related-section { max-width: 1050px; margin: 60px auto 0; padding: 0 5vw; }
+.related-section { max-width: 1200px; margin: 60px auto 0; padding: 0 5vw; }
 .related-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
 .related-title span { color: var(--accent); }
 .related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
@@ -102,10 +96,8 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 
 footer { background: var(--surface); border-top: 1px solid var(--border); padding: 30px 5vw; text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 80px; }
 
-@media(max-width: 850px) {
-  .product-card-main { grid-template-columns: 1fr; }
-  .image-pane { min-height: 280px; border-right: none; border-bottom: 1px solid var(--border); }
-  .details-pane { padding: 25px; }
+@media(max-width: 900px) {
+  .product-grid-layout { grid-template-columns: 1fr; }
   nav { flex-direction: column; align-items: stretch; }
   .nav-search { width: 100%; }
 }
@@ -128,43 +120,59 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 </nav>
 
 <div class="main-wrapper">
-  <div class="product-card-main">
-    <div class="image-pane" id="prod-img-container">
-      <!-- Image injected -->
+  
+  <!-- Breadcrumb & Full Title Section -->
+  <div class="product-header-section">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a> / <a href="catalog.html" id="bread-cat">Catalog</a>
     </div>
+    <h1 class="main-title" id="prod-title">Asset Loading...</h1>
+  </div>
+
+  <div class="product-grid-layout">
     
-    <div class="details-pane">
-      <div>
-        <div class="p-category" id="prod-category">Loading...</div>
-        <h1 class="p-title" id="prod-title">Asset Loading</h1>
-        
-        <div class="p-price-box">
-          <div class="p-price-label">Total Price</div>
-          <div class="p-price" id="prod-price">...</div>
+    <!-- Left Column: Image & Description Box -->
+    <div class="left-column">
+      <div class="image-box" id="prod-img-container">
+        <!-- Image injected here -->
+      </div>
+
+      <div class="desc-card" id="desc-card-wrapper" style="display: none;">
+        <div class="desc-title">Description</div>
+        <div class="desc-content" id="prod-desc"></div>
+      </div>
+    </div>
+
+    <!-- Right Column: Buy Box & Pricing Card -->
+    <div class="right-column">
+      <div class="buy-card">
+        <div>
+          <div class="buy-price-label">Total Price</div>
+          <div class="buy-price" id="prod-price">...</div>
         </div>
-        
-        <div class="specs-grid">
-          <div class="spec-item">
+
+        <div class="specs-mini-grid">
+          <div class="mini-spec">
             <span>Region Tag</span>
             <span id="prod-tag">-</span>
           </div>
-          <div class="spec-item">
-            <span>Delivery Time</span>
-            <span style="color: var(--accent);">Instant (WhatsApp)</span>
+          <div class="mini-spec">
+            <span>Delivery</span>
+            <span style="color: var(--accent);">Instant</span>
           </div>
         </div>
 
-        <div class="desc-box" id="desc-container" style="display: none;">
-          <div class="desc-title">Product Description</div>
-          <div class="p-desc" id="prod-desc"></div>
+        <a href="#" class="whatsapp-btn" id="buy-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Acquire via WhatsApp
+        </a>
+
+        <div class="guarantee-box">
+          <div><span>SECURE GUARANTEE:</span> All transactions and asset transfers are verified and protected for smooth delivery.</div>
         </div>
       </div>
-      
-      <a href="#" class="whatsapp-btn" id="buy-btn">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-        Acquire via WhatsApp
-      </a>
     </div>
+
   </div>
 </div>
 
@@ -207,17 +215,18 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
         if (product) {
           document.title = `${product.title} — Digital Racer`;
           document.getElementById('prod-title').innerText = product.title;
-          document.getElementById('prod-category').innerText = product.category || 'Asset';
+          document.getElementById('bread-cat').innerText = product.category || 'In-Game Items';
+          document.getElementById('bread-cat').href = `catalog.html?category=${encodeURIComponent(product.category || '')}`;
           document.getElementById('prod-price').innerText = `Rs. ${product.price}`;
           document.getElementById('prod-tag').innerText = product.tag || 'GLOBAL';
           
-          // Pull description strictly from product data (Admin panel input)
+          // Display description ONLY if provided in admin panel
           const descText = product.description || product.desc || "";
           if (descText && descText.trim() !== "") {
-            document.getElementById('desc-container').style.display = 'block';
+            document.getElementById('desc-card-wrapper').style.display = 'block';
             document.getElementById('prod-desc').innerText = descText;
           } else {
-            document.getElementById('desc-container').style.display = 'none';
+            document.getElementById('desc-card-wrapper').style.display = 'none';
           }
 
           if (product.thumbnail) {
