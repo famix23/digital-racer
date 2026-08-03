@@ -2,275 +2,161 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-<title>Digital Racer — Premium Digital Assets</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Digital Racer — PUBG Mobile UC, Accounts & Car Skins</title>
 
-<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
 
 <style>
-/* PREMIUM DARK AESTHETIC */
 :root {
   --bg: #050505;
   --surface: #111111;
-  --border: #2a2a2a;
+  --surface2: #181818;
+  --border: #222222;
   --text: #ffffff;
-  --muted: #7a7a7a;
+  --muted: #888888;
   --accent: #d4af37; /* Luxury Gold */
 }
 
-/* Base Styles & Lenis Reset */
-* { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
-html { scroll-behavior: initial; } /* Lenis handles scroll */
-body {
-  background: var(--bg);
-  color: var(--text);
-  font-family: 'Open Sans', sans-serif;
-  overflow-x: hidden;
-  -webkit-font-smoothing: antialiased;
-}
-h1, h2, h3, .display-text { font-family: 'Montserrat', sans-serif; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; }
+h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-/* Custom Magnetic Cursor */
-.cursor-dot {
-  width: 8px; height: 8px; background: var(--accent);
-  position: fixed; border-radius: 50%; top: 0; left: 0;
-  transform: translate(-50%, -50%); z-index: 9999; pointer-events: none;
-}
-.cursor-outline {
-  width: 40px; height: 40px; border: 1px solid rgba(212, 175, 55, 0.5);
-  position: fixed; border-radius: 50%; top: 0; left: 0;
-  transform: translate(-50%, -50%); z-index: 9998; pointer-events: none;
-  transition: width 0.2s, height 0.2s, background 0.2s;
-}
-
-/* Navigation */
-nav {
-  padding: 40px; display: flex; justify-content: space-between; align-items: center;
-  position: absolute; top: 0; left: 0; width: 100%; z-index: 100;
-}
-.logo { font-size: 1.1rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--text); }
+/* Top Navigation */
+nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5vw; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
+.logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--text); text-decoration: none; }
 .logo span { color: var(--accent); }
+.nav-link { color: var(--muted); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; transition: color 0.2s; }
+.nav-link:hover { color: var(--accent); }
 
-/* Hero Section (Agency Style) */
-.hero {
-  height: 100vh; display: flex; flex-direction: column; justify-content: center;
-  padding: 0 10vw; position: relative; overflow: hidden;
-}
-.hero-bg {
-  position: absolute; top: 0; left: 0; width: 100%; height: 120%;
-  background-image: url('2020pubg-4k-100568-1242x2688_640.jpg');
-  background-size: cover; background-position: center;
-  opacity: 0.12; z-index: -1; filter: grayscale(100%) contrast(1.2);
-}
-.hero-title {
-  font-size: clamp(3.5rem, 10vw, 10rem); line-height: 0.9; font-weight: 900;
-  letter-spacing: -2px; text-transform: uppercase; margin-bottom: 20px;
-}
-.hero-title .line { display: block; overflow: hidden; }
-.hero-title .line span { display: inline-block; transform: translateY(100%); }
-.hero-sub {
-  max-width: 500px; font-size: 1.2rem; color: var(--muted);
-  line-height: 1.6; opacity: 0; font-weight: 300;
-}
+/* Store Header Section */
+header { padding: 60px 5vw 40px; text-align: center; background: radial-gradient(circle at center top, #151515 0%, var(--bg) 70%); border-bottom: 1px solid var(--border); }
+.store-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(212, 175, 55, 0.1); border: 1px solid rgba(212, 175, 55, 0.3); padding: 6px 16px; border-radius: 20px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 20px; }
+.store-title { font-size: clamp(2rem, 5vw, 4rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 16px; }
+.store-title span { color: var(--accent); }
+.store-sub { max-width: 600px; margin: 0 auto 30px; color: var(--muted); font-size: 1rem; line-height: 1.6; }
+
+/* Trust Badges Bar */
+.trust-bar { display: flex; justify-content: center; gap: 20px; flex-wrap: wrap; margin-top: 20px; }
+.trust-item { background: var(--surface); border: 1px solid var(--border); padding: 8px 16px; border-radius: 4px; font-size: 0.8rem; color: var(--text); font-weight: 600; display: flex; align-items: center; gap: 8px; }
+.trust-item span { color: var(--accent); }
 
 /* Catalog Sections */
-section { padding: 120px 10vw; border-top: 1px solid var(--border); }
-.section-header { margin-bottom: 80px; display: flex; align-items: flex-end; justify-content: space-between; }
-.section-title { font-size: 4rem; line-height: 0.9; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; }
-.section-title span { color: var(--accent); font-size: 5rem; line-height: 0; }
+.container { max-width: 1300px; margin: 0 auto; padding: 60px 5vw; }
+section { margin-bottom: 60px; }
+.section-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 30px; border-bottom: 1px solid var(--border); padding-bottom: 15px; }
+.section-title { font-size: 1.5rem; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; }
+.section-title span { color: var(--accent); }
+.view-all { color: var(--muted); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; }
+.view-all:hover { color: var(--accent); }
 
-.grid {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 50px;
-}
+/* Product Grid & Cards */
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: transform 0.3s, border-color 0.3s; }
+.product-card:hover { transform: translateY(-6px); border-color: var(--accent); }
+.prod-img-wrap { width: 100%; aspect-ratio: 4/3; background: var(--surface2); position: relative; overflow: hidden; }
+.prod-img { width: 100%; height: 100%; object-fit: cover; }
+.prod-badge { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.8); border: 1px solid var(--accent); color: var(--accent); padding: 4px 10px; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
 
-/* Premium Product Cards */
-.product-card {
-  display: block; text-decoration: none; color: var(--text);
-  position: relative; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.card-image-wrap {
-  width: 100%; aspect-ratio: 4/5; overflow: hidden; background: var(--surface);
-  position: relative; border-radius: 2px; margin-bottom: 24px;
-}
-.card-image {
-  width: 100%; height: 100%; object-fit: cover;
-  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s;
-  filter: grayscale(100%) contrast(1.1);
-}
-.product-card:hover .card-image { transform: scale(1.08); filter: grayscale(0%); }
-.product-card:hover { transform: translateY(-15px); }
-
-.card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
-.card-category { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
-.card-title { font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 8px; line-height: 1.3;}
-.card-price { font-size: 1.1rem; color: var(--muted); font-weight: 300; }
-
-/* Status Badges */
-.badge {
-  position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.8);
-  backdrop-filter: blur(4px); padding: 6px 12px; font-size: 0.7rem;
-  letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent);
-  color: var(--accent);
-}
+.prod-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
+.prod-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
+.prod-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 16px; }
+.prod-price { font-size: 1.25rem; font-weight: 800; color: var(--accent); font-family: 'Montserrat', sans-serif; }
+.prod-btn { background: var(--surface2); color: var(--text); padding: 8px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border: 1px solid var(--border); transition: all 0.2s; }
+.product-card:hover .prod-btn { background: var(--accent); color: #000; border-color: var(--accent); }
 
 /* Footer */
-footer { padding: 120px 10vw 80px; text-align: center; border-top: 1px solid var(--border); }
-.footer-text { font-size: 2.5rem; font-family: 'Montserrat', sans-serif; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -1px;}
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 5vw; text-align: center; color: var(--muted); font-size: 0.9rem; }
 footer a { color: var(--accent); text-decoration: none; }
 
-/* Mobile Adjustments */
 @media(max-width: 768px) {
-  * { cursor: auto !important; }
-  .cursor-dot, .cursor-outline { display: none; }
-  .hero-title { font-size: 4rem; }
-  .section-title { font-size: 2.5rem; }
-  section { padding: 80px 5vw; }
+  .grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
+  .container { padding: 30px 4vw; }
+  .prod-content { padding: 12px; }
+  .prod-title { font-size: 0.95rem; }
+  .prod-price { font-size: 1.05rem; }
 }
 </style>
 </head>
 <body>
 
-<div class="cursor-dot"></div>
-<div class="cursor-outline"></div>
-
 <nav>
-  <div class="logo">Digital<span>.</span>Racer</div>
-  <a href="catalog.html" style="color:var(--text); text-decoration:none; font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;">Full Catalog</a>
+  <a href="index.html" class="logo">Digital<span>.</span>Racer</a>
+  <a href="catalog.html" class="nav-link">Full Catalog →</a>
 </nav>
 
-<div class="hero">
-  <div class="hero-bg" id="hero-bg"></div>
-  <h1 class="hero-title display-text">
-    <span class="line"><span class="reveal-text">Premium</span></span>
-    <span class="line"><span class="reveal-text">Digital</span></span>
-    <span class="line"><span class="reveal-text">Assets.</span></span>
-  </h1>
-  <p class="hero-sub" id="hero-sub">Elevating your mobile experience. The highest-tier marketplace for verified accounts, exclusive cosmetics, and instant top-ups.</p>
+<header>
+  <div class="store-badge">⚡ Pakistan's Trusted Marketplace</div>
+  <h1 class="store-title">PUBG Mobile <span>Store</span></h1>
+  <p class="store-sub">Instant delivery for verified accounts, exclusive car skins, and UC top-ups. Secure payments via Easypaisa & JazzCash.</p>
+  
+  <div class="trust-bar">
+    <div class="trust-item"><span>✓</span> Instant Delivery</div>
+    <div class="trust-item"><span>✓</span> 100% Secure</div>
+    <div class="trust-item"><span>✓</span> Easypaisa & JazzCash</div>
+  </div>
+</header>
+
+<div class="container">
+  
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Verified <span>Accounts</span></h2>
+      <a href="catalog.html" class="view-all">View All →</a>
+    </div>
+    <div class="grid" id="grid-accounts">
+      <p style="color: var(--muted);">Loading accounts...</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">Car <span>Skins</span></h2>
+      <a href="catalog.html" class="view-all">View All →</a>
+    </div>
+    <div class="grid" id="grid-skins">
+      <p style="color: var(--muted);">Loading skins...</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="section-header">
+      <h2 class="section-title">UC <span>Top-Ups</span></h2>
+      <a href="catalog.html" class="view-all">View All →</a>
+    </div>
+    <div class="grid" id="grid-uc">
+      <p style="color: var(--muted);">Loading UC packages...</p>
+    </div>
+  </section>
+
 </div>
 
-<!-- Dynamic Catalog Containers -->
-<section id="accounts">
-  <div class="section-header">
-    <h2 class="section-title">Verified<span>.</span><br>Accounts</h2>
-  </div>
-  <div class="grid" id="grid-accounts"></div>
-</section>
-
-<section id="skins">
-  <div class="section-header">
-    <h2 class="section-title">Exclusive<span>.</span><br>Skins</h2>
-  </div>
-  <div class="grid" id="grid-skins"></div>
-</section>
-
-<section id="uc">
-  <div class="section-header">
-    <h2 class="section-title">Instant<span>.</span><br>Top-Ups</h2>
-  </div>
-  <div class="grid" id="grid-uc"></div>
-</section>
-
 <footer>
-  <div class="footer-text">Elevate Your Game.</div>
-  <p style="color: var(--muted); font-size: 0.95rem;">© 2026 Digital Racer. Payments via Easypaisa & JazzCash.</p>
-  <p style="margin-top:40px;"><a href="/admin/" style="font-size: 0.8rem; letter-spacing: 2px; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 4px;">ADMIN PORTAL</a></p>
+  <p>© 2026 Digital Racer. All rights reserved. <br><a href="/admin/" style="font-size: 0.75rem; letter-spacing: 1px; display:inline-block; margin-top:10px;">ADMIN LOGIN</a></p>
 </footer>
 
-<!-- Premium Animation & Scroll Libraries -->
-<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-
 <script>
-  /* ----------------------------------------------------
-     1. CUSTOM MAGNETIC CURSOR
-  ---------------------------------------------------- */
-  const cursorDot = document.querySelector('.cursor-dot');
-  const cursorOutline = document.querySelector('.cursor-outline');
-  
-  window.addEventListener('mousemove', (e) => {
-    const posX = e.clientX;
-    const posY = e.clientY;
-    
-    // Dot instantly follows cursor
-    cursorDot.style.left = `${posX}px`;
-    cursorDot.style.top = `${posY}px`;
-    
-    // Outline trails slightly behind with an animation frame
-    cursorOutline.animate({
-      left: `${posX}px`,
-      top: `${posY}px`
-    }, { duration: 500, fill: "forwards" });
-  });
-
-  // Expand the cursor on links and cards
-  document.addEventListener('mouseover', (e) => {
-    if(e.target.tagName === 'A' || e.target.closest('a')) {
-      cursorOutline.style.width = '60px';
-      cursorOutline.style.height = '60px';
-      cursorOutline.style.background = 'rgba(212, 175, 55, 0.1)';
-      cursorOutline.style.borderColor = 'rgba(212, 175, 55, 0.8)';
-    }
-  });
-  document.addEventListener('mouseout', (e) => {
-    if(e.target.tagName === 'A' || e.target.closest('a')) {
-      cursorOutline.style.width = '40px';
-      cursorOutline.style.height = '40px';
-      cursorOutline.style.background = 'transparent';
-      cursorOutline.style.borderColor = 'rgba(212, 175, 55, 0.5)';
-    }
-  });
-
-  /* ----------------------------------------------------
-     2. SMOOTH SCROLLING (LENIS)
-  ---------------------------------------------------- */
-  const lenis = new Lenis({
-    autoRaf: true,
-  });
-
-  /* ----------------------------------------------------
-     3. INITIAL HERO ANIMATIONS
-  ---------------------------------------------------- */
-  gsap.registerPlugin(ScrollTrigger);
-  
-  // Reveal huge text lines staggered
-  gsap.to('.reveal-text', {
-    y: '0%', duration: 1.4, ease: 'power4.out', stagger: 0.15, delay: 0.2
-  });
-  
-  // Fade in subtext
-  gsap.to('#hero-sub', {
-    opacity: 1, y: -20, duration: 1.2, ease: 'power3.out', delay: 1.2
-  });
-  
-  // Parallax the background image on scroll down
-  gsap.to('#hero-bg', {
-    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
-    y: 200, opacity: 0
-  });
-
-  /* ----------------------------------------------------
-     4. FETCH INVENTORY & BUILD AGENCY GRIDS
-  ---------------------------------------------------- */
-  function createAgencyCard(product) {
-    // Generate a clean minimalist card
+  function createCardHTML(product) {
     const bgImage = product.thumbnail ? product.thumbnail : '';
-    const badgeHtml = product.badge ? `<div class="badge">${product.badge}</div>` : '';
+    const badgeHtml = product.badge ? `<div class="prod-badge">${product.badge}</div>` : '';
     
     return `
       <a href="product.html?item=${encodeURIComponent(product.title)}" class="product-card">
-        <div class="card-image-wrap">
-          <img src="${bgImage}" class="card-image" alt="Product Image" onerror="this.style.display='none'">
+        <div class="prod-img-wrap">
+          <img src="${bgImage}" class="prod-img" alt="${product.title}" onerror="this.style.display='none'">
           ${badgeHtml}
         </div>
-        <div class="card-meta">
-          <span class="card-category">${product.category || 'Asset'}</span>
-          <span class="card-price">Rs. ${product.price}</span>
+        <div class="prod-content">
+          <div class="prod-category">${product.category || 'Asset'}</div>
+          <div class="prod-title">${product.title}</div>
+          <div class="prod-footer">
+            <div class="prod-price">Rs. ${product.price}</div>
+            <div class="prod-btn">View</div>
+          </div>
         </div>
-        <h3 class="card-title">${product.title}</h3>
       </a>
     `;
   }
@@ -279,41 +165,23 @@ footer a { color: var(--accent); text-decoration: none; }
     .then(response => response.json())
     .then(data => {
       const products = data.items || [];
-      
-      const accProducts = products.filter(p => p.category === 'Account').slice(0, 3);
-      const carProducts = products.filter(p => p.category === 'Car Card').slice(0, 3);
-      const ucProducts = products.filter(p => p.category === 'UC Top-Up').slice(0, 3);
 
-      function renderGrid(items, containerId) {
+      const accProducts = products.filter(p => p.category === 'Account').slice(0, 4);
+      const carProducts = products.filter(p => p.category === 'Car Card').slice(0, 4);
+      const ucProducts = products.filter(p => p.category === 'UC Top-Up').slice(0, 4);
+
+      function renderGrid(items, containerId, label) {
         const container = document.getElementById(containerId);
         if (items.length === 0) {
-          container.innerHTML = `<p style="color: var(--muted); font-size: 1.2rem; font-weight: 300;">Archive empty. New assets pending.</p>`;
+          container.innerHTML = `<p style="color: var(--muted);">No ${label}s available right now.</p>`;
         } else {
-          container.innerHTML = items.map(p => createAgencyCard(p)).join('');
+          container.innerHTML = items.map(p => createCardHTML(p)).join('');
         }
       }
 
-      renderGrid(accProducts, 'grid-accounts');
-      renderGrid(carProducts, 'grid-skins');
-      renderGrid(ucProducts, 'grid-uc');
-
-      // Sync ScrollTrigger after DOM is built
-      ScrollTrigger.refresh();
-
-      // Trigger reveal animations for all generated cards
-      const cards = document.querySelectorAll('.product-card');
-      cards.forEach((card) => {
-        gsap.from(card, {
-          scrollTrigger: {
-            trigger: card,
-            start: "top 90%", // Trigger slightly before it enters screen
-          },
-          y: 100, // Start 100px down
-          opacity: 0,
-          duration: 1.2,
-          ease: "power3.out"
-        });
-      });
+      renderGrid(accProducts, 'grid-accounts', 'Account');
+      renderGrid(carProducts, 'grid-skins', 'Skin');
+      renderGrid(ucProducts, 'grid-uc', 'UC Pack');
     })
     .catch(error => console.error("Error loading inventory:", error));
 </script>
