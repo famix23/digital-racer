@@ -216,7 +216,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     });
   }
 
-  fetch('inventory.json')
+  fetch('/inventory.json')
     .then(response => response.json())
     .then(data => {
       allProducts = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []);
