@@ -3,282 +3,274 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Digital Racer — Premium Digital Assets</title>
 
-<title>Digital Racer — PUBG Mobile UC, Accounts & Car Skins in Pakistan</title>
-<meta name="title" content="Digital Racer — PUBG Mobile UC, Accounts & Car Skins in Pakistan">
-<meta name="description" content="Buy cheap PUBG Mobile UC top-ups, PUBG accounts, and car skins in Pakistan. Instant delivery via WhatsApp. Easypaisa & JazzCash accepted.">
-<meta name="robots" content="index, follow">
-
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg: #060b14;          
-  --surface: #0c1424;     
-  --surface2: #141f36;    
-  --line: #1c2a45;        
-  --accent: #d4af37;      
-  --gold: #f3c93e;        
-  --text: #ffffff;        
-  --muted: #9ba4b5;       
-  
-  /* Category Tag Colors */
-  --c-account: #00f5df;
-  --c-uc: #ffcc33;
-  --c-car: #ff3800;
-
-  --radius: 12px;         
+/* PREMIUM DARK AESTHETIC */
+:root {
+  --bg: #050505;
+  --surface: #111111;
+  --border: #2a2a2a;
+  --text: #ffffff;
+  --muted: #7a7a7a;
+  --accent: #d4af37; /* Luxury Gold */
 }
-*{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
 
-/* Forces mobile browsers to respect the viewport width */
-html, body {
-  width: 100%;
-  max-width: 100vw;
+/* Base Styles & Lenis Reset */
+* { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
+html { scroll-behavior: initial; } /* Lenis handles scroll */
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Open Sans', sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, .display-text { font-family: 'Montserrat', sans-serif; }
+
+/* Custom Magnetic Cursor */
+.cursor-dot {
+  width: 8px; height: 8px; background: var(--accent);
+  position: fixed; border-radius: 50%; top: 0; left: 0;
+  transform: translate(-50%, -50%); z-index: 9999; pointer-events: none;
+}
+.cursor-outline {
+  width: 40px; height: 40px; border: 1px solid rgba(212, 175, 55, 0.5);
+  position: fixed; border-radius: 50%; top: 0; left: 0;
+  transform: translate(-50%, -50%); z-index: 9998; pointer-events: none;
+  transition: width 0.2s, height 0.2s, background 0.2s;
 }
 
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Open Sans', sans-serif; 
-  font-size: 16px; 
+/* Navigation */
+nav {
+  padding: 40px; display: flex; justify-content: space-between; align-items: center;
+  position: absolute; top: 0; left: 0; width: 100%; z-index: 100;
 }
-h1,h2,h3,.display{font-family:'Montserrat', sans-serif;} 
+.logo { font-size: 1.1rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--text); }
+.logo span { color: var(--accent); }
 
-/* hero background composite */
-.hero-bg-composite { position: fixed; inset: 0; z-index: -1; background-color: var(--bg); overflow: hidden; }
-.hero-bg-composite .layer-sky { position: absolute; top: 0; left: 0; right: 0; height: 60vh; background-image: url('images (1).jpg'); background-size: cover; background-position: top center; opacity: 0.15; mask-image: linear-gradient(to bottom, black 20%, transparent 100%); -webkit-mask-image: linear-gradient(to bottom, black 20%, transparent 100%); mix-blend-mode: luminosity; }
-.hero-bg-composite .layer-explosions { position: absolute; top: 20%; left: 0; right: 0; bottom: 0; background-image: url('images.jpg'); background-size: cover; background-position: center; opacity: 0.25; mask-image: radial-gradient(circle at center, black 10%, transparent 70%); -webkit-mask-image: radial-gradient(circle at center, black 10%, transparent 70%); mix-blend-mode: color-dodge; }
-.hero-bg-composite .layer-hero { position: absolute; bottom: 0; left: 50%; transform: translateX(-50%); width: 100%; height: 80vh; background-image: url('2020pubg-4k-100568-1242x2688_640.jpg'); background-size: contain; background-repeat: no-repeat; background-position: bottom center; opacity: 0.4; mix-blend-mode: lighten; }
-.hero-bg-composite .overlay { position: absolute; inset: 0; background: linear-gradient(180deg, rgba(6,11,20,0.7) 0%, rgba(6,11,20,0.95) 100%); }
-
-.flag-ticker{ background:repeating-linear-gradient(45deg, var(--accent) 0 10px, #060b14 10px 20px); height:6px; width:100%; }
-
-header{ text-align:center; padding:50px 20px 30px; position:relative; }
-.banner-box{ display:inline-flex; align-items:center; gap:12px; border:1px solid var(--accent); border-radius:30px; padding:10px 26px; margin-bottom:20px; box-shadow:0 0 20px rgba(212, 175, 55, 0.15); background:linear-gradient(180deg, rgba(212, 175, 55, 0.1), transparent); }
-.banner-box .dot{ width:10px;height:10px;border-radius:50%;background:var(--accent); box-shadow:0 0 10px var(--accent); animation: pulse 2s infinite; }
-@keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.6); } 70% { box-shadow: 0 0 0 8px rgba(212, 175, 55, 0); } 100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); } }
-.banner-box h1{ font-size:1.2rem; letter-spacing:4px; font-weight:700; color:var(--gold); text-transform: uppercase; }
-header .shop-title{ font-size:clamp(2rem,7vw,4.5rem); font-weight:800; letter-spacing:2px; line-height:1.1; background:linear-gradient(90deg, #fff 0%, var(--gold) 50%, var(--accent) 100%); -webkit-background-clip:text; -webkit-text-fill-color:transparent; filter: drop-shadow(0 4px 10px rgba(0,0,0,0.5)); }
-header p.tag{ color:var(--muted); margin-top:20px; max-width:650px; margin-left:auto; margin-right:auto; font-size:1.1rem; line-height:1.6; }
-.badges{ display:flex; justify-content:center; gap:12px; margin-top:24px; flex-wrap:wrap; }
-.badge{ background:var(--surface); padding:8px 18px; border-radius:30px; font-size:0.9rem; color:var(--gold); border:1px solid var(--line); letter-spacing:.5px; font-weight: 600; }
-
-.layout-wrap{ display:flex; width: 100%; max-width:1320px; margin:0 auto; gap:30px; padding:20px 20px 0; align-items:flex-start; box-sizing: border-box; }
-.sidebar{ width:260px; flex-shrink:0; background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:24px; position:sticky; top:24px; box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-.sidebar h3{ font-size:1rem; letter-spacing:2px; color:var(--accent); margin-bottom:18px; font-weight:700; display:flex; align-items:center; gap:8px; }
-.sidebar h3::before{content:"✨";font-size:1.1rem;}
-.sidebar a{ display:flex; justify-content:space-between; align-items:center; color:var(--text); text-decoration:none; font-size:0.95rem; padding:12px 10px; border-bottom:1px solid var(--line); transition:all .2s ease; }
-.sidebar a:hover{ color:var(--gold); padding-left:14px; background: rgba(212, 175, 55, 0.05); border-radius: 6px; }
-.sidebar a:last-child{border-bottom:none;}
-.sidebar a::after{content:"→";color:var(--muted);font-size:0.9rem;}
-.sidebar a:hover::after{color:var(--gold);}
-.main-content{flex:1;min-width:0; width: 100%;}
-
-/* Contain Paint prevents the Marquee from blowing out the mobile layout width */
-.marquee-box{ background:var(--surface); border:1px solid var(--line); border-radius:var(--radius); padding:22px 0; overflow:hidden; position:relative; box-shadow: 0 10px 30px rgba(0,0,0,0.3); contain: paint; }
-.marquee-box .label{ position:absolute; top:16px; left:24px; font-size:0.85rem; letter-spacing:2px; color:var(--muted); z-index:2; background:var(--surface); padding-right:12px; font-weight: 600; }
-.marquee-track{ display:flex; gap:20px; width:max-content; animation:scroll 30s linear infinite; margin-top:24px; padding:0 24px; }
-.marquee-box:hover .marquee-track{animation-play-state:paused;}
-@keyframes scroll{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
-
-.chip{ 
-  flex-shrink:0; width:260px; height:150px; border-radius:12px; border:1px solid var(--line); 
-  display:flex; flex-direction:column; justify-content:flex-end; 
-  background-size: cover; background-position: center; background-color: var(--surface2);
-  position: relative; overflow: hidden; text-decoration: none;
-  box-shadow: 0 4px 15px rgba(0,0,0,0.2); transition: transform 0.2s, border-color 0.2s; 
+/* Hero Section (Agency Style) */
+.hero {
+  height: 100vh; display: flex; flex-direction: column; justify-content: center;
+  padding: 0 10vw; position: relative; overflow: hidden;
 }
-.chip:hover { transform: scale(1.05); border-color: var(--accent); box-shadow: 0 0 15px rgba(212, 175, 55, 0.2); z-index: 10; }
-.chip-overlay { background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, transparent 100%); width: 100%; padding: 30px 14px 14px; text-align: left; }
-.chip-title { font-size: 0.95rem; color: #fff; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
-.chip-price { font-size: 0.8rem; color: var(--gold); font-weight: 600; margin-top: 4px; display: block; }
-
-section.catalog{padding:40px 0 10px;}
-section.catalog h2{ font-size:1.5rem; margin-bottom:24px; display:flex; align-items:center; gap:12px; font-weight:700; color: var(--text); }
-section.catalog h2::before{ content:""; width:6px; height:24px; background:var(--accent); border-radius:3px; box-shadow: 0 0 10px rgba(212, 175, 55, 0.5); }
-.grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:24px; }
-
-.product-card { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; transition: all 0.3s ease; display: flex; flex-direction: column; text-decoration: none; color: inherit; box-shadow: 0 6px 18px rgba(0,0,0,0.2); }
-.product-card:hover { transform: translateY(-6px); border-color: var(--accent); box-shadow: 0 12px 30px rgba(212, 175, 55, 0.15); }
-
-/* Bulletproof Image CSS - Prevents massive stretching on older browsers */
-.prod-image { width: 100%; padding-top: 56.25%; background: var(--surface2); position: relative; display: block; border-bottom: 1px solid var(--line); background-size: cover; background-position: center; }
-.prod-image .fallback { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2.5rem; color: var(--muted); }
-.prod-image .img-badge { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); padding: 6px 10px; border-radius: 6px; font-size: 0.75rem; font-weight: 700; color: #fff; border: 1px solid rgba(255,255,255,0.1); }
-
-.prod-details { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-.prod-tags { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-.tag { background: var(--bg); border: 1px solid; padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
-
-.tag.t-account { color: var(--c-account); border-color: rgba(0, 245, 223, 0.3); }
-.tag.t-uc { color: var(--c-uc); border-color: rgba(255, 204, 51, 0.3); }
-.tag.t-car { color: var(--c-car); border-color: rgba(255, 56, 0, 0.3); }
-
-.prod-title { font-size: 1.05rem; font-weight: 600; line-height: 1.5; margin-bottom: 16px; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.prod-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px dashed var(--line); padding-top: 16px; }
-.prod-price { font-size: 1.4rem; font-weight: 800; color: var(--gold); }
-.prod-price span { font-size: 0.85rem; color: var(--muted); font-weight: 600; }
-.prod-view-btn { background: var(--surface2); color: var(--text); padding: 8px 16px; border-radius: 6px; font-size: 0.85rem; font-weight: 700; transition: all 0.2s; }
-.product-card:hover .prod-view-btn { background: linear-gradient(90deg, var(--accent), var(--gold)); color: var(--bg); box-shadow: 0 4px 10px rgba(212, 175, 55, 0.3); }
-
-footer{ text-align:center; padding:60px 20px 120px; color:var(--muted); border-top:1px solid var(--line); margin-top:60px; font-size:0.95rem; }
-footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
-.cta-bar{ position:fixed; bottom:0; left:0; right:0; background:linear-gradient(90deg, #25D366, #1EBE5D); text-align:center; padding:18px; font-weight:700; font-size: 1.05rem; z-index:20; box-shadow: 0 -5px 20px rgba(37,211,102,0.25); }
-.cta-bar a{color:#fff;text-decoration:none; display: block; width: 100%;}
-
-/* ========================================= */
-/* MOBILE OVERHAUL - Forces neat app styling */
-/* ========================================= */
-@media(max-width: 950px) {
-  .layout-wrap { flex-direction: column; padding: 16px; }
-  .sidebar { width: 100%; position: static; margin-bottom: 12px; }
+.hero-bg {
+  position: absolute; top: 0; left: 0; width: 100%; height: 120%;
+  background-image: url('2020pubg-4k-100568-1242x2688_640.jpg');
+  background-size: cover; background-position: center;
+  opacity: 0.12; z-index: -1; filter: grayscale(100%) contrast(1.2);
+}
+.hero-title {
+  font-size: clamp(3.5rem, 10vw, 10rem); line-height: 0.9; font-weight: 900;
+  letter-spacing: -2px; text-transform: uppercase; margin-bottom: 20px;
+}
+.hero-title .line { display: block; overflow: hidden; }
+.hero-title .line span { display: inline-block; transform: translateY(100%); }
+.hero-sub {
+  max-width: 500px; font-size: 1.2rem; color: var(--muted);
+  line-height: 1.6; opacity: 0; font-weight: 300;
 }
 
-@media(max-width: 600px) {
-  /* Force 2 Columns on Mobile Phones */
-  .grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
-  
-  /* Shrink Text inside the Mobile Cards */
-  .prod-details { padding: 12px; }
-  .prod-title { font-size: 0.85rem; line-height: 1.3; margin-bottom: 8px; }
-  .prod-price { font-size: 1.1rem; }
-  .prod-price span { font-size: 0.7rem; }
-  .prod-view-btn { padding: 6px 10px; font-size: 0.75rem; }
-  .prod-tags { margin-bottom: 8px; gap: 4px; }
-  .tag { font-size: 0.55rem; padding: 2px 6px; }
-  
-  /* Shrink Marquee for Mobile */
-  .marquee-box { padding: 16px 0; }
-  .marquee-track { gap: 12px; padding: 0 12px; }
-  .chip { width: 200px; height: 120px; }
-  
-  /* Shrink Header Title */
-  header .shop-title { font-size: 2rem; }
+/* Catalog Sections */
+section { padding: 120px 10vw; border-top: 1px solid var(--border); }
+.section-header { margin-bottom: 80px; display: flex; align-items: flex-end; justify-content: space-between; }
+.section-title { font-size: 4rem; line-height: 0.9; font-weight: 800; letter-spacing: -1px; text-transform: uppercase; }
+.section-title span { color: var(--accent); font-size: 5rem; line-height: 0; }
+
+.grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 50px;
+}
+
+/* Premium Product Cards */
+.product-card {
+  display: block; text-decoration: none; color: var(--text);
+  position: relative; transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.card-image-wrap {
+  width: 100%; aspect-ratio: 4/5; overflow: hidden; background: var(--surface);
+  position: relative; border-radius: 2px; margin-bottom: 24px;
+}
+.card-image {
+  width: 100%; height: 100%; object-fit: cover;
+  transition: transform 0.7s cubic-bezier(0.16, 1, 0.3, 1), filter 0.7s;
+  filter: grayscale(100%) contrast(1.1);
+}
+.product-card:hover .card-image { transform: scale(1.08); filter: grayscale(0%); }
+.product-card:hover { transform: translateY(-15px); }
+
+.card-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+.card-category { font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; color: var(--accent); font-weight: 600; }
+.card-title { font-size: 1.5rem; font-family: 'Montserrat', sans-serif; font-weight: 700; margin-bottom: 8px; line-height: 1.3;}
+.card-price { font-size: 1.1rem; color: var(--muted); font-weight: 300; }
+
+/* Status Badges */
+.badge {
+  position: absolute; top: 16px; right: 16px; background: rgba(0,0,0,0.8);
+  backdrop-filter: blur(4px); padding: 6px 12px; font-size: 0.7rem;
+  letter-spacing: 1px; text-transform: uppercase; border: 1px solid var(--accent);
+  color: var(--accent);
+}
+
+/* Footer */
+footer { padding: 120px 10vw 80px; text-align: center; border-top: 1px solid var(--border); }
+.footer-text { font-size: 2.5rem; font-family: 'Montserrat', sans-serif; font-weight: 800; margin-bottom: 20px; text-transform: uppercase; letter-spacing: -1px;}
+footer a { color: var(--accent); text-decoration: none; }
+
+/* Mobile Adjustments */
+@media(max-width: 768px) {
+  * { cursor: auto !important; }
+  .cursor-dot, .cursor-outline { display: none; }
+  .hero-title { font-size: 4rem; }
+  .section-title { font-size: 2.5rem; }
+  section { padding: 80px 5vw; }
 }
 </style>
 </head>
 <body>
 
-<div class="hero-bg-composite">
-  <div class="layer-sky"></div>
-  <div class="layer-explosions"></div>
-  <div class="layer-hero"></div>
-  <div class="overlay"></div>
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
+<nav>
+  <div class="logo">Digital<span>.</span>Racer</div>
+  <a href="catalog.html" style="color:var(--text); text-decoration:none; font-size:0.85rem; letter-spacing:2px; text-transform:uppercase;">Full Catalog</a>
+</nav>
+
+<div class="hero">
+  <div class="hero-bg" id="hero-bg"></div>
+  <h1 class="hero-title display-text">
+    <span class="line"><span class="reveal-text">Premium</span></span>
+    <span class="line"><span class="reveal-text">Digital</span></span>
+    <span class="line"><span class="reveal-text">Assets.</span></span>
+  </h1>
+  <p class="hero-sub" id="hero-sub">Elevating your mobile experience. The highest-tier marketplace for verified accounts, exclusive cosmetics, and instant top-ups.</p>
 </div>
 
-<div class="flag-ticker"></div>
-
-<header>
-  <div class="banner-box"><span class="dot"></span><h1>DIGITAL RACER</h1></div>
-  <div class="shop-title">PUBG MOBILE SHOP</div>
-  <p class="tag">Pakistan's trusted store for PUBG Mobile UC, Accounts & Car Skins — instant delivery, Easypaisa & JazzCash accepted.</p>
-  <div class="badges">
-    <span class="badge">⚡ Instant Delivery</span>
-    <span class="badge">🔒 Trusted Seller</span>
-    <span class="badge">💳 Easypaisa / JazzCash</span>
-    <span class="badge">📍 Pakistan Based</span>
+<!-- Dynamic Catalog Containers -->
+<section id="accounts">
+  <div class="section-header">
+    <h2 class="section-title">Verified<span>.</span><br>Accounts</h2>
   </div>
-</header>
+  <div class="grid" id="grid-accounts"></div>
+</section>
 
-<div class="layout-wrap">
-  <aside class="sidebar">
-    <h3>HOT ITEMS</h3>
-    <a href="#latest">🔥 Just Added</a>
-    <a href="#uc">UC / Top Up</a>
-    <a href="#accounts">Accounts For Sale</a>
-    <a href="#skins">Car Cards</a>
-  </aside>
-
-  <div class="main-content">
-
-    <div class="marquee-box">
-      <span class="label">LATEST ARRIVALS</span>
-      <div class="marquee-track" id="dynamic-marquee">
-        <p style="color: var(--muted); padding: 0 24px;">Loading marquee...</p>
-      </div>
-    </div>
-
-    <section class="catalog" id="latest" style="padding-top: 10px;">
-      <h2 style="color: var(--gold);">🔥 Just Added</h2>
-      <div class="grid" id="grid-latest">
-        <p style="color: var(--muted); grid-column: 1 / -1;">Loading latest items...</p>
-      </div>
-    </section>
-
-    <section class="catalog" id="uc">
-      <h2>PUBG Mobile UC Top-ups</h2>
-      <div class="grid" id="grid-uc">
-        <p style="color: var(--muted); grid-column: 1 / -1;">Loading live UC inventory...</p>
-      </div>
-    </section>
-
-    <section class="catalog" id="accounts">
-      <h2>PUBG Mobile Accounts</h2>
-      <div class="grid" id="grid-accounts">
-        <p style="color: var(--muted); grid-column: 1 / -1;">Loading live Account inventory...</p>
-      </div>
-    </section>
-
-    <section class="catalog" id="skins">
-      <h2>Car Skins</h2>
-      <div class="grid" id="grid-skins">
-        <p style="color: var(--muted); grid-column: 1 / -1;">Loading live Car Card inventory...</p>
-      </div>
-    </section>
-
+<section id="skins">
+  <div class="section-header">
+    <h2 class="section-title">Exclusive<span>.</span><br>Skins</h2>
   </div>
-</div>
+  <div class="grid" id="grid-skins"></div>
+</section>
+
+<section id="uc">
+  <div class="section-header">
+    <h2 class="section-title">Instant<span>.</span><br>Top-Ups</h2>
+  </div>
+  <div class="grid" id="grid-uc"></div>
+</section>
 
 <footer>
-  <p>© 2026 Digital Racer. All prices in PKR, subject to change. Contact us on <a href="https://wa.me/923000000000" target="_blank">WhatsApp</a> or Instagram for order confirmation.</p>
-  <p style="margin-top:12px;">Payments: Easypaisa • JazzCash</p>
-  <!-- Admin Hidden Link -->
-  <p style="margin-top:24px; font-size: 0.75rem;">
-    <a href="/admin/" style="color: var(--line); text-decoration: none; transition: color 0.2s;" onmouseover="this.style.color='var(--gold)'" onmouseout="this.style.color='var(--line)'">Admin Login</a>
-  </p>
+  <div class="footer-text">Elevate Your Game.</div>
+  <p style="color: var(--muted); font-size: 0.95rem;">© 2026 Digital Racer. Payments via Easypaisa & JazzCash.</p>
+  <p style="margin-top:40px;"><a href="/admin/" style="font-size: 0.8rem; letter-spacing: 2px; color: var(--muted); border-bottom: 1px solid var(--border); padding-bottom: 4px;">ADMIN PORTAL</a></p>
 </footer>
 
-<div class="cta-bar">
-  <a href="catalog.html">📦 Browse Full Live Catalog</a>
-</div>
+<!-- Premium Animation & Scroll Libraries -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
-<!-- Premium GSAP Animation Libraries -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<!-- Fetch and Render Live Inventory Script -->
 <script>
-  function createCardHTML(product) {
-    let tagColor = '';
-    if(product.category === 'Account') tagColor = 't-account';
-    if(product.category === 'UC Top-Up') tagColor = 't-uc';
-    if(product.category === 'Car Card') tagColor = 't-car';
+  /* ----------------------------------------------------
+     1. CUSTOM MAGNETIC CURSOR
+  ---------------------------------------------------- */
+  const cursorDot = document.querySelector('.cursor-dot');
+  const cursorOutline = document.querySelector('.cursor-outline');
+  
+  window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX;
+    const posY = e.clientY;
+    
+    // Dot instantly follows cursor
+    cursorDot.style.left = `${posX}px`;
+    cursorDot.style.top = `${posY}px`;
+    
+    // Outline trails slightly behind with an animation frame
+    cursorOutline.animate({
+      left: `${posX}px`,
+      top: `${posY}px`
+    }, { duration: 500, fill: "forwards" });
+  });
 
-    const bgImage = product.thumbnail ? `background-image: url('${product.thumbnail}');` : '';
-    const fallbackEmoji = !product.thumbnail ? `<span class="fallback">📦</span>` : '';
+  // Expand the cursor on links and cards
+  document.addEventListener('mouseover', (e) => {
+    if(e.target.tagName === 'A' || e.target.closest('a')) {
+      cursorOutline.style.width = '60px';
+      cursorOutline.style.height = '60px';
+      cursorOutline.style.background = 'rgba(212, 175, 55, 0.1)';
+      cursorOutline.style.borderColor = 'rgba(212, 175, 55, 0.8)';
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if(e.target.tagName === 'A' || e.target.closest('a')) {
+      cursorOutline.style.width = '40px';
+      cursorOutline.style.height = '40px';
+      cursorOutline.style.background = 'transparent';
+      cursorOutline.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+    }
+  });
 
+  /* ----------------------------------------------------
+     2. SMOOTH SCROLLING (LENIS)
+  ---------------------------------------------------- */
+  const lenis = new Lenis({
+    autoRaf: true,
+  });
+
+  /* ----------------------------------------------------
+     3. INITIAL HERO ANIMATIONS
+  ---------------------------------------------------- */
+  gsap.registerPlugin(ScrollTrigger);
+  
+  // Reveal huge text lines staggered
+  gsap.to('.reveal-text', {
+    y: '0%', duration: 1.4, ease: 'power4.out', stagger: 0.15, delay: 0.2
+  });
+  
+  // Fade in subtext
+  gsap.to('#hero-sub', {
+    opacity: 1, y: -20, duration: 1.2, ease: 'power3.out', delay: 1.2
+  });
+  
+  // Parallax the background image on scroll down
+  gsap.to('#hero-bg', {
+    scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: true },
+    y: 200, opacity: 0
+  });
+
+  /* ----------------------------------------------------
+     4. FETCH INVENTORY & BUILD AGENCY GRIDS
+  ---------------------------------------------------- */
+  function createAgencyCard(product) {
+    // Generate a clean minimalist card
+    const bgImage = product.thumbnail ? product.thumbnail : '';
+    const badgeHtml = product.badge ? `<div class="badge">${product.badge}</div>` : '';
+    
     return `
       <a href="product.html?item=${encodeURIComponent(product.title)}" class="product-card">
-        <div class="prod-image" style="${bgImage}">
-          ${fallbackEmoji}
-          <span class="img-badge">${product.badge || ''}</span>
+        <div class="card-image-wrap">
+          <img src="${bgImage}" class="card-image" alt="Product Image" onerror="this.style.display='none'">
+          ${badgeHtml}
         </div>
-        <div class="prod-details">
-          <div class="prod-tags">
-            <span class="tag ${tagColor}">${product.category ? product.category.toUpperCase() : 'STORE ITEM'}</span>
-            <span class="tag" style="color:var(--muted); border-color:var(--line);">${product.tag || 'GLOBAL'}</span>
-          </div>
-          <div class="prod-title">${product.title}</div>
-          <div class="prod-footer">
-            <div class="prod-price"><span>Rs.</span> ${product.price}</div>
-            <div class="prod-view-btn">View</div>
-          </div>
+        <div class="card-meta">
+          <span class="card-category">${product.category || 'Asset'}</span>
+          <span class="card-price">Rs. ${product.price}</span>
         </div>
+        <h3 class="card-title">${product.title}</h3>
       </a>
     `;
   }
@@ -287,75 +279,43 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
     .then(response => response.json())
     .then(data => {
       const products = data.items || [];
+      
+      const accProducts = products.filter(p => p.category === 'Account').slice(0, 3);
+      const carProducts = products.filter(p => p.category === 'Car Card').slice(0, 3);
+      const ucProducts = products.filter(p => p.category === 'UC Top-Up').slice(0, 3);
 
-      if (products.length === 0) {
-        ['grid-latest', 'grid-uc', 'grid-accounts', 'grid-skins', 'dynamic-marquee'].forEach(id => {
-          document.getElementById(id).innerHTML = `<p style="color: var(--muted); padding: 0 24px;">No products available yet. Add items in the admin panel!</p>`;
-        });
-        return;
-      }
-
-      // Marquee
-      const marqueeTrack = document.getElementById('dynamic-marquee');
-      const marqueeItems = products.slice(0, 8);
-      let marqueeHTML = '';
-      marqueeItems.forEach(p => {
-        const bg = p.thumbnail ? `background-image: url('${p.thumbnail}');` : '';
-        marqueeHTML += `
-          <a href="product.html?item=${encodeURIComponent(p.title)}" class="chip" style="${bg}">
-            <div class="chip-overlay">
-              <span class="chip-title">${p.title}</span>
-              <span class="chip-price">Rs. ${p.price}</span>
-            </div>
-          </a>
-        `;
-      });
-      marqueeTrack.innerHTML = marqueeHTML + marqueeHTML;
-
-      // Latest 
-      const gridLatest = document.getElementById('grid-latest');
-      const top3 = products.slice(0, 3);
-      gridLatest.innerHTML = top3.map(p => createCardHTML(p)).join('');
-
-      // Category Grids
-      const ucProducts = products.filter(p => p.category === 'UC Top-Up').slice(0, 4);
-      const accProducts = products.filter(p => p.category === 'Account').slice(0, 4);
-      const carProducts = products.filter(p => p.category === 'Car Card').slice(0, 4);
-
-      function renderCategoryGrid(items, containerId, label) {
+      function renderGrid(items, containerId) {
         const container = document.getElementById(containerId);
         if (items.length === 0) {
-          container.innerHTML = `<p style="color: var(--muted); grid-column: 1 / -1;">New ${label}s coming soon!</p>`;
+          container.innerHTML = `<p style="color: var(--muted); font-size: 1.2rem; font-weight: 300;">Archive empty. New assets pending.</p>`;
         } else {
-          container.innerHTML = items.map(p => createCardHTML(p)).join('');
+          container.innerHTML = items.map(p => createAgencyCard(p)).join('');
         }
       }
 
-      renderCategoryGrid(ucProducts, 'grid-uc', 'UC Pack');
-      renderCategoryGrid(accProducts, 'grid-accounts', 'Account');
-      renderCategoryGrid(carProducts, 'grid-skins', 'Car Skin');
+      renderGrid(accProducts, 'grid-accounts');
+      renderGrid(carProducts, 'grid-skins');
+      renderGrid(ucProducts, 'grid-uc');
 
-      // INITIALIZE GSAP SCROLL ANIMATIONS
-      gsap.registerPlugin(ScrollTrigger);
+      // Sync ScrollTrigger after DOM is built
+      ScrollTrigger.refresh();
+
+      // Trigger reveal animations for all generated cards
       const cards = document.querySelectorAll('.product-card');
-
-      cards.forEach((card, i) => {
+      cards.forEach((card) => {
         gsap.from(card, {
           scrollTrigger: {
             trigger: card,
-            start: "top 90%",
-            toggleActions: "play none none reverse" 
+            start: "top 90%", // Trigger slightly before it enters screen
           },
-          y: 50,
-          opacity: 0, 
-          duration: 0.6,
-          ease: "power3.out",
-          stagger: 0.1
+          y: 100, // Start 100px down
+          opacity: 0,
+          duration: 1.2,
+          ease: "power3.out"
         });
       });
-
     })
-    .catch(error => console.error("Error loading homepage inventory:", error));
+    .catch(error => console.error("Error loading inventory:", error));
 </script>
 
 </body>
