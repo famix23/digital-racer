@@ -1,16 +1,17 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: famix23/digital-racer-store
   branch: main
 
 media_folder: "images"
 public_folder: "/images"
 
 collections:
-  - name: "store_inventory"
+  - name: "store"
     label: "Store Inventory"
     files:
-      - label: "Product Catalog"
-        name: "catalog"
+      - label: "Inventory List"
+        name: "inventory"
         file: "inventory.json"
         fields:
           - label: "Products"
@@ -20,7 +21,6 @@ collections:
               - {label: "Title", name: "title", widget: "string"}
               - {label: "Price (PKR)", name: "price", widget: "string"}
               - {label: "Category", name: "category", widget: "select", options: ["Account", "UC Top-Up", "Car Card"]}
-              - {label: "Highlight Tag (e.g., Global, Level 78)", name: "tag", widget: "string", default: "Global"}
-              - {label: "Image Badge (e.g., 📷 8 Screens, ⚡ Instant)", name: "badge", widget: "string", default: "⚡ Instant"}
-              - {label: "Main Thumbnail Image", name: "thumbnail", widget: "image", required: false}
-              - {label: "Product Description", name: "body", widget: "markdown", required: false}
+              - {label: "Tag (e.g., GLOBAL)", name: "tag", widget: "string", default: "GLOBAL"}
+              - {label: "Badge (e.g., Instant)", name: "badge", widget: "string", required: false}
+              - {label: "Thumbnail Image", name: "thumbnail", widget: "image", required: false}
