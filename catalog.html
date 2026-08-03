@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Racer — Full Catalog</title>
+<title>Digital Racer — Full Archive</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -24,25 +24,34 @@
 body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
 h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-/* Top Navigation */
 nav { display: flex; justify-content: space-between; align-items: center; padding: 20px 5vw; border-bottom: 1px solid var(--border); background: var(--bg); position: sticky; top: 0; z-index: 100; }
 .logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 3px; text-transform: uppercase; color: var(--text); text-decoration: none; }
 .logo span { color: var(--accent); }
 .nav-link { color: var(--muted); text-decoration: none; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; transition: color 0.2s; }
 .nav-link:hover { color: var(--accent); }
 
-/* Header & Filters */
-.catalog-header { padding: 60px 5vw 30px; max-width: 1300px; margin: 0 auto; }
-.page-title { font-size: clamp(2rem, 4vw, 3rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 30px; }
+/* Main Layout with Sidebar */
+.catalog-layout { max-width: 1300px; margin: 0 auto; padding: 50px 5vw; display: grid; grid-template-columns: 260px 1fr; gap: 40px; align-items: start; }
+
+/* Sidebar Filter Panel */
+.sidebar { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; padding: 24px; position: sticky; top: 100px; }
+.sidebar-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; color: var(--text); margin-bottom: 16px; padding-bottom: 10px; border-bottom: 1px solid var(--border); }
+.filter-group { margin-bottom: 24px; }
+.filter-group:last-child { margin-bottom: 0; }
+.filter-list { display: flex; flex-direction: column; gap: 8px; }
+.filter-btn { background: transparent; border: 1px solid transparent; color: var(--muted); text-align: left; padding: 10px 14px; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
+.filter-btn.active, .filter-btn:hover { background: rgba(212, 175, 55, 0.08); border-color: rgba(212, 175, 55, 0.3); color: var(--accent); }
+
+/* Sort Select Dropdown */
+.sort-select { width: 100%; background: var(--surface2); border: 1px solid var(--border); color: var(--text); padding: 10px 14px; font-family: 'Open Sans', sans-serif; font-size: 0.85rem; border-radius: 4px; cursor: pointer; outline: none; transition: border-color 0.2s; }
+.sort-select:focus { border-color: var(--accent); }
+
+/* Content Area */
+.content-area { display: flex; flex-direction: column; }
+.page-title { font-size: clamp(2rem, 3.5vw, 2.8rem); font-weight: 900; text-transform: uppercase; letter-spacing: -1px; margin-bottom: 30px; }
 .page-title span { color: var(--accent); }
 
-.filters { display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 40px; }
-.filter-btn { background: var(--surface); border: 1px solid var(--border); color: var(--muted); padding: 10px 20px; font-family: 'Montserrat', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; border-radius: 4px; cursor: pointer; transition: all 0.2s; }
-.filter-btn.active, .filter-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(212, 175, 55, 0.05); }
-
-/* Grid */
-.container { max-width: 1300px; margin: 0 auto; padding: 0 5vw 80px; }
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 30px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 25px; }
 .product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: border-color 0.3s; opacity: 0; transform: translateY(20px); }
 .product-card:hover { border-color: var(--accent); }
 .prod-img-wrap { width: 100%; aspect-ratio: 4/3; background: var(--surface2); position: relative; overflow: hidden; }
@@ -50,24 +59,23 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .product-card:hover .prod-img { transform: scale(1.05); }
 .prod-badge { position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.8); border: 1px solid var(--accent); color: var(--accent); padding: 4px 10px; font-size: 0.65rem; text-transform: uppercase; font-weight: 700; letter-spacing: 1px; }
 
-.prod-content { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; }
-.prod-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 8px; }
-.prod-title { font-size: 1.1rem; font-weight: 700; margin-bottom: 16px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
-.prod-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 16px; }
-.prod-price { font-size: 1.25rem; font-weight: 800; color: var(--accent); font-family: 'Montserrat', sans-serif; }
-.prod-btn { background: var(--surface2); color: var(--text); padding: 8px 16px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; border: 1px solid var(--border); transition: all 0.2s; }
+.prod-content { padding: 18px; display: flex; flex-direction: column; flex-grow: 1; }
+.prod-category { font-size: 0.7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--accent); font-weight: 700; margin-bottom: 6px; }
+.prod-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 14px; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.prod-footer { margin-top: auto; display: flex; justify-content: space-between; align-items: center; border-top: 1px solid var(--border); padding-top: 14px; }
+.prod-price { font-size: 1.2rem; font-weight: 800; color: var(--accent); font-family: 'Montserrat', sans-serif; }
+.prod-btn { background: var(--surface2); color: var(--text); padding: 8px 14px; border-radius: 4px; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; border: 1px solid var(--border); transition: all 0.2s; }
 .product-card:hover .prod-btn { background: var(--accent); color: #000; border-color: var(--accent); }
 
-/* Footer */
-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 5vw; text-align: center; color: var(--muted); font-size: 0.9rem; }
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 40px 5vw; text-align: center; color: var(--muted); font-size: 0.9rem; margin-top: 80px; }
 
-@media(max-width: 768px) {
+@media(max-width: 900px) {
+  .catalog-layout { grid-template-columns: 1fr; gap: 30px; padding: 30px 4vw; }
+  .sidebar { position: static; }
   .grid { grid-template-columns: repeat(2, 1fr); gap: 15px; }
-  .catalog-header { padding: 40px 4vw 20px; }
-  .container { padding: 0 4vw 60px; }
-  .prod-content { padding: 12px; }
-  .prod-title { font-size: 0.95rem; }
-  .prod-price { font-size: 1.05rem; }
+}
+@media(max-width: 550px) {
+  .grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -78,20 +86,38 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   <a href="index.html" class="nav-link">← Home</a>
 </nav>
 
-<div class="catalog-header">
-  <h1 class="page-title">Full <span>Archive</span></h1>
-  <div class="filters">
-    <button class="filter-btn active" data-filter="all">All Assets</button>
-    <button class="filter-btn" data-filter="Account">Accounts</button>
-    <button class="filter-btn" data-filter="UC Top-Up">UC Top-Ups</button>
-    <button class="filter-btn" data-filter="Car Card">Car Skins</button>
-  </div>
-</div>
+<div class="catalog-layout">
+  
+  <!-- Sidebar Filter & Sort Panel -->
+  <aside class="sidebar">
+    <div class="filter-group">
+      <div class="sidebar-title">Categories</div>
+      <div class="filter-list">
+        <button class="filter-btn active" data-filter="all">All Assets</button>
+        <button class="filter-btn" data-filter="Account">Accounts</button>
+        <button class="filter-btn" data-filter="UC Top-Up">UC Top-Ups</button>
+        <button class="filter-btn" data-filter="Car Card">Car Skins</button>
+      </div>
+    </div>
 
-<div class="container">
-  <div class="grid" id="full-catalog">
-    <p style="color: var(--muted);">Loading inventory...</p>
-  </div>
+    <div class="filter-group" style="margin-top: 30px;">
+      <div class="sidebar-title">Sort By Price</div>
+      <select class="sort-select" id="sort-select">
+        <option value="default">Default Order</option>
+        <option value="high-low">Price: High to Low</option>
+        <option value="low-high">Price: Low to High</option>
+      </select>
+    </div>
+  </aside>
+
+  <!-- Main Content Grid -->
+  <main class="content-area">
+    <h1 class="page-title">Full <span>Archive</span></h1>
+    <div class="grid" id="full-catalog">
+      <p style="color: var(--muted);">Loading inventory...</p>
+    </div>
+  </main>
+
 </div>
 
 <footer>
@@ -102,6 +128,8 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 
 <script>
   let allProducts = [];
+  let currentCategory = 'all';
+  let currentSort = 'default';
 
   function createCardHTML(product) {
     const bgImage = product.thumbnail ? product.thumbnail : '';
@@ -125,20 +153,30 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     `;
   }
 
-  function renderCatalog(products) {
+  function processAndRender() {
+    let result = currentCategory === 'all' 
+      ? [...allProducts] 
+      : allProducts.filter(p => p.category === currentCategory);
+
+    if (currentSort === 'high-low') {
+      result.sort((a, b) => parseFloat(b.price || 0) - parseFloat(a.price || 0));
+    } else if (currentSort === 'low-high') {
+      result.sort((a, b) => parseFloat(a.price || 0) - parseFloat(b.price || 0));
+    }
+
     const container = document.getElementById('full-catalog');
-    if (products.length === 0) {
-      container.innerHTML = `<p style="color: var(--muted);">No assets found in this category.</p>`;
+    if (result.length === 0) {
+      container.innerHTML = `<p style="color: var(--muted);">No assets found in this selection.</p>`;
       return;
     }
-    container.innerHTML = products.map(p => createCardHTML(p)).join('');
+
+    container.innerHTML = result.map(p => createCardHTML(p)).join('');
     
-    // Animate cards smoothly into view
     gsap.to('.item-card', {
       opacity: 1,
       y: 0,
-      duration: 0.6,
-      stagger: 0.05,
+      duration: 0.5,
+      stagger: 0.04,
       ease: 'power3.out'
     });
   }
@@ -147,24 +185,24 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     .then(response => response.json())
     .then(data => {
       allProducts = data.items || [];
-      renderCatalog(allProducts);
+      processAndRender();
     })
     .catch(error => console.error("Error loading inventory:", error));
 
-  // Filter Buttons Logic
+  // Category Filter Buttons
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
       e.target.classList.add('active');
-      const filter = e.target.getAttribute('data-filter');
-      
-      if (filter === 'all') {
-        renderCatalog(allProducts);
-      } else {
-        const filtered = allProducts.filter(p => p.category === filter);
-        renderCatalog(filtered);
-      }
+      currentCategory = e.target.getAttribute('data-filter');
+      processAndRender();
     });
+  });
+
+  // Sort Dropdown Change
+  document.getElementById('sort-select').addEventListener('change', (e) => {
+    currentSort = e.target.value;
+    processAndRender();
   });
 </script>
 
