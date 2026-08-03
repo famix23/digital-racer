@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: famix23/digital-racer-store
+  repo: famix23/digital-racer
   branch: main
 
 media_folder: "images"
