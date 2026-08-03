@@ -12,7 +12,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
 <style>
 :root{
@@ -248,24 +247,9 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
   <a href="catalog.html">📦 Browse Full Live Catalog</a>
 </div>
 
-<!-- Scripts -->
-<script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 <!-- Premium GSAP Animation Libraries -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-
-<!-- Netlify Identity Redirect Script -->
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
-        });
-      }
-    });
-  }
-</script>
 
 <!-- Fetch and Render Live Inventory Script -->
 <script>
@@ -276,7 +260,6 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
     if(product.category === 'Car Card') tagColor = 't-car';
 
     const bgImage = product.thumbnail ? `background-image: url('${product.thumbnail}');` : '';
-    // Use fallback class for perfect centering with the new CSS
     const fallbackEmoji = !product.thumbnail ? `<span class="fallback">📦</span>` : '';
 
     return `
@@ -352,26 +335,22 @@ footer a{color:var(--gold);text-decoration:none; font-weight: 600;}
       renderCategoryGrid(accProducts, 'grid-accounts', 'Account');
       renderCategoryGrid(carProducts, 'grid-skins', 'Car Skin');
 
-      // ----------------------------------------------------
       // INITIALIZE GSAP SCROLL ANIMATIONS
-      // ----------------------------------------------------
       gsap.registerPlugin(ScrollTrigger);
-
-      // Select all the dynamically created product cards
       const cards = document.querySelectorAll('.product-card');
 
       cards.forEach((card, i) => {
         gsap.from(card, {
           scrollTrigger: {
             trigger: card,
-            start: "top 90%", // Trigger when card is 90% down the screen
+            start: "top 90%",
             toggleActions: "play none none reverse" 
           },
-          y: 50, // Float up by 50px
+          y: 50,
           opacity: 0, 
           duration: 0.6,
           ease: "power3.out",
-          stagger: 0.1 // Slight delay between cards if they appear together
+          stagger: 0.1
         });
       });
 
