@@ -121,7 +121,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 
 <div class="main-wrapper">
   
-  <!-- Breadcrumb & Full Title Section -->
   <div class="product-header-section">
     <div class="breadcrumb">
       <a href="index.html">Home</a> / <a href="catalog.html" id="bread-cat">Catalog</a>
@@ -131,7 +130,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 
   <div class="product-grid-layout">
     
-    <!-- Left Column: Image & Description Box -->
     <div class="left-column">
       <div class="image-box" id="prod-img-container">
         <!-- Image injected here -->
@@ -143,7 +141,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       </div>
     </div>
 
-    <!-- Right Column: Buy Box & Pricing Card -->
     <div class="right-column">
       <div class="buy-card">
         <div>
@@ -220,8 +217,8 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           document.getElementById('prod-price').innerText = `Rs. ${product.price}`;
           document.getElementById('prod-tag').innerText = product.tag || 'GLOBAL';
           
-          // Display description ONLY if provided in admin panel
-          const descText = product.description || product.desc || "";
+          // Comprehensive check covering all common CMS description field names
+          const descText = product.description || product.desc || product.body || product.details || product.content || "";
           if (descText && descText.trim() !== "") {
             document.getElementById('desc-card-wrapper').style.display = 'block';
             document.getElementById('prod-desc').innerText = descText;
