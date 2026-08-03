@@ -2,339 +2,178 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Product Details - Digital Racer</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Digital Racer — Asset Details</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700;800&family=Open+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
-<!-- Markdown Parser for CMS Descriptions -->
-<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;800;900&family=Open+Sans:wght@300;400;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --bg: #060b14;          
-  --surface: #0c1424;     
-  --surface2: #141f36;    
-  --line: #1c2a45;        
-  --accent: #d4af37;      
-  --accent-dim: #aa8c2c;  
-  --gold: #f3c93e;        
-  --text: #ffffff;        
-  --muted: #9ba4b5;       
-  --success: #25D366;
-  --cyan: #00f5df;
-  --radius: 12px;         
-}
-*{box-sizing:border-box;margin:0;padding:0;}
-body{
-  background:var(--bg);
-  color:var(--text);
-  font-family:'Open Sans', sans-serif;
-  font-size: 16px; 
-  line-height: 1.6;
-}
-h1,h2,h3{font-family:'Montserrat', sans-serif;}
-
-/* ---------- Navbar ---------- */
-nav {
-  background: var(--surface);
-  border-bottom: 1px solid var(--line);
-  padding: 16px 40px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  position: sticky;
-  top: 0;
-  z-index: 50;
-}
-.logo {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 800;
-  font-size: 1.4rem;
-  color: var(--gold);
-  text-decoration: none;
-  letter-spacing: 2px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.logo::before {
-  content: "";
-  display: block;
-  width: 12px; height: 12px;
-  border-radius: 50%;
-  background: var(--accent);
-  box-shadow: 0 0 10px var(--accent);
-}
-.back-link {
-  color: var(--muted);
-  text-decoration: none;
-  font-weight: 600;
-  transition: color 0.2s;
-}
-.back-link:hover { color: var(--gold); }
-
-/* ---------- Product Layout ---------- */
-.pdp-wrapper {
-  max-width: 1200px;
-  margin: 40px auto;
-  padding: 0 20px;
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 40px;
+:root {
+  --bg: #050505;
+  --surface: #111111;
+  --border: #2a2a2a;
+  --text: #ffffff;
+  --muted: #7a7a7a;
+  --accent: #d4af37;
 }
 
-/* ---------- Left: Image Gallery ---------- */
-.gallery-section {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.main-image {
-  width: 100%;
-  aspect-ratio: 16/9;
-  background: var(--surface2);
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-  color: var(--muted);
-  overflow: hidden;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-}
-.thumbnail-strip {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 12px;
-}
-.thumb {
-  aspect-ratio: 1;
-  background: var(--surface);
-  border: 2px solid transparent;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: border-color 0.2s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 0.8rem;
-  color: var(--muted);
-}
-.thumb:hover, .thumb.active { border-color: var(--accent); }
+* { box-sizing: border-box; margin: 0; padding: 0; cursor: none !important; }
+html { scroll-behavior: initial; }
+body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; -webkit-font-smoothing: antialiased; display: flex; flex-direction: column; min-height: 100vh;}
+h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
 
-/* ---------- Right: Product Info ---------- */
-.info-section {
-  background: var(--surface);
-  padding: 30px;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-  height: fit-content;
-  position: sticky;
-  top: 100px;
-}
-.category {
-  color: var(--accent);
-  font-size: 0.85rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  margin-bottom: 12px;
-  display: inline-block;
-}
-.product-title {
-  font-size: 1.8rem;
-  line-height: 1.3;
-  margin-bottom: 16px;
-}
-.price-block {
-  margin-bottom: 24px;
-  padding-bottom: 24px;
-  border-bottom: 1px solid var(--line);
-}
-.price {
-  font-size: 2.2rem;
-  font-weight: 800;
-  color: var(--gold);
-}
-.price span { font-size: 1.2rem; color: var(--muted); font-weight: 600; }
+/* Custom Cursor */
+.cursor-dot { width: 8px; height: 8px; background: var(--accent); position: fixed; border-radius: 50%; top: 0; left: 0; transform: translate(-50%, -50%); z-index: 9999; pointer-events: none; }
+.cursor-outline { width: 40px; height: 40px; border: 1px solid rgba(212, 175, 55, 0.5); position: fixed; border-radius: 50%; top: 0; left: 0; transform: translate(-50%, -50%); z-index: 9998; pointer-events: none; transition: width 0.2s, height 0.2s, background 0.2s; }
 
-/* Action Buttons */
-.buy-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  background: linear-gradient(90deg, var(--success), #1EBE5D);
-  color: #fff;
-  border: none;
-  padding: 18px;
-  border-radius: 8px;
-  font-size: 1.1rem;
-  font-weight: 800;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  cursor: pointer;
-  text-decoration: none;
-  box-shadow: 0 4px 15px rgba(37, 211, 102, 0.2);
-  transition: all 0.2s ease;
-  margin-bottom: 16px;
-}
-.buy-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-}
-.trust-box {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  background: rgba(212, 175, 55, 0.05);
-  border: 1px solid rgba(212, 175, 55, 0.2);
-  padding: 16px;
-  border-radius: 8px;
-}
-.trust-box p { font-size: 0.85rem; color: var(--muted); line-height: 1.4; }
-.trust-box strong { color: var(--gold); }
+/* Navigation */
+nav { padding: 40px 5vw; display: flex; justify-content: space-between; align-items: center; position: absolute; width: 100%; z-index: 10; mix-blend-mode: difference;}
+.logo { font-size: 1.1rem; font-weight: 800; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; }
+.logo span { color: var(--accent); }
 
-/* ---------- Bottom: Description ---------- */
-.description-section {
-  grid-column: 1 / 2;
-  background: var(--surface);
-  padding: 40px;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  margin-bottom: 60px;
-}
-.description-section h2 {
-  font-size: 1.5rem;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line);
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.description-section h2::before {
-  content: ""; width: 5px; height: 20px; background: var(--accent); border-radius: 2px;
-}
-.desc-content ul {
-  margin-bottom: 20px;
-  padding-left: 20px;
-}
-.desc-content li {
-  margin-bottom: 10px;
-  color: var(--muted);
-}
-.desc-content p { margin-bottom: 16px; color: var(--text); }
-.desc-content strong { color: var(--gold); }
+/* Product Layout */
+.product-wrapper { display: flex; flex: 1; flex-wrap: wrap; }
+.image-pane { flex: 1; min-width: 50%; position: relative; background: var(--surface); overflow: hidden; min-height: 50vh;}
+.image-pane img { width: 100%; height: 100%; object-fit: cover; position: absolute; top: 0; left: 0; filter: grayscale(80%) contrast(1.1); transition: filter 0.5s;}
+.image-pane:hover img { filter: grayscale(0%) contrast(1); }
 
+.details-pane { flex: 1; min-width: 50%; padding: 120px 5vw 80px; display: flex; flex-direction: column; justify-content: center; }
+.back-link { display: inline-block; margin-bottom: 40px; color: var(--muted); text-decoration: none; text-transform: uppercase; letter-spacing: 2px; font-size: 0.8rem; border-bottom: 1px solid var(--border); padding-bottom: 4px; transition: color 0.3s;}
+.back-link:hover { color: var(--accent); border-color: var(--accent); }
+
+.p-category { color: var(--accent); text-transform: uppercase; letter-spacing: 3px; font-weight: 600; font-size: 0.9rem; margin-bottom: 16px; }
+.p-title { font-size: clamp(2.5rem, 5vw, 4.5rem); font-weight: 900; line-height: 1.1; margin-bottom: 24px; text-transform: uppercase; letter-spacing: -1px; }
+.p-price { font-size: 2.5rem; color: var(--muted); font-weight: 300; margin-bottom: 40px; }
+
+.p-meta { margin-bottom: 60px; padding-top: 40px; border-top: 1px solid var(--border); display: grid; grid-template-columns: 1fr 1fr; gap: 20px;}
+.meta-block { display: flex; flex-direction: column; }
+.meta-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 8px;}
+.meta-value { font-size: 1.1rem; font-weight: 600; font-family: 'Montserrat', sans-serif;}
+
+/* WhatsApp CTA */
+.cta-button {
+  display: inline-flex; align-items: center; justify-content: center;
+  background: var(--text); color: var(--bg); padding: 20px 40px;
+  font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase;
+  letter-spacing: 2px; text-decoration: none; font-size: 1.1rem;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.cta-button:hover { background: var(--accent); color: #000; transform: translateY(-4px); }
+
+/* Mobile Adjustments */
 @media(max-width: 900px) {
-  .pdp-wrapper { grid-template-columns: 1fr; }
-  .info-section { position: static; }
-  .description-section { grid-column: 1 / -1; }
+  * { cursor: auto !important; }
+  .cursor-dot, .cursor-outline { display: none; }
+  .product-wrapper { flex-direction: column; }
+  .image-pane { min-height: 60vh; }
+  nav { mix-blend-mode: normal; background: linear-gradient(180deg, rgba(0,0,0,0.8), transparent); }
 }
 </style>
 </head>
 <body>
 
+<div class="cursor-dot"></div>
+<div class="cursor-outline"></div>
+
 <nav>
-  <a href="index.html" class="logo">DIGITAL RACER</a>
-  <a href="catalog.html" class="back-link">← Back to Store</a>
+  <a href="index.html" class="logo">Digital<span>.</span>Racer</a>
 </nav>
 
-<div class="pdp-wrapper">
+<div class="product-wrapper">
+  <div class="image-pane" id="prod-img-container">
+    <!-- Image injected by JS -->
+  </div>
   
-  <!-- Left Side: Image Gallery -->
-  <div class="gallery-section">
-    <div class="main-image" id="main-img">
-      <!-- Background image injected by JS -->
-    </div>
-    <div class="thumbnail-strip" style="display: none;" id="thumb-strip">
-      <!-- Hidden until we set up multiple image uploads -->
-    </div>
-  </div>
-
-  <!-- Right Side: Sticky Info Panel -->
-  <div class="info-section">
-    <span class="category" id="prod-category">Loading Category...</span>
-    <h1 class="product-title" id="prod-title">Loading Product Details...</h1>
+  <div class="details-pane">
+    <a href="catalog.html" class="back-link">← Return to Archive</a>
     
-    <div class="price-block">
-      <div class="price"><span>PKR</span> <span id="prod-price">...</span></div>
+    <div class="p-category" id="prod-category">Loading...</div>
+    <h1 class="p-title" id="prod-title">Asset Loading</h1>
+    <div class="p-price" id="prod-price">...</div>
+    
+    <div class="p-meta">
+      <div class="meta-block">
+        <span class="meta-label">Region Tag</span>
+        <span class="meta-value" id="prod-tag">-</span>
+      </div>
+      <div class="meta-block">
+        <span class="meta-label">Status</span>
+        <span class="meta-value" style="color: var(--accent);" id="prod-badge">Available</span>
+      </div>
     </div>
-
-    <a href="#" class="buy-btn" id="wa-btn" target="_blank">
-      💬 Chat to Buy
-    </a>
-
-    <div class="trust-box">
-      <div style="font-size: 24px;">🛡️</div>
-      <p><strong>Digital Racer Guarantee:</strong> Full access/items will be transferred immediately upon payment confirmation via Easypaisa or JazzCash.</p>
-    </div>
+    
+    <a href="#" class="cta-button" id="buy-btn">Acquire via WhatsApp</a>
   </div>
-
-  <!-- Bottom: Detailed Description -->
-  <div class="description-section">
-    <h2>Product Description</h2>
-    <div class="desc-content" id="prod-desc">
-      Loading description...
-    </div>
-  </div>
-
 </div>
 
-<!-- The Magic Script that loads the product data -->
+<script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+
 <script>
-  // 1. Get the product name from the URL
+  // Cursor Logic
+  const cursorDot = document.querySelector('.cursor-dot');
+  const cursorOutline = document.querySelector('.cursor-outline');
+  window.addEventListener('mousemove', (e) => {
+    const posX = e.clientX; const posY = e.clientY;
+    cursorDot.style.left = `${posX}px`; cursorDot.style.top = `${posY}px`;
+    cursorOutline.animate({ left: `${posX}px`, top: `${posY}px` }, { duration: 500, fill: "forwards" });
+  });
+  document.addEventListener('mouseover', (e) => {
+    if(e.target.tagName === 'A' || e.target.closest('a')) {
+      cursorOutline.style.width = '60px'; cursorOutline.style.height = '60px';
+      cursorOutline.style.background = 'rgba(212, 175, 55, 0.1)'; cursorOutline.style.borderColor = 'rgba(212, 175, 55, 0.8)';
+    }
+  });
+  document.addEventListener('mouseout', (e) => {
+    if(e.target.tagName === 'A' || e.target.closest('a')) {
+      cursorOutline.style.width = '40px'; cursorOutline.style.height = '40px';
+      cursorOutline.style.background = 'transparent'; cursorOutline.style.borderColor = 'rgba(212, 175, 55, 0.5)';
+    }
+  });
+
+  const lenis = new Lenis({ autoRaf: true });
+
+  // Get item name from URL
   const urlParams = new URLSearchParams(window.location.search);
   const itemName = urlParams.get('item');
 
-  // 2. Fetch the inventory file saved by the CMS
-  fetch('/inventory.json')
-    .then(response => response.json())
-    .then(data => {
-      // 3. Find the exact item we clicked on
-      const product = data.items.find(p => p.title === itemName);
+  if (!itemName) {
+    document.getElementById('prod-title').innerText = "Asset Not Found";
+  } else {
+    fetch('/inventory.json')
+      .then(response => response.json())
+      .then(data => {
+        const products = data.items || [];
+        const product = products.find(p => p.title === itemName);
 
-      if (product) {
-        // 4. Update the page with the product's actual data
-        document.title = `${product.title} - Digital Racer`;
-        document.getElementById('prod-title').innerText = product.title;
-        document.getElementById('prod-price').innerText = product.price;
-        document.getElementById('prod-category').innerText = product.category || 'Store Item';
-        
-        // Render the image
-        if (product.thumbnail) {
-          document.getElementById('main-img').style.backgroundImage = `url('${product.thumbnail}')`;
+        if (product) {
+          document.getElementById('prod-title').innerText = product.title;
+          document.getElementById('prod-category').innerText = product.category || 'Asset';
+          document.getElementById('prod-price').innerText = `Rs. ${product.price}`;
+          document.getElementById('prod-tag').innerText = product.tag || 'GLOBAL';
+          document.getElementById('prod-badge').innerText = product.badge || 'Instant Delivery';
+
+          if (product.thumbnail) {
+            document.getElementById('prod-img-container').innerHTML = `<img src="${product.thumbnail}" alt="${product.title}">`;
+          } else {
+            document.getElementById('prod-img-container').innerHTML = `<div style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; color: var(--border); font-size: 5rem;">DR.</div>`;
+          }
+
+          // WhatsApp Link Logic
+          const waNumber = "923000000000"; // CHANGE TO YOUR NUMBER
+          const message = `Hello Digital Racer! I want to acquire: ${product.title} for Rs. ${product.price}.`;
+          document.getElementById('buy-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+
+          // Reveal Animations
+          gsap.from('.image-pane', { x: '-10%', opacity: 0, duration: 1.5, ease: 'power3.out' });
+          gsap.from('.details-pane > *', { y: 30, opacity: 0, duration: 1, stagger: 0.1, ease: 'power3.out', delay: 0.3 });
         } else {
-          document.getElementById('main-img').innerText = "No Image Available";
+          document.getElementById('prod-title').innerText = "Asset Not Found";
         }
-
-        // Render the Description using Marked.js so bolding and bullets work
-        if (product.body) {
-          document.getElementById('prod-desc').innerHTML = marked.parse(product.body);
-        } else {
-          document.getElementById('prod-desc').innerHTML = "<p>No detailed description provided for this item.</p>";
-        }
-
-        // Generate the dynamic WhatsApp Link
-        const message = `Hi, I want to buy: ${product.title} for PKR ${product.price}`;
-        const waUrl = `https://wa.me/923000000000?text=${encodeURIComponent(message)}`;
-        document.getElementById('wa-btn').href = waUrl;
-        
-      } else {
-        document.getElementById('prod-title').innerText = "Product not found";
-        document.getElementById('prod-desc').innerHTML = "<p>Sorry, this item may have been removed.</p>";
-      }
-    })
-    .catch(error => console.error("Error loading product:", error));
+      });
+  }
 </script>
-
 </body>
 </html>
