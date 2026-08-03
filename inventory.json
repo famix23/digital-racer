@@ -1,31 +1,32 @@
 {
   "items": [
     {
-      "title": "2 SUPER CARS - FULL TDM INVENTORY SHORTS/SHIRTS 3 ULTIMATES 3 X-SUITS (DRAVION, SILVANUS, ANUKHARA) M416 SILVER GURU MAX",
+      "title": "2 SUPER CARS - FULL TDM INVENTORY SHORTS/SHIRTS 3 ULTIMATES 3 X-SUITS",
       "price": "60000",
       "category": "Account",
-      "thumbnail": "",
+      "thumbnail": "/images/uploads/account1.jpg",
       "badge": "INSTANT",
       "tag": "GLOBAL",
-      "description": "Requirements: - Safe Transfer - Instant Delivery\nBenefit:\n- Full TDM inventory with rare shorts and shirts.\n- Includes 3 Ultimate outfits and 3 X-Suits (Dravion, Silvanus, Anukhara).\n- M416 Silver Guru Max upgraded."
+      "description": "Full TDM inventory with rare shorts and shirts. Includes 3 Ultimate outfits and 3 X-Suits."
     },
     {
       "title": "PUBG MOBILE FERRARI CARS",
       "price": "50000",
       "category": "Car Card",
-      "thumbnail": "",
+      "thumbnail": "/images/uploads/ferrari.jpg",
       "badge": "INSTANT",
       "tag": "GLOBAL",
-      "description": "Exclusive Ferrari vehicle cards for PUBG Mobile. Instant delivery upon confirmation."
+      "description": "Exclusive Ferrari vehicle cards for PUBG Mobile."
     },
     {
       "title": "PUBG MOBILE UC 660",
       "price": "500",
       "category": "UC Top-Up",
-      "thumbnail": "",
+      "thumbnail": "/images/uploads/uc660.jpg",
       "badge": "INSTANT",
       "tag": "GLOBAL",
-      "description": "660 UC Top-Up package for your account. Fast and secure delivery."
+      "description": "660 UC Top-Up package for your account."
     }
+    /* Add the rest of your inventory items here following the same format */
   ]
 }
