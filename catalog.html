@@ -216,14 +216,26 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     });
   }
 
-  // Force Cloudflare to bypass cache
-  fetch('/inventory.json?nocache=' + new Date().getTime())
-    .then(response => response.json())
+  fetch('/inventory.json')
+    .then(async response => {
+      if (!response.ok) {
+        throw new Error(`File Not Found (HTTP ${response.status}). Check if inventory.json is uploaded to GitHub.`);
+      }
+      const text = await response.text();
+      try {
+        return JSON.parse(text);
+      } catch (e) {
+        throw new Error(`Syntax Error in inventory.json. You might have a missing comma or broken quotes. Details: ${e.message}`);
+      }
+    })
     .then(data => {
       allProducts = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []);
       processAndRender();
     })
-    .catch(error => console.error("Error loading inventory:", error));
+    .catch(error => {
+      console.error("Diagnostic Error:", error);
+      document.getElementById('full-catalog').innerHTML = `<div style="background: rgba(255,0,0,0.1); border: 1px solid red; padding: 15px; color: #ff4d4d; border-radius: 6px; font-weight: bold;">🚨 SYSTEM ERROR: <br><br>${error.message}</div>`;
+    });
 
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
