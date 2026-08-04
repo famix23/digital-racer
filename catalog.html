@@ -103,7 +103,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     if (!rawPath) return "";
     let cleanPath = rawPath.trim();
     if (cleanPath.startsWith('http') || cleanPath.startsWith('/')) return cleanPath;
-    return './' + cleanPath;
+    return '/' + cleanPath;
   }
 
   function createCardHTML(product) {
@@ -136,13 +136,15 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     gsap.to('.item-card', { opacity: 1, y: 0, duration: 0.5, stagger: 0.04, ease: 'power3.out' });
   }
 
-  // FIXED PATH: Strict relative fetching
-  fetch('./inventory.json?nocache=' + new Date().getTime())
+  fetch('/inventory.json')
     .then(async response => {
       if (!response.ok) throw new Error(`File Not Found (HTTP ${response.status}).`);
       const text = await response.text();
       try { return JSON.parse(text); } 
-      catch (e) { throw new Error(`Routing or Syntax Error. Cloudflare returned: ${text.substring(0, 40)}...`); }
+      catch (e) { 
+        const safeText = text.replace(/</g, '&lt;').replace(/>/g, '&gt;').substring(0, 150);
+        throw new Error(`Data format error. Cloudflare returned this instead of JSON:<br><br><code style="color: #ffcccc;">${safeText}...</code>`); 
+      }
     })
     .then(data => { allProducts = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []); processAndRender(); })
     .catch(error => {
