@@ -1,280 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Racer — Asset Details</title>
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-
-<style>
-:root {
-  --bg: #050505;
-  --surface: #111111;
-  --surface2: #161616;
-  --border: #222222;
-  --text: #ffffff;
-  --muted: #888888;
-  --accent: #d4af37;
-}
-
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
-h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
-
-/* Navigation */
-nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 5vw; border-bottom: 1px solid var(--border); background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; gap: 20px; flex-wrap: wrap; }
-.logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; white-space: nowrap; }
-.logo span { color: var(--accent); }
-
-.nav-search { display: flex; align-items: center; background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 6px 12px; width: 300px; max-width: 100%; transition: border-color 0.2s; }
-.nav-search:focus-within { border-color: var(--accent); }
-.nav-search input { background: transparent; border: none; outline: none; color: var(--text); font-size: 0.85rem; width: 100%; font-family: 'Open Sans', sans-serif; }
-.nav-search input::placeholder { color: var(--muted); }
-.nav-search button { background: transparent; border: none; color: var(--accent); cursor: pointer; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-left: 8px; }
-
-.nav-links { display: flex; gap: 20px; align-items: center; }
-.nav-link { color: var(--muted); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; transition: color 0.2s; white-space: nowrap; }
-.nav-link:hover { color: var(--accent); }
-
-/* Main Wrapper Layout */
-.main-wrapper { max-width: 1200px; margin: 40px auto; padding: 0 5vw; }
-
-/* Top Title Area */
-.product-header-section { margin-bottom: 30px; }
-.breadcrumb { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
-.breadcrumb a { color: var(--muted); text-decoration: none; }
-.breadcrumb a:hover { color: var(--accent); }
-.main-title { font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 900; text-transform: uppercase; line-height: 1.25; color: var(--text); word-break: break-word; }
-
-/* Two Column Content Grid */
-.product-grid-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; align-items: start; }
-
-/* Left Column */
-.left-column { display: flex; flex-direction: column; gap: 25px; }
-.image-box { width: 100%; aspect-ratio: 16/10; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.image-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
-
-.desc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 25px; }
-.desc-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; color: var(--accent); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-.desc-content { font-size: 0.9rem; color: var(--muted); line-height: 1.7; word-break: break-word; white-space: pre-line; }
-
-/* Right Column (Buy Box Card) */
-.buy-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; gap: 20px; position: sticky; top: 90px; }
-.buy-price-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; }
-.buy-price { font-size: 2.2rem; font-weight: 900; color: var(--accent); font-family: 'Montserrat', sans-serif; margin-top: 4px; }
-
-.specs-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 0; }
-.mini-spec span:first-child { display: block; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.mini-spec span:last-child { font-size: 0.9rem; font-weight: 600; font-family: 'Montserrat', sans-serif; }
-
-.whatsapp-btn {
-  display: flex; align-items: center; justify-content: center; gap: 10px;
-  background: var(--accent); color: #000; padding: 16px 20px;
-  font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase;
-  letter-spacing: 1px; text-decoration: none; font-size: 0.9rem; border-radius: 6px;
-  transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);
-}
-.whatsapp-btn:hover { background: #fff; transform: translateY(-2px); }
-
-.guarantee-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 14px; font-size: 0.8rem; color: var(--muted); line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
-.guarantee-box span { color: var(--accent); font-weight: 700; }
-
-/* Related Section */
-.related-section { max-width: 1200px; margin: 60px auto 0; padding: 0 5vw; }
-.related-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-.related-title span { color: var(--accent); }
-.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
-.rel-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: border-color 0.2s; }
-.rel-card:hover { border-color: var(--accent); }
-.rel-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--surface2); }
-.rel-content { padding: 15px; }
-.rel-title { font-size: 0.9rem; font-weight: 700; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
-.rel-price { color: var(--accent); font-weight: 800; font-family: 'Montserrat', sans-serif; font-size: 1rem; }
-
-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 30px 5vw; text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 80px; }
-
-@media(max-width: 900px) {
-  .product-grid-layout { grid-template-columns: 1fr; }
-  nav { flex-direction: column; align-items: stretch; }
-  .nav-search { width: 100%; }
-}
-</style>
-</head>
-<body>
-
-<nav>
-  <a href="index.html" class="logo">Digital<span>.</span>Racer</a>
-  
-  <div class="nav-search">
-    <input type="text" id="search-input" placeholder="Search accounts, skins, UC...">
-    <button id="search-btn">Search</button>
-  </div>
-
-  <div class="nav-links">
-    <a href="catalog.html" class="nav-link">Catalog</a>
-    <a href="index.html" class="nav-link">Home</a>
-  </div>
-</nav>
-
-<div class="main-wrapper">
-  
-  <div class="product-header-section">
-    <div class="breadcrumb">
-      <a href="index.html">Home</a> / <a href="catalog.html" id="bread-cat">Catalog</a>
-    </div>
-    <h1 class="main-title" id="prod-title">Asset Loading...</h1>
-  </div>
-
-  <div class="product-grid-layout">
-    
-    <div class="left-column">
-      <div class="image-box" id="prod-img-container">
-        <!-- Image injected here -->
-      </div>
-
-      <div class="desc-card" id="desc-card-wrapper" style="display: none;">
-        <div class="desc-title">Description</div>
-        <div class="desc-content" id="prod-desc"></div>
-      </div>
-    </div>
-
-    <div class="right-column">
-      <div class="buy-card">
-        <div>
-          <div class="buy-price-label">Total Price</div>
-          <div class="buy-price" id="prod-price">...</div>
-        </div>
-
-        <div class="specs-mini-grid">
-          <div class="mini-spec">
-            <span>Region Tag</span>
-            <span id="prod-tag">-</span>
-          </div>
-          <div class="mini-spec">
-            <span>Delivery</span>
-            <span style="color: var(--accent);">Instant</span>
-          </div>
-        </div>
-
-        <a href="#" class="whatsapp-btn" id="buy-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Acquire via WhatsApp
-        </a>
-
-        <div class="guarantee-box">
-          <div><span>SECURE GUARANTEE:</span> All transactions and asset transfers are verified and protected for smooth delivery.</div>
-        </div>
-      </div>
-    </div>
-
-  </div>
-</div>
-
-<div class="related-section">
-  <div class="related-title">More <span>Assets</span> Available</div>
-  <div class="related-grid" id="related-grid">
-    <p style="color: var(--muted);">Loading related assets...</p>
-  </div>
-</div>
-
-<footer>
-  <p>© 2026 Digital Racer. All rights reserved.</p>
-</footer>
-
-<script>
-  const urlParams = new URLSearchParams(window.location.search);
-  const itemName = urlParams.get('item');
-
-  function handleSearch() {
-    const query = document.getElementById('search-input').value.trim();
-    if (query) {
-      window.location.href = `catalog.html?search=${encodeURIComponent(query)}`;
+{
+  "items": [
+    {
+      "title": "PUBG MOBILE ULTRA LEGEND ACCOUNT",
+      "price": "35000",
+      "category": "Account",
+      "thumbnail": "",
+      "badge": "INSTANT",
+      "tag": "GLOBAL",
+      "description": "Acquire pubg mobile ultra legend account securely at Digital Racer. Instant global delivery."
+    },
+    {
+      "title": "2 SUPER CARS - FULL TDM INVENTORY SHORTS/SHIRTS 3 ULTIMATES 3 X-SUITS",
+      "price": "60000",
+      "category": "Account",
+      "thumbnail": "",
+      "badge": "INSTANT",
+      "tag": "GLOBAL",
+      "description": "Full TDM inventory with rare shorts and shirts. Includes 3 Ultimate outfits and 3 X-Suits."
+    },
+    {
+      "title": "PUBG MOBILE FERRARI CARS",
+      "price": "50000",
+      "category": "Car Card",
+      "thumbnail": "",
+      "badge": "INSTANT",
+      "tag": "GLOBAL",
+      "description": "Exclusive Ferrari vehicle cards for PUBG Mobile. Instant delivery upon confirmation."
+    },
+    {
+      "title": "PUBG MOBILE UC 660",
+      "price": "500",
+      "category": "UC Top-Up",
+      "thumbnail": "",
+      "badge": "INSTANT",
+      "tag": "GLOBAL",
+      "description": "660 UC Top-Up package for your account. Fast and secure delivery."
     }
-  }
-
-  document.getElementById('search-btn').addEventListener('click', handleSearch);
-  document.getElementById('search-input').addEventListener('keypress', (e) => {
-    if (e.key === 'Enter') handleSearch();
-  });
-
-  // Helper function to safely format image paths from CMS/JSON
-  function formatImagePath(rawPath) {
-    if (!rawPath) return "";
-    let cleanPath = rawPath.trim();
-    if (cleanPath.startsWith('http://') || cleanPath.startsWith('https://') || cleanPath.startsWith('/')) {
-      return cleanPath;
-    }
-    return '/' + cleanPath;
-  }
-
-  if (!itemName) {
-    document.getElementById('prod-title').innerText = "Asset Not Found";
-  } else {
-    fetch('inventory.json')
-      .then(response => response.json())
-      .then(data => {
-        const products = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []);
-        const product = products.find(p => p.title === itemName);
-
-        if (product) {
-          document.title = `${product.title} — Digital Racer`;
-          document.getElementById('prod-title').innerText = product.title;
-          document.getElementById('bread-cat').innerText = product.category || 'In-Game Items';
-          document.getElementById('bread-cat').href = `catalog.html?category=${encodeURIComponent(product.category || '')}`;
-          document.getElementById('prod-price').innerText = `Rs. ${product.price}`;
-          document.getElementById('prod-tag').innerText = product.tag || 'GLOBAL';
-          
-          // Checks all possible description keys used by CMS or JSON
-          const descText = product.description || product.desc || product.body || product.details || product.content || product.text || "";
-          if (descText && descText.trim() !== "") {
-            document.getElementById('desc-card-wrapper').style.display = 'block';
-            document.getElementById('prod-desc').innerText = descText;
-          } else {
-            document.getElementById('desc-card-wrapper').style.display = 'none';
-          }
-
-          // Checks all possible image keys and formats the path
-          const rawImg = product.thumbnail || product.image || product.img || product.photo || product.picture || "";
-          const prodImg = formatImagePath(rawImg);
-
-          if (prodImg) {
-            document.getElementById('prod-img-container').innerHTML = `<img src="${prodImg}" alt="${product.title}" onerror="this.parentElement.innerHTML='<div style=\\'color: var(--muted);\\'>Image Failed to Load</div>'">`;
-          } else {
-            document.getElementById('prod-img-container').innerHTML = `<div style="color: var(--muted);">No Image Available</div>`;
-          }
-
-          const waNumber = "923000000000"; // CHANGE TO YOUR WHATSAPP NUMBER
-          const message = `Hello Digital Racer! I want to acquire: ${product.title} for Rs. ${product.price}.`;
-          document.getElementById('buy-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
-
-          const related = products.filter(p => p.title !== itemName).slice(0, 4);
-          const relGrid = document.getElementById('related-grid');
-          if (related.length > 0) {
-            relGrid.innerHTML = related.map(p => {
-              const relImg = formatImagePath(p.thumbnail || p.image || p.img || p.photo || p.picture || "");
-              return `
-                <a href="product.html?item=${encodeURIComponent(p.title)}" class="rel-card">
-                  <img src="${relImg}" class="rel-img" alt="${p.title}" onerror="this.style.display='none'">
-                  <div class="rel-content">
-                    <div class="rel-title">${p.title}</div>
-                    <div class="rel-price">Rs. ${p.price}</div>
-                  </div>
-                </a>
-              `;
-            }).join('');
-          } else {
-            relGrid.innerHTML = `<p style="color: var(--muted);">No other assets available.</p>`;
-          }
-
-        } else {
-          document.getElementById('prod-title').innerText = "Asset Not Found";
-        }
-      })
-      .catch(error => console.error("Error loading inventory:", error));
-  }
-</script>
-</body>
-</html>
+  ]
+}
