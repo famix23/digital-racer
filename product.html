@@ -212,9 +212,18 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   if (!itemName) {
     document.getElementById('prod-title').innerText = "Asset Not Found";
   } else {
-    // Force Cloudflare to bypass cache
-    fetch('/inventory.json?nocache=' + new Date().getTime())
-      .then(response => response.json())
+    fetch('/inventory.json')
+      .then(async response => {
+        if (!response.ok) {
+          throw new Error(`File Not Found (HTTP ${response.status}). Check if inventory.json is uploaded to GitHub.`);
+        }
+        const text = await response.text();
+        try {
+          return JSON.parse(text);
+        } catch (e) {
+          throw new Error(`Syntax Error in inventory.json. You might have a missing comma or broken quotes. Details: ${e.message}`);
+        }
+      })
       .then(data => {
         const products = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []);
         const product = products.find(p => p.title === itemName);
@@ -271,7 +280,12 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           document.getElementById('prod-title').innerText = "Asset Not Found";
         }
       })
-      .catch(error => console.error("Error loading inventory:", error));
+      .catch(error => {
+        console.error("Diagnostic Error:", error);
+        document.getElementById('prod-title').innerText = "System Error";
+        document.getElementById('prod-desc').innerHTML = `<span style="color: #ff4d4d; font-weight: bold;">🚨 Failed to load data:<br><br>${error.message}</span>`;
+        document.getElementById('desc-card-wrapper').style.display = 'block';
+      });
   }
 </script>
 </body>
