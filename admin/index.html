@@ -1,12 +1,27 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Digital Racer Admin Panel</title>
-</head>
-<body>
-  <!-- This single script loads your entire modern admin panel -->
-  <script src="https://unpkg.com/@sveltia/cms/dist/sveltia-cms.js"></script>
-</body>
-</html>
+backend:
+  name: github
+  repo: famix23/digital-racer
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "inventory"
+    label: "Store Inventory"
+    files:
+      - file: "inventory.json"
+        label: "Catalog"
+        name: "catalog"
+        fields:
+          - name: "items"
+            label: "Products"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Price (PKR)", name: "price", widget: "string"}
+              - {label: "Category", name: "category", widget: "select", options: ["Account", "UC Top-Up", "Car Card"]}
+              - {label: "Tag (e.g., GLOBAL)", name: "tag", widget: "string", default: "GLOBAL"}
+              - {label: "Badge (e.g., Instant)", name: "badge", widget: "string", default: "INSTANT"}
+              - {label: "Thumbnail Image", name: "thumbnail", widget: "image"}
+              - {label: "Description", name: "description", widget: "text"}
