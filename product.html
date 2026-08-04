@@ -212,7 +212,8 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   if (!itemName) {
     document.getElementById('prod-title').innerText = "Asset Not Found";
   } else {
-    fetch('/inventory.json')
+    // Force Cloudflare to bypass cache
+    fetch('/inventory.json?nocache=' + new Date().getTime())
       .then(response => response.json())
       .then(data => {
         const products = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []);
