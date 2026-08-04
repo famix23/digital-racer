@@ -148,14 +148,12 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       </a>`;
   }
 
-  // Removed cache-buster, fetching standard root path
   fetch('/inventory.json')
     .then(async response => {
       if (!response.ok) throw new Error(`File Not Found (HTTP ${response.status}).`);
       const text = await response.text();
       try { return JSON.parse(text); } 
       catch (e) { 
-        // Escapes HTML so the browser doesn't hide it
         const safeText = text.replace(/</g, '&lt;').replace(/>/g, '&gt;').substring(0, 150);
         throw new Error(`Data format error. Cloudflare returned this instead of JSON:<br><br><code style="color: #ffcccc;">${safeText}...</code>`); 
       }
