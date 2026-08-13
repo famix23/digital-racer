@@ -31,8 +31,24 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .main-title { font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 900; text-transform: uppercase; line-height: 1.25; color: var(--text); word-break: break-word; }
 .product-grid-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; align-items: start; }
 .left-column { display: flex; flex-direction: column; gap: 25px; }
+
+/* Image Gallery Styles */
 .image-box { width: 100%; aspect-ratio: 16/10; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.image-box img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.image-box img { width: 100%; height: 100%; object-fit: cover; display: block; cursor: zoom-in; transition: transform 0.3s ease; }
+.image-box img:hover { transform: scale(1.02); }
+.gallery-wrap { display: flex; gap: 12px; margin-top: -10px; overflow-x: auto; padding-bottom: 5px; }
+.gallery-wrap::-webkit-scrollbar { height: 6px; }
+.gallery-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+.gal-thumb { width: 80px; height: 60px; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.5; transition: all 0.2s ease; object-fit: cover; background: var(--surface2); flex-shrink: 0; }
+.gal-thumb:hover, .gal-thumb.active { opacity: 1; border-color: var(--accent); }
+
+/* Lightbox Modal Styles */
+.lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.92); z-index: 9999; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(5px); }
+.lightbox.show { display: flex; opacity: 1; }
+.lightbox img { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 6px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); cursor: zoom-out; }
+.lightbox-close { position: absolute; top: 25px; right: 40px; color: #fff; font-size: 2.5rem; cursor: pointer; font-weight: bold; transition: color 0.2s; user-select: none; }
+.lightbox-close:hover { color: var(--accent); }
+
 .desc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 25px; }
 .desc-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; color: var(--accent); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
 .desc-content { font-size: 0.9rem; color: var(--muted); line-height: 1.7; word-break: break-word; white-space: pre-line; }
@@ -83,12 +99,19 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   </div>
   <div class="product-grid-layout">
     <div class="left-column">
+      
+      <!-- Main Image -->
       <div class="image-box" id="prod-img-container"></div>
+      
+      <!-- Gallery Thumbnails -->
+      <div id="gallery-container" class="gallery-wrap"></div>
+      
       <div class="desc-card" id="desc-card-wrapper" style="display: none;">
         <div class="desc-title">Description</div>
         <div class="desc-content" id="prod-desc"></div>
       </div>
     </div>
+    
     <div class="right-column">
       <div class="buy-card">
         <div><div class="buy-price-label">Total Price</div><div class="buy-price" id="prod-price">...</div></div>
@@ -109,7 +132,14 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   <div class="related-title">More <span>Assets</span> Available</div>
   <div class="related-grid" id="related-grid"><p style="color: var(--muted);">Loading related assets...</p></div>
 </div>
+
 <footer><p>© 2026 Digital Racer. All rights reserved.</p></footer>
+
+<!-- Full Screen Lightbox Container -->
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <span class="lightbox-close">&times;</span>
+  <img src="" id="lightbox-img" onclick="event.stopPropagation(); closeLightbox();">
+</div>
 
 <script>
   const urlParams = new URLSearchParams(window.location.search); const itemName = urlParams.get('item');
@@ -122,6 +152,22 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     let cleanPath = rawPath.trim();
     if (cleanPath.startsWith('http') || cleanPath.startsWith('/')) return cleanPath;
     return '/' + cleanPath;
+  }
+
+  // Gallery Controls
+  window.changeMainImage = function(src, thumbElement) {
+    document.getElementById('main-display-img').src = src;
+    document.querySelectorAll('.gal-thumb').forEach(el => el.classList.remove('active'));
+    thumbElement.classList.add('active');
+  }
+  
+  // Lightbox Controls
+  window.openLightbox = function(src) {
+    document.getElementById('lightbox-img').src = src;
+    document.getElementById('lightbox').classList.add('show');
+  }
+  window.closeLightbox = function() {
+    document.getElementById('lightbox').classList.remove('show');
   }
 
   if (!itemName) document.getElementById('prod-title').innerText = "Asset Not Found";
@@ -151,10 +197,37 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           if (descText && descText.trim() !== "") { document.getElementById('desc-card-wrapper').style.display = 'block'; document.getElementById('prod-desc').innerText = descText; } 
           else document.getElementById('desc-card-wrapper').style.display = 'none';
 
-          const rawImg = product.image || product.thumbnail || product.img || product.photo || product.picture || "";
-          const prodImg = formatImagePath(rawImg);
-          if (prodImg) document.getElementById('prod-img-container').innerHTML = `<img src="${prodImg}" alt="${product.title}" onerror="this.parentElement.innerHTML='<div style=\\'color: var(--muted);\\'>Image Failed to Load</div>'">`;
-          else document.getElementById('prod-img-container').innerHTML = `<div style="color: var(--muted);">No Image Available</div>`;
+          // Load Images into Array
+          let currentImages = [];
+          const mainImg = formatImagePath(product.thumbnail || product.image || product.img || product.photo || product.picture || "");
+          if (mainImg) currentImages.push(mainImg);
+          
+          if (product.gallery && Array.isArray(product.gallery)) {
+            product.gallery.forEach(img => {
+              const fImg = formatImagePath(img);
+              if (fImg) currentImages.push(fImg);
+            });
+          }
+
+          const imgContainer = document.getElementById('prod-img-container');
+          const galContainer = document.getElementById('gallery-container');
+
+          if (currentImages.length > 0) {
+            // Set first image as main with a click trigger for the Lightbox
+            imgContainer.innerHTML = `<img src="${currentImages[0]}" alt="${product.title}" id="main-display-img" onclick="openLightbox(this.src)" onerror="this.parentElement.innerHTML='<div style=\\'color: var(--muted);\\'>Image Failed to Load</div>'">`;
+            
+            // Build thumbnails if there is more than 1 image
+            if (currentImages.length > 1) {
+              galContainer.innerHTML = currentImages.map((img, index) => {
+                return `<img src="${img}" class="gal-thumb ${index === 0 ? 'active' : ''}" onclick="changeMainImage('${img}', this)">`;
+              }).join('');
+            } else {
+              galContainer.style.display = 'none';
+            }
+          } else {
+            imgContainer.innerHTML = `<div style="color: var(--muted);">No Image Available</div>`;
+            galContainer.style.display = 'none';
+          }
 
           const waNumber = "923000000000"; const message = `Hello Digital Racer! I want to acquire: ${product.title} for Rs. ${product.price}.`;
           document.getElementById('buy-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
@@ -163,7 +236,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           const relGrid = document.getElementById('related-grid');
           if (related.length > 0) {
             relGrid.innerHTML = related.map(p => {
-              const relImg = formatImagePath(p.image || p.thumbnail || p.img || p.photo || p.picture || "");
+              const relImg = formatImagePath(p.thumbnail || p.image || p.img || p.photo || p.picture || "");
               return `<a href="product.html?item=${encodeURIComponent(p.title)}" class="rel-card"><img src="${relImg}" class="rel-img" alt="${p.title}" onerror="this.style.display='none'"><div class="rel-content"><div class="rel-title">${p.title}</div><div class="rel-price">Rs. ${p.price}</div></div></a>`;
             }).join('');
           } else relGrid.innerHTML = `<p style="color: var(--muted);">No other assets available.</p>`;
