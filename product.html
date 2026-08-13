@@ -32,23 +32,29 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .product-grid-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; align-items: start; }
 .left-column { display: flex; flex-direction: column; gap: 25px; }
 
-/* Image Gallery Styles (Updated for perfect framing) */
-.image-box { width: 100%; aspect-ratio: 16/10; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+/* Image Gallery Styles */
+.image-box { position: relative; width: 100%; aspect-ratio: 16/10; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .image-box img { width: 100%; height: 100%; object-fit: contain; display: block; cursor: zoom-in; transition: transform 0.3s ease; }
 .image-box img:hover { transform: scale(1.02); }
+
+/* On-Page Navigation Arrows */
+.main-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(5, 5, 5, 0.7); border: 1px solid var(--border); backdrop-filter: blur(4px); color: #fff; font-size: 1.2rem; padding: 12px 16px; cursor: pointer; border-radius: 4px; user-select: none; transition: all 0.2s ease; z-index: 10; display: none; }
+.main-nav-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
+.main-prev { left: 15px; }
+.main-next { right: 15px; }
+
 .gallery-wrap { display: flex; gap: 12px; margin-top: -10px; overflow-x: auto; padding-bottom: 5px; }
 .gallery-wrap::-webkit-scrollbar { height: 6px; }
 .gallery-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 .gal-thumb { width: 80px; height: 60px; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.5; transition: all 0.2s ease; object-fit: cover; background: var(--surface2); flex-shrink: 0; }
 .gal-thumb:hover, .gal-thumb.active { opacity: 1; border-color: var(--accent); }
 
-/* Lightbox Modal Styles (Updated with Navigation) */
+/* Lightbox Modal Styles */
 .lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(8px); }
 .lightbox.show { display: flex; opacity: 1; }
 .lightbox img { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 6px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); cursor: zoom-out; user-select: none; }
 .lightbox-close { position: absolute; top: 25px; right: 40px; color: #fff; font-size: 2.5rem; cursor: pointer; font-weight: bold; transition: color 0.2s; user-select: none; z-index: 10001; }
 .lightbox-close:hover { color: var(--accent); }
-
 .lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 3rem; cursor: pointer; user-select: none; padding: 20px; transition: color 0.2s; z-index: 10000; display: none; }
 .lightbox-prev { left: 20px; }
 .lightbox-next { right: 20px; }
@@ -82,7 +88,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 footer { background: var(--surface); border-top: 1px solid var(--border); padding: 30px 5vw; text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 80px; }
 
 @media(max-width: 900px) { .product-grid-layout { grid-template-columns: 1fr; } nav { flex-direction: column; align-items: stretch; } .nav-search { width: 100%; } }
-@media(max-width: 768px) { .lightbox-prev, .lightbox-next { font-size: 2rem; padding: 10px; } .lightbox-prev { left: 5px; } .lightbox-next { right: 5px; } }
+@media(max-width: 768px) { .lightbox-prev, .lightbox-next { font-size: 2rem; padding: 10px; } .lightbox-prev { left: 5px; } .lightbox-next { right: 5px; } .main-nav-btn { font-size: 1rem; padding: 8px 12px; } }
 </style>
 </head>
 <body>
@@ -107,8 +113,12 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   <div class="product-grid-layout">
     <div class="left-column">
       
-      <!-- Main Image -->
-      <div class="image-box" id="prod-img-container"></div>
+      <!-- Main Image Display -->
+      <div class="image-box" id="prod-img-container">
+        <div class="main-nav-btn main-prev" id="main-prev" onclick="event.stopPropagation(); navigateMainGallery(-1)">&#10094;</div>
+        <img src="" alt="" id="main-display-img" data-index="0" onclick="openLightbox(this.getAttribute('data-index'))" style="display: none;">
+        <div class="main-nav-btn main-next" id="main-next" onclick="event.stopPropagation(); navigateMainGallery(1)">&#10095;</div>
+      </div>
       
       <!-- Gallery Thumbnails -->
       <div id="gallery-container" class="gallery-wrap"></div>
@@ -142,7 +152,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 
 <footer><p>© 2026 Digital Racer. All rights reserved.</p></footer>
 
-<!-- Full Screen Lightbox Container (Updated for Desktop Navigation and Mobile Swiping) -->
+<!-- Full Screen Lightbox Container -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">&times;</span>
   <div class="lightbox-prev" id="lb-prev" onclick="event.stopPropagation(); prevLightboxImage();">&#10094;</div>
@@ -163,19 +173,34 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     return '/' + cleanPath;
   }
 
-  // Gallery Navigation State
+  // State Management
   window.galleryImages = [];
+  window.currentMainIndex = 0;
   window.currentLightBoxIndex = 0;
 
-  // Swap main image and update data-index
-  window.changeMainImage = function(index, thumbElement) {
-    document.getElementById('main-display-img').src = window.galleryImages[index];
-    document.getElementById('main-display-img').setAttribute('data-index', index);
-    document.querySelectorAll('.gal-thumb').forEach(el => el.classList.remove('active'));
-    thumbElement.classList.add('active');
+  // --- Main On-Page Gallery Logic ---
+  window.changeMainImage = function(index) {
+    window.currentMainIndex = parseInt(index);
+    updateMainGalleryUI();
+  }
+
+  window.navigateMainGallery = function(direction) {
+    if (window.galleryImages.length <= 1) return;
+    window.currentMainIndex = (window.currentMainIndex + direction + window.galleryImages.length) % window.galleryImages.length;
+    updateMainGalleryUI();
+  }
+
+  window.updateMainGalleryUI = function() {
+    const imgEl = document.getElementById('main-display-img');
+    imgEl.src = window.galleryImages[window.currentMainIndex];
+    imgEl.setAttribute('data-index', window.currentMainIndex);
+    document.querySelectorAll('.gal-thumb').forEach((el, idx) => {
+      if (idx === window.currentMainIndex) el.classList.add('active');
+      else el.classList.remove('active');
+    });
   }
   
-  // Open Lightbox at specific index
+  // --- Fullscreen Lightbox Logic ---
   window.openLightbox = function(index) {
     if (window.galleryImages.length === 0) return;
     window.currentLightBoxIndex = parseInt(index);
@@ -183,7 +208,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     document.getElementById('lightbox').classList.add('show');
   }
 
-  // Core Lightbox Updater
   window.updateLightboxUI = function() {
     document.getElementById('lightbox-img').src = window.galleryImages[window.currentLightBoxIndex];
     if (window.galleryImages.length > 1) {
@@ -195,30 +219,29 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     }
   }
 
-  window.closeLightbox = function() {
-    document.getElementById('lightbox').classList.remove('show');
-  }
+  window.closeLightbox = function() { document.getElementById('lightbox').classList.remove('show'); }
+  window.prevLightboxImage = function() { window.currentLightBoxIndex = (window.currentLightBoxIndex - 1 + window.galleryImages.length) % window.galleryImages.length; updateLightboxUI(); }
+  window.nextLightboxImage = function() { window.currentLightBoxIndex = (window.currentLightBoxIndex + 1) % window.galleryImages.length; updateLightboxUI(); }
 
-  window.prevLightboxImage = function() {
-    window.currentLightBoxIndex = (window.currentLightBoxIndex - 1 + window.galleryImages.length) % window.galleryImages.length;
-    updateLightboxUI();
-  }
-
-  window.nextLightboxImage = function() {
-    window.currentLightBoxIndex = (window.currentLightBoxIndex + 1) % window.galleryImages.length;
-    updateLightboxUI();
-  }
+  // Keyboard Navigation Events
+  document.addEventListener('keydown', (e) => {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox.classList.contains('show') && window.galleryImages.length > 1) {
+      if (e.key === 'ArrowLeft') window.prevLightboxImage();
+      if (e.key === 'ArrowRight') window.nextLightboxImage();
+      if (e.key === 'Escape') window.closeLightbox();
+    }
+  });
 
   // Mobile Swipe Support for Lightbox
-  let touchstartX = 0;
-  let touchendX = 0;
+  let touchstartX = 0; let touchendX = 0;
   const lightboxEl = document.getElementById('lightbox');
   lightboxEl.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, {passive: true});
   lightboxEl.addEventListener('touchend', e => {
     touchendX = e.changedTouches[0].screenX;
     if (window.galleryImages.length > 1) {
-      if (touchendX < touchstartX - 40) window.nextLightboxImage(); // Swiped left
-      if (touchendX > touchstartX + 40) window.prevLightboxImage(); // Swiped right
+      if (touchendX < touchstartX - 40) window.nextLightboxImage();
+      if (touchendX > touchstartX + 40) window.prevLightboxImage();
     }
   }, {passive: true});
 
@@ -249,7 +272,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           if (descText && descText.trim() !== "") { document.getElementById('desc-card-wrapper').style.display = 'block'; document.getElementById('prod-desc').innerText = descText; } 
           else document.getElementById('desc-card-wrapper').style.display = 'none';
 
-          // Load Images into Array safely, skipping empty CMS fields
+          // Load Images into Array safely
           let currentImages = [];
           const mainImg = formatImagePath(product.thumbnail || product.image || product.img || product.photo || product.picture || "");
           if (mainImg && mainImg.trim() !== "/") currentImages.push(mainImg);
@@ -261,26 +284,33 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
             });
           }
           
-          window.galleryImages = currentImages; // Bind array to global tracker
+          window.galleryImages = currentImages;
 
-          const imgContainer = document.getElementById('prod-img-container');
           const galContainer = document.getElementById('gallery-container');
+          const mainImgEl = document.getElementById('main-display-img');
+          const mainPrevBtn = document.getElementById('main-prev');
+          const mainNextBtn = document.getElementById('main-next');
 
           if (currentImages.length > 0) {
-            // Set first image as main with indexed click trigger for the Lightbox
-            imgContainer.innerHTML = `<img src="${currentImages[0]}" alt="${product.title}" id="main-display-img" data-index="0" onclick="openLightbox(this.getAttribute('data-index'))" onerror="this.parentElement.innerHTML='<div style=\\'color: var(--muted);\\'>Image Failed to Load</div>'">`;
+            mainImgEl.src = currentImages[0];
+            mainImgEl.alt = product.title;
+            mainImgEl.style.display = 'block';
             
-            // Build thumbnails if there is more than 1 image
+            // Build thumbnails and main arrows if > 1 image
             if (currentImages.length > 1) {
+              mainPrevBtn.style.display = 'block';
+              mainNextBtn.style.display = 'block';
               galContainer.innerHTML = currentImages.map((img, index) => {
-                return `<img src="${img}" class="gal-thumb ${index === 0 ? 'active' : ''}" onclick="changeMainImage(${index}, this)">`;
+                return `<img src="${img}" class="gal-thumb ${index === 0 ? 'active' : ''}" onclick="changeMainImage(${index})">`;
               }).join('');
             } else {
+              mainPrevBtn.style.display = 'none';
+              mainNextBtn.style.display = 'none';
               galContainer.style.display = 'none';
             }
           } else {
-            imgContainer.innerHTML = `<div style="color: var(--muted);">No Image Available</div>`;
-            galContainer.style.display = 'none';
+             document.getElementById('prod-img-container').innerHTML = `<div style="color: var(--muted);">No Image Available</div>`;
+             galContainer.style.display = 'none';
           }
 
           const waNumber = "923000000000"; const message = `Hello Digital Racer! I want to acquire: ${product.title} for Rs. ${product.price}.`;
