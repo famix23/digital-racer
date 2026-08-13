@@ -24,11 +24,17 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .nav-link:hover { color: var(--accent); }
 
 .main-wrapper { max-width: 1200px; margin: 40px auto; padding: 0 5vw; }
-.product-header-section { margin-bottom: 30px; }
-.breadcrumb { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 10px; }
+.product-header-section { margin-bottom: 20px; }
+.breadcrumb { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; }
 .breadcrumb a { color: var(--muted); text-decoration: none; }
 .breadcrumb a:hover { color: var(--accent); }
-.main-title { font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 900; text-transform: uppercase; line-height: 1.25; color: var(--text); word-break: break-word; }
+
+/* Trust Badges (New) */
+.trust-badges-row { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
+.trust-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.7rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); font-weight: 700; background: rgba(212, 175, 55, 0.08); padding: 6px 12px; border-radius: 4px; border: 1px solid rgba(212, 175, 55, 0.2); }
+.trust-badge svg { width: 14px; height: 14px; fill: currentColor; }
+
+.main-title { font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 900; text-transform: uppercase; line-height: 1.25; color: var(--text); word-break: break-word; margin-bottom: 30px; }
 .product-grid-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; align-items: start; }
 .left-column { display: flex; flex-direction: column; gap: 25px; }
 
@@ -36,8 +42,6 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .image-box { position: relative; width: 100%; aspect-ratio: 16/10; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
 .image-box img { width: 100%; height: 100%; object-fit: contain; display: block; cursor: zoom-in; transition: transform 0.3s ease; }
 .image-box img:hover { transform: scale(1.02); }
-
-/* On-Page Navigation Arrows */
 .main-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(5, 5, 5, 0.7); border: 1px solid var(--border); backdrop-filter: blur(4px); color: #fff; font-size: 1.2rem; padding: 12px 16px; cursor: pointer; border-radius: 4px; user-select: none; transition: all 0.2s ease; z-index: 10; display: none; }
 .main-nav-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
 .main-prev { left: 15px; }
@@ -62,12 +66,14 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 
 .desc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 25px; }
 .desc-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; color: var(--accent); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-.desc-content { font-size: 0.9rem; color: var(--muted); line-height: 1.7; word-break: break-word; white-space: pre-line; }
+.desc-content { font-size: 0.9rem; color: var(--muted); line-height: 1.7; word-break: break-word; }
+.desc-content ul { padding-left: 20px; margin-top: 10px; }
+.desc-content li { margin-bottom: 8px; }
 
 .buy-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; gap: 20px; position: sticky; top: 90px; }
 .buy-price-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; }
 .buy-price { font-size: 2.2rem; font-weight: 900; color: var(--accent); font-family: 'Montserrat', sans-serif; margin-top: 4px; }
-.specs-mini-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 0; }
+.specs-mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 0; }
 .mini-spec span:first-child { display: block; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
 .mini-spec span:last-child { font-size: 0.9rem; font-weight: 600; font-family: 'Montserrat', sans-serif; }
 .whatsapp-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--accent); color: #000; padding: 16px 20px; font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; font-size: 0.9rem; border-radius: 6px; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); }
@@ -108,19 +114,29 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <div class="main-wrapper">
   <div class="product-header-section">
     <div class="breadcrumb"><a href="index.html">Home</a> / <a href="catalog.html" id="bread-cat">Catalog</a></div>
+    
+    <div class="trust-badges-row">
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+        Instant Delivery
+      </div>
+      <div class="trust-badge">
+        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+        Verified Account
+      </div>
+    </div>
+
     <h1 class="main-title" id="prod-title">Asset Loading...</h1>
   </div>
   <div class="product-grid-layout">
     <div class="left-column">
       
-      <!-- Main Image Display -->
       <div class="image-box" id="prod-img-container">
         <div class="main-nav-btn main-prev" id="main-prev" onclick="event.stopPropagation(); navigateMainGallery(-1)">&#10094;</div>
         <img src="" alt="" id="main-display-img" data-index="0" onclick="openLightbox(this.getAttribute('data-index'))" style="display: none;">
         <div class="main-nav-btn main-next" id="main-next" onclick="event.stopPropagation(); navigateMainGallery(1)">&#10095;</div>
       </div>
       
-      <!-- Gallery Thumbnails -->
       <div id="gallery-container" class="gallery-wrap"></div>
       
       <div class="desc-card" id="desc-card-wrapper" style="display: none;">
@@ -132,9 +148,10 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     <div class="right-column">
       <div class="buy-card">
         <div><div class="buy-price-label">Total Price</div><div class="buy-price" id="prod-price">...</div></div>
-        <div class="specs-mini-grid">
+        <div class="specs-mini-grid" id="specs-grid">
           <div class="mini-spec"><span>Region Tag</span><span id="prod-tag">-</span></div>
           <div class="mini-spec"><span>Delivery</span><span style="color: var(--accent);">Instant</span></div>
+          <!-- Level and Tier will inject here dynamically if they exist -->
         </div>
         <a href="#" class="whatsapp-btn" id="buy-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
@@ -152,7 +169,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 
 <footer><p>© 2026 Digital Racer. All rights reserved.</p></footer>
 
-<!-- Full Screen Lightbox Container -->
 <div class="lightbox" id="lightbox" onclick="closeLightbox()">
   <span class="lightbox-close">&times;</span>
   <div class="lightbox-prev" id="lb-prev" onclick="event.stopPropagation(); prevLightboxImage();">&#10094;</div>
@@ -173,57 +189,46 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     return '/' + cleanPath;
   }
 
+  function parseDescription(text) {
+    if (!text) return "";
+    const lines = text.split('\n');
+    let html = ''; let inList = false;
+    lines.forEach(line => {
+      let trimmed = line.trim();
+      if (trimmed.startsWith('-')) {
+        if (!inList) { html += '<ul>'; inList = true; }
+        html += `<li>${trimmed.substring(1).trim()}</li>`;
+      } else {
+        if (inList) { html += '</ul>'; inList = false; }
+        if (trimmed !== "") html += `<p>${trimmed}</p>`;
+      }
+    });
+    if (inList) html += '</ul>';
+    return html;
+  }
+
   // State Management
-  window.galleryImages = [];
-  window.currentMainIndex = 0;
-  window.currentLightBoxIndex = 0;
+  window.galleryImages = []; window.currentMainIndex = 0; window.currentLightBoxIndex = 0;
 
-  // --- Main On-Page Gallery Logic ---
-  window.changeMainImage = function(index) {
-    window.currentMainIndex = parseInt(index);
-    updateMainGalleryUI();
-  }
-
-  window.navigateMainGallery = function(direction) {
-    if (window.galleryImages.length <= 1) return;
-    window.currentMainIndex = (window.currentMainIndex + direction + window.galleryImages.length) % window.galleryImages.length;
-    updateMainGalleryUI();
-  }
-
+  window.changeMainImage = function(index) { window.currentMainIndex = parseInt(index); updateMainGalleryUI(); }
+  window.navigateMainGallery = function(direction) { if (window.galleryImages.length <= 1) return; window.currentMainIndex = (window.currentMainIndex + direction + window.galleryImages.length) % window.galleryImages.length; updateMainGalleryUI(); }
   window.updateMainGalleryUI = function() {
     const imgEl = document.getElementById('main-display-img');
     imgEl.src = window.galleryImages[window.currentMainIndex];
     imgEl.setAttribute('data-index', window.currentMainIndex);
-    document.querySelectorAll('.gal-thumb').forEach((el, idx) => {
-      if (idx === window.currentMainIndex) el.classList.add('active');
-      else el.classList.remove('active');
-    });
+    document.querySelectorAll('.gal-thumb').forEach((el, idx) => { if (idx === window.currentMainIndex) el.classList.add('active'); else el.classList.remove('active'); });
   }
   
-  // --- Fullscreen Lightbox Logic ---
-  window.openLightbox = function(index) {
-    if (window.galleryImages.length === 0) return;
-    window.currentLightBoxIndex = parseInt(index);
-    updateLightboxUI();
-    document.getElementById('lightbox').classList.add('show');
-  }
-
+  window.openLightbox = function(index) { if (window.galleryImages.length === 0) return; window.currentLightBoxIndex = parseInt(index); updateLightboxUI(); document.getElementById('lightbox').classList.add('show'); }
   window.updateLightboxUI = function() {
     document.getElementById('lightbox-img').src = window.galleryImages[window.currentLightBoxIndex];
-    if (window.galleryImages.length > 1) {
-      document.getElementById('lb-prev').style.display = 'block';
-      document.getElementById('lb-next').style.display = 'block';
-    } else {
-      document.getElementById('lb-prev').style.display = 'none';
-      document.getElementById('lb-next').style.display = 'none';
-    }
+    if (window.galleryImages.length > 1) { document.getElementById('lb-prev').style.display = 'block'; document.getElementById('lb-next').style.display = 'block'; } 
+    else { document.getElementById('lb-prev').style.display = 'none'; document.getElementById('lb-next').style.display = 'none'; }
   }
-
   window.closeLightbox = function() { document.getElementById('lightbox').classList.remove('show'); }
   window.prevLightboxImage = function() { window.currentLightBoxIndex = (window.currentLightBoxIndex - 1 + window.galleryImages.length) % window.galleryImages.length; updateLightboxUI(); }
   window.nextLightboxImage = function() { window.currentLightBoxIndex = (window.currentLightBoxIndex + 1) % window.galleryImages.length; updateLightboxUI(); }
 
-  // Keyboard Navigation Events
   document.addEventListener('keydown', (e) => {
     const lightbox = document.getElementById('lightbox');
     if (lightbox.classList.contains('show') && window.galleryImages.length > 1) {
@@ -233,16 +238,12 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     }
   });
 
-  // Mobile Swipe Support for Lightbox
   let touchstartX = 0; let touchendX = 0;
   const lightboxEl = document.getElementById('lightbox');
   lightboxEl.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, {passive: true});
   lightboxEl.addEventListener('touchend', e => {
     touchendX = e.changedTouches[0].screenX;
-    if (window.galleryImages.length > 1) {
-      if (touchendX < touchstartX - 40) window.nextLightboxImage();
-      if (touchendX > touchstartX + 40) window.prevLightboxImage();
-    }
+    if (window.galleryImages.length > 1) { if (touchendX < touchstartX - 40) window.nextLightboxImage(); if (touchendX > touchstartX + 40) window.prevLightboxImage(); }
   }, {passive: true});
 
   if (!itemName) document.getElementById('prod-title').innerText = "Asset Not Found";
@@ -267,12 +268,18 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           document.getElementById('bread-cat').href = `catalog.html?category=${encodeURIComponent(product.category || '')}`;
           document.getElementById('prod-price').innerText = `Rs. ${product.price}`;
           document.getElementById('prod-tag').innerText = product.tag || 'GLOBAL';
+
+          // Dynamic Specs Grid Injection
+          const specsGrid = document.getElementById('specs-grid');
+          if (product.account_level) { specsGrid.innerHTML += `<div class="mini-spec"><span>Account Level</span><span>${product.account_level}</span></div>`; }
+          if (product.highest_tier) { specsGrid.innerHTML += `<div class="mini-spec"><span>Highest Tier</span><span>${product.highest_tier}</span></div>`; }
           
           const descText = product.description || product.desc || product.body || product.details || product.content || product.text || "";
-          if (descText && descText.trim() !== "") { document.getElementById('desc-card-wrapper').style.display = 'block'; document.getElementById('prod-desc').innerText = descText; } 
-          else document.getElementById('desc-card-wrapper').style.display = 'none';
+          if (descText && descText.trim() !== "") { 
+            document.getElementById('desc-card-wrapper').style.display = 'block'; 
+            document.getElementById('prod-desc').innerHTML = parseDescription(descText); 
+          } else { document.getElementById('desc-card-wrapper').style.display = 'none'; }
 
-          // Load Images into Array safely
           let currentImages = [];
           const mainImg = formatImagePath(product.thumbnail || product.image || product.img || product.photo || product.picture || "");
           if (mainImg && mainImg.trim() !== "/") currentImages.push(mainImg);
@@ -285,7 +292,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           }
           
           window.galleryImages = currentImages;
-
           const galContainer = document.getElementById('gallery-container');
           const mainImgEl = document.getElementById('main-display-img');
           const mainPrevBtn = document.getElementById('main-prev');
@@ -296,7 +302,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
             mainImgEl.alt = product.title;
             mainImgEl.style.display = 'block';
             
-            // Build thumbnails and main arrows if > 1 image
             if (currentImages.length > 1) {
               mainPrevBtn.style.display = 'block';
               mainNextBtn.style.display = 'block';
