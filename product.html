@@ -138,7 +138,8 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       
       <div id="gallery-container" class="gallery-wrap"></div>
       
-      <div class="desc-card" id="desc-card-wrapper" style="display: none;">
+      <!-- Description Card Always Displays Now -->
+      <div class="desc-card" id="desc-card-wrapper">
         <div class="desc-title">Description</div>
         <div class="desc-content" id="prod-desc"></div>
       </div>
@@ -267,10 +268,15 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           if (product.highest_tier) { specsGrid.innerHTML += `<div class="mini-spec"><span>Highest Tier</span><span>${product.highest_tier}</span></div>`; }
           
           const descText = product.description || product.desc || product.body || product.details || product.content || product.text || "";
+          
+          // Automated Mandatory WhatsApp Line
+          const mandatoryLine = `<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>`;
+          
           if (descText && descText.trim() !== "") { 
-            document.getElementById('desc-card-wrapper').style.display = 'block'; 
-            document.getElementById('prod-desc').innerHTML = parseDescription(descText); 
-          } else { document.getElementById('desc-card-wrapper').style.display = 'none'; }
+            document.getElementById('prod-desc').innerHTML = mandatoryLine + parseDescription(descText); 
+          } else { 
+            document.getElementById('prod-desc').innerHTML = mandatoryLine; 
+          }
 
           let currentImages = [];
           const mainImg = formatImagePath(product.thumbnail || product.image || product.img || product.photo || product.picture || "");
@@ -310,7 +316,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
              galContainer.style.display = 'none';
           }
 
-          // Updated WhatsApp Number integration
           const waNumber = "923454342911"; 
           const message = `Hello Digital Racer! I want to acquire: ${product.title} for $${product.price} USD.`;
           document.getElementById('buy-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
@@ -327,7 +332,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
       })
       .catch(error => {
         document.getElementById('prod-title').innerText = "System Error";
-        document.getElementById('desc-card-wrapper').style.display = 'block';
       });
   }
 </script>
