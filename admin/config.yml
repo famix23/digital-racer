@@ -40,6 +40,16 @@ collections:
                 name: "badge"
                 widget: "string"
                 default: "INSTANT"
+                
+              - label: "Account Level (Optional)"
+                name: "account_level"
+                widget: "string"
+                required: false
+                
+              - label: "Highest Tier (Optional)"
+                name: "highest_tier"
+                widget: "string"
+                required: false
               
               - label: "Thumbnail Image"
                 name: "thumbnail"
@@ -54,6 +64,6 @@ collections:
                   name: "image"
                   widget: "image"
               
-              - label: "Description"
+              - label: "Description (Use dashes '-' for bullet points)"
                 name: "description"
                 widget: "text"
