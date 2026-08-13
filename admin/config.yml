@@ -23,5 +23,6 @@ collections:
               - {label: "Category", name: "category", widget: "select", options: ["Account", "UC Top-Up", "Car Card"]}
               - {label: "Tag (e.g., GLOBAL)", name: "tag", widget: "string", default: "GLOBAL"}
               - {label: "Badge (e.g., Instant)", name: "badge", widget: "string", default: "INSTANT"}
-              - {label: "Thumbnail Image", name: "thumbnail", widget: "image"}
+              - {label: "Thumbnail Image (Main)", name: "thumbnail", widget: "image"}
+              - {label: "Additional Gallery Images", name: "gallery", widget: "list", required: false, field: {label: "Image", name: "image", widget: "image"}}
               - {label: "Description", name: "description", widget: "text"}
