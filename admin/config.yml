@@ -22,7 +22,7 @@ collections:
                 name: "title"
                 widget: "string"
               
-              - label: "Price (PKR)"
+              - label: "Price (USD)"
                 name: "price"
                 widget: "string"
               
