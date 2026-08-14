@@ -1,105 +1,156 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Digital Racer | Product</title>
-    <style>
-        body { margin: 0; font-family: sans-serif; background-color: #121212; color: #ffffff; }
-        header { padding: 20px; border-bottom: 1px solid #2a2a2a; }
-        .logo { font-size: 20px; font-weight: 900; letter-spacing: 3px; text-decoration: none; color: white; text-transform: uppercase; }
-        .logo span { color: #ffcc00; }
-        
-        .search-bar { display: flex; margin: 20px; background: #1e1e1e; border-radius: 4px; overflow: hidden; border: 1px solid #2a2a2a; }
-        .search-bar input { flex: 1; background: transparent; border: none; padding: 15px; color: white; outline: none; }
-        .search-bar button { background: transparent; border: none; color: #ffcc00; font-weight: bold; padding: 0 20px; cursor: pointer; text-transform: uppercase; }
-        
-        .nav { margin: 0 20px 20px 20px; display: flex; gap: 20px; }
-        .nav a { color: #888; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; font-weight: bold; }
-        
-        .product-container { padding: 20px; }
-        .breadcrumb { color: #555; font-size: 12px; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 2px; font-weight: bold; }
-        
-        .badges { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; align-items: flex-start; }
-        .badge { border: 1px solid #ffcc00; color: #ffcc00; padding: 10px 15px; font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; display: inline-block; }
-        
-        /* THE FIX: Scaled down to 18px so long titles do not cover the mobile screen */
-        .product-title { font-size: 18px; font-weight: bold; text-transform: uppercase; margin: 0 0 15px 0; line-height: 1.4; word-wrap: break-word; }
-        
-        .product-price { font-size: 24px; font-weight: bold; color: #ffcc00; margin-bottom: 25px; }
-        
-        .product-image { width: 100%; height: auto; max-height: 400px; object-fit: cover; margin-bottom: 20px; background: #1e1e1e; border: 1px solid #2a2a2a; }
-        
-        .description-card { background: #1e1e1e; padding: 20px; border: 1px solid #2a2a2a; margin-bottom: 30px; line-height: 1.6; white-space: pre-wrap; font-size: 15px; }
-        
-        .btn-buy { display: block; width: 100%; padding: 20px; text-align: center; background-color: #ffffff; color: #000000; font-weight: bold; font-size: 16px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; box-sizing: border-box; margin-bottom: 40px; }
-    </style>
-</head>
-<body>
-    <header>
-        <a href="index.html" class="logo">DIGITAL<span>.</span>RACER</a>
-    </header>
-    
-    <div class="search-bar">
-        <input type="text" placeholder="Search products, skins, UC...">
-        <button>SEARCH</button>
-    </div>
-    
-    <div class="nav">
-        <a href="catalog.html">CATALOG</a>
-        <a href="index.html">HOME</a>
-    </div>
-    
-    <div id="product-content">
-        <!-- Content injected via JavaScript -->
-    </div>
-
-    <script>
-        async function loadProduct() {
-            const params = new URLSearchParams(window.location.search);
-            const id = params.get('id');
-            
-            try {
-                const res = await fetch('inventory.json');
-                const products = await res.json();
-                const product = products[id];
-
-                if (!product) {
-                    document.getElementById('product-content').innerHTML = "<p style='padding:20px'>Product not found.</p>";
-                    return;
-                }
-
-                const businessNumber = "920000000000"; 
-                const msg = `Hello Digital Racer! I want to buy:\n\n*${product.title}*\n*Price:* $${product.price}`;
-                const waUrl = `https://wa.me/${businessNumber}?text=${encodeURIComponent(msg)}`;
-
-                document.getElementById('product-content').innerHTML = `
-                    <div class="product-container">
-                        <div class="breadcrumb">HOME / ACCOUNT</div>
-                        
-                        <div class="badges">
-                            <div class="badge">◆ INSTANT DELIVERY</div>
-                            <div class="badge">✔ VERIFIED ACCOUNT</div>
-                        </div>
-                        
-                        <h1 class="product-title">${product.title}</h1>
-                        <p class="product-price">$${product.price}</p>
-                        
-                        <img src="${product.image}" class="product-image" alt="Product Image">
-                        
-                        <div class="description-card">
-                            ${product.description}
-                        </div>
-                        
-                        <a href="${waUrl}" class="btn-buy" target="_blank">BUY NOW VIA WHATSAPP</a>
-                    </div>
-                `;
-            } catch (e) {
-                console.error("Error loading product:", e);
-            }
-        }
-        
-        loadProduct();
-    </script>
-</body>
-</html>
+{
+  "items": [
+    {
+      "title": "RAREST PEACE WITH FIREMAN SET × 4X RED LOOTCRATE MAX × 2X SPORTS CAR + RARE SET'S × RARE STUFF ⸱ RARE EMOTES × PURE GIRLS INVENTORY | 23X TOTAL KILL MSGS | FULLY LOADED OLD INVENTORY",
+      "price": "650",
+      "category": "Account",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "85",
+      "highest_tier": "highest",
+      "thumbnail": "/images/uploads/1d1a29ef-d4fd-4a1c-a1b2-a741d0b7c3bc.jpg",
+      "gallery": [],
+      "description": "*RAREST PEACE WITH FIREMAN SET × 4X RED LOOTCRATE MAX × 2X SPORTS CAR + RARE SET'S × RARE STUFF - RARE EMOTES × PURE GIRLS INVENTORY | 23X TOTAL KILL MSGS | FULLY LOADED OLD INVENTORY*\n\n*MYTHIC IN COLLECTION 175*\n*MYTHIC FASHION 164 / 300*\n*ULTIMATE FASHION 03 / 10*\n*EMOTES COLLECTION OLD*\n*2 SPORTS CAR IN ACCOUNT*\n*ULTIMATE SHOES RARE RA*\n*RARE SET'S RARE STUFF*\n*3X ULTIMATE + CONQ RA*\n*2X RARE MYTHIC LOBBIES*\n*ALL FACES HARI BEARD RA*\n*45X HEAVY GUNLAB RAREE*\n*4X RED LOOT CREATE MAX*\n*23X TOTAL KILL MESSAGE'S*\n*ON A MISSION TITLE RARE*\n*2X RARE BUDDIES OLD*\n\n*COLLECTION LEVEL 70.6*\n*ACCOUNT LEVEL 85*\n*HOME LEVEL 22*\n\n         *1X X-SUIT*\nANUKHARAA X-SUIT 2-STAR\n\n*2X* ULTIMATE SET ‼️ \n\n          *RARE ITEMS*\nFIREMAN SET RARE OLD ‼️\nWEDDING DRESS SET RA ‼️ \nWEDDING TUXEDO SET RA ‼️ \nRIVETING SET RARE MALE ‼️\nTDM BLUE JERSEY FULL ‼️\nFIELD COMMANDER NADE ‼️ \nFOREST ELF SET RARE ‼️ \nS2 COMMANDER SET ‼️ \nDARK GOLD FULL SET ‼️ \nCREW UNIFORM RARE ‼️ \nPINEAPPLE SET RARE ‼️\nMODERN LORD SET RA \nARMORED HUNTER SET \nTIME VOYAGER SET RA \nINTERGALACTIC SET RA\nKILLING MACHINE SET  \nARMED HOUND SET RA \n*MANY MORE EXTRA RARE*\n\n         *45X GUNLAB*\n*4X RED LOOTCRATE MAX*\n*23 TOTAL KILL MESSAGE*\n\nM416 TH GLACIER LEVEL 7 \nAKM THE GLACIER LEVEL 7\nUMP45 ANNIVERSARY LVL 7\nGROZA JUDGEMENT LEVEL 7\nS12K ATOMIC TRIG LEVEL 5\nP90 GOLDEN TALO LEVEL 5\nM762 8-BIT UNICO LEVEL 4\nUZI ROMANTIC M LEVEL 4\nM24 KILLER TUNE LEVEL 4\nMK14 GILDED GA LEVEL 4\nMG3 SOARING D LEVEL 4\nAWM VALORSS R LEVEL 4\nVECTOR BLOOD  LEVEL 4\nM762 8-BIT UNI LEVEL 4\nAWM VALORSS RE LEVEL  4\n*MANY OTHER LEVEL 1/2/3*\n\n          *2X SPORTS CAR*\nBUGGATI BOLDIE (BLUEBOLT) \nSS TUATRA ROSE (SPORTS) \nRED SHARK DACIA (RED SHARK)"
+    },
+    {
+      "title": "50 Mythic💫| Mission Impossible A+B ❗| M416 Fool Max | Ump Soul 4 🔥| 5x Kill Msg | Season 4 Face & Hair Unlocked | Pharaoh Backpack | 4x Xsuits | 1x Lvl 7",
+      "price": "420",
+      "category": "Account",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "73",
+      "highest_tier": "max",
+      "thumbnail": "/images/uploads/c6220455-1093-4972-98d1-0bc7abc678f2.png",
+      "gallery": [
+        "/images/uploads/4ccdb663-646e-4751-bd4d-76e69a7988a9.png",
+        "/images/uploads/53dc5905-07b1-433b-a65a-908b63e7948f.png",
+        "/images/uploads/64741391-b4f7-4dda-a0d7-e98c4162ed34.png"
+      ],
+      "description": "Mythics Total [ 50/300 ]\nSilver Ariplane Frame\nAccount Lvl 73\nCollection Lvl 49\n\nExclusive Items:\n\nSilver Ariplane Frame\nMission Impossible A+B Jacket\nSeason Face 4 & Hair Unlocked\nPlayerunknown's Trenchcoat\nCrew Uniform\nWhite Commander Set\nUrban Walker Pants\nBlue Athletic Short\nC8S24 Conqueror\nS28 Ultimate Legend\nC9S27 Ultimate Legend\nPharaoh Backpack\nMadara Uchiha Set\nKill Msg Grenade\nMythic Glider\n4x X Suit Unlocked\n1x Big Material\n\nX-Suits:\n\nPharaoh X-Suit (1-Star)\nAnukhra X-Suit (1-Star)\nPheonixtra X-Suit (1-Star)\nIridescence X-Suit (2-Star)\n\n18x Gunlabs:\n\nM416 Fool Lvl 7\nM416 Crimson Lvl 4\nUmp45 Void Souleater Lvl 4\nS12k Atomic Trigger Lvl 4\nDbs Panthera Prime (Kill Msg)\nScar-L Chow Blaster (Kill Msg)\nS1897 Splendid Assault Lvl 2\nM416 Roaring Immolation Lvl 1\nUzi Savagery Lvl 1\nS1897 Twilight Hunt Lvl 1\nDp-28 Jade Dragon Lvl 1\nAug Wandering Lvl 1\nMk47 Patchmetal Bunny Lvl 1\nTomahawk Godizlla Lvl 1\nNs2000 Rustborn Strider Lvl 1\nCandied Haunter Lvl 1\nVss Winter Patrol Lvl 1\nRebel Roguefox Lvl 1\n\nMythics:\n\nMadara Uchiha Set\nGunslinger Set\nFiend Huntress Set\nArmored Hunter Set\nUnderworld Aristocrat Set\nWhiteout Apex Set\nStrayhound Style Set\nFeral Witchdoctor Set\nRebel Roguefox Set\nSugarspell Curse Set\nSnowpaw Scout Set\nAberrant Surgeon Set\nBelle Tinkerer Set\nMiss Marionette Set\nGodzilla Costume Set\nBurning Godzilla Costume Set"
+    },
+    {
+      "title": "FERRARI CAR CARD GIFT PUBG MOBILE GLOBAL  100% LEGIT  DELIVERY TIME INSTANT",
+      "price": "150",
+      "category": "Car Card",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "",
+      "highest_tier": "",
+      "thumbnail": "/images/uploads/PUBG_MOBILE_Ferrari_collaboratio…_2K_202607152024.jpeg",
+      "gallery": [
+        "/images/uploads/Ferrari_collab_PUBG_Mobile_2026_202607100532.jpeg"
+      ],
+      "description": "Exclusive Ferrari vehicle cards for PUBG Mobile. Instant delivery upon confirmation."
+    },
+    {
+      "title": "PUBG MOBILE UC 660",
+      "price": "10",
+      "category": "UC Top-Up",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "",
+      "highest_tier": "",
+      "thumbnail": "/images/uploads/images (1).jpg",
+      "gallery": [],
+      "description": "660 UC Top-Up package for your account. Fast and secure delivery."
+    },
+    {
+      "title": "Near to 98 Collection Account World Top 100 Account | Most Rarest Inventory every ||",
+      "price": "1920",
+      "category": "Account",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "90",
+      "highest_tier": "max",
+      "thumbnail": "/images/uploads/93a72d4d-d013-448e-92f2-625c2839c645.png",
+      "gallery": [
+        "/images/uploads/2d403752-b658-47d8-abfc-4f148e1005e3.png",
+        "/images/uploads/f7909b77-745b-4442-af5a-77181ef1c1b5.png"
+      ],
+      "description": "* NEAR TO 98 COLLECTION\n* WORLD TOP 100 ACCOUNT\n* WHITE RESORT LOBBY RARE\n* NO 1 SYNERGY RANKING \n* NO 110 POPULARITY RANKING \n* RP A3 NO 2 TITLE MOST RARE\n* 2023 ANNUAL GALLA 100\n* 2023 CYBER WEEK TOP 100\n* 13 XSUITS MAXED OUT\n* 8 MASTERPIECE \n* 150 GUNS MAX\n*  Message for Video"
+    },
+    {
+      "title": "X ULTIMATES 👑 ANUKHARA X-SUIT (⭐⭐⭐) ❄️ M416 ROARING IMMOLATION MAXX + UMP ANIVERSARRY COMBO (2x LOOT CRATE) 🏎️ LOTUS EMIRA SPORTS",
+      "price": "3500",
+      "category": "Account",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "79",
+      "highest_tier": "max",
+      "thumbnail": "/images/uploads/b67d0f1b-3e14-4040-bd44-30385961a240.png",
+      "gallery": [
+        "/images/uploads/b5aeabc0-0e13-4929-bea7-89f243c4466b.png",
+        "/images/uploads/b67d0f1b-3e14-4040-bd44-30385961a240.png"
+      ],
+      "description": "✔ PLEASE CHECK DETAIL + IMGS\n\n💥 MESSAGE NOW 💸 PRICE NEGOTIABLE\n\n✨ LOGINS ✨\n\n✉ EMAIL 📥 \n✅ FULL ACCESS   \n\n♻ ALL CHANGEABLE \n\n📥 MAIL \n🌐 SERVER  \n📍 REGION\n\nUID: 5291511216\n\n🎮 ACCOUNT LVL 68\n💥 POPULARITY: 550.19K (LVL 4)\n\n✨ EXCLUSIVES  ✨\n👑 M416 ROARING IMMO MAXX ACC\n👑 ANUKHARA X-SUIT (⭐⭐⭐)\n👑 LOTUS EMIRA DEEP GROVE SPORTS CAR   \n👑 ARCTIC CONQUEROR ULTIMATE SET\n👑 MACABRE VALENTINE ULTIMATE SET\n👑 C8S24 CONQUEROR TITLE ACC\n👑 01X SPORTS CAR IN ACCOUNT\n👑 URBAN WALKER PANT DEMANDING\n👑 04X ULTIMATE SET IN ACCOUNT\n👑 BAY EXCLUSION MYHTIC LOBBY\n👑 DRACONIC AEGIS HELMET (M)\n👑 MR BEAST HOODIE DEMANDING\n👑 GLACIER HELMET DEMANDING\n\n🏎️  SUPER / RARE CARS SKINS\n         - LOTUS EMIRA DEEP GROVE SPORTS CAR   \n\n👗 X-SUIT (1X)\n       - ANUKHARA (⭐⭐⭐)\n\n👑 ULTIMATES  (4X)\n       - ARCTIC CONQUEROR\n       - UNTAMED CELESTIAL\n       - MACABRE VALENTINE\n       - PRISM ASCENDANT\n\n🔥 M416 ROARING IMMOLATION ACC 🥵\n\n🔫 23X GUNLAB SKINS\n🎒 06X MYTHIC BACKPACK\n👗 30X MYTHIC OUTFITS\n💃 32X MYTHIC EMOTES\n💀 10X KILL MESSAGE\n\n💣  GRENADES (5X)\n      - 02X KILL MSGS\n      - 01X LOOT CRATE\n      - ROARING IMMOLATION - KILL MSG\n      - SOULBOUND PRISM - KILL MSG\n      - VOIDSOUL EATER\n      - BURNING GODZILLA\n      - ABSOLUTE ZERO\n     \n🔥 MOLOTOVS  (5X)\n      - 02X KILL MSGS\n      - 01X LOOT CRATE\n     - ROARING IMMOLATION - KILL MSG\n     - SOULBOUND PRISM - KILL MSG\n     - VOIDSOUL EATER\n     - BURNING GODZILLA\n     - FROSTBITE FANG\n\nCOMPANIONS: \n🐈 SPRIT KITTY COMPANION\n🐷 CATHY COMPANION\n\n✨ 23X GUNLAB ✨\n🔫 M416 ROARING IMMOLATION (MAXX)-(KILL MESSAGE) -(GLORIOUS MOMENT)\n🔫 UMP ANNIVERSARY (AUTO MAXX)-(KILL MESSAGE)\n\n🔫 S12K ATOMIC TRIGGER (MAXX) -(KILL MESSAGE) -(HIT EFFECT)\n\n🔫 PP-19 SOILDER SOUL (LVL 4) - KILL MSG\n🔫 SCAR-L SOULBOUND PRISM (LVL 4) - KILL MSG\n\n🔫 SCAR-L CHOW BLASTER (MAXX) - KILL MSG\n\n🔫 S1897 SPLENDID ASSAULT (LVL 2)-TEAM BROADCAST\n\n🔫 AKM CODE BREAKER (LVL 1)\n\nMANY MORE AT LV...1\n\n✨ ROYAL PASS MAXED ✨ A11 TO A18 MAXXX"
+    },
+    {
+      "title": "Buy PUBG Mobile Ferrari Car Cards | Instant Global Delivery",
+      "price": "140",
+      "category": "Car Card",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "",
+      "highest_tier": "max",
+      "thumbnail": "/images/uploads/Add_WhatsApp_number_to_image_202608132140.jpeg",
+      "gallery": [],
+      "description": "Upgrade your PUBG Mobile garage with the exclusive Ferrari car card. Dominate the battleground and drive across Erangel and Livik in unparalleled style with one of the most sought-after vehicle skins in the game.\n\nInstant Global Delivery: Receive your Ferrari card immediately after purchase with zero wait time.\n\n100% Secure & Verified: All asset transfers are protected, guaranteed safe, and seamlessly delivered.\n\nGlobal Server Compatible: Fully works on all global PUBG Mobile accounts without regional restrictions.\n\nPremium Aesthetics: Stand out in the lobby, maximize your popularity score, and ride in luxury."
+    },
+    {
+      "title": "Buy PUBG Mobile Ferrari Car Cards | Instant Global Delivery",
+      "price": "160",
+      "category": "Car Card",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "max",
+      "highest_tier": "",
+      "thumbnail": "/images/uploads/Adding_WhatsApp_number_to_image_202608132140.jpeg",
+      "gallery": [],
+      "description": "Premium Aesthetics: Stand out in the lobby, maximize your popularity score, and ride in luxury.\n\nDon't miss your chance to own a piece of high-end in-game luxury. Acquire your PUBG Mobile Ferrari skin today and elevate your gameplay experience."
+    },
+    {
+      "title": "PUBG Mobile Account Lv74 | 55 Mythic Skins | 19 Gun Lab | M416 Tidal Lvl 5 | AKM Munchkin Lvl 5 | Scar-L Drop the Bass Lvl 5",
+      "price": "130",
+      "category": "Account",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "74",
+      "highest_tier": "conquerer",
+      "thumbnail": "/images/uploads/b9c32832-b222-4d2d-8044-128b03df9f44 (1).jpg",
+      "gallery": [
+        "/images/uploads/f75ab0ba-a4b8-4eeb-a1f5-8dbd7a73fd89.jpg",
+        "/images/uploads/4e373354-a6d3-40e5-8920-7f397e7663cc.jpg",
+        "/images/uploads/ce8e0c2d-6158-4b6e-8171-e2d5e06b609c.jpg"
+      ],
+      "description": "🏆 Account Highlights:\n• Level 74 – High-tier, well-progressed account\n• 55 Mythic Items 🔥 (Rare fashion collection)\n• 19 Gun Lab Weapons 🔫\n• 615 Character Vouchers\n\n💎 Premium Mythic Sets:\n• Golden Splendor Set ✨\n• Masked Wasp Set 🐝\n• Violet Halo Set 💜\n• Season 5 Hair + Pony 💇‍♀️\n• Additional exclusive mythic outfits included\n\n🔥 Upgraded Gun Skins:\n• M416 – The Tidal Level 5 \n• AKM – Munchkin Level 5 \n• SCAR-L – Drop The Bass Level 5 \n• UMP – Platinum Ripper Level 4\n• P90 – The Golden Level 3\n• DP-28 – Data Kitten Level 1\n• Multiple additional upgraded weapons Lv1\n\n🚗 Vehicles & Extras:\n• Premium vehicle skins 🚘\n• OP inventory with high-value cosmetics\n• Extra mythics, backpacks & helmets 🎒\n• 10 Engine Cores ⚙️\n\n🔐 Account Security:\n• Clean account – no bans, no issues\n• Secure ownership\n• Ready for instant, smooth transfer"
+    },
+    {
+      "title": "The Fool - M416 Lv. 7 , Blood Tooth - Vector Lv. 1, Candy Cane - Thompson SMG Lv.1, Operation Tomorrow - SCAR-L Lv.4, 8-bit Unicorn - M762 Lv.1, Twilight Hunt - S1897 Lv.1, Blazing Chameleon - PP-19 Bizon Lv.1, Mauve Avenger - AWM Lv.4, Pharaoh's Might - M24 Lv.4, Ethereal Emblem - UZI Lv.4, Winter Queen M249 Iv4 , Icicle - Mini14 Lv.1 , Stray Rebellion - M762 Lv. , 8-Bit Blast - UMP45 Lv.2, Golden Cipher - Skorpion Lv.1 , Circus of Screams - Crossbow Lv.1 , Chicken Hot - Pan Lv.3 , Panthera Prime - DBS Lv.1, Shinobi Kami - M416 Lv.6, Spirit Sentry - UZI Lv.1, + More Guns And skins | Global Account | Pubg Mobile | Pubg Account | 2019",
+      "price": "900",
+      "category": "Account",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "91",
+      "highest_tier": "conquerer",
+      "thumbnail": "/images/uploads/1ea92f11-a4b5-442b-be34-70ee87a3f99c.jpg",
+      "gallery": [
+        "/images/uploads/8a892100-c7da-4eb5-ab08-bae3ef01c768.jpg",
+        "/images/uploads/46d389a8-1a22-45bf-8951-2d3a273aa063.jpg",
+        "/images/uploads/7c335f5c-1857-45f1-9b14-2ec81b4a1c98.jpg"
+      ],
+      "description": "The Fool - M416 (Lv. 7)\n\nBlood Tooth - Vector (Lv. 1)\n\nCandy Cane - Thompson SMG (Lv. 1)\n\nOperation Tomorrow - SCAR-L (Lv. 4)\n\n8-bit Unicorn - M762 (Lv. 1)\n\nTwilight Hunt - S1897 (Lv.1)\n\nBlazing Chameleon - PP-19 Bizon (Lv. 1)\n\nMauve Avenger - AWM (Lv. 4)\n\nPharaoh's Might - M24 (Lv. 4)\n\nEthereal Emblem - UZI (Lv. 4)\n\nWinter Queen M249 IV4\n\nIcicle - Mini14 (Lv. 1)\n\nStray Rebellion - M762 (Lv. 1\n\n8-Bit Blast - UMP45 (Lv. 2)\n\nGolden Cipher - Skorpion (Lv. 1)\n\nCircus of Screams - Crossbow (Lv. 1)\n\nChicken Hot - Pan (Lv. 3)\n\nPanthera Prime - DBS (Lv. 1)\n\nShinobi Kami - M416 (Lv. 6)\n\nSpirit Sentry - UZI (Lv. 1)"
+    },
+    {
+      "title": "🌸PUBG Mobile UC 162000 UC 💎 ONLY NEED UID 🌸 INSTANT🌸",
+      "price": "1500",
+      "category": "UC Top-Up",
+      "tag": "GLOBAL",
+      "badge": "INSTANT",
+      "account_level": "max",
+      "highest_tier": "",
+      "thumbnail": "/images/uploads/PUBG_mobile_UC_advertisement_2K_202608140836.jpeg",
+      "gallery": [],
+      "description": "Purchase PUBG Mobile UC ~ Instant & Safe \n✅ Advantages: -No login details required \n-(Player ID) required only \n-All in-game gems/currency are 100% authentic \n✅ Important Information: \n● (Only Player ID) required for PUBG Mobile UC top-up. \n● Please send your (Player ID) correctly to avoid delay on receiving your UC. \n● This service is not available for Japanese / Korean / Taiwan / Vietnam servers. --------------------------- \n✅ How to find PUBG M Player ID:\n Use your account to log into the game Click your avatar on the top-right corner Your PUBG M Player ID will be displayed"
+    }
+  ]
+}
