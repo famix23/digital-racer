@@ -2,121 +2,100 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Digital Racer | Item Details</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Racer | Product</title>
     <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f0f13; color: #ffffff; padding-bottom: 90px; } /* 90px padding ensures description isn't hidden behind the sticky bar */
-        a { text-decoration: none; color: inherit; }
-
-        /* Top Nav */
-        .top-bar { position: absolute; top: 15px; left: 15px; z-index: 10; display: flex; gap: 10px; width: 100%; }
-        .back-btn { width: 36px; height: 36px; border-radius: 50%; background-color: rgba(0,0,0,0.6); display: flex; justify-content: center; align-items: center; color: white; backdrop-filter: blur(5px); }
-
-        /* Media */
-        .product-image { width: 100%; height: 350px; object-fit: cover; border-bottom: 1px solid #2a2a35; }
-
-        /* Content Area */
-        .content-area { padding: 20px; }
+        body { margin: 0; font-family: sans-serif; background-color: #121212; color: #ffffff; }
+        header { padding: 20px; border-bottom: 1px solid #2a2a2a; }
+        .logo { font-size: 20px; font-weight: 900; letter-spacing: 3px; text-decoration: none; color: white; text-transform: uppercase; }
+        .logo span { color: #ffcc00; }
         
-        .badges { display: flex; gap: 8px; margin-bottom: 12px; flex-wrap: wrap; }
-        .badge { background-color: #2a2a35; color: #f3c200; padding: 4px 10px; border-radius: 4px; font-size: 11px; font-weight: 700; text-transform: uppercase; display: flex; align-items: center; gap: 4px; }
-
-        /* FIXED TYPOGRAPHY */
-        .product-title { 
-            font-size: 18px !important; 
-            line-height: 1.4 !important; 
-            font-weight: 600 !important; 
-            text-transform: none !important; /* Disables forced all-caps */
-            color: #ffffff; 
-            margin: 0 0 12px 0; 
-        }
+        .search-bar { display: flex; margin: 20px; background: #1e1e1e; border-radius: 4px; overflow: hidden; border: 1px solid #2a2a2a; }
+        .search-bar input { flex: 1; background: transparent; border: none; padding: 15px; color: white; outline: none; }
+        .search-bar button { background: transparent; border: none; color: #ffcc00; font-weight: bold; padding: 0 20px; cursor: pointer; text-transform: uppercase; }
         
-        .product-price { font-size: 24px; font-weight: 700; color: #f3c200; margin: 0 0 20px 0; }
-
-        /* Seller Card */
-        .seller-card { background-color: #1a1a1f; border-radius: 12px; padding: 15px; display: flex; align-items: center; justify-content: space-between; margin-bottom: 25px; border: 1px solid #2a2a35; }
-        .seller-left { display: flex; align-items: center; gap: 12px; }
-        .seller-avatar { width: 45px; height: 45px; border-radius: 50%; background-color: #ffffff; display: flex; justify-content: center; align-items: center; color: #000; font-weight: bold; font-size: 20px; }
-        .seller-info h3 { margin: 0 0 4px 0; font-size: 15px; display: flex; align-items: center; gap: 5px; }
-        .seller-info .status { margin: 0; font-size: 12px; color: #888; display: flex; align-items: center; gap: 4px; }
-        .status-dot { width: 8px; height: 8px; background-color: #f3c200; border-radius: 50%; }
-        .rating { color: #f3c200; font-size: 14px; font-weight: bold; display: flex; align-items: center; gap: 4px; }
-
-        /* Description */
-        .section-title { font-size: 14px; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 10px; font-weight: 600; }
-        .description-text { font-size: 14px; line-height: 1.6; color: #cccccc; white-space: pre-wrap; background-color: #1a1a1f; padding: 15px; border-radius: 12px; border: 1px solid #2a2a35; }
-
-        /* STICKY BOTTOM BAR */
-        .action-bar { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #1a1a1f; padding: 15px 20px; border-top: 1px solid #2a2a35; box-shadow: 0 -5px 20px rgba(0,0,0,0.5); z-index: 1000; display: flex; justify-content: center; }
-        .btn-buy { width: 100%; max-width: 500px; padding: 16px; font-size: 16px; font-weight: 700; border-radius: 8px; background-color: #a855f7; /* ZeusX style purple */ color: #ffffff; text-align: center; border: none; cursor: pointer; transition: background 0.2s; }
-        .btn-buy:active { background-color: #9333ea; }
+        .nav { margin: 0 20px 20px 20px; display: flex; gap: 20px; }
+        .nav a { color: #888; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; font-weight: bold; }
+        
+        .product-container { padding: 20px; }
+        .breadcrumb { color: #555; font-size: 12px; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 2px; font-weight: bold; }
+        
+        .badges { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; align-items: flex-start; }
+        .badge { border: 1px solid #ffcc00; color: #ffcc00; padding: 10px 15px; font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; display: inline-block; }
+        
+        /* FIXED: Scaled down from 26px so long PUBG titles don't cover the screen */
+        .product-title { font-size: 18px; font-weight: bold; text-transform: uppercase; margin: 0 0 15px 0; line-height: 1.4; word-wrap: break-word; }
+        
+        .product-price { font-size: 24px; font-weight: bold; color: #ffcc00; margin-bottom: 25px; }
+        
+        .product-image { width: 100%; height: auto; max-height: 400px; object-fit: cover; margin-bottom: 20px; background: #1e1e1e; border: 1px solid #2a2a2a; }
+        
+        .description-card { background: #1e1e1e; padding: 20px; border: 1px solid #2a2a2a; margin-bottom: 30px; line-height: 1.6; white-space: pre-wrap; font-size: 15px; }
+        
+        .btn-buy { display: block; width: 100%; padding: 20px; text-align: center; background-color: #ffffff; color: #000000; font-weight: bold; font-size: 16px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; box-sizing: border-box; margin-bottom: 40px; }
     </style>
 </head>
 <body>
-
-    <div id="product-container">
-        <!-- Content injected via JS -->
+    <header>
+        <a href="index.html" class="logo">DIGITAL<span>.</span>RACER</a>
+    </header>
+    
+    <div class="search-bar">
+        <input type="text" placeholder="Search products, skins, UC...">
+        <button>SEARCH</button>
+    </div>
+    
+    <div class="nav">
+        <a href="catalog.html">CATALOG</a>
+        <a href="index.html">HOME</a>
+    </div>
+    
+    <div id="product-content">
+        <!-- Content injected via JavaScript -->
     </div>
 
     <script>
         async function loadProduct() {
-            const urlParams = new URLSearchParams(window.location.search);
-            const productId = urlParams.get('id');
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
             
             try {
-                const response = await fetch('inventory.json');
-                const products = await response.json();
-                const product = products[productId];
+                const res = await fetch('inventory.json');
+                const products = await res.json();
+                const product = products[id];
 
                 if (!product) {
-                    document.getElementById('product-container').innerHTML = "<p style='padding:20px'>Product not found.</p>";
+                    document.getElementById('product-content').innerHTML = "<p style='padding:20px'>Product not found.</p>";
                     return;
                 }
 
-                // WhatsApp Formatting
-                const businessNumber = "920000000000"; // REPLACE WITH YOUR ACTUAL NUMBER
-                const message = `Hello Digital Racer! I want to buy:\n\n*${product.title}*\n*Price:* $${product.price}\n\nIs this available?`;
-                const whatsappUrl = `https://wa.me/${businessNumber}?text=${encodeURIComponent(message)}`;
+                const businessNumber = "920000000000"; 
+                const msg = `Hello Digital Racer! I want to buy:\n\n*${product.title}*\n*Price:* $${product.price}`;
+                const waUrl = `https://wa.me/${businessNumber}?text=${encodeURIComponent(msg)}`;
 
-                document.getElementById('product-container').innerHTML = `
-                    <div class="top-bar">
-                        <a href="catalog.html" class="back-btn"><i class="fas fa-arrow-left"></i></a>
-                    </div>
-                    
-                    <img class="product-image" src="${product.image}" alt="Item">
-                    
-                    <div class="content-area">
+                document.getElementById('product-content').innerHTML = `
+                    <div class="product-container">
+                        <div class="breadcrumb">HOME / ACCOUNT</div>
+                        
                         <div class="badges">
-                            <span class="badge"><i class="fas fa-bolt"></i> CHECK DESCRIPTION</span>
-                            <span class="badge"><i class="fas fa-check-circle"></i> VERIFIED</span>
+                            <div class="badge">◆ INSTANT DELIVERY</div>
+                            <div class="badge">✔ VERIFIED ACCOUNT</div>
                         </div>
                         
                         <h1 class="product-title">${product.title}</h1>
                         <p class="product-price">$${product.price}</p>
                         
-                        <div class="seller-card">
-                            <div class="seller-left">
-                                <div class="seller-avatar">D</div>
-                                <div class="seller-info">
-                                    <h3>Digital Racer <i class="fas fa-check-circle" style="color:#3b82f6; font-size:12px;"></i></h3>
-                                    <p class="status"><span class="status-dot"></span> Active Now</p>
-                                </div>
-                            </div>
-                            <div class="rating">5.0 <i class="fas fa-star"></i></div>
+                        <img src="${product.image}" class="product-image" alt="Product Image">
+                        
+                        <div class="description-card">
+                            ${product.description}
                         </div>
-
-                        <div class="section-title">Item Description</div>
-                        <div class="description-text">${product.description}</div>
-                    </div>
-
-                    <div class="action-bar">
-                        <a href="${whatsappUrl}" class="btn-buy" target="_blank">Buy Now</a>
+                        
+                        <a href="${waUrl}" class="btn-buy" target="_blank">BUY NOW VIA WHATSAPP</a>
                     </div>
                 `;
-            } catch (error) {
-                console.error("Error loading product", error);
+            } catch (e) {
+                console.error("Error loading product:", e);
             }
         }
         
