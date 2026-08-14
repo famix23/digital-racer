@@ -2,80 +2,55 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Digital Racer | Browse</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Racer | Catalog</title>
     <style>
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background-color: #0f0f13; color: #ffffff; padding-bottom: 70px; }
-        a { text-decoration: none; }
+        body { margin: 0; font-family: sans-serif; background-color: #121212; color: #ffffff; }
+        header { padding: 20px; border-bottom: 1px solid #2a2a2a; }
+        .logo { font-size: 20px; font-weight: 900; letter-spacing: 3px; text-decoration: none; color: white; text-transform: uppercase; }
+        .logo span { color: #ffcc00; }
+        .nav { margin: 20px; display: flex; gap: 20px; }
+        .nav a { color: #888; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; font-weight: bold; }
         
-        .header { padding: 15px 20px; background-color: #1a1a1f; border-bottom: 1px solid #2a2a35; text-align: center; position: sticky; top: 0; z-index: 100; }
-        .header h2 { margin: 0; font-size: 18px; font-weight: 600; }
-
-        .product-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; padding: 15px; }
-        
-        .product-card { background-color: #1a1a1f; border-radius: 12px; overflow: hidden; border: 1px solid #2a2a35; display: flex; flex-direction: column; }
-        .product-image { width: 100%; aspect-ratio: 1 / 1; object-fit: cover; background-color: #2a2a35; }
-        .product-info { padding: 12px; display: flex; flex-direction: column; flex-grow: 1; justify-content: space-between; }
-        
-        /* Controlled Typography for Catalog */
-        .product-title { font-size: 13px; font-weight: 500; color: #ffffff; margin: 0 0 8px 0; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; text-transform: none; }
-        .product-price { font-size: 16px; font-weight: 700; color: #f3c200; margin: 0; }
-        
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #1a1a1f; display: flex; justify-content: space-around; padding: 12px 0 15px; border-top: 1px solid #2a2a35; z-index: 1000; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #888888; font-size: 11px; gap: 6px; font-weight: 500; }
-        .nav-item.active { color: #f3c200; }
-        .nav-item i { font-size: 20px; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 15px; padding: 20px; }
+        .card { background: #1e1e1e; border: 1px solid #2a2a2a; text-decoration: none; color: white; display: block; overflow: hidden; }
+        .card img { width: 100%; height: 160px; object-fit: cover; }
+        .card-info { padding: 15px; }
+        .card-title { font-size: 14px; margin: 0 0 10px 0; text-transform: uppercase; line-height: 1.4; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+        .card-price { color: #ffcc00; font-size: 18px; font-weight: bold; margin: 0; }
     </style>
 </head>
 <body>
-
-    <header class="header">
-        <h2>Browse Market</h2>
+    <header>
+        <a href="index.html" class="logo">DIGITAL<span>.</span>RACER</a>
     </header>
-
-    <div class="product-grid" id="catalog-container">
-        <!-- Products injected by JS -->
+    <div class="nav">
+        <a href="catalog.html">CATALOG</a>
+        <a href="index.html">HOME</a>
     </div>
 
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-item">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="catalog.html" class="nav-item active">
-            <i class="fas fa-compass"></i>
-            <span>Browse</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-comment-dots"></i>
-            <span>Message</span>
-        </a>
-    </nav>
+    <div class="grid" id="catalog"></div>
 
     <script>
         async function loadCatalog() {
             try {
-                const response = await fetch('inventory.json');
-                const products = await response.json();
-                const container = document.getElementById('catalog-container');
+                const res = await fetch('inventory.json');
+                const products = await res.json();
+                const container = document.getElementById('catalog');
                 
-                products.forEach((product, index) => {
-                    const card = document.createElement('a');
-                    card.href = `product.html?id=${index}`;
-                    card.className = 'product-card';
-                    card.innerHTML = `
-                        <img class="product-image" src="${product.image}" alt="Item">
-                        <div class="product-info">
-                            <h3 class="product-title">${product.title}</h3>
-                            <p class="product-price">$${product.price}</p>
-                        </div>
+                products.forEach((p, i) => {
+                    container.innerHTML += `
+                        <a href="product.html?id=${i}" class="card">
+                            <img src="${p.image}" alt="Product">
+                            <div class="card-info">
+                                <h3 class="card-title">${p.title}</h3>
+                                <p class="card-price">$${p.price}</p>
+                            </div>
+                        </a>
                     `;
-                    container.appendChild(card);
                 });
-            } catch (error) {
-                console.error("Error loading inventory", error);
+            } catch (e) {
+                console.error("Error loading catalog:", e);
             }
         }
         loadCatalog();
