@@ -1,339 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Digital Racer — Product Details</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-<style>
-:root { --bg: #050505; --surface: #111111; --surface2: #161616; --border: #222222; --text: #ffffff; --muted: #888888; --accent: #d4af37; }
-* { box-sizing: border-box; margin: 0; padding: 0; }
-body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; overflow-x: hidden; }
-h1, h2, h3 { font-family: 'Montserrat', sans-serif; }
-nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5vw; border-bottom: 1px solid var(--border); background: rgba(5, 5, 5, 0.95); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 100; gap: 20px; flex-wrap: wrap; }
-.logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; white-space: nowrap; }
-.logo span { color: var(--accent); }
-.nav-search { display: flex; align-items: center; background: var(--surface2); border: 1px solid var(--border); border-radius: 4px; padding: 6px 12px; width: 300px; max-width: 100%; transition: border-color 0.2s; }
-.nav-search:focus-within { border-color: var(--accent); }
-.nav-search input { background: transparent; border: none; outline: none; color: var(--text); font-size: 0.85rem; width: 100%; font-family: 'Open Sans', sans-serif; }
-.nav-search button { background: transparent; border: none; color: var(--accent); cursor: pointer; font-size: 0.85rem; font-weight: 700; text-transform: uppercase; margin-left: 8px; }
-.nav-links { display: flex; gap: 20px; align-items: center; }
-.nav-link { color: var(--muted); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; transition: color 0.2s; white-space: nowrap; }
-.nav-link:hover { color: var(--accent); }
-
-.main-wrapper { max-width: 1200px; margin: 30px auto; padding: 0 5vw; }
-.product-header-section { margin-bottom: 20px; }
-.breadcrumb { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: 15px; }
-.breadcrumb a { color: var(--muted); text-decoration: none; }
-.breadcrumb a:hover { color: var(--accent); }
-
-.trust-badges-row { display: flex; gap: 15px; margin-bottom: 15px; flex-wrap: wrap; }
-.trust-badge { display: inline-flex; align-items: center; gap: 6px; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--accent); font-weight: 700; background: rgba(212, 175, 55, 0.08); padding: 6px 12px; border-radius: 4px; border: 1px solid rgba(212, 175, 55, 0.2); }
-.trust-badge svg { width: 14px; height: 14px; fill: currentColor; }
-
-.main-title { font-size: clamp(1.4rem, 2.2vw, 2rem); font-weight: 900; text-transform: uppercase; line-height: 1.25; color: var(--text); word-break: break-word; margin-bottom: 20px; }
-.product-grid-layout { display: grid; grid-template-columns: 1.6fr 1fr; gap: 30px; align-items: start; }
-.left-column { display: flex; flex-direction: column; gap: 20px; }
-
-/* Image Gallery Styles */
-.image-box { position: relative; width: 100%; aspect-ratio: 16/10; background: var(--surface2); border: 1px solid var(--border); border-radius: 8px; overflow: hidden; display: flex; align-items: center; justify-content: center; }
-.image-box img { width: 100%; height: 100%; object-fit: contain; display: block; cursor: zoom-in; transition: transform 0.3s ease; }
-.image-box img:hover { transform: scale(1.02); }
-.main-nav-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(5, 5, 5, 0.7); border: 1px solid var(--border); backdrop-filter: blur(4px); color: #fff; font-size: 1.2rem; padding: 12px 16px; cursor: pointer; border-radius: 4px; user-select: none; transition: all 0.2s ease; z-index: 10; display: none; }
-.main-nav-btn:hover { background: var(--accent); color: #000; border-color: var(--accent); }
-.main-prev { left: 15px; }
-.main-next { right: 15px; }
-
-.gallery-wrap { display: flex; gap: 12px; margin-top: -5px; overflow-x: auto; padding-bottom: 5px; }
-.gallery-wrap::-webkit-scrollbar { height: 6px; }
-.gallery-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
-.gal-thumb { width: 80px; height: 60px; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.5; transition: all 0.2s ease; object-fit: cover; background: var(--surface2); flex-shrink: 0; }
-.gal-thumb:hover, .gal-thumb.active { opacity: 1; border-color: var(--accent); }
-
-/* Lightbox Modal Styles */
-.lightbox { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.95); z-index: 9999; display: none; justify-content: center; align-items: center; opacity: 0; transition: opacity 0.3s ease; backdrop-filter: blur(8px); }
-.lightbox.show { display: flex; opacity: 1; }
-.lightbox img { max-width: 90%; max-height: 90vh; object-fit: contain; border-radius: 6px; box-shadow: 0 10px 40px rgba(0,0,0,0.8); cursor: zoom-out; user-select: none; }
-.lightbox-close { position: absolute; top: 25px; right: 40px; color: #fff; font-size: 2.5rem; cursor: pointer; font-weight: bold; transition: color 0.2s; user-select: none; z-index: 10001; }
-.lightbox-close:hover { color: var(--accent); }
-.lightbox-prev, .lightbox-next { position: absolute; top: 50%; transform: translateY(-50%); color: #fff; font-size: 3rem; cursor: pointer; user-select: none; padding: 20px; transition: color 0.2s; z-index: 10000; display: none; }
-.lightbox-prev { left: 20px; }
-.lightbox-next { right: 20px; }
-.lightbox-prev:hover, .lightbox-next:hover { color: var(--accent); }
-
-.desc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 25px; }
-.desc-title { font-size: 0.85rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 15px; color: var(--accent); display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-.desc-content { font-size: 0.9rem; color: var(--muted); line-height: 1.7; word-break: break-word; }
-.desc-content ul { padding-left: 20px; margin-top: 10px; }
-.desc-content li { margin-bottom: 8px; }
-
-.buy-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 25px; display: flex; flex-direction: column; gap: 20px; position: sticky; top: 90px; }
-.buy-price-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1.5px; }
-.buy-price { font-size: 2.2rem; font-weight: 900; color: var(--accent); font-family: 'Montserrat', sans-serif; margin-top: 4px; }
-.specs-mini-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 20px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 15px 0; }
-.mini-spec span:first-child { display: block; font-size: 0.65rem; color: var(--muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; }
-.mini-spec span:last-child { font-size: 0.9rem; font-weight: 600; font-family: 'Montserrat', sans-serif; }
-.whatsapp-btn { display: flex; align-items: center; justify-content: center; gap: 10px; background: var(--accent); color: #000; padding: 16px 20px; font-family: 'Montserrat', sans-serif; font-weight: 800; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; font-size: 0.9rem; border-radius: 6px; transition: all 0.2s ease; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2); }
-.whatsapp-btn:hover { background: #fff; transform: translateY(-2px); }
-.guarantee-box { background: var(--surface2); border: 1px solid var(--border); border-radius: 6px; padding: 14px; font-size: 0.8rem; color: var(--muted); line-height: 1.5; display: flex; gap: 10px; align-items: flex-start; }
-.guarantee-box span { color: var(--accent); font-weight: 700; }
-
-.related-section { max-width: 1200px; margin: 50px auto 0; padding: 0 5vw; }
-.related-title { font-size: 1.1rem; font-weight: 800; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 20px; border-bottom: 1px solid var(--border); padding-bottom: 10px; }
-.related-title span { color: var(--accent); }
-.related-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 20px; }
-.rel-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: border-color 0.2s; }
-.rel-card:hover { border-color: var(--accent); }
-.rel-img { width: 100%; aspect-ratio: 4/3; object-fit: cover; background: var(--surface2); }
-.rel-content { padding: 15px; }
-.rel-title { font-size: 0.85rem; font-weight: 700; margin-bottom: 6px; display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
-.rel-price { color: var(--accent); font-weight: 800; font-family: 'Montserrat', sans-serif; font-size: 1rem; }
-footer { background: var(--surface); border-top: 1px solid var(--border); padding: 30px 5vw; text-align: center; color: var(--muted); font-size: 0.85rem; margin-top: 60px; }
-
-@media(max-width: 900px) { .product-grid-layout { grid-template-columns: 1fr; } nav { flex-direction: column; align-items: stretch; } .nav-search { width: 100%; } }
-@media(max-width: 768px) { .lightbox-prev, .lightbox-next { font-size: 2rem; padding: 10px; } .lightbox-prev { left: 5px; } .lightbox-next { right: 5px; } .main-nav-btn { font-size: 1rem; padding: 8px 12px; } }
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Racer | Product</title>
+    <style>
+        body { margin: 0; font-family: sans-serif; background-color: #121212; color: #ffffff; }
+        header { padding: 20px; border-bottom: 1px solid #2a2a2a; }
+        .logo { font-size: 20px; font-weight: 900; letter-spacing: 3px; text-decoration: none; color: white; text-transform: uppercase; }
+        .logo span { color: #ffcc00; }
+        
+        .search-bar { display: flex; margin: 20px; background: #1e1e1e; border-radius: 4px; overflow: hidden; border: 1px solid #2a2a2a; }
+        .search-bar input { flex: 1; background: transparent; border: none; padding: 15px; color: white; outline: none; }
+        .search-bar button { background: transparent; border: none; color: #ffcc00; font-weight: bold; padding: 0 20px; cursor: pointer; text-transform: uppercase; }
+        
+        .nav { margin: 0 20px 20px 20px; display: flex; gap: 20px; }
+        .nav a { color: #888; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; font-weight: bold; }
+        
+        .product-container { padding: 20px; }
+        .breadcrumb { color: #555; font-size: 12px; text-transform: uppercase; margin-bottom: 20px; letter-spacing: 2px; font-weight: bold; }
+        
+        .badges { display: flex; flex-direction: column; gap: 12px; margin-bottom: 25px; align-items: flex-start; }
+        .badge { border: 1px solid #ffcc00; color: #ffcc00; padding: 10px 15px; font-size: 12px; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; display: inline-block; }
+        
+        /* FIXED MOBILE FONT: Scaled down to 18px so titles fit on screen neatly */
+        .product-title { font-size: 18px; font-weight: bold; text-transform: uppercase; margin: 0 0 15px 0; line-height: 1.4; word-wrap: break-word; }
+        
+        .product-price { font-size: 24px; font-weight: bold; color: #ffcc00; margin-bottom: 25px; }
+        
+        .product-image { width: 100%; height: auto; max-height: 400px; object-fit: cover; margin-bottom: 20px; background: #1e1e1e; border: 1px solid #2a2a2a; }
+        
+        .description-card { background: #1e1e1e; padding: 20px; border: 1px solid #2a2a2a; margin-bottom: 30px; line-height: 1.6; white-space: pre-wrap; font-size: 15px; }
+        
+        .btn-buy { display: block; width: 100%; padding: 20px; text-align: center; background-color: #ffffff; color: #000000; font-weight: bold; font-size: 16px; text-transform: uppercase; text-decoration: none; border: none; cursor: pointer; box-sizing: border-box; margin-bottom: 40px; }
+    </style>
 </head>
 <body>
-
-<nav>
-  <a href="index.html" class="logo">Digital<span>.</span>Racer</a>
-  <div class="nav-search">
-    <input type="text" id="search-input" placeholder="Search products, skins, UC...">
-    <button id="search-btn">Search</button>
-  </div>
-  <div class="nav-links">
-    <a href="catalog.html" class="nav-link">Catalog</a>
-    <a href="index.html" class="nav-link">Home</a>
-  </div>
-</nav>
-
-<div class="main-wrapper">
-  <div class="product-header-section">
-    <div class="breadcrumb"><a href="index.html">Home</a> / <a href="catalog.html" id="bread-cat">Catalog</a></div>
+    <header>
+        <a href="index.html" class="logo">DIGITAL<span>.</span>RACER</a>
+    </header>
     
-    <div class="trust-badges-row">
-      <div class="trust-badge">
-        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
-        Instant Delivery
-      </div>
-      <div class="trust-badge">
-        <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
-        Verified Account
-      </div>
-    </div>
-
-    <h1 class="main-title" id="prod-title">Product Loading...</h1>
-  </div>
-  <div class="product-grid-layout">
-    <div class="left-column">
-      
-      <div class="image-box" id="prod-img-container">
-        <div class="main-nav-btn main-prev" id="main-prev" onclick="event.stopPropagation(); navigateMainGallery(-1)">&#10094;</div>
-        <img src="" alt="" id="main-display-img" data-index="0" onclick="openLightbox(this.getAttribute('data-index'))" style="display: none;">
-        <div class="main-nav-btn main-next" id="main-next" onclick="event.stopPropagation(); navigateMainGallery(1)">&#10095;</div>
-      </div>
-      
-      <div id="gallery-container" class="gallery-wrap"></div>
-      
-      <!-- Description Card Always Displays Now -->
-      <div class="desc-card" id="desc-card-wrapper">
-        <div class="desc-title">Description</div>
-        <div class="desc-content" id="prod-desc"></div>
-      </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search products, skins, UC...">
+        <button>SEARCH</button>
     </div>
     
-    <div class="right-column">
-      <div class="buy-card">
-        <div><div class="buy-price-label">Total Price</div><div class="buy-price" id="prod-price">...</div></div>
-        <div class="specs-mini-grid" id="specs-grid">
-          <div class="mini-spec"><span>Region Tag</span><span id="prod-tag">-</span></div>
-          <div class="mini-spec"><span>Delivery</span><span style="color: var(--accent);">Instant</span></div>
-        </div>
-        <a href="#" class="whatsapp-btn" id="buy-btn">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Buy Now
-        </a>
-        <div class="guarantee-box"><div><span>SECURE GUARANTEE:</span> All transactions and asset transfers are verified and protected for smooth delivery.</div></div>
-      </div>
+    <div class="nav">
+        <a href="catalog.html">CATALOG</a>
+        <a href="index.html">HOME</a>
     </div>
-  </div>
-</div>
-<div class="related-section">
-  <div class="related-title">More <span>Products</span> Available</div>
-  <div class="related-grid" id="related-grid"><p style="color: var(--muted);">Loading related products...</p></div>
-</div>
+    
+    <div id="product-content">
+        <!-- Content injected via JavaScript -->
+    </div>
 
-<footer><p>© 2026 Digital Racer. All rights reserved.</p></footer>
-
-<div class="lightbox" id="lightbox" onclick="closeLightbox()">
-  <span class="lightbox-close">&times;</span>
-  <div class="lightbox-prev" id="lb-prev" onclick="event.stopPropagation(); prevLightboxImage();">&#10094;</div>
-  <img src="" id="lightbox-img" onclick="event.stopPropagation();">
-  <div class="lightbox-next" id="lb-next" onclick="event.stopPropagation(); nextLightboxImage();">&#10095;</div>
-</div>
-
-<script>
-  const urlParams = new URLSearchParams(window.location.search); const itemName = urlParams.get('item');
-  function handleSearch() { const query = document.getElementById('search-input').value.trim(); if (query) window.location.href = `catalog.html?search=${encodeURIComponent(query)}`; }
-  document.getElementById('search-btn').addEventListener('click', handleSearch);
-  document.getElementById('search-input').addEventListener('keypress', (e) => { if (e.key === 'Enter') handleSearch(); });
-
-  function formatImagePath(rawPath) {
-    if (!rawPath) return "";
-    let cleanPath = rawPath.trim();
-    if (cleanPath.startsWith('http') || cleanPath.startsWith('/')) return cleanPath;
-    return '/' + cleanPath;
-  }
-
-  function parseDescription(text) {
-    if (!text) return "";
-    const lines = text.split('\n');
-    let html = ''; let inList = false;
-    lines.forEach(line => {
-      let trimmed = line.trim();
-      if (trimmed.startsWith('-')) {
-        if (!inList) { html += '<ul>'; inList = true; }
-        html += `<li>${trimmed.substring(1).trim()}</li>`;
-      } else {
-        if (inList) { html += '</ul>'; inList = false; }
-        if (trimmed !== "") html += `<p>${trimmed}</p>`;
-      }
-    });
-    if (inList) html += '</ul>';
-    return html;
-  }
-
-  window.galleryImages = []; window.currentMainIndex = 0; window.currentLightBoxIndex = 0;
-
-  window.changeMainImage = function(index) { window.currentMainIndex = parseInt(index); updateMainGalleryUI(); }
-  window.navigateMainGallery = function(direction) { if (window.galleryImages.length <= 1) return; window.currentMainIndex = (window.currentMainIndex + direction + window.galleryImages.length) % window.galleryImages.length; updateMainGalleryUI(); }
-  window.updateMainGalleryUI = function() {
-    const imgEl = document.getElementById('main-display-img');
-    imgEl.src = window.galleryImages[window.currentMainIndex];
-    imgEl.setAttribute('data-index', window.currentMainIndex);
-    document.querySelectorAll('.gal-thumb').forEach((el, idx) => { if (idx === window.currentMainIndex) el.classList.add('active'); else el.classList.remove('active'); });
-  }
-  
-  window.openLightbox = function(index) { if (window.galleryImages.length === 0) return; window.currentLightBoxIndex = parseInt(index); updateLightboxUI(); document.getElementById('lightbox').classList.add('show'); }
-  window.updateLightboxUI = function() {
-    document.getElementById('lightbox-img').src = window.galleryImages[window.currentLightBoxIndex];
-    if (window.galleryImages.length > 1) { document.getElementById('lb-prev').style.display = 'block'; document.getElementById('lb-next').style.display = 'block'; } 
-    else { document.getElementById('lb-prev').style.display = 'none'; document.getElementById('lb-next').style.display = 'none'; }
-  }
-  window.closeLightbox = function() { document.getElementById('lightbox').classList.remove('show'); }
-  window.prevLightboxImage = function() { window.currentLightBoxIndex = (window.currentLightBoxIndex - 1 + window.galleryImages.length) % window.galleryImages.length; updateLightboxUI(); }
-  window.nextLightboxImage = function() { window.currentLightBoxIndex = (window.currentLightBoxIndex + 1) % window.galleryImages.length; updateLightboxUI(); }
-
-  document.addEventListener('keydown', (e) => {
-    const lightbox = document.getElementById('lightbox');
-    if (lightbox.classList.contains('show') && window.galleryImages.length > 1) {
-      if (e.key === 'ArrowLeft') window.prevLightboxImage();
-      if (e.key === 'ArrowRight') window.nextLightboxImage();
-      if (e.key === 'Escape') window.closeLightbox();
-    }
-  });
-
-  let touchstartX = 0; let touchendX = 0;
-  const lightboxEl = document.getElementById('lightbox');
-  lightboxEl.addEventListener('touchstart', e => { touchstartX = e.changedTouches[0].screenX; }, {passive: true});
-  lightboxEl.addEventListener('touchend', e => {
-    touchendX = e.changedTouches[0].screenX;
-    if (window.galleryImages.length > 1) { if (touchendX < touchstartX - 40) window.nextLightboxImage(); if (touchendX > touchstartX + 40) window.prevLightboxImage(); }
-  }, {passive: true});
-
-  if (!itemName) document.getElementById('prod-title').innerText = "Product Not Found";
-  else {
-    fetch('/inventory.json')
-      .then(async response => {
-        if (!response.ok) throw new Error(`File Not Found.`);
-        const text = await response.text();
-        try { return JSON.parse(text); } catch (e) { throw new Error(`Format error.`); }
-      })
-      .then(data => {
-        const products = Array.isArray(data) ? data : (data.items || data.products || data.inventory || []);
-        const product = products.find(p => p.title === itemName);
-        if (product) {
-          document.title = `${product.title} — Digital Racer`;
-          document.getElementById('prod-title').innerText = product.title;
-          document.getElementById('bread-cat').innerText = product.category || 'Product';
-          document.getElementById('bread-cat').href = `catalog.html?category=${encodeURIComponent(product.category || '')}`;
-          document.getElementById('prod-price').innerText = `$${product.price} USD`;
-          document.getElementById('prod-tag').innerText = product.tag || 'GLOBAL';
-
-          const specsGrid = document.getElementById('specs-grid');
-          if (product.account_level) { specsGrid.innerHTML += `<div class="mini-spec"><span>Account Level</span><span>${product.account_level}</span></div>`; }
-          if (product.highest_tier) { specsGrid.innerHTML += `<div class="mini-spec"><span>Highest Tier</span><span>${product.highest_tier}</span></div>`; }
-          
-          const descText = product.description || product.desc || product.body || product.details || product.content || product.text || "";
-          
-          // Automated Mandatory WhatsApp Line
-          const mandatoryLine = `<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>`;
-          
-          if (descText && descText.trim() !== "") { 
-            document.getElementById('prod-desc').innerHTML = mandatoryLine + parseDescription(descText); 
-          } else { 
-            document.getElementById('prod-desc').innerHTML = mandatoryLine; 
-          }
-
-          let currentImages = [];
-          const mainImg = formatImagePath(product.thumbnail || product.image || product.img || product.photo || product.picture || "");
-          if (mainImg && mainImg.trim() !== "/") currentImages.push(mainImg);
-          
-          if (product.gallery && Array.isArray(product.gallery)) {
-            product.gallery.forEach(img => {
-              const fImg = formatImagePath(img);
-              if (fImg && fImg.trim() !== "/" && fImg.trim() !== "") currentImages.push(fImg);
-            });
-          }
-          
-          window.galleryImages = currentImages;
-          const galContainer = document.getElementById('gallery-container');
-          const mainImgEl = document.getElementById('main-display-img');
-          const mainPrevBtn = document.getElementById('main-prev');
-          const mainNextBtn = document.getElementById('main-next');
-
-          if (currentImages.length > 0) {
-            mainImgEl.src = currentImages[0];
-            mainImgEl.alt = product.title;
-            mainImgEl.style.display = 'block';
+    <script>
+        async function loadProduct() {
+            const params = new URLSearchParams(window.location.search);
+            const id = params.get('id');
             
-            if (currentImages.length > 1) {
-              mainPrevBtn.style.display = 'block';
-              mainNextBtn.style.display = 'block';
-              galContainer.innerHTML = currentImages.map((img, index) => {
-                return `<img src="${img}" class="gal-thumb ${index === 0 ? 'active' : ''}" onclick="changeMainImage(${index})">`;
-              }).join('');
-            } else {
-              mainPrevBtn.style.display = 'none';
-              mainNextBtn.style.display = 'none';
-              galContainer.style.display = 'none';
+            try {
+                const res = await fetch('inventory.json');
+                const data = await res.json();
+                
+                // DATABASE FIX: Detect Sveltia CMS "catalog" wrapper
+                let productArray = [];
+                if (Array.isArray(data)) {
+                    productArray = data;
+                } else if (data.catalog) {
+                    productArray = data.catalog;
+                }
+
+                const product = productArray[id];
+
+                if (!product) {
+                    document.getElementById('product-content').innerHTML = "<p style='padding:20px; color: #ff0000;'>Product not found. Ensure item exists in CMS.</p>";
+                    return;
+                }
+
+                // Make sure to add your real WhatsApp number here!
+                const businessNumber = "920000000000"; 
+                const msg = `Hello Digital Racer! I want to buy:\n\n*${product.title}*\n*Price:* $${product.price}`;
+                const waUrl = `https://wa.me/${businessNumber}?text=${encodeURIComponent(msg)}`;
+
+                document.getElementById('product-content').innerHTML = `
+                    <div class="product-container">
+                        <div class="breadcrumb">HOME / ACCOUNT</div>
+                        
+                        <div class="badges">
+                            <div class="badge">◆ INSTANT DELIVERY</div>
+                            <div class="badge">✔ VERIFIED ACCOUNT</div>
+                        </div>
+                        
+                        <h1 class="product-title">${product.title}</h1>
+                        <p class="product-price">$${product.price}</p>
+                        
+                        <img src="${product.image}" class="product-image" alt="Product Image">
+                        
+                        <div class="description-card">
+                            ${product.description}
+                        </div>
+                        
+                        <a href="${waUrl}" class="btn-buy" target="_blank">BUY NOW VIA WHATSAPP</a>
+                    </div>
+                `;
+            } catch (e) {
+                console.error("Error loading product:", e);
+                document.getElementById('product-content').innerHTML = "<p style='padding:20px; color: #ff0000;'>Database connection error.</p>";
             }
-          } else {
-             document.getElementById('prod-img-container').innerHTML = `<div style="color: var(--muted);">No Image Available</div>`;
-             galContainer.style.display = 'none';
-          }
-
-          const waNumber = "923454342911"; 
-          const message = `Hello Digital Racer! I want to acquire: ${product.title} for $${product.price} USD.`;
-          document.getElementById('buy-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
-
-          const related = products.filter(p => p.title !== itemName).slice(0, 4);
-          const relGrid = document.getElementById('related-grid');
-          if (related.length > 0) {
-            relGrid.innerHTML = related.map(p => {
-              const relImg = formatImagePath(p.thumbnail || p.image || p.img || p.photo || p.picture || "");
-              return `<a href="product.html?item=${encodeURIComponent(p.title)}" class="rel-card"><img src="${relImg}" class="rel-img" alt="${p.title}" onerror="this.style.display='none'"><div class="rel-content"><div class="rel-title">${p.title}</div><div class="rel-price">$${p.price} USD</div></div></a>`;
-            }).join('');
-          } else relGrid.innerHTML = `<p style="color: var(--muted);">No other products available.</p>`;
-        } else document.getElementById('prod-title').innerText = "Product Not Found";
-      })
-      .catch(error => {
-        document.getElementById('prod-title').innerText = "System Error";
-      });
-  }
-</script>
+        }
+        
+        loadProduct();
+    </script>
 </body>
 </html>
