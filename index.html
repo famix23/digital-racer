@@ -2,97 +2,39 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Digital Racer | Marketplace</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Racer</title>
     <style>
-        /* Base & Reset */
-        * { box-sizing: border-box; }
-        body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, sans-serif; background-color: #0f0f13; color: #ffffff; padding-bottom: 70px; }
-        a { text-decoration: none; }
-        
-        /* App Header */
-        .header { padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; background-color: #1a1a1f; border-bottom: 1px solid #2a2a35; }
-        .logo { font-size: 20px; font-weight: 800; letter-spacing: 1.5px; color: #ffffff; margin: 0; }
-        .logo span { color: #f3c200; } /* Gold accent */
-        
-        /* Search Bar */
-        .search-container { padding: 15px 20px; background-color: #1a1a1f; }
-        .search-box { position: relative; width: 100%; }
-        .search-box input { width: 100%; padding: 14px 20px 14px 45px; border-radius: 25px; background-color: #2a2a35; border: none; color: #ffffff; font-size: 14px; outline: none; }
-        .search-box input::placeholder { color: #888888; }
-        .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #888888; }
-
-        /* Hero Banner */
-        .hero { background: linear-gradient(to bottom, rgba(15, 15, 19, 0.2), rgba(15, 15, 19, 1)), url('https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=2070') center/cover; padding: 50px 20px 30px; text-align: center; }
-        .hero h1 { font-size: 24px; margin: 0 0 10px 0; font-weight: 700; }
-        .hero p { margin: 0; color: #cccccc; font-size: 14px; line-height: 1.5; }
-
-        /* Category Grid */
-        .categories { display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px; padding: 20px; }
-        .category-card { background-color: #1a1a1f; border-radius: 16px; padding: 15px; display: flex; align-items: center; gap: 12px; border: 1px solid #2a2a35; transition: transform 0.2s ease; }
-        .category-card:active { transform: scale(0.98); }
-        .cat-icon { width: 45px; height: 45px; border-radius: 12px; background-color: #2a2a35; display: flex; align-items: center; justify-content: center; font-size: 20px; color: #a855f7; } /* Purple accent */
-        .cat-info h3 { margin: 0; font-size: 14px; color: #ffffff; }
-        
-        /* Bottom App Navigation */
-        .bottom-nav { position: fixed; bottom: 0; left: 0; width: 100%; background-color: #1a1a1f; display: flex; justify-content: space-around; padding: 12px 0 15px; border-top: 1px solid #2a2a35; z-index: 1000; }
-        .nav-item { display: flex; flex-direction: column; align-items: center; color: #888888; font-size: 11px; gap: 6px; font-weight: 500; }
-        .nav-item.active { color: #f3c200; }
-        .nav-item i { font-size: 20px; }
+        body { margin: 0; font-family: sans-serif; background-color: #121212; color: #ffffff; }
+        header { padding: 20px; border-bottom: 1px solid #2a2a2a; }
+        .logo { font-size: 20px; font-weight: 900; letter-spacing: 3px; text-decoration: none; color: white; text-transform: uppercase; }
+        .logo span { color: #ffcc00; }
+        .search-bar { display: flex; margin: 20px; background: #1e1e1e; border-radius: 4px; overflow: hidden; border: 1px solid #2a2a2a; }
+        .search-bar input { flex: 1; background: transparent; border: none; padding: 15px; color: white; outline: none; }
+        .search-bar button { background: transparent; border: none; color: #ffcc00; font-weight: bold; padding: 0 20px; cursor: pointer; text-transform: uppercase; }
+        .nav { margin: 0 20px 20px 20px; display: flex; gap: 20px; }
+        .nav a { color: #888; text-decoration: none; text-transform: uppercase; font-size: 13px; letter-spacing: 2px; font-weight: bold; }
+        .hero { padding: 40px 20px; text-align: center; }
+        .hero h1 { font-size: 28px; margin-bottom: 20px; text-transform: uppercase; }
+        .btn { display: inline-block; padding: 15px 30px; background-color: #ffffff; color: #000000; text-decoration: none; font-weight: bold; text-transform: uppercase; letter-spacing: 1px; border-radius: 2px; }
     </style>
 </head>
 <body>
-
-    <header class="header">
-        <h1 class="logo">DIGITAL<span>.</span>RACER</h1>
+    <header>
+        <a href="index.html" class="logo">DIGITAL<span>.</span>RACER</a>
     </header>
-
-    <div class="search-container">
-        <div class="search-box">
-            <i class="fas fa-search"></i>
-            <input type="text" placeholder="Search by games, items etc...">
-        </div>
+    <div class="search-bar">
+        <input type="text" placeholder="Search products, skins, UC...">
+        <button>SEARCH</button>
     </div>
-
-    <section class="hero">
-        <h1>Gaming Marketplace<br>For All Gamers</h1>
-        <p>Buy, Sell and Earn With Our Services</p>
-    </section>
-
-    <div class="categories">
-        <a href="catalog.html" class="category-card">
-            <div class="cat-icon"><i class="fas fa-user-shield"></i></div>
-            <div class="cat-info"><h3>Accounts</h3></div>
-        </a>
-        <a href="catalog.html" class="category-card">
-            <div class="cat-icon" style="color: #3b82f6;"><i class="fas fa-gem"></i></div>
-            <div class="cat-info"><h3>Top-Ups</h3></div>
-        </a>
-        <a href="catalog.html" class="category-card">
-            <div class="cat-icon" style="color: #f3c200;"><i class="fas fa-car"></i></div>
-            <div class="cat-info"><h3>In-Game Items</h3></div>
-        </a>
-        <a href="catalog.html" class="category-card">
-            <div class="cat-icon" style="color: #ef4444;"><i class="fas fa-gamepad"></i></div>
-            <div class="cat-info"><h3>Services</h3></div>
-        </a>
+    <div class="nav">
+        <a href="catalog.html">CATALOG</a>
+        <a href="index.html">HOME</a>
     </div>
-
-    <nav class="bottom-nav">
-        <a href="index.html" class="nav-item active">
-            <i class="fas fa-home"></i>
-            <span>Home</span>
-        </a>
-        <a href="catalog.html" class="nav-item">
-            <i class="fas fa-compass"></i>
-            <span>Browse</span>
-        </a>
-        <a href="#" class="nav-item">
-            <i class="fas fa-comment-dots"></i>
-            <span>Message</span>
-        </a>
-    </nav>
-
+    
+    <div class="hero">
+        <h1>Premium Accounts & Digital Assets</h1>
+        <a href="catalog.html" class="btn">View Inventory</a>
+    </div>
 </body>
 </html>
