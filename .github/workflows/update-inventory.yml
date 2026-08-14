@@ -1,0 +1,38 @@
+name: Sync Dropshipping Inventory
+
+on:
+  schedule:
+    # Runs every 6 hours automatically
+    - cron: '0 */6 * * *'
+  workflow_dispatch: # Allows you to manually trigger the sync with one click
+
+jobs:
+  scrape-and-update:
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests beautifulsoup4
+
+      - name: Execute Sync Script
+        run: python sync_inventory.py
+
+      - name: Commit and push if inventory changed
+        run: |
+          git config --global user.name 'Digital Racer Bot'
+          git config --global user.email 'bot@digitalracer.store'
+          git add inventory.json
+          git diff --quiet && git diff --staged --quiet || (git commit -m "Auto-update dropship inventory [skip ci]" && git push)
