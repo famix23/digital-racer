@@ -1,0 +1,9 @@
+# Keep repo/tooling files out of the Workers static assets upload
+.git
+.git/
+.gitignore
+.assetsignore
+.wrangler
+wrangler.jsonc
+wrangler.toml
+node_modules
