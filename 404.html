@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Page Not Found | Digital Racer</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#050505">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #050505; --surface: #111111; --surface2: #161616; --border: #222222; --text: #ffffff; --muted: #888888; --accent: #d4af37; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { background: var(--bg); color: var(--text); font-family: 'Open Sans', sans-serif; min-height: 100vh; display: flex; flex-direction: column; }
+h1 { font-family: 'Montserrat', sans-serif; }
+nav { display: flex; justify-content: space-between; align-items: center; padding: 15px 5vw; border-bottom: 1px solid var(--border); background: rgba(5, 5, 5, 0.95); gap: 20px; flex-wrap: wrap; }
+.logo { font-size: 1.1rem; font-weight: 900; letter-spacing: 4px; text-transform: uppercase; color: var(--text); text-decoration: none; white-space: nowrap; font-family: 'Montserrat', sans-serif; }
+.logo span { color: var(--accent); }
+.nav-link { color: var(--muted); text-decoration: none; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 2px; font-weight: 600; }
+.nav-link:hover { color: var(--accent); }
+main { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 60px 5vw; background: radial-gradient(circle at center top, #141414 0%, var(--bg) 70%); }
+.code { font-family: 'Montserrat', sans-serif; font-size: 0.75rem; letter-spacing: 3px; color: var(--accent); text-transform: uppercase; font-weight: 700; margin-bottom: 12px; }
+h1 { font-size: clamp(1.6rem, 3.5vw, 2.6rem); font-weight: 900; text-transform: uppercase; margin-bottom: 12px; }
+p { color: var(--muted); max-width: 480px; line-height: 1.6; margin-bottom: 25px; font-size: 0.9rem; }
+.ctas { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; }
+.btn { padding: 10px 24px; border-radius: 4px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; font-size: 0.75rem; text-decoration: none; font-family: 'Montserrat', sans-serif; }
+.btn.primary { background: var(--accent); color: #000; border: 1px solid var(--accent); }
+.btn.secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+footer { background: var(--surface); border-top: 1px solid var(--border); padding: 30px 5vw; text-align: center; color: var(--muted); font-size: 0.85rem; }
+</style>
+</head>
+<body>
+<nav>
+  <a href="/" class="logo">Digital<span>.</span>Racer</a>
+  <a href="/catalog" class="nav-link">Catalog</a>
+</nav>
+<main>
+  <div class="code">Error 404</div>
+  <h1>Page Not Found</h1>
+  <p>This page doesn't exist or the item has been sold. Browse the catalog for PUBG Mobile accounts, car skin cards and UC top-ups.</p>
+  <div class="ctas">
+    <a href="/catalog" class="btn primary">Browse Catalog</a>
+    <a href="/" class="btn secondary">Home</a>
+  </div>
+</main>
+<footer><p style="margin:0;max-width:none;">© 2026 Digital Racer. All rights reserved.</p></footer>
+</body>
+</html>

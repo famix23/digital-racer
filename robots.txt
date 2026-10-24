@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /admin/
 
-Sitemap: https://digitalracer.store/sitemap.xml
+Sitemap: https://www.digitalracer.store/sitemap.xml
