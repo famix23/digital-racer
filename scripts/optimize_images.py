@@ -7,6 +7,7 @@ so every path in inventory.json keeps working).  Requires Pillow:  pip install p
     python3 scripts/optimize_images.py --dry-run  # just report
 
 Only images referenced by inventory.json and larger than MIN_BYTES are touched.
+Images are never upscaled and never shrunk below 1920px on the long side (HD floor 1280px).
 JPEG: longest side capped at MAX_SIDE px, re-encoded at quality 82 (progressive).
 PNG:  longest side capped at MAX_SIDE px, saved losslessly (no colour reduction).
 A file is only replaced when the result is at least 15% smaller. Originals stay in git history.
@@ -18,7 +19,9 @@ import sys
 
 from PIL import Image, ImageOps
 
-MAX_SIDE = 1600
+MAX_SIDE = 1920  # HD: never shrink an image's long side below this
+MIN_HD_SIDE = 1280  # hard floor: this script must never downscale below HD
+assert MAX_SIDE >= MIN_HD_SIDE
 MIN_BYTES = 350_000
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DRY = "--dry-run" in sys.argv

@@ -32,6 +32,12 @@ python3 scripts/optimize_images.py --dry-run   # report only
 python3 scripts/optimize_images.py             # rewrite in place (same file names)
 ```
 
+Image policy: upload product photos in HD (long side at least 1280px, ideally 1920px).
+`optimize_images.py` never upscales and never shrinks a long side below 1920px.
+Supplier photos from ZeusX (`cdn-offer-photos.zeusx.com/<photo id>.jpg|.webp|.avif`) are
+capped by ZeusX at 1000px on the long side. No larger original is publicly available, so those
+stay at 1000px. Do not upscale them to fake HD.
+
 ## Optional: rebuild automatically on every push (GitHub Actions)
 
 Saving this as `.github/workflows/build-seo.yml` would rebuild after any push that changes
