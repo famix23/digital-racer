@@ -29,7 +29,7 @@ collections:
               - label: "Category"
                 name: "category"
                 widget: "select"
-                options: ["Account", "UC Top-Up", "Car Card"]
+                options: ["Account", "UC Top-Up", "Car Card", "In-Game Items", "Rank Boosting"]
               
               - label: "Tag (e.g., GLOBAL)"
                 name: "tag"
