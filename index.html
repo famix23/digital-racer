@@ -56,7 +56,8 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>
 
 <style>
 :root { --bg: #050505; --surface: #111111; --surface2: #161616; --border: #222222; --text: #ffffff; --muted: #c8c8c8; --accent: #d4af37; }
@@ -98,7 +99,7 @@ section { margin-bottom: 50px; }
 .view-all:hover { color: var(--accent); }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease; opacity: 0; transform: translateY(15px); }
+.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease; }
 .product-card:hover { transform: translateY(-5px); border-color: var(--accent); }
 .prod-img-wrap { width: 100%; aspect-ratio: 4/3; background: var(--surface2); position: relative; overflow: hidden; }
 .prod-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
@@ -137,6 +138,42 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 9999; display: flex; align-items: center; gap: 10px; background: #25D366; color: #fff; padding: 12px 18px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.45); transition: transform 0.2s, background 0.2s; }
 .wa-float:hover { background: #1ebe5a; transform: translateY(-2px); }
 @media (max-width: 768px) { .wa-float { right: 14px; bottom: 14px; padding: 12px 14px; } .wa-float .wa-float-text { display: none; } }
+
+/* Mobile UX pass (compact nav, 44px tap targets, readable sizes) */
+html { -webkit-text-size-adjust: 100%; }
+a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25); touch-action: manipulation; }
+@media (max-width: 850px) {
+  nav { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px 12px; padding: 8px 4vw 10px; }
+  .logo { grid-row: 1; grid-column: 1; justify-self: start; font-size: 1rem; letter-spacing: 2px; display: inline-flex; align-items: center; min-height: 44px; }
+  .nav-links { grid-row: 1; grid-column: 2; gap: 4px; justify-content: flex-end; }
+  .nav-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; letter-spacing: 1px; font-size: 0.8rem; }
+  .nav-search { grid-row: 2; grid-column: 1 / -1; width: 100%; padding: 0 0 0 12px; }
+  .nav-search input { font-size: 16px; min-height: 44px; }
+  .nav-search button { min-height: 44px; padding: 0 14px; margin-left: 0; font-size: 0.85rem; }
+  body { padding-bottom: 76px; }
+  footer { margin-bottom: 0; }
+}
+
+@media (max-width: 600px) {
+  .prod-category { font-size: 0.72rem; }
+  .prod-title { font-size: 0.92rem; }
+  .prod-badge { font-size: 0.66rem; }
+  .prod-btn { font-size: 0.8rem; padding: 10px; }
+}
+@media (max-width: 850px) {
+  .hero-btn { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+  .view-all { font-size: 0.75rem; display: inline-flex; align-items: center; min-height: 44px; padding-left: 12px; }
+  .store-badge { font-size: 0.72rem; }
+  .prod-category, .prod-btn { font-size: 0.72rem; }
+}
+@media (max-width: 600px) {
+  .store-badge { font-size: 0.72rem; letter-spacing: 2px; }
+  .store-sub { font-size: 0.95rem; line-height: 1.55; }
+  .hero-ctas { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+  .hero-btn { width: auto; min-height: 48px; display: flex; align-items: center; justify-content: center; padding: 10px 8px; font-size: 0.78rem; }
+  .view-all { font-size: 0.75rem; display: inline-flex; align-items: center; min-height: 44px; padding-left: 12px; }
+  .section-header { align-items: center; padding-bottom: 4px; }
+}
 </style>
 </head>
 <body>
@@ -172,8 +209,8 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     </div>
     <div class="grid" id="grid-accounts">
       <!-- SEO:GRID:accounts:BEGIN -->
-      <a href="/p/pubg-mobile-account-lv-62-bugatti-bolide-car-m416-rending-roar-lv-7-2/" class="product-card"><div class="prod-img-wrap"><img src="/images/uploads/zeusx-pubgm-24435694-01.webp" class="prod-img" alt="PUBG Mobile Account Lv 62 – Bugatti Bolide Car, M416 Rending Roar Lv 7, 2 Gold Outfits" loading="lazy" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile Account Lv 62 – Bugatti Bolide Car, M416 Rending Roar Lv 7, 2 Gold Outfits</div><div class="prod-footer"><div class="prod-price">$394 USD</div><div class="prod-btn">View</div></div></div></a>
-      <a href="/p/pubg-mobile-account-lv-76-3-porsche-supercars-ultimate-honour-set/" class="product-card"><div class="prod-img-wrap"><img src="/images/uploads/zeusx-pubgm-24437126-01.webp" class="prod-img" alt="PUBG Mobile Account Lv 76 – 3 Porsche Supercars, Ultimate Honour Set, SCAR-L Lv 7, M416 Glacier" loading="lazy" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile Account Lv 76 – 3 Porsche Supercars, Ultimate Honour Set, SCAR-L Lv 7, M416 Glacier</div><div class="prod-footer"><div class="prod-price">$650 USD</div><div class="prod-btn">View</div></div></div></a>
+      <a href="/p/pubg-mobile-account-lv-62-bugatti-bolide-car-m416-rending-roar-lv-7-2/" class="product-card"><div class="prod-img-wrap"><img src="/images/uploads/zeusx-pubgm-24435694-01.webp" class="prod-img" alt="PUBG Mobile Account Lv 62 – Bugatti Bolide Car, M416 Rending Roar Lv 7, 2 Gold Outfits" fetchpriority="high" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile Account Lv 62 – Bugatti Bolide Car, M416 Rending Roar Lv 7, 2 Gold Outfits</div><div class="prod-footer"><div class="prod-price">$394 USD</div><div class="prod-btn">View</div></div></div></a>
+      <a href="/p/pubg-mobile-account-lv-76-3-porsche-supercars-ultimate-honour-set/" class="product-card"><div class="prod-img-wrap"><img src="/images/uploads/zeusx-pubgm-24437126-01.webp" class="prod-img" alt="PUBG Mobile Account Lv 76 – 3 Porsche Supercars, Ultimate Honour Set, SCAR-L Lv 7, M416 Glacier" fetchpriority="high" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile Account Lv 76 – 3 Porsche Supercars, Ultimate Honour Set, SCAR-L Lv 7, M416 Glacier</div><div class="prod-footer"><div class="prod-price">$650 USD</div><div class="prod-btn">View</div></div></div></a>
       <a href="/p/pubg-mobile-account-5-ferrari-cars-laferrari-sf90-roma-raven-x-suit-4/" class="product-card"><div class="prod-img-wrap"><img src="/images/uploads/zeusx-pubgm-24435709-01.webp" class="prod-img" alt="PUBG Mobile Account – 5 Ferrari Cars (LaFerrari, SF90, Roma), Raven X-Suit 4 , MK14 Dragon Lv 8" loading="lazy" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile Account – 5 Ferrari Cars (LaFerrari, SF90, Roma), Raven X-Suit 4★, MK14 Dragon Lv 8</div><div class="prod-footer"><div class="prod-price">$1358 USD</div><div class="prod-btn">View</div></div></div></a>
       <a href="/p/pubg-mobile-x-suit-account-lv-83-golden-druvaen-x-suit-4-stars/" class="product-card"><div class="prod-img-wrap"><img src="/images/uploads/zeusx-pubgm-24432716-01.webp" class="prod-img" alt="PUBG Mobile X-Suit Account Lv 83 – Golden Druvaen X-Suit 4 Stars, Collection 63, 12 Kill Chats" loading="lazy" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile X-Suit Account Lv 83 – Golden Druvaen X-Suit 4 Stars, Collection 63, 12 Kill Chats</div><div class="prod-footer"><div class="prod-price">$392 USD</div><div class="prod-btn">View</div></div></div></a>
       <!-- SEO:GRID:accounts:END -->
@@ -238,10 +275,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <a href="https://wa.me/923454342911?text=Hello%20Digital%20Racer%21%20I%20want%20to%20buy%20a%20PUBG%20Mobile%20item%20from%20your%20store." class="wa-float" id="wa-float" target="_blank" rel="noopener" aria-label="Chat with Digital Racer on WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span class="wa-float-text">WhatsApp Us</span></a>
 <footer><p>© 2026 Digital Racer. All rights reserved.</p></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-  gsap.registerPlugin(ScrollTrigger);
 
   function handleSearch() {
     const query = document.getElementById('search-input').value.trim();
@@ -303,8 +337,10 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
         const container = document.getElementById(containerId);
         if (items.length === 0) container.innerHTML = `<p style="color: var(--muted);">No ${label}s available right now.</p>`;
         else {
-          container.innerHTML = items.map(p => createCardHTML(p)).join('');
-          gsap.to(container.querySelectorAll('.product-card'), { scrollTrigger: { trigger: container, start: "top 95%" }, opacity: 1, y: 0, duration: 0.3, stagger: 0.05, ease: "power2.out" });
+          // Cards are pre-rendered by scripts/build_seo.py; only re-render if the list actually differs
+          const want = items.map(p => productUrl(p)).join('|');
+          const have = [...container.querySelectorAll('a.product-card')].map(a => a.getAttribute('href')).join('|');
+          if (want !== have) container.innerHTML = items.map(p => createCardHTML(p)).join('');
         }
       }
       renderGrid(accProducts, 'grid-accounts', 'Account');

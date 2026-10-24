@@ -10,7 +10,8 @@
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <style>
 :root { --bg: #050505; --surface: #111111; --surface2: #161616; --border: #222222; --text: #ffffff; --muted: #c8c8c8; --accent: #d4af37; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -30,6 +31,8 @@ p { color: var(--muted); max-width: 480px; line-height: 1.6; margin-bottom: 25px
 .btn.primary { background: var(--accent); color: #000; border: 1px solid var(--accent); }
 .btn.secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
 footer { background: var(--surface); border-top: 1px solid var(--border); padding: 30px 5vw; text-align: center; color: var(--muted); font-size: 0.85rem; }
+.nav-link, .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; }
+@media (max-width: 600px) { p { font-size: 1rem; } .ctas { width: 100%; } .btn { flex: 1; } }
 </style>
 </head>
 <body>

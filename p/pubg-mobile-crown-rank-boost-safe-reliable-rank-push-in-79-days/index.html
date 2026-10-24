@@ -100,7 +100,8 @@
 <!-- SEO:HEAD:END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <style>
 :root { --bg: #050505; --surface: #111111; --surface2: #161616; --border: #222222; --text: #ffffff; --muted: #c8c8c8; --accent: #d4af37; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -194,6 +195,61 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 9999; display: flex; align-items: center; gap: 10px; background: #25D366; color: #fff; padding: 12px 18px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.45); transition: transform 0.2s, background 0.2s; }
 .wa-float:hover { background: #1ebe5a; transform: translateY(-2px); }
 @media (max-width: 768px) { .wa-float { right: 14px; bottom: 14px; padding: 12px 14px; } .wa-float .wa-float-text { display: none; } }
+
+/* Mobile UX pass (compact nav, 44px tap targets, readable sizes) */
+html { -webkit-text-size-adjust: 100%; }
+a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25); touch-action: manipulation; }
+@media (max-width: 850px) {
+  nav { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px 12px; padding: 8px 4vw 10px; }
+  .logo { grid-row: 1; grid-column: 1; justify-self: start; font-size: 1rem; letter-spacing: 2px; display: inline-flex; align-items: center; min-height: 44px; }
+  .nav-links { grid-row: 1; grid-column: 2; gap: 4px; justify-content: flex-end; }
+  .nav-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; letter-spacing: 1px; font-size: 0.8rem; }
+  .nav-search { grid-row: 2; grid-column: 1 / -1; width: 100%; padding: 0 0 0 12px; }
+  .nav-search input { font-size: 16px; min-height: 44px; }
+  .nav-search button { min-height: 44px; padding: 0 14px; margin-left: 0; font-size: 0.85rem; }
+  body { padding-bottom: 76px; }
+  footer { margin-bottom: 0; }
+}
+.product-grid-layout > *, .left-column > * { min-width: 0; }
+@media (max-width: 900px) {
+  /* Phones/tablets: show price + Buy Now right after the photos, before the long description */
+  .product-grid-layout { display: flex; flex-direction: column; gap: 20px; }
+  .left-column { display: contents; }
+  .image-box { order: 1; }
+  .gallery-wrap { order: 2; margin-top: -8px; }
+  .right-column { order: 3; }
+  .desc-card { order: 4; }
+  .buy-card { position: static; padding: 20px; gap: 16px; }
+  .breadcrumb { font-size: 0.75rem; }
+  .breadcrumb a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 2px; }
+  .main-nav-btn { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .trust-badge { font-size: 0.72rem; }
+  .buy-price-label { font-size: 0.75rem; }
+  .mini-spec span:first-child { font-size: 0.75rem; }
+}
+@media (max-width: 600px) {
+  .main-wrapper { margin-top: 16px; padding: 0 4vw; }
+  .breadcrumb { font-size: 0.75rem; margin-bottom: 8px; }
+  .breadcrumb a { display: inline-flex; align-items: center; min-height: 44px; }
+  .trust-badges-row { gap: 8px; }
+  .trust-badge { font-size: 0.72rem; letter-spacing: 1px; padding: 6px 10px; }
+  .main-title { font-size: 1.2rem; line-height: 1.3; margin-bottom: 16px; }
+  .main-nav-btn { min-width: 44px; min-height: 44px; display: flex; align-items: center; justify-content: center; }
+  .gal-thumb { width: 72px; height: 54px; }
+  .buy-price-label { font-size: 0.75rem; }
+  .mini-spec span:last-child { font-size: 0.95rem; }
+  .whatsapp-btn { min-height: 54px; font-size: 1rem; }
+  .guarantee-box { font-size: 0.85rem; }
+  .desc-card { padding: 18px; }
+  .desc-content { font-size: 1rem; line-height: 1.65; }
+  .related-section { padding: 0 4vw; margin-top: 36px; }
+  .related-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+  .rel-content { padding: 10px; }
+  .rel-title { font-size: 0.85rem; -webkit-line-clamp: 2; }
+  .lightbox-close { top: 12px; right: 16px; padding: 4px 12px; }
+}
+.wa-float { transition: transform 0.2s, background 0.2s, opacity 0.2s; }
+.wa-float.wa-hide { opacity: 0; pointer-events: none; }
 </style>
 </head>
 <body>
@@ -231,9 +287,9 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     <div class="left-column">
       
       <div class="image-box" id="prod-img-container">
-        <div class="main-nav-btn main-prev" id="main-prev" style="display: none;" onclick="event.stopPropagation(); navigateMainGallery(-1)">&#10094;</div>
+        <div class="main-nav-btn main-prev" id="main-prev" style="display: none;" role="button" aria-label="Previous image" onclick="event.stopPropagation(); navigateMainGallery(-1)">&#10094;</div>
         <img src="/images/uploads/zeusx-pubgm-13966771-01.webp" alt="PUBG Mobile Crown Rank Boost – Safe &amp; Reliable Rank Push in 7–9 Days" id="main-display-img" data-index="0" fetchpriority="high" onclick="openLightbox(this.getAttribute('data-index'))" style="display: block;">
-        <div class="main-nav-btn main-next" id="main-next" style="display: none;" onclick="event.stopPropagation(); navigateMainGallery(1)">&#10095;</div>
+        <div class="main-nav-btn main-next" id="main-next" style="display: none;" role="button" aria-label="Next image" onclick="event.stopPropagation(); navigateMainGallery(1)">&#10095;</div>
       </div>
       
       <div id="gallery-container" class="gallery-wrap" style="display: none;"></div>
@@ -357,6 +413,18 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     if (window.galleryImages.length > 1) { if (touchendX < touchstartX - 40) window.nextLightboxImage(); if (touchendX > touchstartX + 40) window.prevLightboxImage(); }
   }, {passive: true});
 
+  (function () {
+    const buy = document.getElementById('buy-btn'), wa = document.getElementById('wa-float');
+    if (!buy || !wa) return;
+    function check() {
+      const b = buy.getBoundingClientRect(), w = wa.getBoundingClientRect();
+      const hit = !(b.right < w.left - 8 || b.left > w.right + 8 || b.bottom < w.top - 8 || b.top > w.bottom + 8);
+      wa.classList.toggle('wa-hide', hit);
+    }
+    let t = 0; window.addEventListener('scroll', () => { if (!t) t = requestAnimationFrame(() => { t = 0; check(); }); }, { passive: true });
+    window.addEventListener('resize', check); check();
+  })();
+
   if (!itemName) document.getElementById('prod-title').innerText = "Product Not Found";
   else {
     Promise.all([fetch('/inventory.json'), productUrlsReady]).then(([response]) => response)
@@ -423,7 +491,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
               mainPrevBtn.style.display = 'block';
               mainNextBtn.style.display = 'block';
               galContainer.innerHTML = currentImages.map((img, index) => {
-                return `<img src="${img}" alt="" class="gal-thumb ${index === 0 ? 'active' : ''}" onclick="changeMainImage(${index})">`;
+                return `<img src="${img}" alt="" class="gal-thumb ${index === 0 ? 'active' : ''}" loading="lazy" decoding="async" onclick="changeMainImage(${index})">`;
               }).join('');
             } else {
               mainPrevBtn.style.display = 'none';
@@ -444,7 +512,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
           if (related.length > 0) {
             relGrid.innerHTML = related.map(p => {
               const relImg = formatImagePath(p.thumbnail || p.image || p.img || p.photo || p.picture || "");
-              return `<a href="${productUrl(p)}" class="rel-card"><img src="${relImg}" class="rel-img" alt="${p.title}" onerror="this.style.display='none'"><div class="rel-content"><div class="rel-title">${p.title}</div><div class="rel-price">$${p.price} USD</div></div></a>`;
+              return `<a href="${productUrl(p)}" class="rel-card"><img src="${relImg}" class="rel-img" alt="${p.title}" loading="lazy" decoding="async" onerror="this.style.display='none'"><div class="rel-content"><div class="rel-title">${p.title}</div><div class="rel-price">$${p.price} USD</div></div></a>`;
             }).join('');
           } else relGrid.innerHTML = `<p style="color: var(--muted);">No other products available.</p>`;
         } else if (!preset) document.getElementById('prod-title').innerText = "Product Not Found";

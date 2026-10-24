@@ -407,7 +407,8 @@
 <!-- SEO:HEAD:END -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+<link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" onload="this.onload=null;this.rel='stylesheet'">
+<noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700;900&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet"></noscript>
 <style>
 :root { --bg: #050505; --surface: #111111; --surface2: #161616; --border: #222222; --text: #ffffff; --muted: #c8c8c8; --accent: #d4af37; }
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -437,7 +438,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .sort-select:focus { border-color: var(--accent); }
 
 .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
-.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease; opacity: 0; transform: translateY(15px); }
+.product-card { background: var(--surface); border: 1px solid var(--border); border-radius: 6px; overflow: hidden; text-decoration: none; color: var(--text); display: flex; flex-direction: column; transition: transform 0.2s ease, border-color 0.2s ease; }
 .product-card:hover { transform: translateY(-5px); border-color: var(--accent); }
 .prod-img-wrap { width: 100%; aspect-ratio: 4/3; background: var(--surface2); position: relative; overflow: hidden; }
 .prod-img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s ease; }
@@ -470,6 +471,38 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 .wa-float { position: fixed; right: 20px; bottom: 20px; z-index: 9999; display: flex; align-items: center; gap: 10px; background: #25D366; color: #fff; padding: 12px 18px; border-radius: 50px; font-family: 'Montserrat', sans-serif; font-weight: 800; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; text-decoration: none; box-shadow: 0 6px 20px rgba(0,0,0,0.45); transition: transform 0.2s, background 0.2s; }
 .wa-float:hover { background: #1ebe5a; transform: translateY(-2px); }
 @media (max-width: 768px) { .wa-float { right: 14px; bottom: 14px; padding: 12px 14px; } .wa-float .wa-float-text { display: none; } }
+
+/* Mobile UX pass (compact nav, 44px tap targets, readable sizes) */
+html { -webkit-text-size-adjust: 100%; }
+a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25); touch-action: manipulation; }
+@media (max-width: 850px) {
+  nav { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 8px 12px; padding: 8px 4vw 10px; }
+  .logo { grid-row: 1; grid-column: 1; justify-self: start; font-size: 1rem; letter-spacing: 2px; display: inline-flex; align-items: center; min-height: 44px; }
+  .nav-links { grid-row: 1; grid-column: 2; gap: 4px; justify-content: flex-end; }
+  .nav-link { display: inline-flex; align-items: center; min-height: 44px; padding: 0 8px; letter-spacing: 1px; font-size: 0.8rem; }
+  .nav-search { grid-row: 2; grid-column: 1 / -1; width: 100%; padding: 0 0 0 12px; }
+  .nav-search input { font-size: 16px; min-height: 44px; }
+  .nav-search button { min-height: 44px; padding: 0 14px; margin-left: 0; font-size: 0.85rem; }
+  body { padding-bottom: 76px; }
+  footer { margin-bottom: 0; }
+}
+
+@media (max-width: 600px) {
+  .prod-category { font-size: 0.72rem; }
+  .prod-title { font-size: 0.92rem; }
+  .prod-badge { font-size: 0.66rem; }
+  .prod-btn { font-size: 0.8rem; padding: 10px; }
+}
+@media (max-width: 850px) {
+  .catalog-top-bar { gap: 14px; margin-bottom: 20px; padding-bottom: 14px; }
+  .controls-wrapper { gap: 10px; flex-wrap: nowrap; min-width: 0; }
+  .controls-wrapper > * { min-width: 0; }
+  .filter-group { flex-wrap: nowrap; overflow-x: auto; justify-content: flex-start; gap: 8px; margin: 0 -4vw; padding: 2px 4vw 6px; scroll-snap-type: x proximity; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
+  .filter-group::-webkit-scrollbar { display: none; }
+  .filter-btn { flex: 0 0 auto; min-height: 44px; padding: 0 16px; font-size: 0.78rem; white-space: nowrap; scroll-snap-align: start; }
+  .sort-select { min-height: 44px; font-size: 16px; }
+  .prod-category, .prod-btn { font-size: 0.72rem; }
+}
 </style>
 </head>
 <body>
@@ -506,8 +539,8 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   </div>
   <div class="grid" id="full-catalog">
     <!-- SEO:GRID:catalog:BEGIN -->
-    <a href="/p/pubg-mobile-old-account-fireman-set-4x-red-loot-crate-max-2-sports/" class="product-card item-card" data-category="Account"><div class="prod-img-wrap"><img src="/images/uploads/1d1a29ef-d4fd-4a1c-a1b2-a741d0b7c3bc.jpg" class="prod-img" alt="PUBG Mobile Old Account – Fireman Set, 4x Red Loot Crate Max, 2 Sports Cars, 23 Kill Msgs" loading="lazy" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile Old Account – Fireman Set, 4x Red Loot Crate Max, 2 Sports Cars, 23 Kill Msgs</div><div class="prod-footer"><div class="prod-price">$650 USD</div><div class="prod-btn">View</div></div></div></a>
-    <a href="/p/pubg-mobile-account-lv-73-50-mythics-mission-impossible-a-b-m416-fool/" class="product-card item-card" data-category="Account"><div class="prod-img-wrap"><img src="/images/uploads/c6220455-1093-4972-98d1-0bc7abc678f2.png" class="prod-img" alt="PUBG Mobile Account Lv 73 – 50 Mythics, Mission Impossible A+B, M416 Fool Max, 4 X-Suits" loading="lazy" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile Account Lv 73 – 50 Mythics, Mission Impossible A+B, M416 Fool Max, 4 X-Suits</div><div class="prod-footer"><div class="prod-price">$420 USD</div><div class="prod-btn">View</div></div></div></a>
+    <a href="/p/pubg-mobile-old-account-fireman-set-4x-red-loot-crate-max-2-sports/" class="product-card item-card" data-category="Account"><div class="prod-img-wrap"><img src="/images/uploads/1d1a29ef-d4fd-4a1c-a1b2-a741d0b7c3bc.jpg" class="prod-img" alt="PUBG Mobile Old Account – Fireman Set, 4x Red Loot Crate Max, 2 Sports Cars, 23 Kill Msgs" fetchpriority="high" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile Old Account – Fireman Set, 4x Red Loot Crate Max, 2 Sports Cars, 23 Kill Msgs</div><div class="prod-footer"><div class="prod-price">$650 USD</div><div class="prod-btn">View</div></div></div></a>
+    <a href="/p/pubg-mobile-account-lv-73-50-mythics-mission-impossible-a-b-m416-fool/" class="product-card item-card" data-category="Account"><div class="prod-img-wrap"><img src="/images/uploads/c6220455-1093-4972-98d1-0bc7abc678f2.png" class="prod-img" alt="PUBG Mobile Account Lv 73 – 50 Mythics, Mission Impossible A+B, M416 Fool Max, 4 X-Suits" fetchpriority="high" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile Account Lv 73 – 50 Mythics, Mission Impossible A+B, M416 Fool Max, 4 X-Suits</div><div class="prod-footer"><div class="prod-price">$420 USD</div><div class="prod-btn">View</div></div></div></a>
     <a href="/p/pubg-mobile-ferrari-car-card-gift-global-100-legit-instant-delivery/" class="product-card item-card" data-category="Car Card"><div class="prod-img-wrap"><img src="/images/uploads/PUBG_MOBILE_Ferrari_collaboratio%E2%80%A6_2K_202607152024.jpeg" class="prod-img" alt="PUBG Mobile Ferrari Car Card Gift – Global, 100% Legit, Instant Delivery" loading="lazy" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Car Card</div><div class="prod-title">PUBG Mobile Ferrari Car Card Gift – Global, 100% Legit, Instant Delivery</div><div class="prod-footer"><div class="prod-price">$150 USD</div><div class="prod-btn">View</div></div></div></a>
     <a href="/p/pubg-mobile-660-uc-top-up-fast-secure-global-delivery/" class="product-card item-card" data-category="UC Top-Up"><div class="prod-img-wrap"><img src="/images/uploads/images%20(1).jpg" class="prod-img" alt="PUBG Mobile 660 UC Top-Up – Fast &amp; Secure Global Delivery" loading="lazy" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">UC Top-Up</div><div class="prod-title">PUBG Mobile 660 UC Top-Up – Fast &amp; Secure Global Delivery</div><div class="prod-footer"><div class="prod-price">$10 USD</div><div class="prod-btn">View</div></div></div></a>
     <a href="/p/pubg-mobile-world-top-100-account-near-98-collection-13-maxed-x-suits/" class="product-card item-card" data-category="Account"><div class="prod-img-wrap"><img src="/images/uploads/93a72d4d-d013-448e-92f2-625c2839c645.png" class="prod-img" alt="PUBG Mobile World Top 100 Account – Near 98 Collection, 13 Maxed X-Suits, 150 Max Guns" loading="lazy" decoding="async" onerror="this.style.display='none'"> <div class="prod-badge">INSTANT</div></div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">PUBG Mobile World Top 100 Account – Near 98 Collection, 13 Maxed X-Suits, 150 Max Guns</div><div class="prod-footer"><div class="prod-price">$1920 USD</div><div class="prod-btn">View</div></div></div></a>
@@ -571,7 +604,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
 <a href="https://wa.me/923454342911?text=Hello%20Digital%20Racer%21%20I%20want%20to%20buy%20a%20PUBG%20Mobile%20item%20from%20your%20store." class="wa-float" id="wa-float" target="_blank" rel="noopener" aria-label="Chat with Digital Racer on WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span class="wa-float-text">WhatsApp Us</span></a>
 <footer><p>© 2026 Digital Racer. All rights reserved.</p></footer>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
 <script>
   let allProducts = []; let currentCategory = 'all'; let currentSort = 'default'; let searchQuery = '';
   
@@ -581,7 +613,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     currentCategory = urlParams.get('category'); 
     document.querySelectorAll('.filter-btn').forEach(b => {
       b.classList.remove('active');
-      if (b.getAttribute('data-filter') === currentCategory) b.classList.add('active');
+      if (b.getAttribute('data-filter') === currentCategory) { b.classList.add('active'); const g = b.parentElement; if (g.scrollWidth > g.clientWidth) g.scrollLeft = b.offsetLeft - g.offsetLeft - 16; }
     });
   }
 
@@ -632,7 +664,6 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
     const container = document.getElementById('full-catalog');
     if (result.length === 0) { container.innerHTML = `<p style="color: var(--muted);">No products found matching your search.</p>`; return; }
     container.innerHTML = result.map(p => createCardHTML(p)).join('');
-    gsap.to('.item-card', { opacity: 1, y: 0, duration: 0.25, stagger: 0.03, ease: 'power2.out' });
   }
 
   Promise.all([fetch('/inventory.json'), productUrlsReady]).then(([response]) => response)
@@ -647,7 +678,7 @@ footer { background: var(--surface); border-top: 1px solid var(--border); paddin
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      e.target.classList.add('active'); currentCategory = e.target.getAttribute('data-filter'); processAndRender();
+      btn.classList.add('active'); currentCategory = btn.getAttribute('data-filter'); processAndRender();
     });
   });
   document.getElementById('sort-select').addEventListener('change', (e) => { currentSort = e.target.value; processAndRender(); });
