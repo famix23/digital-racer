@@ -6,6 +6,8 @@
     "enabled": true
   },
   "assets": {
-    "directory": "."
+    "directory": ".",
+    // Serve /404.html with a real 404 status for unknown URLs
+    "not_found_handling": "404-page"
   }
 }
