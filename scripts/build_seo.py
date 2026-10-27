@@ -424,7 +424,7 @@ def product_page(p, others):
     preset = json.dumps({"title": p["title"], "price": p["price"]}, ensure_ascii=False).replace("</", "<\\/")
     s = replace_one(s, r'\n<script>\n  const urlParams', lambda m: f"\n<script>window.DR_PRESET = {preset};</script>" + m.group(0), f, "main script")
     if it.get("supplier_listing_id"):
-        s = s.replace("Instant Delivery", "Confirm Availability")
+        s = s.replace("\n        Instant Delivery\n", "\n        Confirm Availability\n")
         s = s.replace("Verified Account", "Account Details")
         s = s.replace('>Instant</span>', '>Confirm before ordering</span>')
         s = s.replace('<span>SECURE GUARANTEE:</span> All transactions and asset transfers are verified and protected for smooth delivery.',
