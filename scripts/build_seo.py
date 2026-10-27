@@ -426,7 +426,7 @@ def product_page(p, others):
     s = replace_one(s, r'\n<script>\n  const urlParams', lambda m: f"\n<script>window.DR_PRESET = {preset};</script>" + m.group(0), f, "main script")
     if it.get("supplier_listing_id"):
         s = s.replace("\n        Instant Delivery\n", "\n        Digital Delivery\n")
-        s = s.replace("Verified Account", "Account Details")
+        s = s.replace("Verified Account", "Account Details" if "account" in p["category"].lower() else "Item Details")
         s = s.replace('>Instant</span>', '>Digital delivery</span>')
         s = s.replace('<span>SECURE GUARANTEE:</span> All transactions and asset transfers are verified and protected for smooth delivery.',
                       '<span>ORDER DETAILS:</span> Order directly from Digital Racer using Buy Now.')
