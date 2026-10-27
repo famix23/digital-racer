@@ -396,7 +396,8 @@ def product_page(p, others):
         specs += f'\n          <div class="mini-spec" data-extra><span>Highest Tier</span><span>{esc(it["highest_tier"])}</span></div>'
     s = replace_one(s, r'(<div class="mini-spec"><span>Delivery</span><span style="color: var\(--accent\);">Instant</span></div>)',
                     lambda m: m.group(1) + specs, f, "specs grid")
-    desc_html = "<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>" + parse_description(p["desc_raw"])
+    desc_prefix = "" if it.get("preserve_description") else "<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>"
+    desc_html = desc_prefix + parse_description(p["desc_raw"])
     s = replace_one(s, r'(<div class="desc-content" id="prod-desc">)(</div>)',
                     lambda m: m.group(1) + desc_html + m.group(2), f, "description")
     if image:
@@ -423,6 +424,8 @@ def product_page(p, others):
                     lambda m: m.group(1) + rel + m.group(2), f, "related grid")
     preset = json.dumps({"title": p["title"], "price": p["price"]}, ensure_ascii=False).replace("</", "<\\/")
     s = replace_one(s, r'\n<script>\n  const urlParams', lambda m: f"\n<script>window.DR_PRESET = {preset};</script>" + m.group(0), f, "main script")
+    if it.get("preserve_description"):
+        s = s.replace("const mandatoryLine = `<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>`;", "const mandatoryLine = ''; ")
     if it.get("supplier_listing_id"):
         s = s.replace("\n        Instant Delivery\n", "\n        Digital Delivery\n")
         s = s.replace("Verified Account", "Account Details")

@@ -149,7 +149,7 @@ nav { display: flex; justify-content: space-between; align-items: center; paddin
 .main-prev { left: 15px; }
 .main-next { right: 15px; }
 
-.gallery-wrap { display: flex; gap: 12px; margin-top: -5px; overflow-x: auto; padding-bottom: 5px; }
+.gallery-wrap { display: flex; gap: 12px; margin-top: -5px; overflow-x: auto; padding-bottom: 5px; width: 100%; max-width: 100%; min-width: 0; }
 .gallery-wrap::-webkit-scrollbar { height: 6px; }
 .gallery-wrap::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
 .gal-thumb { width: 80px; height: 60px; border-radius: 6px; cursor: pointer; border: 2px solid transparent; opacity: 0.5; transition: all 0.2s ease; object-fit: cover; background: var(--surface2); flex-shrink: 0; }
