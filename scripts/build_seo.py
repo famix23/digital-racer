@@ -352,7 +352,8 @@ def product_page(p, others):
         short = f"{truncate(p['clean_title'], 52)} (${p['price']})"  # keep duplicate titles distinct
     page_title = f"{short} | {SITE_NAME}" if "pubg" in p["clean_title"].lower() else f"{short} – {p['cat_label']} | {SITE_NAME}"
     price_txt = f"${p['price']} USD"
-    lead = f"{p['cat_label']} · {price_txt} · Instant delivery. "
+    delivery = "Confirm availability" if it.get("supplier_listing_id") else "Instant delivery"
+    lead = f"{p['cat_label']} · {price_txt} · {delivery}. "
     meta_desc = truncate(lead + (p["desc_clean"] or p["clean_title"]), 158)
     canonical = SITE_URL + p["url"]
     image = p["images"][0] if p["images"] else None
@@ -422,6 +423,12 @@ def product_page(p, others):
                     lambda m: m.group(1) + rel + m.group(2), f, "related grid")
     preset = json.dumps({"title": p["title"], "price": p["price"]}, ensure_ascii=False).replace("</", "<\\/")
     s = replace_one(s, r'\n<script>\n  const urlParams', lambda m: f"\n<script>window.DR_PRESET = {preset};</script>" + m.group(0), f, "main script")
+    if it.get("supplier_listing_id"):
+        s = s.replace("Instant Delivery", "Confirm Availability")
+        s = s.replace("Verified Account", "Account Details")
+        s = s.replace('>Instant</span>', '>Confirm before ordering</span>')
+        s = s.replace('<span>SECURE GUARANTEE:</span> All transactions and asset transfers are verified and protected for smooth delivery.',
+                      '<span>ORDER DETAILS:</span> Confirm availability and the transfer arrangements with Digital Racer before payment.')
     return s
 
 
