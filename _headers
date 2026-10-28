@@ -1,0 +1,19 @@
+/*
+  Strict-Transport-Security: max-age=86400
+  X-Content-Type-Options: nosniff
+  X-Frame-Options: DENY
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: camera=(), microphone=(), geolocation=()
+  Content-Security-Policy: object-src 'none'; base-uri 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+
+/admin/*
+  X-Robots-Tag: noindex, nofollow, noarchive
+
+/inventory.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/p/index.json
+  Cache-Control: public, max-age=0, must-revalidate
+
+/images/optimized/*
+  Cache-Control: public, max-age=31536000, immutable
