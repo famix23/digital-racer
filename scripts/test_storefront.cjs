@@ -22,6 +22,7 @@ const data = JSON.parse(read('inventory.json'));
 const products = Array.isArray(data) ? data : data.items;
 const manifest = JSON.parse(read('p/index.json'));
 assert.equal(manifest.length, products.length);
+assert.ok(read('catalog.html').includes(`>${products.length} products</p>`), 'Static catalog count must match inventory.');
 assert.equal(new Set(products.map(p => sandbox.matchingProduct(manifest, p).url)).size, products.length,
   'Every product must resolve to its own canonical URL, including identical title/price pairs.');
 for (const file of ['index.html', 'catalog.html', 'product.html']) {
