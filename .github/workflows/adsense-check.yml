@@ -25,3 +25,20 @@ jobs:
           python3 scripts/test_adsense.py
           python3 scripts/build_seo.py --check
           git diff --exit-code
+  verify-production:
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    needs: validate
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Wait for deployment and verify live publisher integration
+        run: |
+          for attempt in {1..15}; do
+            if python3 scripts/test_adsense.py --live; then exit 0; fi
+            sleep 30
+          done
+          exit 1
