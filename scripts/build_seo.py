@@ -60,7 +60,22 @@ def read(rel):
         return f.read()
 
 
+ADSENSE_SCRIPT = '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3636750354534911" crossorigin="anonymous"></script>'
+ADSENSE_AUTHORIZATION = "google.com, pub-3636750354534911, DIRECT, f08c47fec0942fa0\n"
+
+
+def with_adsense(content):
+    """Keep exactly one publisher loader in every generated HTML head."""
+    if ADSENSE_SCRIPT in content:
+        return content
+    if "<head>" not in content:
+        raise ValueError("HTML page is missing its head")
+    return content.replace("<head>", "<head>\n" + ADSENSE_SCRIPT, 1)
+
+
 def write(rel, content):
+    if rel.endswith(".html"):
+        content = with_adsense(content)
     full = path(rel)
     old = None
     if os.path.exists(full):
@@ -516,6 +531,12 @@ x.append("</urlset>")
 write("sitemap.xml", "\n".join(x) + "\n")
 
 write("robots.txt", "User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: " + SITE_URL + "/sitemap.xml\n")
+
+# Keep standalone site heads and the publisher authorization in sync, too.
+for rel in ("404.html", "admin/index.html", "about/index.html",
+            "contact/index.html", "privacy/index.html", "terms/index.html"):
+    write(rel, read(rel))
+write("ads.txt", ADSENSE_AUTHORIZATION)
 
 if CHECK_ONLY:
     if changed:

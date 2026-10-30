@@ -1,0 +1,27 @@
+name: AdSense integration
+on:
+  pull_request:
+  push:
+    branches: [main, feat/adsense-install-3636750354534911]
+permissions:
+  contents: read
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python3 scripts/test_adsense.py
+      - run: python3 scripts/build_seo.py --check
+      - run: node scripts/test_storefront.cjs
+      - name: Verify rebuild preserves AdSense and is deterministic
+        run: |
+          python3 scripts/build_seo.py
+          python3 scripts/test_adsense.py
+          python3 scripts/build_seo.py --check
+          git diff --exit-code
