@@ -508,6 +508,7 @@ if os.path.isdir(path(OUT_DIR)):
 x = ['<?xml version="1.0" encoding="UTF-8"?>',
      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
 x += [f"  <url><loc>{SITE_URL}/</loc></url>", f"  <url><loc>{SITE_URL}/catalog</loc></url>"]
+x += [f"  <url><loc>{SITE_URL}/{page}/</loc></url>" for page in ("about", "contact", "terms", "privacy")]
 for p in products:
     imgs = "".join(f"<image:image><image:loc>{esc(abs_url(i))}</image:loc></image:image>" for i in p["images"][:10])
     x.append(f"  <url><loc>{esc(SITE_URL + p['url'])}</loc>{imgs}</url>")
