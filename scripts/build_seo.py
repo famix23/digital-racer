@@ -41,7 +41,7 @@ CATALOG_DESC = ("Browse every PUBG Mobile account, car skin card, UC top-up, in-
 LOGO_PATH = "/images/icons/icon-512.png"
 CATEGORY_LABELS = {"Account": "PUBG Mobile Account", "Car Card": "PUBG Mobile Car Skin Card",
                    "UC Top-Up": "PUBG Mobile UC Top-Up", "In-Game Items": "PUBG Mobile In-Game Item",
-                   "Rank Boosting": "PUBG Mobile Rank Boosting Service"}
+                   "Rank Boosting": "PUBG Mobile Rank Boosting Service", "Popularity": "PUBG Mobile Popularity"}
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT_DIR = "p"  # pre-rendered product pages live at /p/<slug>/
