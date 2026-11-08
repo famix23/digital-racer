@@ -1,0 +1,59 @@
+{
+  "slug": "gta-v-story-mode-beginner-progression-guide",
+  "title": "GTA V Story Mode Beginner Guide: Missions, Saves and Progress",
+  "summary": "A spoiler-light GTA V Story Mode guide to character switching, mission markers, manual saves and missing mission triggers.",
+  "category": "GTA V Guides",
+  "published": "2026-11-08",
+  "intro": "GTA V Story Mode gives you a huge city to explore, three playable protagonists and many mission markers. That freedom can also make the early hours confusing. This guide explains how to follow story progress without rushing through every activity, and how to troubleshoot the common situation where your map shows no obvious next mission.",
+  "sections": [
+    {
+      "heading": "Distinguish Story Mode from GTA Online",
+      "paragraphs": [
+        "Grand Theft Auto V offers a single-player campaign and a separate GTA Online experience. Story Mode follows Michael, Franklin and Trevor through interconnected missions. GTA Online has its own characters, activities and evolving systems. Advice about online businesses or seasonal events is not automatically relevant to your campaign, so check which mode a guide discusses before acting on it.",
+        "Start with the opening story missions so the game can introduce the controls, locations and character-switching system. You do not have to complete every optional activity as soon as it appears. Side content offers variety, but the main campaign advances through its own missions and triggers. Allow time to learn the map instead of trying to clear it in one session."
+      ]
+    },
+    {
+      "heading": "Use the map and protagonist switching together",
+      "paragraphs": [
+        "Mission icons help locate available objectives, but some sequences can only continue with a particular protagonist. If you cannot see a new objective, switch among the characters currently available and check the map again. Calls and messages can also matter, and certain events require in-game time to pass. A missing icon is not always evidence that your save is broken.",
+        "Before driving across Los Santos, look at the approach route and the location of the actual objective. A marker can be near a building with more than one entrance. Learning road connections and recognizing important districts makes future mission travel easier. When you want to explore, pick a destination deliberately and return to the story later."
+      ]
+    },
+    {
+      "heading": "Keep manual saves before important decisions",
+      "paragraphs": [
+        "Autosave is convenient, but it is useful to keep at least one recent manual save in a separate slot. Save before significant missions, large purchases or choices you might want to revisit. If a new attempt goes badly, a second slot provides flexibility. One overwritten slot removes that option, especially when you realize too late that you wanted an earlier state.",
+        "Confirm that saving has completed before exiting. Be cautious with downloaded save files and unofficial editors that claim to unlock progress instantly. They may be incompatible with your game edition or introduce unwanted changes. Platform migration and cloud-save behavior can differ, so do not assume that a save transfers freely between devices."
+      ]
+    },
+    {
+      "heading": "Try these steps when missions stop appearing",
+      "paragraphs": [
+        "Switch between the protagonists and spend some time doing ordinary activities. Stay aware of phone calls, move away from the location where you have been waiting and recheck the map. Some missions become available only after an earlier condition is satisfied, and their triggers may not be visible immediately. These steps are useful before concluding that the game is malfunctioning.",
+        "If you still cannot progress, create a fresh manual save and reload. Rockstar support has also described trying a cab ride using the skip option for some progression problems. That is a troubleshooting step, not a guaranteed solution. If a save has genuinely become corrupted, going back to a known-good earlier save may be the practical recovery route."
+      ]
+    },
+    {
+      "heading": "Learn efficient driving and combat habits",
+      "paragraphs": [
+        "Driving at full speed through every busy intersection often causes more delays than it saves. Practice cornering and braking in ordinary traffic before a mission demands a tight chase. In combat, use cover, check ammunition and notice escape routes. Retreating to a safe angle for a moment can be more useful than holding the trigger in the open.",
+        "Do not spend all your cash immediately just because an expensive vehicle or weapon becomes visible. Think about how much it will help the activities you actually enjoy. Optional missions, exploration and hobbies add variety, but keeping your focus on the main objectives will make it easier to understand where you are in the campaign."
+      ]
+    },
+    {
+      "heading": "Create a spoiler-light plan for your first sessions",
+      "paragraphs": [
+        "Session one can focus on exploring the controls, map and story characters. In your next session, complete a small group of available main missions. Later, explore some side activities and save before returning to the story. This approach gives you a sense of progression without replacing the game's surprises with an exhaustive checklist.",
+        "If you become stuck, write down the active character, last completed mission and latest phone message before looking for a solution. That information is more useful than saying the map looks empty. Avoid guides that demand you reinstall the game or replace save files before simpler checks have been tried."
+      ],
+      "points": [
+        "Check the map with every currently available character.",
+        "Read in-game phone notifications and allow time for triggers.",
+        "Keep a separate manual save for important progress.",
+        "Use optional activities to explore, not to replace main missions.",
+        "Try reversible troubleshooting before modifying game files."
+      ]
+    }
+  ]
+}

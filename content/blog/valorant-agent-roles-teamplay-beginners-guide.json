@@ -1,0 +1,59 @@
+{
+  "slug": "valorant-agent-roles-teamplay-beginners-guide",
+  "title": "VALORANT Agent Roles Guide: Duelist, Initiator and More",
+  "summary": "Understand VALORANT Duelists, Initiators, Controllers and Sentinels, and learn how to coordinate abilities and team entries.",
+  "category": "VALORANT Guides",
+  "published": "2026-11-08",
+  "intro": "VALORANT combines precision shooting with abilities that change how teams enter, defend and retake objectives. Learning agent roles helps you understand what teammates need from you, but a role is not a rigid script. The best coordinated rounds connect information, sightline control, space-taking and safe coverage.",
+  "sections": [
+    {
+      "heading": "Duelists create opportunities to take space",
+      "paragraphs": [
+        "Duelists often lead the first contested fight and help the team enter dangerous territory. Their contribution is not measured only by kills. A player who takes a defended angle and allows teammates to trade can create a useful opening even if they are eliminated. Entry timing is more important than racing ahead alone.",
+        "Before attacking, say which route you intend to use and whether you need a flash or smoke. Give teammates a chance to position around you. On defense, a duelist can take an early challenge or help during a retake, but every round does not require a solo fight. Surviving with information can be more valuable than a reckless duel."
+      ]
+    },
+    {
+      "heading": "Initiators help the team challenge defended areas",
+      "paragraphs": [
+        "Initiators use information and disruptive tools to make contested spaces easier to enter. A reveal or displacement ability helps most when teammates are ready to act on it. Scanning an area when everyone is far away may provide information that expires before anyone benefits. Coordinate the timing and destination first.",
+        "An ability that detects nothing does not automatically prove the entire site is empty. Opponents may be outside its coverage or waiting. Call what was actually confirmed and let teammates decide how much space to take. On defense, the same principle applies to delaying attackers or helping an ally retake a position."
+      ]
+    },
+    {
+      "heading": "Controllers manage sightlines and tempo",
+      "paragraphs": [
+        "Controllers shape how teams move through dangerous areas, often by denying vision. Placing cover at the right moment can help attackers cross an exposed route or isolate one defender from another. But poorly timed vision denial can also give opponents room to reposition. Think about who benefits from the obscured area.",
+        "On defense, decide whether utility should delay a fast push, protect a retreat or assist a later retake. Different agents have different resource and timing rules, so there is no universal ability sequence. Communication with the entry player is more valuable than using every available ability at the beginning of the round."
+      ]
+    },
+    {
+      "heading": "Sentinels hold territory and protect flanks",
+      "paragraphs": [
+        "Sentinels specialize in making held space more dependable and reducing surprises. Defensive utility can discourage a fast rush or alert teammates to movement, depending on the agent. It is not a guarantee that an area is safe. Equipment may be destroyed, bypassed or unavailable, so the player must still check information and manage positioning.",
+        "On attack, watching a flank after the team commits protects players focused on the objective. Tell teammates immediately if you leave that area or your coverage disappears. Otherwise they may continue assuming a route is secure. On defense, know when you can anchor a position and when retreating to support the team makes more sense."
+      ]
+    },
+    {
+      "heading": "Build a team around the jobs that need doing",
+      "paragraphs": [
+        "Useful compositions provide ways to gather information, take space, control vision and defend important routes. That does not mean the same agent count works best on every map or with every group. Agent balance and the roster change, so avoid treating an old tier list as permanent advice. A comfortable agent with a practical plan can be more effective than a fashionable pick.",
+        "If several teammates choose similar agents, discuss what the group might lack. Perhaps one player must watch a flank manually or the team needs more deliberate entry timing. Focus on compensating for missing functions rather than blaming someone at selection. Mechanical aim and teamwork still matter for every role."
+      ]
+    },
+    {
+      "heading": "Use short, reliable callouts in ranked games",
+      "paragraphs": [
+        "Before a round, call the site or area, the first player taking space and the utility that will support them. During the round, communicate confirmed opponents, lost vision coverage and when a key ability is used. After planting, agree who watches close contact and who plays from safer cover. These decisions prevent teammates from relying on different unspoken plans.",
+        "When a round fails, review one specific decision. Was the entry too early? Did the utility arrive when nobody was ready to follow? Did a flank go unwatched? Improving one common problem over several matches produces better teamwork than changing roles after every defeat."
+      ],
+      "points": [
+        "Duelists: coordinate space-taking fights.",
+        "Initiators: make gathered information actionable.",
+        "Controllers: use cover when teammates can benefit.",
+        "Sentinels: communicate when defensive coverage changes.",
+        "Every player: trade teammates and share confirmed information."
+      ]
+    }
+  ]
+}
