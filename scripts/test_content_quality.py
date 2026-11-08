@@ -81,3 +81,21 @@ for url in GUIDES:
     parser.feed((ROOT / url / "index.html").read_text(encoding="utf-8"))
     assert all(link.startswith("/") and not link.startswith("//") or link.startswith("#") for link in parser.links), (url, "outbound links not allowed")
 print(f"Passed: {len(blog_urls)} blog pages, safe site-only links and existing guides.")
+
+# Related guide links are generated from explicit article topic metadata.
+from build_related_guides import TARGETS, START, END, relevant
+for rel, _, _, _, topics, limit in TARGETS:
+    markup = (ROOT / rel).read_text(encoding="utf-8")
+    assert markup.count(START) == 1 and markup.count(END) == 1, rel
+    expected = relevant(blog_posts, topics, limit)
+    generated = markup.split(START, 1)[1].split(END, 1)[0]
+    actual = re.findall(r'href="(/blog/[^"]+/)"', generated)
+    wanted = ["/blog/" + p["slug"] + "/" for p in expected]
+    assert actual == wanted, (rel, actual, wanted)
+    assert len(actual) == len(set(actual)), (rel, "duplicate related links")
+    assert all(link.startswith("/") and not link.startswith("//") for link in actual), rel
+# The guides landing page should expose every current tutorial in its related directory.
+tutorials = relevant(blog_posts, ("tutorial",))
+assert tutorials, "No tutorial articles are discoverable from the guides directory"
+assert len(re.findall(r'href="(/blog/[^"]+/)"', (ROOT / "guides/index.html").read_text(encoding="utf-8"))) >= len(tutorials)
+print(f"Passed: automatic topic-based guide links in {len(TARGETS)} guide pages.")

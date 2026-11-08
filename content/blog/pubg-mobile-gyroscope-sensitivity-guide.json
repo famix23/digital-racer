@@ -55,5 +55,8 @@
         "Treat shared codes as starting points rather than universal answers."
       ]
     }
+  ],
+  "topics": [
+    "tutorial"
   ]
 }

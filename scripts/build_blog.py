@@ -12,6 +12,7 @@ import re
 BASE = "https://www.digitalracer.store"
 MARKER = "<!-- BLOG:GENERATED;"
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
+ALLOWED_TOPICS = {"skins", "account-security", "emulator", "uc-safety", "events", "tutorial"}
 
 def load_posts(root):
     root = Path(root)
@@ -30,6 +31,11 @@ def load_posts(root):
                 raise ValueError(f"{file}: missing {key}")
             text.append(value)
         date.fromisoformat(item["published"])
+        topics = item.get("topics")
+        if (not isinstance(topics, list) or
+            any(not isinstance(t, str) or t not in ALLOWED_TOPICS for t in topics) or
+            len(topics) != len(set(topics))):
+            raise ValueError(f"{file}: topics must list distinct editorial topics")
         if not isinstance(item.get("sections"), list) or not item["sections"]:
             raise ValueError(f"{file}: sections required")
         for section in item["sections"]:
