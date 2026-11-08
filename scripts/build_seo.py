@@ -526,7 +526,13 @@ x += [f"  <url><loc>{SITE_URL}/</loc></url>", f"  <url><loc>{SITE_URL}/catalog</
 x += [f"  <url><loc>{SITE_URL}/{page}/</loc></url>" for page in ("about", "contact", "terms", "privacy",
                                                      "guides", "guides/pubg-mobile-account-safety",
                                                      "guides/pubg-mobile-uc-top-up-safety",
-                                                     "guides/pubg-mobile-skins-explained")]
+                                                     "guides/pubg-mobile-skins-explained", "blog")]
+# Blog article URLs are discovered automatically from static pages created by the editorial workflow.
+from glob import glob
+blog_article_paths = sorted(glob(path("blog", "*", "index.html")))
+for blog_page in blog_article_paths:
+    slug = os.path.basename(os.path.dirname(blog_page))
+    x.append(f"  <url><loc>{SITE_URL}/blog/{slug}/</loc></url>")
 for p in products:
     imgs = "".join(f"<image:image><image:loc>{esc(abs_url(i))}</image:loc></image:image>" for i in p["images"][:10])
     x.append(f"  <url><loc>{esc(SITE_URL + p['url'])}</loc>{imgs}</url>")
@@ -540,7 +546,7 @@ for rel in ("404.html", "admin/index.html", "about/index.html",
             "contact/index.html", "privacy/index.html", "terms/index.html",
             "guides/index.html", "guides/pubg-mobile-account-safety/index.html",
             "guides/pubg-mobile-uc-top-up-safety/index.html",
-            "guides/pubg-mobile-skins-explained/index.html"):
+            "guides/pubg-mobile-skins-explained/index.html", "blog/index.html"):
     write(rel, read(rel))
 write("ads.txt", ADSENSE_AUTHORIZATION)
 
