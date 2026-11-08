@@ -1,0 +1,50 @@
+{
+  "slug": "pubg-mobile-47-beta-vs-live-feature-verification-guide",
+  "title": "PUBG Mobile 4.7 Beta vs Live: How to Verify Features",
+  "category": "PUBG Mobile 4.7 Guides",
+  "summary": "Compare official 4.7 beta tests with the released game and avoid treating previews as confirmed features.",
+  "intro": "The Version 4.7 test cycle includes announcements from September and October 2026 covering Classic Mode, winter activities, World of Wonder and Metro Royale. A player can easily see an exciting feature in a beta video and assume it is guaranteed in every live queue. This guide is a checklist for verifying what is actually available when the official patch launches.",
+  "sections": [
+    {
+      "heading": "Identify the announcement stage",
+      "paragraphs": [
+        "The first test described healing adjustments, vehicle camera refinements and staged reloading. The second introduced Glyph skills, an Aurora Pegasus and Erangel Subzero systems. A later preview discussed the Ancient Beast and Metro Royale's Seal City. These were separate development snapshots, not one final patch note. Record which build showed a mechanic and remember that it could be tuned, restricted or delayed before public release."
+      ]
+    },
+    {
+      "heading": "Verify the mode selector",
+      "paragraphs": [
+        "A special mount or double-jump may belong to a themed game mode, while a Metro Royale map exists in another queue entirely. After updating, open the live selector and read each mode's description. A feature shown in a beta screenshot does not prove it is present in regular ranked Erangel. Check event activation windows before concluding that a missing feature is a client error."
+      ]
+    },
+    {
+      "heading": "Keep dates attached to claims",
+      "paragraphs": [
+        "A November client update can include features that activate through separate events. Some winter preview material discusses a December mode phase rather than a November launch-day option. Do not advertise everything under a single release date. For every new article, note whether the information describes a test, an upcoming launch or a currently playable mode. This simple separation makes the news more useful."
+      ]
+    },
+    {
+      "heading": "Test exact behavior rather than guessing",
+      "paragraphs": [
+        "If the final build includes a new grip or healing timing, compare it in a repeatable training scenario. Use the same weapon, attachment, sight and distance for every test. Avoid inserting exact numerical percentages based on a creator's demonstration unless you can verify the measurements. A correct qualitative description is preferable to an invented damage chart."
+      ]
+    },
+    {
+      "heading": "Update earlier reports transparently",
+      "paragraphs": [
+        "When the public client behaves differently from the beta, correct the earlier article and state what changed. Do not post a near-identical new article solely to target another keyword. Keep official announcements and speculation distinct, and do not suggest unlocking unreleased content through edited client files. The best update coverage helps players choose their next action without exaggerating availability."
+      ]
+    },
+    {
+      "heading": "Keep a small release-day evidence log",
+      "paragraphs": [
+        "For each interesting feature, record the official announcement stage, the tested mode, and whether it appears on your own live game menu. If you can reproduce it, note the game version, mode and basic conditions without exposing personal credentials. If it is absent, mark it unverified rather than unavailable to everyone. When comparing a beta weapon demonstration with final gameplay, keep the same sight, distance and attachments. This makes corrections useful and prevents the common mistake of turning a developer preview into a guaranteed universal game mechanic."
+      ]
+    }
+  ],
+  "topics": [
+    "tutorial",
+    "events"
+  ],
+  "published": "2026-11-08"
+}
