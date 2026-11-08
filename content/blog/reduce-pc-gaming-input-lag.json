@@ -1,0 +1,66 @@
+{
+  "slug": "reduce-pc-gaming-input-lag",
+  "title": "How to Reduce Input Lag in PC Games",
+  "summary": "A practical, hardware-neutral checklist for diagnosing slow controls, inconsistent frame pacing and display responsiveness.",
+  "category": "Performance and troubleshooting",
+  "published": "2026-11-08",
+  "intro": "Input lag is the delay between moving a controller or mouse and seeing the game respond. It is easy to confuse with network latency or stuttering. The right fix depends on whether the delay begins at the input device, the game engine, the graphics pipeline or the display.",
+  "sections": [
+    {
+      "heading": "First identify whether the problem is local or online",
+      "paragraphs": [
+        "Try the same movement in an offline game or a training mode if possible. If camera movement always feels delayed, examine local performance and input. If the controls feel immediate but opponents teleport or hits register late only online, check connection stability, packet loss and server conditions.",
+        "An unstable frame rate can also look like delayed controls, because the screen may not update promptly during a long frame. Avoid changing several settings at once; a repeatable test makes it easier to identify the real cause."
+      ]
+    },
+    {
+      "heading": "Stabilize frame pacing before chasing the highest number",
+      "paragraphs": [
+        "Try lowering costly graphics features one at a time. Shadows, reflections, volumetric lighting and aggressive rendering resolutions can be demanding, although the bottleneck varies among games and graphics cards. Observe whether a change reduces both average frame time and large spikes rather than only lifting peak FPS.",
+        "A sustainable frame-rate cap can sometimes improve consistency when the graphics processor is constantly fully utilized. Compare the game's built-in limiter against uncapped performance. Frame generation can improve animation smoothness, but generated frames are not a substitute for rapid real input response."
+      ]
+    },
+    {
+      "heading": "Use the monitor's correct refresh rate and low-latency options",
+      "paragraphs": [
+        "Check the refresh rate selected in the operating system and in any exclusive fullscreen mode the game uses. A fast monitor left in a slower mode will not display new information as frequently as intended. If your equipment supports variable refresh rate, test that feature along with sensible synchronization settings.",
+        "Some televisions add image processing delay unless a gaming mode is selected. On monitors, overdrive settings can reduce blur but very aggressive modes may introduce visible artifacts. Compare responsiveness and image quality rather than assuming the most extreme setting is best."
+      ]
+    },
+    {
+      "heading": "Test the mouse, keyboard or controller connection",
+      "paragraphs": [
+        "For wireless devices, make sure the battery is charged and test a less congested connection when possible. Bluetooth interference can affect responsiveness. For wired devices, try another cable or direct USB port during troubleshooting. Do not assume that increasing the polling rate to its highest value always helps; excessive rates may add processor work in some configurations.",
+        "Mouse acceleration and smoothing also change how aiming feels. These settings do not necessarily increase physical device latency, but they can make input seem unpredictable. Test them while keeping sensitivity and game conditions constant."
+      ]
+    },
+    {
+      "heading": "Reduce background activity and check system resources",
+      "paragraphs": [
+        "A game may stutter when a browser, recorder, download manager or background task competes for CPU time, memory or disk access. Close unnecessary applications temporarily, then retest. Watch hardware temperatures if performance gets worse during long sessions. Sudden thermal throttling can change frame delivery after several minutes.",
+        "Driver updates sometimes resolve bugs, but indiscriminately installing optimization utilities can create more conflicts. Use your hardware vendor's normal tools and keep notes on changes so an unhelpful adjustment can be reversed."
+      ]
+    },
+    {
+      "heading": "Do not mistake network ping for input latency",
+      "paragraphs": [
+        "Ping measures network round-trip time rather than mouse-to-screen response. A stable connection matters more than a single attractive latency number. Packet loss, jitter and congested Wi-Fi can make online play feel inconsistent, especially when other devices are downloading large files.",
+        "If online matches are the only place you experience delays, try a wired connection if available and compare the same regional server across sessions. Be cautious with tools that claim to eliminate ping while asking for game credentials or unusual system access."
+      ]
+    },
+    {
+      "heading": "A repeatable troubleshooting order",
+      "paragraphs": [
+        "Begin with the simplest reversible checks, test each change, and keep the settings that measurably improve the experience. A slightly lower but consistent frame rate can feel better than a higher rate interrupted by large spikes. If none of the adjustments helps, collect details about the game, monitor, input device and performance before deciding on a hardware upgrade."
+      ],
+      "points": [
+        "Check selected monitor refresh rate and game display mode.",
+        "Observe frame times while performing the same camera movement.",
+        "Close unused overlays, downloads and memory-heavy applications.",
+        "Test alternate controller or mouse connections.",
+        "Compare synchronization and frame-cap options one at a time.",
+        "Investigate network stability only when the symptoms occur online."
+      ]
+    }
+  ]
+}

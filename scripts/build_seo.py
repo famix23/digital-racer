@@ -523,7 +523,14 @@ if os.path.isdir(path(OUT_DIR)):
 x = ['<?xml version="1.0" encoding="UTF-8"?>',
      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
 x += [f"  <url><loc>{SITE_URL}/</loc></url>", f"  <url><loc>{SITE_URL}/catalog</loc></url>"]
-x += [f"  <url><loc>{SITE_URL}/{page}/</loc></url>" for page in ("about", "contact", "terms", "privacy")]
+x += [f"  <url><loc>{SITE_URL}/{page}/</loc></url>" for page in ("about", "contact", "terms", "privacy",
+                                                     "guides", "guides/pubg-mobile-account-safety",
+                                                     "guides/pubg-mobile-uc-top-up-safety",
+                                                     "guides/pubg-mobile-skins-explained", "blog")]
+from build_blog import build_blog
+blog_slugs = build_blog(ROOT, write, CHECK_ONLY, changed)
+for slug in blog_slugs:
+    x.append(f"  <url><loc>{SITE_URL}/blog/{slug}/</loc></url>")
 for p in products:
     imgs = "".join(f"<image:image><image:loc>{esc(abs_url(i))}</image:loc></image:image>" for i in p["images"][:10])
     x.append(f"  <url><loc>{esc(SITE_URL + p['url'])}</loc>{imgs}</url>")
@@ -534,7 +541,10 @@ write("robots.txt", "User-agent: *\nAllow: /\nDisallow: /admin/\n\nSitemap: " + 
 
 # Keep standalone site heads and the publisher authorization in sync, too.
 for rel in ("404.html", "admin/index.html", "about/index.html",
-            "contact/index.html", "privacy/index.html", "terms/index.html"):
+            "contact/index.html", "privacy/index.html", "terms/index.html",
+            "guides/index.html", "guides/pubg-mobile-account-safety/index.html",
+            "guides/pubg-mobile-uc-top-up-safety/index.html",
+            "guides/pubg-mobile-skins-explained/index.html", "blog/index.html"):
     write(rel, read(rel))
 write("ads.txt", ADSENSE_AUTHORIZATION)
 
