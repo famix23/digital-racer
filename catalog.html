@@ -2719,7 +2719,7 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
     const badgeHtml = product.badge ? `<div class="prod-badge">${escapeHTML(product.badge)}</div>` : '';
     return `
       <a href="${productUrl(product)}" class="product-card item-card" data-category="${escapeHTML(product.category)}">
-        <div class="prod-img-wrap"><img src="${escapeHTML(bgImage)}" class="prod-img" alt="${escapeHTML(product.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'"> ${badgeHtml}</div>
+        <div class="prod-img-wrap">${bgImage ? `<img src="${escapeHTML(bgImage)}" class="prod-img" alt="${escapeHTML(product.title)}" loading="lazy" decoding="async" onerror="this.style.display='none'">` : '<span style="color: var(--muted); padding: 1rem; display: block;">No image available</span>'} ${badgeHtml}</div>
         <div class="prod-content">
           <div class="prod-category">${escapeHTML(product.category || 'Product')}</div>
           <div class="prod-title">${escapeHTML(product.title)}</div>

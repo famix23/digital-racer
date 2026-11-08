@@ -54,6 +54,13 @@ collections:
               - label: "Thumbnail Image"
                 name: "thumbnail"
                 widget: "image"
+                required: false
+
+              - label: "Reference listing (disables ordering)"
+                name: "reference_only"
+                widget: "boolean"
+                required: false
+                default: false
               
               - label: "Additional Gallery Images"
                 name: "gallery"
