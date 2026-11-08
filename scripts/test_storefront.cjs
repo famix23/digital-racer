@@ -52,7 +52,9 @@ for (const p of manifest) {
   assert.ok(!/<meta name="robots" content="noindex/.test(html), 'Canonical product pages must stay indexable');
   const item = products.find(row => sandbox.matchingProduct(manifest, row).url === p.url);
   const referenceOnly = item.reference_only === true;
-  assert.equal(product.offers.availability, 'https://schema.org/' + (referenceOnly ? 'OutOfStock' : 'InStock'));
+  const availability = referenceOnly ? 'https://schema.org/OutOfStock' :
+    item.availability_unverified === true ? undefined : 'https://schema.org/InStock';
+  assert.equal(product.offers.availability, availability);
   assert.equal(/<a [^>]*id="buy-btn"/.test(html), !referenceOnly);
   assert.equal(/id="prod-desc">\s*<p><strong>Buy now on whatsapp number/.test(html), !referenceOnly);
   if (referenceOnly) assert.ok(html.includes('Last listed price'));

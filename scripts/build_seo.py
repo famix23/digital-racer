@@ -389,6 +389,8 @@ def product_page(p, others):
 
     offer = {"@type": "Offer", "url": canonical, "priceCurrency": "USD",
              "availability": "https://schema.org/OutOfStock" if reference_only else "https://schema.org/InStock", "seller": {"@id": SITE_URL + "/#organization"}}
+    if not reference_only and it.get("availability_unverified") is True:
+        del offer["availability"]
     if p["price_num"]:
         offer["price"] = p["price_num"]
     product_ld = {"@context": "https://schema.org", "@type": "Product", "@id": canonical + "#product",
