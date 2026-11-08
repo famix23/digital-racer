@@ -1,0 +1,43 @@
+{
+  "slug": "gta-6-ps5-preload-november-10-console-checklist",
+  "title": "GTA VI PS5 Pre-Load: November 10 Setup Checklist",
+  "category": "GTA VI Console Guides",
+  "summary": "Prepare your PS5 for GTA VI's November 10 digital pre-load with auto-download, storage and launch checks.",
+  "intro": "Rockstar's November 3 support update says Grand Theft Auto VI digital pre-loading begins on PlayStation 5 at midnight local time on November 10, 2026. The game itself is scheduled to unlock November 19. This guide explains what owners can prepare without suggesting that a pre-loaded copy becomes playable early.",
+  "sections": [
+    {
+      "heading": "Confirm the correct purchase account",
+      "paragraphs": [
+        "Check that the PlayStation account signed into your console is the one used for the game purchase. A game visible on a friend's profile does not establish an entitlement on your account. Read the edition and license details in the PlayStation storefront. If the game is not eligible to pre-load, verify purchase status and region before attempting reinstallations or changing system settings."
+      ]
+    },
+    {
+      "heading": "Enable supported automatic downloads",
+      "paragraphs": [
+        "Rockstar's preload FAQ says PlayStation users need auto-download enabled and their consoles powered on or resting in an appropriate Rest Mode. Check the console's power and update settings ahead of time. If you intend to download manually, follow the official PlayStation library process. Do not use unofficial launcher tools or files claiming to bypass the scheduled start time."
+      ]
+    },
+    {
+      "heading": "Make storage space safely",
+      "paragraphs": [
+        "Rockstar lists up to 212 GB of available space depending on the device. Leave reasonable extra space for normal console operations and potential patch data instead of aiming for an exact byte count. Review installed games and captures before deleting anything. Move content using supported storage features, and back up personal saves where supported. A large download is not a reason to erase data blindly."
+      ]
+    },
+    {
+      "heading": "Understand the clock",
+      "paragraphs": [
+        "The PS5 digital pre-load starts at local midnight on November 10 under Rockstar's revised instructions. That is a preparation date, not the release date. GTA VI itself is scheduled for November 19 at local midnight for the console editions. Be careful with older promotional notices mentioning November 12, because the later dedicated FAQ updates the digital pre-load timing."
+      ]
+    },
+    {
+      "heading": "What to do if the queue looks wrong",
+      "paragraphs": [
+        "First check the edition, account region, payment or pre-order status, and the console's network connection. A paused queue, unavailable installation button or insufficient free space can have different causes. Use the normal system troubleshooting options and consult the current platform support guidance. Avoid paying strangers to activate a game early or handing over a sign-in code to 'fix' your library."
+      ]
+    }
+  ],
+  "topics": [
+    "tutorial"
+  ],
+  "published": "2026-11-08"
+}
