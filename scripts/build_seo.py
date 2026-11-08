@@ -527,11 +527,9 @@ x += [f"  <url><loc>{SITE_URL}/{page}/</loc></url>" for page in ("about", "conta
                                                      "guides", "guides/pubg-mobile-account-safety",
                                                      "guides/pubg-mobile-uc-top-up-safety",
                                                      "guides/pubg-mobile-skins-explained", "blog")]
-# Blog article URLs are discovered automatically from static pages created by the editorial workflow.
-from glob import glob
-blog_article_paths = sorted(glob(path("blog", "*", "index.html")))
-for blog_page in blog_article_paths:
-    slug = os.path.basename(os.path.dirname(blog_page))
+from build_blog import build_blog
+blog_slugs = build_blog(ROOT, write, CHECK_ONLY, changed)
+for slug in blog_slugs:
     x.append(f"  <url><loc>{SITE_URL}/blog/{slug}/</loc></url>")
 for p in products:
     imgs = "".join(f"<image:image><image:loc>{esc(abs_url(i))}</image:loc></image:image>" for i in p["images"][:10])
