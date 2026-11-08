@@ -43,7 +43,7 @@ def block(section_id, title, description, posts):
         cards = '<p>More articles will appear here as they are published.</p>'
     return "\n".join((
         START,
-        '<section class="related-reading" aria-labelledby="' + '"' + section_id + '">',
+        '<section class="related-reading" aria-labelledby="' + section_id + '">',
         '<h2 id="' + section_id + '">' + html.escape(title) + '</h2>',
         '<p>' + html.escape(description) + '</p>',
         '<div class="cards">',
