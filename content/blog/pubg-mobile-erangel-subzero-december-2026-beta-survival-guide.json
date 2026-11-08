@@ -1,0 +1,56 @@
+{
+  "slug": "pubg-mobile-erangel-subzero-december-2026-beta-survival-guide",
+  "title": "PUBG Mobile Erangel Subzero: December Snow Map Preview",
+  "summary": "See the December 2026 Erangel Subzero beta preview: blizzards, frozen doors, crashed satellites, Thermal Suits and icy vehicles.",
+  "category": "PUBG Mobile Maps and Modes",
+  "published": "2026-11-08",
+  "intro": "Erangel Subzero is a winter survival spin-off previewed for a later phase of PUBG Mobile's 4.7 cycle. The October beta described unusual weather, icy routes and new zone-related equipment. It is separate from the main November 12 update, and its features should be treated as test-server ideas until the December mode is enabled.",
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Erangel's weather becomes part of the encounter",
+      "paragraphs": [
+        "The beta describes changing weather with several conditions, including blizzards that reduce visibility and slightly slow players in snowy areas. It also says the landing and final play zone begin under clear conditions. This is more than a visual reskin: weather could influence when a squad pushes an exposed field.",
+        "Do not rely entirely on line of sight across a snow-covered road. A temporary visibility change could hide a retreating opponent or make a long-range fight harder to judge. Keep a safe nearby route in mind, especially if you intend to cross an open area when a blizzard is possible."
+      ]
+    },
+    {
+      "heading": "Frozen doors, windows and snow cover",
+      "paragraphs": [
+        "Some doors and windows can become frozen shut in affected conditions. The beta notes describe breaking the ice to pass through, which also creates a visible mist effect. Players may be able to use Liquid Nitrogen Tanks to freeze other openings, creating obstacles for enemies who expect easy entry.",
+        "Snow piles may be destroyed by vehicles, while some can be reinforced into stronger frozen barriers with Liquid Nitrogen Tanks. This adds an environmental layer to defensive positioning. Learn which cover can be broken before trusting a snow wall during an important fight."
+      ]
+    },
+    {
+      "heading": "Satellite crashes and special supplies",
+      "paragraphs": [
+        "Test documentation describes random satellite crashes during a match, with warnings and secondary blue-zone devices. Some already-crashed satellites may be present at match start. Players who chase these locations must consider both potential loot and the risk created by other squads moving toward the same notice.",
+        "The Thermal Protection Suit was listed as a satellite-exclusive item occupying the Ghillie Suit slot. It can block blue-zone damage while it retains durability, according to the beta. That does not mean it offers unlimited survival outside the safe zone; its protective effect ends when durability is exhausted."
+      ]
+    },
+    {
+      "heading": "Special grenades and cold-related equipment",
+      "paragraphs": [
+        "The BZ Grenade was described as creating a temporary localized blue zone that can stack with ordinary zone pressure. It might force players away from cover, but its final size, duration and damage would need measurement on the live build. Do not assume one grenade guarantees an elimination.",
+        "In this mode, Liquid Nitrogen Tanks were shown replacing Molotov Cocktails with a frost effect that slows and damages players. Snow Mist Ammo and other special gear were also previewed. A useful loadout must account for both conventional gunfights and the limited, environment-specific effects of these tools."
+      ]
+    },
+    {
+      "heading": "Transport across ice and changed landmarks",
+      "paragraphs": [
+        "The beta puts Snowmobiles, Snowbikes and the G36C into the Subzero ruleset and describes anti-skid handling for classic vehicles on ice. Frozen waters and a damaged Sosnovka bridge could change customary travel routes. Stalber, Shelter and military-adjacent areas also feature in the environment preview.",
+        "Players should identify safe bridge alternatives and avoid assuming every vehicle accelerates or turns the same way on snow. A route that worked in normal Erangel may expose the squad to longer ice crossings. Try a conservative early rotation before attempting an aggressive center-map rush."
+      ]
+    },
+    {
+      "heading": "Why this is a preview, not a launch-day checklist",
+      "paragraphs": [
+        "The beta notice explicitly says test content can change and is not representative of the final release. The mode was discussed as an upcoming December addition, not a guarantee of immediate November availability. Specific weather patterns, loot probabilities and gadget tuning should be checked after release.",
+        "Use this overview to understand the proposed mechanics, then rely on final in-game rules when Subzero appears. Do not install unofficial beta files or advertise hidden unlocks based on the test. DigitalRacer will keep the distinction between tested systems and confirmed live availability visible."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "slug": "pubg-mobile-47-glyph-skills-six-passives-explained",
+  "title": "PUBG Mobile 4.7 Glyph Skills: Six Passives Explained",
+  "summary": "Compare the six Glyph skills previewed in PUBG Mobile 4.7 beta, including Tactical Shield, Faster Healing and Air Drop Prediction.",
+  "category": "PUBG Mobile Updates",
+  "published": "2026-11-08",
+  "intro": "PUBG Mobile Version 4.7's October beta introduced randomly distributed Glyph abilities in the winter-themed mode. Rather than promising a fixed best skill, this guide explains what each of the six previewed passives is designed to do, why its level matters, and how players might adapt their tactics if the system reaches the live November update as tested.",
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "How players obtain Glyph skills",
+      "paragraphs": [
+        "The October 10 beta notice states that players can receive a random passive at the beginning of a themed match, with level one more common than higher levels. Glyph Altars may also award a random passive during the match. This makes a fixed skill-build plan less reliable than learning several possible combinations.",
+        "The same beta described drops from eliminated opponents carrying two Glyph skills. A random skill may appear in the loot crate. Higher-level abilities are obtained randomly and cannot simply be leveled up mid-match, so an early weak skill is not guaranteed to become stronger through ordinary eliminations."
+      ]
+    },
+    {
+      "heading": "Tactical Shield and Faster Healing",
+      "paragraphs": [
+        "Tactical Shield was described as activating protective shielding when health falls below a threshold, with a small defensive shield possible while knocked. Higher levels improve the trigger conditions or shielding performance. In a close fight that could change survival odds, but players should never assume it makes them invulnerable.",
+        "Faster Healing makes healing consumables and reviving teammates quicker, according to the test notes. Its value is most obvious when a squad has to recover between engagements. The beta does not establish an unconditional advantage against every weapon, and final timing or balance could change before public release."
+      ]
+    },
+    {
+      "heading": "Quick Reload and Supply Detection",
+      "paragraphs": [
+        "Quick Reload improves reload and weapon-switch speed by skill level. For players who frequently swap between an assault rifle and a close-range backup, smoother transitions may matter. Practice the normal reload rhythm too, because a randomly assigned passive may not be available in the next match.",
+        "Supply Detection scans for higher-quality nearby loot when supplies are picked up. A stronger level increases scanning range. That is a navigation and information benefit rather than direct damage. A team might use it to choose its next route instead of spending time checking every building."
+      ]
+    },
+    {
+      "heading": "Armor Repair and Air Drop Prediction",
+      "paragraphs": [
+        "Armor Repair restores some armor durability through movement, with a stronger level improving recovery. It is best understood as a maintenance mechanic, not permission to ignore exposed positions. An active fight can still end before any repair effect becomes relevant, and the exact recovery figures need final release verification.",
+        "Air Drop Prediction provides advance information about where a drop will land. Stronger levels can offer a longer warning window and shorter cooldowns. The information may help teams decide whether to rotate, but reaching a drop safely is a separate tactical problem. Competing players can still arrive first."
+      ]
+    },
+    {
+      "heading": "How random level-one to level-three skills affect teamwork",
+      "paragraphs": [
+        "Because the first skill may be random, squad members should briefly communicate their passives after landing. A player who can spot supply locations may guide the early loot route, while a healing-focused player could support recovery after a fight. Treat this as practical coordination, not a requirement to reorganize the whole squad.",
+        "If an altar grants a different ability, compare its immediate usefulness with the situation. A rotation approaching the final zone may reward information or survivability differently from an early looting phase. Without verified live cooldowns, it would be misleading to publish a numerical best-to-worst ranking."
+      ]
+    },
+    {
+      "heading": "What to verify when 4.7 goes live",
+      "paragraphs": [
+        "The announcement describes beta content, which explicitly may change before final deployment. Check whether Glyphs are limited to specific themed matches, how many skills can be held and how acquisition works on the live server. A feature seen in a video from a beta account is not necessarily available in every ranked lobby.",
+        "Use normal in-game instructions to test each skill. Avoid unofficial clients claiming they can lock an always-on level-three passive or add premium event abilities. DigitalRacer will treat the live rules as authoritative when the November 12 release arrives, while keeping this article labeled as a preview."
+      ]
+    }
+  ]
+}
