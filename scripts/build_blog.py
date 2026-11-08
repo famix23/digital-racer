@@ -75,11 +75,32 @@ def build_blog(root, write, check_only=False, changed=None):
     root = Path(root)
     template = (root / "scripts" / "blog_template.html.txt").read_text(encoding="utf-8")
     posts = load_posts(root)
-    cards = "\n".join(
-        '<a href="/blog/' + p["slug"] + '/"><strong>' + html.escape(p["title"]) +
-        '</strong><span>' + html.escape(p["summary"]) + '</span></a>'
-        for p in posts)
-    hub = '<p class="lede">Gaming information, PC performance explainers and practical tutorials written for Digital Racer readers. Browse without visiting third-party websites.</p>\n<div class="cards">' + cards + '</div>\n<p>New topics can be added independently of the product catalog. Find PUBG Mobile item terminology in our <a href="/guides/">gaming guides</a>.</p>'
+    def category_group(item):
+        category = item["category"].lower()
+        if category.startswith("pubg"):
+            return "PUBG Mobile"
+        if category.startswith("gta vi"):
+            return "GTA VI"
+        if category.startswith("gta v"):
+            return "GTA V"
+        return "Other Gaming & PCs"
+
+    groups = (("PUBG Mobile", "pubg-mobile"), ("GTA VI", "gta-vi"),
+              ("GTA V", "gta-v"), ("Other Gaming & PCs", "other-gaming"))
+    hub_parts = [
+        '<p class="lede">Original gaming news, update previews and practical guides for Digital Racer readers, with PUBG Mobile as our main coverage area.</p>',
+        '<p>Browse <a href="#pubg-mobile">PUBG Mobile</a>, <a href="#gta-vi">GTA VI</a>, <a href="#gta-v">GTA V</a> or <a href="#other-gaming">other gaming and PC topics</a>.</p>'
+    ]
+    for name, anchor in groups:
+        members = [p for p in posts if category_group(p) == name]
+        cards = "\n".join(
+            '<a href="/blog/' + p["slug"] + '/"><strong>' + html.escape(p["title"]) +
+            '</strong><span>' + html.escape(p["summary"]) + '</span></a>'
+            for p in members)
+        hub_parts.append('<h2 id="' + anchor + '">' + html.escape(name) + '</h2>')
+        hub_parts.append('<div class="cards">' + cards + '</div>')
+    hub_parts.append('<p>News articles identify confirmed announcements and distinguish beta previews from final releases. Learn more about cosmetics and player safety in our <a href="/guides/">gaming guides</a>.</p>')
+    hub = "\n".join(hub_parts)
     write("blog/index.html", render(template, "Gaming Blog", "Original gaming articles and practical PC gaming insights from Digital Racer.", "Gaming articles", BASE + "/blog/", hub, False))
     for p in posts:
         write("blog/" + p["slug"] + "/index.html",
