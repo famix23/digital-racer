@@ -34,6 +34,12 @@
       "paragraphs": [
         "A downloadable inventory patch or client modification cannot legitimately establish ownership of premium items on the game publisher's systems. Such tools can create account penalties or security risks. Stick to supported in-game collection screens and authorized purchasing channels. If an advertised reward is not visible for your version, verify the event date rather than using a tool promising to bypass availability restrictions."
       ]
+    },
+    {
+      "heading": "Describe the cosmetic precisely",
+      "paragraphs": [
+        "A complete JS9 cosmetic description should name the actual finish, show whether the item is owned, record its current enhancement level and distinguish unlocked effects from preview images. If a collection page displays a final form, that image may not represent the player's current inventory. Likewise, a card progress indicator can represent partial collection rather than redemption of the reward. This distinction is especially important when comparing screenshots or advertising a collection. Avoid inferring a fixed rarity or price from one example; rely on the current game panel for requirements."
+      ]
     }
   ],
   "topics": [
