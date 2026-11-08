@@ -1,0 +1,56 @@
+{
+  "slug": "pubg-mobile-47-classic-mode-healing-reload-canted-foregrip",
+  "title": "PUBG Mobile 4.7 Classic Changes: Healing, Reloads and Grip",
+  "summary": "PUBG Mobile 4.7 beta previews med-kit and bandage changes, staged reloads, vehicle camera improvements and a Canted Foregrip.",
+  "category": "PUBG Mobile Weapons and Gameplay",
+  "published": "2026-11-08",
+  "intro": "Not every important PUBG Mobile update needs an elaborate event map. Version 4.7's early beta notes included practical changes to healing items, reloading and vehicle cameras, while a later test introduced a Canted Foregrip. These adjustments could affect ordinary firefights if they survive into the final patch.",
+  "topics": [
+    "tutorial",
+    "events"
+  ],
+  "sections": [
+    {
+      "heading": "Med Kits and bandages in beta testing",
+      "paragraphs": [
+        "The September beta said Med Kits would become lighter to carry and faster to use. It also described reduced weight for Adrenaline Syringes and Painkillers, plus bandages that restore more health and take less time to use. Those are meaningful inventory and recovery changes even without introducing a new weapon.",
+        "Shorter intervals between energy and health recovery were also tested while leaving the total amount restored unchanged. If implemented, that may change the timing of safe re-engagement. Do not rely on old screenshots showing exact recovery numbers because these are development-stage descriptions rather than final published balance figures."
+      ]
+    },
+    {
+      "heading": "The Battle Ready Kit as an emergency resource",
+      "paragraphs": [
+        "The first 4.7 beta described a Battle Ready Kit for Erangel that fully restores health and energy. Suggested acquisition routes included a location indicated by a wireless coordinate device, a supply shop, an air drop or occasional ground loot. Not every route is necessarily available at identical rates in the live version.",
+        "If such a kit appears, it should be treated as an emergency recovery option rather than a reason to carry no ordinary healing supplies. A squad still needs to survive until the kit can be used. Learn its inventory weight, activation time and purchase conditions on the public patch before changing your normal loadout."
+      ]
+    },
+    {
+      "heading": "Staged reloading could help interrupted fights",
+      "paragraphs": [
+        "The test describes a specific empty-magazine case: if reloading is interrupted after the new magazine is inserted, the next reload needs only the remaining chambering action. That is different from instantly refilling a firearm whenever an animation is cancelled. The precise trigger point matters.",
+        "Players frequently interrupt a reload to take cover, vault or respond to an approaching enemy. A staged mechanic could reduce the penalty for a partially completed action, but the safe habit is still to reload from cover. Verify how different weapons behave in training after the live update."
+      ]
+    },
+    {
+      "heading": "Canted Foregrip: what is known and unknown",
+      "paragraphs": [
+        "The October 10 beta announcement lists a new Canted Foregrip attachment for Classic Mode. It does not, in the material reviewed here, provide final detailed recoil or handling percentages for every supported gun. It would be misleading to claim it universally beats a compensator or other grip based only on its name.",
+        "When released, test it on a familiar weapon with a consistent distance, scope and burst size. Look for changes in horizontal drift, vertical control and feel during short and extended bursts. A strong attachment for one weapon or play style may not be the best choice for another."
+      ]
+    },
+    {
+      "heading": "Vehicle camera and aiming refinements",
+      "paragraphs": [
+        "The first beta also described reduced abnormal camera shaking while aiming down sights from a vehicle, improved perceived recoil direction and better camera behavior when a vehicle rolls over. These quality-of-life details may make certain passenger gunfights easier to follow visually.",
+        "They should not be read as automatic accuracy bonuses or bullet-damage buffs. A steadier camera can improve how clearly a player sees an encounter without changing a firearm's underlying projectile behavior. After updating, compare a repeatable passenger aiming scenario and check your preferred camera settings."
+      ]
+    },
+    {
+      "heading": "A practical test before ranked play",
+      "paragraphs": [
+        "Save the current inventory and sensitivity habits you rely on, then enter training or an unranked environment after the patch. Time healing with the live interface, check whether interrupted reloads retain progress and compare your main rifle with available attachments. Change one setting at a time.",
+        "Keep in mind that every description here comes from beta-stage announcements. PUBG Mobile may remove, retune or postpone individual features. Wait for the final patch notes before presenting a tested adjustment as guaranteed and avoid clients promising to force unavailable attachments into your inventory."
+      ]
+    }
+  ]
+}

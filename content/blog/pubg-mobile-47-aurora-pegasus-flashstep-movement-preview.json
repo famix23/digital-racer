@@ -1,0 +1,56 @@
+{
+  "slug": "pubg-mobile-47-aurora-pegasus-flashstep-movement-preview",
+  "title": "PUBG Mobile Aurora Pegasus and Flashstep: 4.7 Movement Guide",
+  "summary": "Explore the Aurora Pegasus flying mount and Aurora Flashstep double-jump ability tested in PUBG Mobile Version 4.7.",
+  "category": "PUBG Mobile Updates",
+  "published": "2026-11-08",
+  "intro": "PUBG Mobile's Version 4.7 beta is experimenting with movement beyond ordinary vehicles and climbing. Aurora Flashstep introduces a double jump with a short dash, while Aurora Pegasus is a themed mount that can travel on land and in the air. Both were described in the October beta, so this is a strategy preview rather than a confirmed final-controls manual.",
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Aurora Flashstep changes short-range movement",
+      "paragraphs": [
+        "The beta announcement describes Aurora Flashstep as an active ability usable across the map, allowing a double jump and short dash. That could help players move between cover positions or react to uneven terrain, but the announcement does not provide a final competitive cooldown or an exact distance for every situation.",
+        "Practice should focus on timing rather than assuming this is an unlimited escape button. Moving into the open still exposes a player to opponents watching the landing point. A jump with a predictable trajectory can be punished, particularly if the player uses it without considering the available cover."
+      ]
+    },
+    {
+      "heading": "Aurora Pegasus works on the ground and above it",
+      "paragraphs": [
+        "The Pegasus was described as summonable, recallable or left on the battlefield. A rider can use it on the ground, trigger takeoff through a double jump, hover and gain height by flapping its wings. These differences make it more flexible than a conventional road vehicle in the tested mode.",
+        "Its appearance and performance also change within the Aurora Zone according to the beta. That means players should watch environmental cues rather than assuming the mount behaves identically in every part of the map. Final controls, spawn conditions and limitations need confirmation once the event is public."
+      ]
+    },
+    {
+      "heading": "Why vertical travel could change rotations",
+      "paragraphs": [
+        "An aerial vehicle creates opportunities to cross obstacles without following roads or bridges. A team could use new vertical routes to approach a position from a less familiar direction. However, open-air movement can also reveal the rider to opponents on the ground, and a visible mount can attract attention.",
+        "The safest rotation will depend on cover, the zone and enemy locations. A flying approach that saves time is not automatically better than using buildings and terrain. Avoid abandoning a reliable squad vehicle for a mount whose availability or passenger capacity may be different in the live event."
+      ]
+    },
+    {
+      "heading": "How to coordinate with your squad",
+      "paragraphs": [
+        "Decide whether the player using Pegasus is scouting, transporting or attempting a brief reposition. Tell teammates when you take off and where you intend to land. A fast flanking maneuver becomes less useful if the rest of the squad believes you are still holding the original angle.",
+        "Aurora Flashstep could also help individual movement in a fight, but squads should coordinate a push rather than all jumping at different times. Practice in lower-pressure matches to learn the animation before attempting a complicated engagement. Movement tools support teamwork; they do not replace it."
+      ]
+    },
+    {
+      "heading": "What the Ancient Beast beta may mean for Pegasus access",
+      "paragraphs": [
+        "A later beta preview says the Ancient Beast event may reward a player carrying a Hero's Medal with an Aurora Pegasus in a special area inside the creature. That description suggests a themed acquisition route, but it does not establish every way players can obtain or summon the mount in the final game.",
+        "Players should distinguish a beta event reward from a permanent inventory item. The preview does not prove that the Pegasus is a paid car skin, a transferable card or an always-available Classic Mode vehicle. The live themed-mode interface will show its actual rules."
+      ]
+    },
+    {
+      "heading": "Mobile devices, GameLoop and the final update",
+      "paragraphs": [
+        "Touch players should review whether the new move controls overlap their existing jump, vault and movement buttons. Keep original sensitivity and layout settings recorded before changing a large number of controls. A small training experiment is easier to reverse than an entirely new finger layout.",
+        "GameLoop players should wait for normal emulator mapping support and game-version compatibility. No beta preview guarantees that a keyboard shortcut or virtual mount control will be identical to the phone interface. Avoid unofficial packages that claim to unlock the vehicle before the game makes it available."
+      ]
+    }
+  ]
+}
