@@ -34,6 +34,12 @@
       "paragraphs": [
         "The developer preview explicitly notes that beta content may be altered. Enemy names, attack timing, spawn areas and supplies can change. Do not publish a route that claims guaranteed boss drops unless the public map has been tested under repeatable conditions. Start with scouting and team communication, then record the encounters actually present in the final Seal City mode."
       ]
+    },
+    {
+      "heading": "Record encounters without inventing statistics",
+      "paragraphs": [
+        "During a first public Seal City run, note the enemy's last known location, its visible attack cue and which piece of cover gave the squad time to recover. If a boss appears at night in a test preview, confirm whether that condition is required on the released map. Keep track of ammunition and healing used before deciding whether the potential reward was worthwhile. Avoid turning one unusual encounter into a guaranteed spawn or loot-drop chart. A careful log across multiple runs is more useful than a spectacular clip with no context."
+      ]
     }
   ],
   "topics": [

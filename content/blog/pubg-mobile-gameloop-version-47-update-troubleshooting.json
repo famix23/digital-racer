@@ -34,6 +34,12 @@
       "paragraphs": [
         "Avoid alleged all-skins patches, fake FPS boosters and remote-support accounts demanding login credentials. Keep Windows, graphics drivers and ordinary malware protection current. Secure the login service linked to PUBG Mobile and never share one-time verification codes. A legitimate update should not require turning off every security feature or installing an unrelated browser extension."
       ]
+    },
+    {
+      "heading": "Troubleshoot with reversible changes",
+      "paragraphs": [
+        "If mouse control feels inconsistent after updating, begin with a familiar training scene rather than reinstalling everything. Check the selected mode, keyboard mappings, display resolution, frame-time consistency and heavy background tasks. Change only one setting at a time and compare the same movement. Save a screenshot of your working controls. If a new feature cannot be activated, verify that its event is live and the emulator supports it. Do not install an unsigned input script or altered client just to imitate a phone recording."
+      ]
     }
   ],
   "topics": [
