@@ -1,0 +1,44 @@
+{
+  "slug": "pubg-mobile-squad-rotations-after-version-47-update",
+  "title": "PUBG Mobile Squad Rotations: Planning Around New Events",
+  "category": "PUBG Mobile Strategy",
+  "summary": "A practical squad rotation framework for maps with temporary events, new vehicles and changing loot areas.",
+  "intro": "Special events can make familiar PUBG Mobile maps unpredictable. The 4.7 beta previews new mobility and themed objectives, while conventional safe-zone pressure remains central to battle royale. A disciplined squad should not abandon ordinary rotation principles just because a showcase video suggests a dramatic shortcut. This guide offers a reusable planning routine for event-heavy matches.",
+  "sections": [
+    {
+      "heading": "Define the squad's immediate goal",
+      "paragraphs": [
+        "At the start of a match, decide whether the priority is reliable placement, practicing a new objective or deliberately seeking close-range fights. Those goals lead to different landing choices. A hot event zone can be exciting but may attract several teams with the same idea. Choose a fallback location and agree what signal means the group should leave instead of repeatedly trying to recover a risky fight."
+      ]
+    },
+    {
+      "heading": "Read the zone before chasing rewards",
+      "paragraphs": [
+        "A special reward, mount or supply drop is useful only if the team can reach it and leave safely. Check the main circle, likely vehicle routes and terrain cover before diverting. A route that saves time on paper may cross several exposed ridges. If the squad is already late to the zone, a reward detour can be more dangerous than moving early toward a defendable position."
+      ]
+    },
+    {
+      "heading": "Use mobility tools for decisions",
+      "paragraphs": [
+        "The Aurora Pegasus was described in beta as a ground-and-air mount, while Aurora Flashstep adds short movement flexibility. Neither guarantees safety while exposed. Decide who is scouting, who holds rear coverage and where separated teammates will regroup. Do not send a single player into a contested objective simply because they have an unusual traversal ability. A shared plan matters more than the novelty of the vehicle."
+      ]
+    },
+    {
+      "heading": "Keep communication short and accurate",
+      "paragraphs": [
+        "Useful calls describe the number and last known location of opponents, available cover and intended movement. Avoid announcing an entire squad when you have seen only one player. Assign one person to propose the route but allow teammates to report risks. If an event interaction takes time, arrange who will watch possible approaches instead of having everyone stare at an animation."
+      ]
+    },
+    {
+      "heading": "Review failed rotations without blaming luck",
+      "paragraphs": [
+        "After a difficult match, ask whether the squad moved too late, lacked a safe vehicle, split across obstacles or committed to a low-value reward. Record one change to test next time. New map mechanics may alter the best route, but predictable fundamentals still apply: information, timing, cover and fallback options. Avoid treating a beta showcase as a guaranteed competitive strategy."
+      ]
+    }
+  ],
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "published": "2026-11-08"
+}

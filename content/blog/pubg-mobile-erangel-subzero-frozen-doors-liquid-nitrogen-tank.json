@@ -1,0 +1,44 @@
+{
+  "slug": "pubg-mobile-erangel-subzero-frozen-doors-liquid-nitrogen-tank",
+  "title": "PUBG Mobile Frozen Doors and Liquid Nitrogen Tank Guide",
+  "category": "PUBG Mobile Maps and Modes",
+  "summary": "How the Erangel Subzero beta changes doors, snow piles and throwable cold equipment.",
+  "intro": "PUBG Mobile's Erangel Subzero beta proposes a more interactive winter battlefield. Doors and windows can become frozen, snow piles may block movement and Liquid Nitrogen Tanks can create frost hazards. These features could change ordinary building fights, but they are preview mechanics for a special mode rather than confirmed rules for all Erangel matches.",
+  "sections": [
+    {
+      "heading": "Frozen doors are different from locked doors",
+      "paragraphs": [
+        "The beta says some doors and windows begin frozen shut during blizzard conditions. A player cannot simply open them normally; the ice must be destroyed. Breaking the obstruction creates icy mist, which can briefly alter visibility. This may create sound and timing cues during a push. Check the final game before assuming every building has an ice barrier or that one weapon always breaks it in the same number of shots."
+      ]
+    },
+    {
+      "heading": "Liquid Nitrogen Tank changes an entrance",
+      "paragraphs": [
+        "The test describes a Liquid Nitrogen Tank that can freeze unfrozen doors or windows. It also replaces Molotov Cocktails in this mode, spreading a patch of damaging frost that slows anyone standing on it. That is a different area-denial pattern from an ordinary flame effect. Teams should communicate where the frost will spread before throwing, especially when friendly movement routes are narrow."
+      ]
+    },
+    {
+      "heading": "Snow piles can become useful cover",
+      "paragraphs": [
+        "The beta includes snow piles that vehicles can destroy. Some piles can be reinforced by Liquid Nitrogen Tanks into frozen piles that vehicles cannot break. This creates a possible defensive choice between using a temporary obstacle and fortifying a route. It is not evidence that all frozen objects provide bulletproof cover. Observe which objects can actually be damaged in the final environment."
+      ]
+    },
+    {
+      "heading": "Blizzards alter movement and vision",
+      "paragraphs": [
+        "A blizzard reduces visibility and can slightly slow players in snowy areas, according to the test. Destroyed snow piles may also regenerate during those conditions. If the weather shifts during a building engagement, a previously clear route might change. Keep a short fallback path and avoid treating an exposed doorway as a safe stationary angle simply because mist has appeared."
+      ]
+    },
+    {
+      "heading": "Practice on the actual mode",
+      "paragraphs": [
+        "Do not make a permanent loadout decision based on early preview numbers. When Subzero becomes playable, test door interactions, the frost duration and how vehicles behave around obstacles. A snow mode may also introduce special transport and weapons that are absent from Classic Mode. Avoid tutorials that promise a way to force these mechanics into unsupported maps or modified clients."
+      ]
+    }
+  ],
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "published": "2026-11-08"
+}

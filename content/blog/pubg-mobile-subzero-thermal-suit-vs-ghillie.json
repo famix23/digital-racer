@@ -1,0 +1,44 @@
+{
+  "slug": "pubg-mobile-subzero-thermal-suit-vs-ghillie",
+  "title": "PUBG Mobile Erangel Subzero: Thermal Suit vs Ghillie",
+  "category": "PUBG Mobile Maps and Modes",
+  "summary": "Compare Erangel Subzero's previewed Thermal Protection Suit with ordinary concealment gear.",
+  "intro": "Erangel Subzero's Version 4.7 beta includes a Thermal Protection Suit that takes the Ghillie Suit equipment slot. The special item has a very different intended purpose from visual camouflage: it temporarily protects against blue-zone damage while durability remains. Understanding the tradeoff can help players make sensible choices if the mode launches with these mechanics.",
+  "sections": [
+    {
+      "heading": "What the Thermal Protection Suit is",
+      "paragraphs": [
+        "The October beta describes the suit as a satellite-related reward occupying the same slot as a Ghillie Suit. It provides protection against damage from the normal blue zone by consuming durability. When that durability reaches zero, the shielding effect stops. This is not an unlimited way to survive outside the safe zone. The preview does not provide a final durability table for every zone phase."
+      ]
+    },
+    {
+      "heading": "Why the slot conflict matters",
+      "paragraphs": [
+        "The Ghillie Suit is traditionally associated with visual concealment, particularly in appropriate terrain. The Thermal Protection Suit instead prioritizes temporary zone survival. Since the test describes them as mutually exclusive in the same slot, a player may need to decide which benefit fits the match. A long open approach and a late circle can present different risks, so do not evaluate the choice only by the item's rarity."
+      ]
+    },
+    {
+      "heading": "Satellite drops add danger",
+      "paragraphs": [
+        "The beta described random satellite crashes that may contain the suit, with alerts and additional localized blue-zone effects. A drop is likely to attract other players or expose anyone approaching the area. Before chasing it, check the main safe-zone timer, nearby cover and how teammates will regroup if a fight starts. A special item is not worth losing the squad on an exposed crossing."
+      ]
+    },
+    {
+      "heading": "Plan a safe exit",
+      "paragraphs": [
+        "If you obtain the suit, learn how its durability changes under live blue-zone damage. Avoid spending your entire survival plan on one piece of gear. Carry normal recovery supplies and move toward safety early enough that a damaged suit does not leave you stranded. A temporary protective effect should support rotation planning, not replace it."
+      ]
+    },
+    {
+      "heading": "Beta details need a public check",
+      "paragraphs": [
+        "Erangel Subzero was described as a later winter mode, not simply the ordinary Erangel map with a new weather texture. Availability and equipment rules may change before release. Check the official mode selector and item description in the final game. Do not trust an edited inventory image claiming permanent protection or attempt to unlock the suit through modified client files."
+      ]
+    }
+  ],
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "published": "2026-11-08"
+}
