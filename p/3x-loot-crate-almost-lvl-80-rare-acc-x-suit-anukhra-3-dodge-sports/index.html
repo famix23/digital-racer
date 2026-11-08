@@ -495,10 +495,11 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
           if (product.account_level) { specsGrid.innerHTML += `<div class="mini-spec" data-extra><span>Account Level</span><span>${escapeHTML(product.account_level)}</span></div>`; }
           if (product.highest_tier) { specsGrid.innerHTML += `<div class="mini-spec" data-extra><span>Highest Tier</span><span>${escapeHTML(product.highest_tier)}</span></div>`; }
           
+          const referenceOnly = product.reference_only === true;
           const descText = product.description || product.desc || product.body || product.details || product.content || product.text || "";
           
           // Automated Mandatory WhatsApp Line
-          const mandatoryLine = `<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>`;
+          const mandatoryLine = referenceOnly ? "" : `<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>`;
           
           if (descText && descText.trim() !== "") { 
             document.getElementById('prod-desc').innerHTML = mandatoryLine + parseDescription(descText); 
@@ -541,13 +542,21 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
               galContainer.style.display = 'none';
             }
           } else {
-             document.getElementById('prod-img-container').innerHTML = `<div style="color: var(--muted);">No Image Available</div>`;
+             document.getElementById('prod-img-container').innerHTML = `<div style="color: var(--muted);">No image available</div>`;
              galContainer.style.display = 'none';
           }
 
-          const waNumber = "923454342911"; 
-          const message = `Hello Digital Racer! I want to acquire: ${product.title} for $${product.price} USD.`;
-          document.getElementById('buy-btn').href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+          const buyButton = document.getElementById('buy-btn');
+          if (referenceOnly) {
+            document.querySelector('.buy-price-label').textContent = 'Last listed price';
+            buyButton?.remove();
+            document.querySelector('.guarantee-box')?.remove();
+            specsGrid.querySelector('.mini-spec:nth-child(2):not([data-extra])')?.remove();
+          } else if (buyButton) {
+            const waNumber = "923454342911";
+            const message = `Hello Digital Racer! I want to acquire: ${product.title} for $${product.price} USD.`;
+            buyButton.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+          }
 
           const related = [...products.filter(p => p !== product && p.category === product.category), ...products.filter(p => p !== product && p.category !== product.category)].slice(0, 4);
           const relGrid = document.getElementById('related-grid');

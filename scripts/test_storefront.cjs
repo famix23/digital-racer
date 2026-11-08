@@ -50,6 +50,11 @@ for (const p of manifest) {
   const product = blocks.find(b => b['@type'] === 'Product');
   assert.equal(Number(product.offers.price), Number(p.price));
   assert.ok(!/<meta name="robots" content="noindex/.test(html), 'Canonical product pages must stay indexable');
-  assert.ok(html.includes('Buy now on whatsapp number +923454342911'));
+  const item = products.find(row => sandbox.matchingProduct(manifest, row).url === p.url);
+  const referenceOnly = item.reference_only === true;
+  assert.equal(product.offers.availability, 'https://schema.org/' + (referenceOnly ? 'OutOfStock' : 'InStock'));
+  assert.equal(/<a [^>]*id="buy-btn"/.test(html), !referenceOnly);
+  assert.equal(/id="prod-desc">\s*<p><strong>Buy now on whatsapp number/.test(html), !referenceOnly);
+  if (referenceOnly) assert.ok(html.includes('Last listed price'));
 }
 console.log(`Passed: ${products.length} distinct product URLs, matching offer prices, indexable pages, injection regressions and inline JavaScript syntax.`);

@@ -252,8 +252,9 @@ def card_html(p, indent, eager=False):
     img = display_image(p["images"][0]) if p["images"] else ""
     badge = f'<div class="prod-badge">{esc(p["raw"].get("badge"))}</div>' if p["raw"].get("badge") else ""
     extra = f' item-card" data-category="{esc(p["category"])}' if indent == "catalog" else ""
+    image_html = (f'<img src="{esc(img)}" class="prod-img" alt="{esc(p["clean_title"])}" {'fetchpriority="high"' if eager else 'loading="lazy"'} decoding="async" onerror="this.style.display=\'none\'">' if img else '<span style="color: var(--muted); padding: 1rem; display: block;">No image available</span>')
     return (f'<a href="{p["url"]}" class="product-card{extra}">'
-            f'<div class="prod-img-wrap"><img src="{esc(img)}" class="prod-img" alt="{esc(p["clean_title"])}" {'fetchpriority="high"' if eager else 'loading="lazy"'} decoding="async" onerror="this.style.display=\'none\'"> {badge}</div>'
+            f'<div class="prod-img-wrap">{image_html} {badge}</div>'
             f'<div class="prod-content"><div class="prod-category">{esc(p["category"])}</div>'
             f'<div class="prod-title">{esc(p["title"])}</div>'
             f'<div class="prod-footer"><div class="prod-price">${esc(p["price"])} USD</div><div class="prod-btn">View</div></div></div></a>')
@@ -379,14 +380,15 @@ def product_page(p, others):
         short = f"{truncate(p['clean_title'], 42)} · Listing {1 + [o for o in products if o['clean_title'] == p['clean_title']].index(p)} (${p['price']})"  # keep duplicate titles distinct
     page_title = f"{short} | {SITE_NAME}" if "pubg" in p["clean_title"].lower() else f"{short} – {p['cat_label']} | {SITE_NAME}"
     price_txt = f"${p['price']} USD"
-    delivery = "Order on WhatsApp"
+    reference_only = it.get("reference_only") is True
+    delivery = "Last listed price" if reference_only else "Order on WhatsApp"
     lead = f"{p['cat_label']} · {price_txt} · {delivery}. "
     meta_desc = truncate(lead + (p["desc_clean"] or p["clean_title"]), 158)
     canonical = SITE_URL + p["url"]
     image = p["images"][0] if p["images"] else None
 
     offer = {"@type": "Offer", "url": canonical, "priceCurrency": "USD",
-             "availability": "https://schema.org/InStock", "seller": {"@id": SITE_URL + "/#organization"}}
+             "availability": "https://schema.org/OutOfStock" if reference_only else "https://schema.org/InStock", "seller": {"@id": SITE_URL + "/#organization"}}
     if p["price_num"]:
         offer["price"] = p["price_num"]
     product_ld = {"@context": "https://schema.org", "@type": "Product", "@id": canonical + "#product",
@@ -424,7 +426,7 @@ def product_page(p, others):
     s = replace_one(s, r'(<div class="mini-spec"><span>Delivery</span><span style="color: var\(--accent\);">Instant</span></div>)',
                     lambda m: m.group(1) + specs, f, "specs grid")
     desc_prefix = "<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>"
-    desc_html = desc_prefix + parse_description(p["desc_raw"])
+    desc_html = ("" if reference_only else desc_prefix) + parse_description(p["desc_raw"])
     s = replace_one(s, r'(<div class="desc-content" id="prod-desc">)(</div>)',
                     lambda m: m.group(1) + desc_html + m.group(2), f, "description")
     if image:
@@ -457,6 +459,14 @@ def product_page(p, others):
         s = s.replace('>Instant</span>', '>Digital delivery</span>')
         s = s.replace('<span>SECURE GUARANTEE:</span> All transactions and asset transfers are verified and protected for smooth delivery.',
                       '<span>ORDER DETAILS:</span> Order directly from Digital Racer using Buy Now.')
+    if reference_only:
+        s = s.replace('>Total Price</div>', '>Last listed price</div>', 1)
+        s = re.sub(r'<a [^>]*id="buy-btn"[^>]*>.*?</a>', '', s, count=1, flags=re.S)
+        s = re.sub(r'<div class="guarantee-box"><div>.*?</div></div>', '', s, count=1, flags=re.S)
+        s = re.sub(r'<div class="mini-spec"><span>Delivery</span>.*?</div>', '', s, count=1, flags=re.S)
+    if not image:
+        s = replace_one(s, r'<img src="" alt="" id="main-display-img"[^>]*>',
+                        '<div style="color: var(--muted);">No image available</div>', f, "no image")
     return s
 
 
