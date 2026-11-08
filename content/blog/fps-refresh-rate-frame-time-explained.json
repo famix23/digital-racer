@@ -55,5 +55,8 @@
         "Treat network lag, frame-time stutter and input lag as different problems."
       ]
     }
+  ],
+  "topics": [
+    "tutorial"
   ]
 }

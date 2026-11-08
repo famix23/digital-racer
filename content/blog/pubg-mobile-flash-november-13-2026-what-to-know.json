@@ -55,5 +55,9 @@
         "Install only through verified official application channels."
       ]
     }
+  ],
+  "topics": [
+    "account-security",
+    "emulator"
   ]
 }

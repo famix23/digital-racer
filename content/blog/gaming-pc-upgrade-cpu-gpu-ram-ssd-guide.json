@@ -56,5 +56,8 @@
         "Check PSU, cooling, motherboard and case compatibility first."
       ]
     }
+  ],
+  "topics": [
+    "tutorial"
   ]
 }
