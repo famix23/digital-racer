@@ -59,3 +59,25 @@ for path in ("index.html", "catalog.html", "about/index.html"):
     data = (ROOT / path).read_text(encoding="utf-8")
     assert 'href="/guides/"' in data, (path, "missing guides navigation")
 print("Passed: four indexable guide pages, canonical URLs, sitemap, substantive text and navigation.")
+
+# Blog posts are generated from independent source files, never from inventory.json.
+from build_blog import load_posts
+blog_posts = load_posts(ROOT)
+blog_urls = ["blog/"] + ["blog/" + p["slug"] + "/" for p in blog_posts]
+for url in blog_urls:
+    page = (ROOT / url / "index.html").read_text(encoding="utf-8")
+    parser = Page()
+    parser.feed(page)
+    assert "BLOG:GENERATED" in page, url
+    assert parser.h1 == 1, url
+    assert parser.canonical == [BASE + "/" + url], url
+    assert f"<loc>{BASE}/{url}</loc>" in sitemap, url
+    assert "/blog/" in parser.links and "/guides/" in parser.links and "/catalog" in parser.links, url
+    assert all(link.startswith("/") and not link.startswith("//") or link.startswith("#") for link in parser.links), (url, "outbound links not allowed")
+    count = len(re.findall(r"\b[\w'-]+\b", " ".join(parser.text)))
+    assert count >= (45 if url == "blog/" else 450), (url, count)
+for url in GUIDES:
+    parser = Page()
+    parser.feed((ROOT / url / "index.html").read_text(encoding="utf-8"))
+    assert all(link.startswith("/") and not link.startswith("//") or link.startswith("#") for link in parser.links), (url, "outbound links not allowed")
+print(f"Passed: {len(blog_urls)} blog pages, safe site-only links and existing guides.")

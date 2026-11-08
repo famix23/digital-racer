@@ -1,0 +1,59 @@
+{
+  "slug": "fps-refresh-rate-frame-time-explained",
+  "title": "FPS, Refresh Rate and Frame Time Explained",
+  "summary": "Learn how gaming FPS, monitor refresh rates and frame-time spikes affect smoothness and input responsiveness.",
+  "category": "PC gaming basics",
+  "published": "2026-11-08",
+  "intro": "Two PC games can both show 120 FPS and still feel very different. One may respond smoothly while the other stutters during camera turns. That is because frame rate alone does not describe the entire experience. A useful performance check looks at FPS, the display's refresh rate and the time taken to deliver individual frames.",
+  "sections": [
+    {
+      "heading": "Frames per second tells you how often the game produces images",
+      "paragraphs": [
+        "FPS stands for frames per second. It counts the images a game renders during a second. A stable 60 FPS corresponds to roughly 16.7 milliseconds between frames; a stable 120 FPS corresponds to roughly 8.3 milliseconds. Higher rates can make motion feel more responsive, provided the game and display actually deliver the frames consistently.",
+        "The number on a performance overlay is usually an average or a recent measurement. It does not reveal how evenly frames arrive. A game that alternates very short and very long frame intervals can have an impressive headline number and still look jerky."
+      ]
+    },
+    {
+      "heading": "Refresh rate describes the display, not the game",
+      "paragraphs": [
+        "Refresh rate, measured in hertz, is how often the monitor refreshes the image in the current display mode. A 60 Hz display refreshes approximately every 16.7 milliseconds. A 144 Hz display refreshes approximately every 6.9 milliseconds. A game rendering 200 FPS does not turn a 60 Hz monitor into a 200 Hz monitor.",
+        "Higher game FPS can still mean newer information is available when the display scans out an image. But whether this appears as more responsive motion, visible tearing or smooth presentation depends on synchronization settings. Check your operating system's selected refresh rate before assuming a high-refresh monitor is running at its maximum."
+      ]
+    },
+    {
+      "heading": "Frame time reveals short performance pauses",
+      "paragraphs": [
+        "Frame time is the duration of an individual frame and is usually shown in milliseconds. The simple relationship is 1,000 divided by FPS. For instance, a 50 FPS frame rate corresponds to about 20 milliseconds per frame if frames arrive evenly.",
+        "Real gameplay often includes spikes. If almost every frame takes 8 milliseconds but a few take 90 milliseconds, the delayed frames can cause noticeable hitches. An average FPS number can conceal these pauses. A frame-time graph exposes them directly and helps you decide whether to investigate graphics settings, memory pressure or background activity."
+      ]
+    },
+    {
+      "heading": "Why one-percent-low statistics matter",
+      "paragraphs": [
+        "Some performance tools report a one-percent-low value to summarize slow portions of a run. It can help distinguish a consistently fast game from one with frequent slow frames. Methods differ among tools, so comparisons are most meaningful when the same measurement process was used for each run.",
+        "Avoid treating a single one-percent-low number as a complete diagnosis. An isolated stall, loading transition or compilation hiccup may need separate investigation. Combine the statistic with frame-time graphs and observations of when the stutter happens."
+      ]
+    },
+    {
+      "heading": "Sync settings change how frames reach the screen",
+      "paragraphs": [
+        "Traditional V-Sync attempts to coordinate frame presentation with monitor refresh to prevent tearing. Depending on implementation and frame rate, waiting for refresh can add delay or expose more stutter when the game misses a target.",
+        "Variable refresh rate allows supported monitors to vary the timing of refreshes within a supported range. It can make fluctuating game performance appear smoother, but it does not repair a severe CPU bottleneck or a long stall. Experiment with your particular monitor, in-game settings and frame limiter instead of applying one universal recommendation."
+      ]
+    },
+    {
+      "heading": "What to check in your own games",
+      "paragraphs": [
+        "Start with the monitor mode, then check average FPS, frame-time consistency and resource load. If the game has a built-in performance overlay, use it to compare the same scene with one graphics setting changed at a time. Testing in the same location reduces the chance of confusing a different workload with an improvement.",
+        "If you want faster response, distinguish input lag from network delay. A high frame rate does not eliminate slow internet packets, and a low ping does not correct a display configured to the wrong refresh mode."
+      ],
+      "points": [
+        "Confirm the operating system is using the monitor's intended refresh rate.",
+        "Observe frame-time spikes, not only the highest FPS number.",
+        "Compare one setting at a time in a repeatable section of the game.",
+        "Prefer a stable performance target to an unstable maximum.",
+        "Treat network lag, frame-time stutter and input lag as different problems."
+      ]
+    }
+  ]
+}
