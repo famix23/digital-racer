@@ -1,0 +1,56 @@
+{
+  "slug": "pubg-mobile-47-wow-smart-assistant-ai-map-editor-preview",
+  "title": "PUBG Mobile 4.7 WOW AI Smart Editor: Creator Preview",
+  "summary": "PUBG Mobile 4.7 beta previews a smarter World of Wonder editor that generates complex game scenes from creator instructions.",
+  "category": "PUBG Mobile World of Wonder",
+  "published": "2026-11-08",
+  "intro": "One of PUBG Mobile Version 4.7's less obvious beta features is aimed at builders rather than competitors. The October test announcement says the World of Wonder Smart Assistant has been upgraded so creators can describe a complex scene and ask the Smart Editor to generate it. That could make experimenting with custom maps easier, but it does not remove the need to test what the editor actually produces.",
+  "topics": [
+    "tutorial",
+    "events"
+  ],
+  "sections": [
+    {
+      "heading": "What the 4.7 beta actually announced",
+      "paragraphs": [
+        "The October 16 PUBG Mobile beta announcement describes an upgraded World of Wonder Smart Assistant and says creators can chat with it to generate complex game scenes. That is the confirmed preview. The announcement does not guarantee that any prompt will produce a perfect published map, or provide a complete list of supported languages and generation limits.",
+        "World of Wonder is PUBG Mobile's custom creation environment. It allows players to combine scenery, devices and gameplay parameters into community-made experiences. A conversational assistant could shorten some repetitive setup work, but creative choices, playtesting and performance remain the responsibility of the person publishing the map."
+      ]
+    },
+    {
+      "heading": "Where a conversational editor might help",
+      "paragraphs": [
+        "Consider a simple custom survival arena requiring a spawn area, a few obstacles and an enemy approach route. A scene-generation tool could help establish an initial layout. The creator would still need to verify whether the objects have correct collisions, whether players can get stuck and whether all routes are fair.",
+        "The same applies to a parkour course or a small team objective map. Generating geometry is not the same as balancing victory conditions. If a creator asks for a complex environment, testing individual devices is often easier than debugging a large map after publishing it."
+      ]
+    },
+    {
+      "heading": "Design a clearer request before generating",
+      "paragraphs": [
+        "Start with an objective, a player count and a description of the intended movement. Instead of a vague request for an amazing map, specify an open central space, covered side approaches and a safe spawn area. Describe the gameplay purpose of each area so you can later evaluate whether the generated scene supports it.",
+        "Avoid assuming that a generated scene will automatically include rules or devices that were never requested. Plan where matches begin, what ends a round and how new players learn the objective. Document the important pieces before making major edits, because a scene that looks attractive might not be playable."
+      ]
+    },
+    {
+      "heading": "Check gameplay devices after creation",
+      "paragraphs": [
+        "Test spawn positions, damage rules, triggers, team assignments and collision boundaries. If the environment contains doors, moving platforms or enemy devices, try to break the intended route deliberately. A good playtest includes players who have not seen the editor, because they often discover navigation problems the creator overlooks.",
+        "Test the creation on ordinary mobile hardware as well as any higher-performance device you own. A map can appear smooth during editing but perform badly with all players and scripted effects active. Reduce decorative complexity if it distracts from the intended action or creates severe frame-time spikes."
+      ]
+    },
+    {
+      "heading": "What to publish and how to describe it",
+      "paragraphs": [
+        "Give the resulting experience an accurate title and short description that explains its mode, recommended number of players and key actions. Do not promise official rewards or competitive ranking benefits unless the in-game publishing interface confirms them. Screenshots of a draft scene can help describe the map, but cannot prove that every feature is functioning.",
+        "Creators should also respect other people's work and avoid inserting contact details or external promotion into game experiences when prohibited by the platform. Original layouts, transparent rules and helpful feedback are better foundations for attracting repeat players than copying a popular creator's assets."
+      ]
+    },
+    {
+      "heading": "Availability remains a beta question",
+      "paragraphs": [
+        "The October preview does not establish that every World of Wonder account will receive the same AI tool on a particular day. Check the current creator interface after Version 4.7 becomes available. Options could be revised, limited or postponed, and beta videos should not be treated as guaranteed instructions.",
+        "DigitalRacer will treat this as a creator-workflow preview until the public controls are verifiable. If the feature launches, a follow-up hands-on article can describe the actual buttons, supported prompt examples and observed limitations rather than inventing steps in advance."
+      ]
+    }
+  ]
+}
