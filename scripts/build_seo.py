@@ -527,8 +527,10 @@ x += [f"  <url><loc>{SITE_URL}/{page}/</loc></url>" for page in ("about", "conta
                                                      "guides", "guides/pubg-mobile-account-safety",
                                                      "guides/pubg-mobile-uc-top-up-safety",
                                                      "guides/pubg-mobile-skins-explained", "blog")]
-from build_blog import build_blog
+from build_blog import build_blog, load_posts
+from build_related_guides import build_related_guides
 blog_slugs = build_blog(ROOT, write, CHECK_ONLY, changed)
+build_related_guides(ROOT, write, load_posts(ROOT))
 for slug in blog_slugs:
     x.append(f"  <url><loc>{SITE_URL}/blog/{slug}/</loc></url>")
 for p in products:
