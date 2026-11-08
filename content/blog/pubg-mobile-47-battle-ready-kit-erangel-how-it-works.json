@@ -1,0 +1,44 @@
+{
+  "slug": "pubg-mobile-47-battle-ready-kit-erangel-how-it-works",
+  "title": "PUBG Mobile Battle Ready Kit: Erangel 4.7 Beta Guide",
+  "category": "PUBG Mobile Gameplay",
+  "summary": "What PUBG Mobile's Battle Ready Kit does and the acquisition methods previewed for Erangel in Version 4.7.",
+  "intro": "The first Version 4.7 beta described a new Battle Ready Kit for Erangel that restores both health and energy. The idea looks simple, but the way players obtain and use it matters for ordinary matches. This guide distinguishes the beta announcement from a guaranteed live item and explains how squads can plan around a powerful recovery resource.",
+  "sections": [
+    {
+      "heading": "What the beta describes",
+      "paragraphs": [
+        "The September test announcement says the Battle Ready Kit can fully restore a player's health and energy. That is a stronger recovery description than using a single ordinary bandage. However, the test notes do not establish every final item statistic or whether the kit will remain identical at release. Players should read the actual inventory description after updating and avoid basing competitive advice on a guessed use duration."
+      ]
+    },
+    {
+      "heading": "Possible acquisition routes",
+      "paragraphs": [
+        "The beta lists several ways to obtain the kit, including following a Wireless Coordinate Indicator Device to a location where it can be dug up, buying it from a Supply Shop, receiving it from an air drop or finding it in ordinary ground loot at a low chance. These routes are examples from testing. Do not claim a fixed spawn point or guaranteed crate drop without verifying the released map."
+      ]
+    },
+    {
+      "heading": "Value compared with ordinary healing",
+      "paragraphs": [
+        "A full health-and-energy restoration could be especially useful after a difficult firefight, but carrying a rare kit is not a reason to abandon familiar first aid and boost items. A squad may be separated from the kit during a fight, and any recovery action still requires an opportunity to use it safely. Ordinary healing supplies remain useful when the new item is unavailable or being saved for a later engagement."
+      ]
+    },
+    {
+      "heading": "Protect the player using it",
+      "paragraphs": [
+        "If a teammate needs a major recovery after taking damage, the squad should secure nearby angles before attempting a long item action. Do not stand exposed simply because an item promises full restoration. Communicate who is healing and whether another player can watch an approach. The safest use case is often behind reliable cover after temporarily breaking contact with opponents."
+      ]
+    },
+    {
+      "heading": "How to test after the patch",
+      "paragraphs": [
+        "Check whether the kit is actually present in your selected mode and where the official interface says it can be acquired. Compare recovery behavior with known consumables in a training or low-pressure environment. Note inventory weight and any restrictions rather than inventing numbers. A beta item may be tuned or postponed, so treat this as a feature preview until the public client confirms its mechanics."
+      ]
+    }
+  ],
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "published": "2026-11-08"
+}

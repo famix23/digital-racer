@@ -1,0 +1,44 @@
+{
+  "slug": "pubg-mobile-metro-royale-search-backpack-lockbox-tips",
+  "title": "PUBG Mobile Metro Royale: New Backpack and Loot Search Tips",
+  "category": "PUBG Mobile Metro Royale",
+  "summary": "Learn the progressive crate-search and two-column backpack changes previewed in Metro Royale's 4.7 beta.",
+  "intro": "A major Metro Royale change does not have to be a new enemy. The Version 4.7 third beta described a search interaction that reveals items gradually and a more useful backpack layout, including Lock Box management on the main page. Small interface changes can affect survival when every second spent opening a container exposes the player to danger.",
+  "sections": [
+    {
+      "heading": "Why progressive searching matters",
+      "paragraphs": [
+        "The preview replaces an all-at-once crate reveal with items appearing one by one as searching proceeds. That creates a decision point: keep searching for the next item or leave because the area is unsafe. Do not assume the final implementation uses exactly the same timings shown during testing. The practical lesson is to watch your surroundings instead of treating loot screens as a safe pause in combat."
+      ]
+    },
+    {
+      "heading": "Organize your backpack before moving",
+      "paragraphs": [
+        "The beta included a two-column backpack display and more convenient access to Lock Box contents. Better visibility can make it easier to distinguish valuable items from ordinary supplies, but it will not choose priorities for you. Decide what your run is meant to collect, how much weight you can carry and which items are worth preserving if the next encounter becomes difficult."
+      ]
+    },
+    {
+      "heading": "Share responsibilities within the squad",
+      "paragraphs": [
+        "When one player interacts with a container, other teammates can watch nearby routes and report approaching enemies. Do not crowd into the same narrow entrance simply because one person found valuable supplies. Coordinate which player picks up equipment and avoid repeated arguments over loot while threats remain active. A quick call about the next destination is more valuable than studying every small item in the open."
+      ]
+    },
+    {
+      "heading": "Equipment Vouchers and preparation presets",
+      "paragraphs": [
+        "The same beta described loadout conveniences such as Equipment Vouchers, consumable presets and an easier ammunition purchase interface. These features may reduce repetitive clicks before each run. They do not necessarily provide free high-tier equipment. Read the released interface carefully, because a voucher can have eligibility rules and a saved plan can still need adjustments for a particular map or squad strategy."
+      ]
+    },
+    {
+      "heading": "Build an extraction-focused routine",
+      "paragraphs": [
+        "Choose a loot priority before entering, check items during moments of cover and decide when to stop searching. If the new map introduces enhanced enemy zones, manage your time so a few extra items do not cost the entire run. Test any updated interface in lower-risk sessions before making expensive equipment decisions. Verify final controls and search timings after the public release."
+      ]
+    }
+  ],
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "published": "2026-11-08"
+}
