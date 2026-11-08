@@ -53,7 +53,7 @@ for url in GUIDES:
     assert parser.canonical == [BASE + "/" + url], (url, "bad canonical")
     assert f"<loc>{BASE}/{url}</loc>" in sitemap, (url, "missing from sitemap")
     assert any(link == "/catalog" for link in parser.links), (url, "catalog link")
-    count = len(re.findall(r"\\b[\\w'-]+\\b", " ".join(parser.text)))
+    count = len(re.findall(r"\b[\w'-]+\b", " ".join(parser.text)))
     assert count >= (180 if url == "guides/" else 500), (url, "thin article", count)
 for path in ("index.html", "catalog.html", "about/index.html"):
     data = (ROOT / path).read_text(encoding="utf-8")
