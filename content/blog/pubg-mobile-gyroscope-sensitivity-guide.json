@@ -1,0 +1,59 @@
+{
+  "slug": "pubg-mobile-gyroscope-sensitivity-guide",
+  "title": "PUBG Mobile Sensitivity and Gyroscope Guide: Improve Aim",
+  "summary": "Learn to tune PUBG Mobile camera, ADS and gyroscope sensitivity with practical recoil, tracking and aiming drills.",
+  "category": "PUBG Mobile Tips",
+  "published": "2026-11-08",
+  "intro": "PUBG Mobile sensitivity is personal. A professional player's code can be a starting point, but the best configuration for your screen, grip and movement style comes from repeatable practice. This guide explains the controls, shows how to test them separately and offers a simple routine for building steadier aim.",
+  "sections": [
+    {
+      "heading": "Understand camera, ADS and gyroscope controls",
+      "paragraphs": [
+        "Camera sensitivity determines how quickly your view turns during touch-based looking. If you repeatedly overshoot a target when turning, the camera response may be too high for your hand movement. If turning to face an opponent requires multiple long drags, it may be too low. Different scope magnifications can feel different, so avoid assuming one number should control every sight.",
+        "ADS sensitivity concerns aim movement while looking down sights, including touch corrections during bursts. On supported mobile devices, gyroscope controls allow physical tilt to contribute to aiming. These settings affect different actions and should be tested independently. Menu descriptions can change between game versions; follow the settings labels in the game you actually use."
+      ]
+    },
+    {
+      "heading": "Save a baseline before changing settings",
+      "paragraphs": [
+        "Record your existing values using screenshots or a written note. Include camera, ADS, gyroscope and any per-scope adjustments you regularly use. Also note your device, usual frame-rate settings and number of fingers used for controls. Without a baseline, it becomes difficult to return to a comfortable setup after an unsuccessful experiment.",
+        "Change only one group at a time and keep each test short but repeatable. For example, adjust camera movement first, then practice tracking. Do not modify every scope, your button layout and gyro response in the same session. When several things change simultaneously, even an improvement cannot be traced to the setting that helped."
+      ]
+    },
+    {
+      "heading": "Practice tracking before chasing recoil patterns",
+      "paragraphs": [
+        "Enter a training area and follow a target with the crosshair while moving left and right. Start at a consistent distance and keep the same weapon. If your crosshair passes back and forth beyond the target, lower sensitivity slightly. If it cannot keep pace without constant finger repositioning, try a small increase. Repeat the same movement several times before judging the result.",
+        "Tracking is more informative than a single successful flick. Use a similar route during each test and note whether the crosshair remains near the target throughout the movement. A setting that feels impressive during one quick turn can still make sustained tracking difficult. Good sensitivity should support both controlled movement and quick corrections."
+      ]
+    },
+    {
+      "heading": "Test touch recoil control and gyroscope separately",
+      "paragraphs": [
+        "Choose an automatic weapon you know and fire short bursts toward a stationary target. Observe whether the muzzle climbs faster than your touch correction or whether you pull too far down. Make a modest ADS adjustment and repeat at the same range. Keep attachments and sights consistent because they can change weapon behavior. Aim for repeatability, not a perfect one-off spray.",
+        "If you use a gyroscope, repeat the drill with small device tilts instead of relying entirely on your thumb. Gyroscope response can feel stable with one sight and twitchy with another. Adjust magnifications individually rather than applying a copied preset across all scopes. GameLoop and other PC emulators use different input methods, so advice based on physical phone tilt may not apply there."
+      ]
+    },
+    {
+      "heading": "Build a realistic control layout",
+      "paragraphs": [
+        "Comfortable button placement is as important as numerical sensitivity. A layout that forces you to stretch across the screen can interrupt aim when crouching, firing or peeking. Place essential actions where your fingers can reach them without covering opponents. Change positions gradually; a radically different layout can make a familiar sensitivity seem wrong simply because your hands are learning new movements.",
+        "Frame-rate stability also matters. Large performance drops can make a stable sensitivity feel inconsistent. Use graphics settings your device can maintain during fights. Test aim after long sessions as well as fresh ones, since heat or background activity can affect how responsive the game feels. Do not confuse a performance stutter with the need to change sensitivity."
+      ]
+    },
+    {
+      "heading": "Use a fifteen-minute daily drill",
+      "paragraphs": [
+        "Spend three minutes making controlled camera turns between two targets. Spend five minutes on short bursts with one sight and weapon, then five minutes tracking while moving. Finish with two minutes of peeking from cover and taking one deliberate shot before returning to safety. Keep the conditions similar across several days so improvement can be measured rather than guessed.",
+        "After each session, write down the main problem: overshooting, slow turning, inconsistent recoil compensation or difficulty following moving enemies. Change the one setting related to that problem next time. You do not need daily overhauls. Consistency gives your hands time to learn the response you are practicing."
+      ],
+      "points": [
+        "Keep screenshots of your original sensitivity values.",
+        "Tune camera, ADS and gyro in separate sessions.",
+        "Repeat drills with the same weapon, sight and distance.",
+        "Prioritize smooth performance and comfortable button placement.",
+        "Treat shared codes as starting points rather than universal answers."
+      ]
+    }
+  ]
+}
