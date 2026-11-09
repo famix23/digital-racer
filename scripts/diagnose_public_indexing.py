@@ -130,6 +130,23 @@ def audit_legacy_query_redirects() -> None:
     print(f"Legacy query product redirects: {passed}/{len(cases)} live 301 probes passed.", flush=True)
 
 
+
+def audit_live_deployment_freshness() -> None:
+    """Check whether the public host is serving recently merged source changes."""
+    probes = [
+        ("/sitemap.xml", "<lastmod>2026-11-08</lastmod>", "editorial_lastmod"),
+        ("/contact/", "Questions from international customers", "international_contact"),
+        ("/p/pubg-mobile-ace-rank-boost-safe-reliable-rank-push-in-79-days/", "Confirm timeframe", "rank_fulfilment"),
+    ]
+    for path, marker, label in probes:
+        try:
+            with urlopen(Request(HOST + path, headers={"User-Agent": USER_AGENTS["browser"]}), timeout=12) as resp:
+                raw = resp.read().decode("utf-8", "replace")
+                print(f"LIVE_DEPLOY_MARKER {label}: status={resp.status} present={marker in raw}", flush=True)
+        except (HTTPError, URLError, TimeoutError, OSError) as exc:
+            print(f"LIVE_DEPLOY_MARKER {label}: FAILED {type(exc).__name__} {str(exc)[:150]}", flush=True)
+
+
 def main() -> None:
     results = []
     for path in PATHS:
@@ -146,6 +163,7 @@ def main() -> None:
         print("No explicit HTTP 401/403/429/503 responses observed in this environment.", flush=True)
     audit_legacy_redirects()
     audit_legacy_query_redirects()
+    audit_live_deployment_freshness()
     print("Note: this public runner is NOT Google's URL Inspection crawler; compare with Search Console.", flush=True)
 
 if __name__ == "__main__":
