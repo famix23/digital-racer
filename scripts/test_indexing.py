@@ -142,6 +142,33 @@ def main():
                         or target in rules or target + "/" in rules,
                         f"Product link has no indexable target/redirect: {file}: {href}")
 
+    # Every indexed product receives a crawlable HTML link from another product.
+    # This validates the generated files, not merely a JavaScript recommendation.
+    incoming = {url: 0 for url in products}
+    category_by_url = {}
+    inv = json.loads((ROOT / "inventory.json").read_text(encoding="utf-8"))
+    inventory = inv if isinstance(inv, list) else inv.get("items", [])
+    require(len(inventory) == len(manifest), "Product manifest/inventory length mismatch")
+    for item, entry in zip(inventory, manifest):
+        require(item["title"] == entry["title"], "Product order changed without rebuilding")
+        category_by_url[entry["url"]] = item["category"]
+    for entry in manifest:
+        url = entry["url"]
+        markup = page_for(url).read_text(encoding="utf-8")
+        linked = re.findall(r'<a href="(/p/[^"]+/)" class="rel-card"', markup)
+        require(len(linked) == min(4, len(products) - 1), f"Wrong related link count: {url}")
+        require(len(linked) == len(set(linked)), f"Duplicate related cards: {url}")
+        require(url not in linked, f"Product links to itself: {url}")
+        same_category = sum(1 for other in inventory if other["category"] == category_by_url[url])
+        if same_category >= 5:
+            require(all(category_by_url.get(link) == category_by_url[url] for link in linked),
+                    f"Unrelated suggestions for a category with sufficient inventory: {url}")
+        for target in linked:
+            require(target in incoming, f"Related link outside catalog: {url} -> {target}")
+            incoming[target] += 1
+    require(all(count > 0 for count in incoming.values()),
+            f"Product discovery gaps: {sum(count == 0 for count in incoming.values())} pages lack incoming related links")
+
     print(f"Passed indexing audit: {len(routes)} sitemap URLs, "
           f"{len(products)} products, {len(rules)} redirect rules, "
           f"{len(html_files)} HTML files, {checked_links} internal links.")
