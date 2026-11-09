@@ -30,7 +30,11 @@ def load_posts(root):
             if not isinstance(value, str) or not value.strip():
                 raise ValueError(f"{file}: missing {key}")
             text.append(value)
-        date.fromisoformat(item["published"])
+        published = date.fromisoformat(item["published"])
+        if "modified" in item:
+            modified = item["modified"]
+            if not isinstance(modified, str) or date.fromisoformat(modified) < published:
+                raise ValueError(f"{file}: modified must be a date on/after published")
         topics = item.get("topics")
         if (not isinstance(topics, list) or
             any(not isinstance(t, str) or t not in ALLOWED_TOPICS for t in topics) or
@@ -81,6 +85,8 @@ def article_context(page, post):
                       "url": BASE + "/"},
         "mainEntityOfPage": canonical,
     }
+    if "modified" in post:
+        schema["dateModified"] = post["modified"]
     ld = '<script type="application/ld+json">' + json.dumps(
         schema, ensure_ascii=False, separators=(",", ":")
     ).replace("</", "<\\/") + '</script>\n'
@@ -96,6 +102,13 @@ def article_context(page, post):
               html.escape(post["published"], quote=True) + '">' +
               html.escape(display_date) +
               '</time> · By <a href="/about/">Digital Racer</a></p>')
+    if "modified" in post:
+        modified = date.fromisoformat(post["modified"])
+        updated_date = f"{modified:%B} {modified.day}, {modified.year}"
+        byline = byline.replace(
+            "</p>",
+            ' · Updated <time datetime="' + html.escape(post["modified"], quote=True)
+            + '">' + html.escape(updated_date) + "</time></p>", 1)
     return page.replace(h1, h1 + "\n" + byline, 1)
 
 

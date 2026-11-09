@@ -66,6 +66,23 @@ def main():
         require(not any(re.search(r"\bnoindex\b|\bnone\b", tag) for tag in page.robots),
                 f"Sitemap page marked noindex: {filename}")
 
+    # The sitemap should identify meaningful editorial update dates, not invent
+    # change dates for products without reliable versioned source metadata.
+    from build_blog import load_posts
+    editorial_dates = {
+        "/blog/" + post["slug"] + "/": post.get("modified", post["published"])
+        for post in load_posts(ROOT)
+    }
+    for entry in sitemap.findall("{*}url"):
+        loc = entry.find("{*}loc").text
+        route = urlsplit(loc).path
+        lastmod = entry.find("{*}lastmod")
+        if route in editorial_dates:
+            require(lastmod is not None and lastmod.text == editorial_dates[route],
+                    f"Missing or inaccurate editorial lastmod: {route}")
+        else:
+            require(lastmod is None, f"Unverified lastmod date on {route}")
+
     manifest = json.loads((ROOT / "p/index.json").read_text(encoding="utf-8"))
     products = {p["url"] for p in manifest}
     sitemap_products = {x for x in routes if x.startswith("/p/")}
