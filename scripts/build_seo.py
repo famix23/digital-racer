@@ -548,9 +548,13 @@ x += [f"  <url><loc>{SITE_URL}/{page}/</loc></url>" for page in ("about", "conta
 from build_blog import build_blog, load_posts
 from build_related_guides import build_related_guides
 blog_slugs = build_blog(ROOT, write, CHECK_ONLY, changed)
-build_related_guides(ROOT, write, load_posts(ROOT))
+blog_posts = {p["slug"]: p for p in load_posts(ROOT)}
+build_related_guides(ROOT, write, list(blog_posts.values()))
 for slug in blog_slugs:
-    x.append(f"  <url><loc>{SITE_URL}/blog/{slug}/</loc></url>")
+    post = blog_posts[slug]
+    # Only editorial posts have verified date metadata; don't invent product dates.
+    lastmod = post.get("modified", post["published"])
+    x.append(f"  <url><loc>{SITE_URL}/blog/{slug}/</loc><lastmod>{lastmod}</lastmod></url>")
 for p in products:
     imgs = "".join(f"<image:image><image:loc>{esc(abs_url(i))}</image:loc></image:image>" for i in p["images"][:10])
     x.append(f"  <url><loc>{esc(SITE_URL + p['url'])}</loc>{imgs}</url>")
