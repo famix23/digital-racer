@@ -80,6 +80,24 @@ for url in GUIDES:
     parser = Page()
     parser.feed((ROOT / url / "index.html").read_text(encoding="utf-8"))
     assert all(link.startswith("/") and not link.startswith("//") or link.startswith("#") for link in parser.links), (url, "outbound links not allowed")
+# Every article must expose the date and publisher metadata from its editorial source.
+import json
+for post in blog_posts:
+    url = "blog/" + post["slug"] + "/"
+    article = (ROOT / url / "index.html").read_text(encoding="utf-8")
+    schemas = re.findall(r'<script type="application/ld\\+json">(.*?)</script>',
+                         article, flags=re.S)
+    assert len(schemas) == 1, (url, "expected one BlogPosting schema")
+    schema = json.loads(schemas[0])
+    assert schema["@type"] == "BlogPosting", url
+    assert schema["headline"] == post["title"], url
+    assert schema["description"] == post["summary"], url
+    assert schema["datePublished"] == post["published"], url
+    assert schema["mainEntityOfPage"] == BASE + "/" + url, url
+    assert schema["author"]["name"] == "Digital Racer", url
+    assert schema["publisher"]["name"] == "Digital Racer", url
+    assert '<time datetime="' + post["published"] + '">' in article, url
+
 print(f"Passed: {len(blog_urls)} blog pages, safe site-only links and existing guides.")
 
 # Related guide links are generated from explicit article topic metadata.
