@@ -385,12 +385,6 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
           document.getElementById('prod-tag').innerText = product.tag || 'GLOBAL';
 
           const specsGrid = document.getElementById('specs-grid');
-          // Rank boosting is a multi-day service, not an instant-delivery item.
-          if (product.category === 'Rank Boosting') {
-            const deliveryRow = [...specsGrid.querySelectorAll('.mini-spec')]
-              .find(row => row.firstElementChild?.textContent === 'Delivery');
-            if (deliveryRow) deliveryRow.lastElementChild.textContent = 'Confirm timeframe';
-          }
           specsGrid.querySelectorAll('[data-extra]').forEach(el => el.remove());
           if (product.account_level) { specsGrid.innerHTML += `<div class="mini-spec" data-extra><span>Account Level</span><span>${escapeHTML(product.account_level)}</span></div>`; }
           if (product.highest_tier) { specsGrid.innerHTML += `<div class="mini-spec" data-extra><span>Highest Tier</span><span>${escapeHTML(product.highest_tier)}</span></div>`; }
