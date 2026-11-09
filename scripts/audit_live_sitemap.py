@@ -24,8 +24,11 @@ TIMEOUT = 12
 UA = "DigitalRacer-IndexabilityAudit/1.0 (public HTTP health check)"
 CANONICAL = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.I)
 NOINDEX = re.compile(r'<meta\s+name="(?:robots|googlebot)"\s+content="[^"]*\bnoindex\b', re.I)
+RELATED = re.compile(r'<a href="(/p/[^"]+/)" class="rel-card"')
 
-def test(url: str) -> tuple[str, int | None, str, str | None]:
+def test(url: str) -> tuple[str, int | None, str, str | None, list[str]]:
+    # Inspect the whole product body to verify crawlable related-product links.
+    is_product = urlsplit(url).path.startswith("/p/")
     # Retry transient connection failures, and slow down on server load signals.
     for attempt in range(3):
         req = Request(url, headers={"User-Agent": UA, "Accept": "text/html,*/*"})
@@ -34,7 +37,7 @@ def test(url: str) -> tuple[str, int | None, str, str | None]:
                 status = response.status
                 final = response.geturl()
                 header_noindex = response.headers.get("X-Robots-Tag", "")
-                page = response.read(24000).decode("utf-8", "replace")
+                page = response.read(150000 if is_product else 24000).decode("utf-8", "replace")
         except HTTPError as exc:
             status, final, header_noindex = exc.code, exc.geturl(), exc.headers.get("X-Robots-Tag", "")
             page = exc.read(3000).decode("utf-8", "replace")
@@ -42,25 +45,25 @@ def test(url: str) -> tuple[str, int | None, str, str | None]:
             if attempt < 2:
                 time.sleep((attempt + 1) * 0.5)
                 continue
-            return url, None, "", f"Network failure: {type(exc).__name__}: {str(exc)[:120]}"
+            return url, None, "", f"Network failure: {type(exc).__name__}: {str(exc)[:120]}", []
         if status in (429, 500, 502, 503, 504) and attempt < 2:
             time.sleep((attempt + 1) * 1.0)
             continue
         if status != 200:
-            return url, status, final, f"Unexpected HTTP status {status}"
+            return url, status, final, f"Unexpected HTTP status {status}", []
         if final.rstrip("/") != url.rstrip("/"):
-            return url, status, final, "Unexpected redirect from canonical sitemap URL"
+            return url, status, final, "Unexpected redirect from canonical sitemap URL", []
         if "noindex" in header_noindex.lower():
-            return url, status, final, "X-Robots-Tag blocks indexing"
+            return url, status, final, "X-Robots-Tag blocks indexing", []
         if NOINDEX.search(page):
-            return url, status, final, "HTML robots noindex"
+            return url, status, final, "HTML robots noindex", []
         match = CANONICAL.search(page)
         if not match:
-            return url, status, final, "Canonical element absent from first 24KB of HTML"
+            return url, status, final, "Canonical element absent from fetched HTML", []
         declared = html.unescape(match.group(1))
         if declared != url:
-            return url, status, final, f"Canonical mismatch: {declared[:150]}"
-        return url, status, final, None
+            return url, status, final, f"Canonical mismatch: {declared[:150]}", []
+        return url, status, final, None, RELATED.findall(page) if is_product else []
     raise AssertionError("Unreachable retry loop")
 
 def main() -> None:
@@ -72,17 +75,40 @@ def main() -> None:
         raise SystemExit("Sitemap contains external or wrong-host URLs")
     failures = []
     status_counts = Counter()
+    products = {u for u in urls if urlsplit(u).path.startswith("/p/")}
+    inbound = Counter({u: 0 for u in products})
+    related_total = 0
     with ThreadPoolExecutor(max_workers=6) as pool:
         futures = [pool.submit(test, url) for url in urls]
         for future in as_completed(futures):
-            url, status, final, issue = future.result()
+            url, status, final, issue, related_paths = future.result()
             status_counts[str(status) if status is not None else "network"] += 1
             if issue:
                 failures.append((url, issue, final))
+            if url in products and not issue:
+                if len(related_paths) != min(4, len(products) - 1):
+                    failures.append((url, f"Expected four crawlable related product links, found {len(related_paths)}", final))
+                if len(related_paths) != len(set(related_paths)):
+                    failures.append((url, "Duplicate related product links", final))
+                for path in related_paths:
+                    target = HOST + path
+                    if target not in products:
+                        failures.append((url, "Related link is not a canonical sitemap product: " + path, final))
+                    elif target == url:
+                        failures.append((url, "Product recommends itself", final))
+                    else:
+                        inbound[target] += 1
+                        related_total += 1
     print(f"Live sitemap audit: {len(urls)} canonical URLs tested.", flush=True)
     print("HTTP status distribution: " +
           ", ".join(f"{status}={count}" for status, count in sorted(status_counts.items())), flush=True)
-    print(f"Correct live 200 + self-canonical + indexable: {len(urls)-len(failures)}/{len(urls)}", flush=True)
+    unlinked = [url for url in products if inbound[url] == 0]
+    print(f"Live product graph: {related_total} crawlable related-product links; "
+          f"{len(products)-len(unlinked)}/{len(products)} products receive incoming links.", flush=True)
+    for url in sorted(unlinked)[:40]:
+        failures.append((url, "Product has no incoming related-product links", url))
+    print(f"Correct live 200 + self-canonical + indexable and linked: "
+          f"{len(urls)-len(failures)}/{len(urls)}", flush=True)
     for url, issue, final in sorted(failures)[:60]:
         print(f"INDEXING_FAILURE {url} | {issue} | reached={final}", flush=True)
     if failures:
