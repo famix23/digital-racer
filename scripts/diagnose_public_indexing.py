@@ -11,7 +11,7 @@ import json
 import os
 import socket
 from urllib.error import HTTPError, URLError
-from urllib.parse import urlsplit
+from urllib.parse import urlsplit, urlencode
 from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 from pathlib import Path
 
@@ -98,6 +98,38 @@ def audit_legacy_redirects() -> None:
         print(f"::warning title=Legacy redirect failures::{len(failures)} legacy URL rules are not returning expected 301 responses", flush=True)
 
 
+
+def audit_legacy_query_redirects() -> None:
+    """Verify that the deployed Cloudflare Worker 301s old GSC product URLs."""
+    opener = build_opener(NoRedirect)
+    cases = [
+        ("/product", "PUBG Mobile 660 UC Top-Up – Fast & Secure Global Delivery",
+         "/p/pubg-mobile-660-uc-top-up-fast-secure-global-delivery/"),
+        ("/product.html", "( Karambit ) And ( Nine-Tails ) 2 In One Deal 🔥pubg mobile card collection",
+         "/p/pubg-mobile-karambit-nine-tails-card-bundle-2-in-1-deal-instant/"),
+        ("/product", "X ULTIMATES 👑 ANUKHARA X-SUIT (⭐⭐⭐) ❄️ M416 ROARING IMMOLATION MAXX + UMP ANIVERSARRY COMBO (2x LOOT CRATE) 🏎️ LOTUS EMIRA SPORTS",
+         "/p/pubg-mobile-account-anukhara-x-suit-3-m416-roaring-immolation-max/"),
+    ]
+    passed = 0
+    for path, title, target in cases:
+        endpoint = HOST + path + "?" + urlencode({"item": title})
+        req = Request(endpoint, headers={"User-Agent": USER_AGENTS["browser"]})
+        try:
+            with opener.open(req, timeout=12) as response:
+                status, location = response.status, response.headers.get("Location", "")
+        except HTTPError as exc:
+            status, location = exc.code, exc.headers.get("Location", "")
+        except (URLError, TimeoutError, OSError) as exc:
+            status, location = None, type(exc).__name__
+        redirect_path = urlsplit(location).path
+        correct = status == 301 and location == HOST + target
+        passed += int(correct)
+        print(f"QUERY_REDIRECT {path}: code={status}, dest={redirect_path}, expected={target}, verified={correct}", flush=True)
+        if not correct:
+            print(f"::warning title=Legacy query canonicalization not live::{path} is not returning the expected 301 for this product", flush=True)
+    print(f"Legacy query product redirects: {passed}/{len(cases)} live 301 probes passed.", flush=True)
+
+
 def main() -> None:
     results = []
     for path in PATHS:
@@ -113,6 +145,7 @@ def main() -> None:
     else:
         print("No explicit HTTP 401/403/429/503 responses observed in this environment.", flush=True)
     audit_legacy_redirects()
+    audit_legacy_query_redirects()
     print("Note: this public runner is NOT Google's URL Inspection crawler; compare with Search Console.", flush=True)
 
 if __name__ == "__main__":
