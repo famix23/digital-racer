@@ -85,7 +85,7 @@ import json
 for post in blog_posts:
     url = "blog/" + post["slug"] + "/"
     article = (ROOT / url / "index.html").read_text(encoding="utf-8")
-    schemas = re.findall(r'<script type="application/ld\\+json">(.*?)</script>',
+    schemas = re.findall(r'<script type="application/ld\+json">(.*?)</script>',
                          article, flags=re.S)
     assert len(schemas) == 1, (url, "expected one BlogPosting schema")
     schema = json.loads(schemas[0])
