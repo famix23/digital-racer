@@ -21,6 +21,7 @@ jobs:
       - run: python3 scripts/test_indexing.py
       - run: python3 scripts/build_seo.py --check
       - run: node scripts/test_storefront.cjs
+      - run: node scripts/test_legacy_product_redirects.cjs
       - name: Verify rebuild preserves AdSense and is deterministic
         run: |
           python3 scripts/build_seo.py
