@@ -8,3 +8,4 @@ wrangler.jsonc
 wrangler.toml
 node_modules
 scripts
+src
