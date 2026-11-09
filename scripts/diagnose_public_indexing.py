@@ -48,7 +48,7 @@ def audit(url: str, label: str, ua: str) -> tuple[int | None, str]:
     if urlsplit(final_url).netloc not in {"www.digitalracer.store", "digitalracer.store"}:
         print(f"WARNING: unexpected redirect destination {final_url}", flush=True)
     selected = {k: headers.get(k, "") for k in
-                ("Server", "CF-RAY", "Content-Type", "X-Robots-Tag", "Location")}
+                ("Server", "CF-RAY", "CF-Cache-Status", "Age", "Cache-Control", "ETag", "Last-Modified", "X-NF-Request-ID", "Content-Type", "X-Robots-Tag", "Location")}
     indicators = [term for term in
                   ("attention required", "checking your browser", "cloudflare", "access denied", "captcha")
                   if term in body.lower()]
