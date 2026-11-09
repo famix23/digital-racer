@@ -59,4 +59,12 @@ for (const p of manifest) {
   assert.equal(/id="prod-desc">\s*<p><strong>Buy now on whatsapp number/.test(html), !referenceOnly);
   if (referenceOnly) assert.ok(html.includes('Last listed price'));
 }
+// No rank-boosting listing may promise instant fulfilment while describing a multi-day service.
+for (const item of products.filter(row => row.category === 'Rank Boosting')) {
+  assert.notEqual(item.badge, 'INSTANT', 'Rank boosting is not instant delivery');
+  const url = sandbox.matchingProduct(manifest, item).url;
+  const page = read(url.slice(1) + 'index.html');
+  assert.ok(page.includes('<span>Delivery</span><span style="color: var(--accent);">Confirm timeframe</span>'),
+    'Rank boosting must ask buyers to confirm the fulfilment timeline: ' + url);
+}
 console.log(`Passed: ${products.length} distinct product URLs, matching offer prices, indexable pages, injection regressions and inline JavaScript syntax.`);

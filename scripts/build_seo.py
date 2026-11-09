@@ -427,6 +427,12 @@ def product_page(p, others):
         specs += f'\n          <div class="mini-spec" data-extra><span>Highest Tier</span><span>{esc(it["highest_tier"])}</span></div>'
     s = replace_one(s, r'(<div class="mini-spec"><span>Delivery</span><span style="color: var\(--accent\);">Instant</span></div>)',
                     lambda m: m.group(1) + specs, f, "specs grid")
+    # Rank services are manually fulfilled, so do not present them as instant delivery.
+    if p["category"] == "Rank Boosting":
+        s = s.replace(
+            '<div class="mini-spec"><span>Delivery</span><span style="color: var(--accent);">Instant</span></div>',
+            '<div class="mini-spec"><span>Delivery</span><span style="color: var(--accent);">Confirm timeframe</span></div>',
+            1)
     desc_prefix = "<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>"
     desc_html = ("" if reference_only else desc_prefix) + parse_description(p["desc_raw"])
     s = replace_one(s, r'(<div class="desc-content" id="prod-desc">)(</div>)',
