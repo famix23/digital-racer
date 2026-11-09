@@ -18,6 +18,7 @@ jobs:
           node-version: '22'
       - run: python3 scripts/test_adsense.py
       - run: python3 scripts/test_content_quality.py
+      - run: python3 scripts/test_indexing.py
       - run: python3 scripts/build_seo.py --check
       - run: node scripts/test_storefront.cjs
       - name: Verify rebuild preserves AdSense and is deterministic
