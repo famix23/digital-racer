@@ -12,7 +12,7 @@ import os
 import socket
 from urllib.error import HTTPError, URLError
 from urllib.parse import urlsplit
-from urllib.request import Request, urlopen
+from urllib.request import Request, urlopen, build_opener, HTTPRedirectHandler
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -58,6 +58,46 @@ def audit(url: str, label: str, ua: str) -> tuple[int | None, str]:
         print(f"::warning title=Potential crawler access issue::{url} responded with HTTP {status} from {label}", flush=True)
     return status, headers.get("Server", "")
 
+
+class NoRedirect(HTTPRedirectHandler):
+    def redirect_request(self, request, fp, code, message, headers, newurl):
+        return None
+
+
+def audit_legacy_redirects() -> None:
+    """Make sure legacy product URLs 301, rather than serve noindex stub / 404."""
+    opener = build_opener(NoRedirect)
+    rules = []
+    for raw in (ROOT / "_redirects").read_text(encoding="utf-8").splitlines():
+        if not raw.strip() or raw.startswith("#"):
+            continue
+        fields = raw.split()
+        if len(fields) == 3 and fields[2] == "301":
+            rules.append((fields[0], fields[1]))
+    failures = []
+    good = 0
+    for source, target in rules:
+        req = Request(HOST + source, headers={"User-Agent": USER_AGENTS["browser"]})
+        try:
+            with opener.open(req, timeout=8) as response:
+                code, location = response.status, response.headers.get("Location", "")
+        except HTTPError as exc:
+            code, location = exc.code, exc.headers.get("Location", "")
+        except (URLError, TimeoutError, OSError) as exc:
+            code, location = None, type(exc).__name__
+        parsed = urlsplit(location)
+        destination = parsed.path if parsed.scheme else location
+        if code == 301 and destination == target:
+            good += 1
+        else:
+            failures.append((source, code, location, target))
+    print(f"Legacy product redirects: {good}/{len(rules)} exactly match 301 targets.", flush=True)
+    for src, code, location, target in failures[:30]:
+        print(f"REDIRECT_MISMATCH {src}: status={code} Location={location}, expected=301 {target}", flush=True)
+    if failures:
+        print(f"::warning title=Legacy redirect failures::{len(failures)} legacy URL rules are not returning expected 301 responses", flush=True)
+
+
 def main() -> None:
     results = []
     for path in PATHS:
@@ -72,6 +112,7 @@ def main() -> None:
         print(f"Potential HTTP accessibility issue for {len(blocked)} of {len(results)} probe requests: {blocked}", flush=True)
     else:
         print("No explicit HTTP 401/403/429/503 responses observed in this environment.", flush=True)
+    audit_legacy_redirects()
     print("Note: this public runner is NOT Google's URL Inspection crawler; compare with Search Console.", flush=True)
 
 if __name__ == "__main__":
