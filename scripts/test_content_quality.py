@@ -125,5 +125,8 @@ items = catalog if isinstance(catalog, list) else catalog.get("items", [])
 empty_active = [item.get("title", "<untitled>") for item in items
                 if not item.get("reference_only") and not str(item.get("description") or "").strip()]
 assert not empty_active, ("Empty active product descriptions:", empty_active)
-print(f"Passed: {len(items)} product listings have nonempty active descriptions.")
+placeholder = "🎮 **PREMIUM PUBG MOBILE ACCOUNT – GREAT VALUE & READY TO PLAY**"
+assert not any(str(item.get("description") or "").startswith(placeholder) for item in items), \
+    "Generic supplier account template should be replaced by listing-specific details"
+print(f"Passed: {len(items)} active descriptions are populated and generic account placeholders are eliminated.")
 
