@@ -66,6 +66,39 @@ def render(template, title, summary, category, canonical, body, is_article):
         raise ValueError("Unresolved blog template token")
     return template
 
+def article_context(page, post):
+    """Add truthful publication and publisher metadata to an existing article page."""
+    canonical = BASE + "/blog/" + post["slug"] + "/"
+    schema = {
+        "@context": "https://schema.org",
+        "@type": "BlogPosting",
+        "headline": post["title"],
+        "description": post["summary"],
+        "datePublished": post["published"],
+        "author": {"@type": "Organization", "name": "Digital Racer",
+                   "url": BASE + "/about/"},
+        "publisher": {"@type": "Organization", "name": "Digital Racer",
+                      "url": BASE + "/"},
+        "mainEntityOfPage": canonical,
+    }
+    ld = '<script type="application/ld+json">' + json.dumps(
+        schema, ensure_ascii=False, separators=(",", ":")
+    ).replace("</", "<\\/") + '</script>\n'
+    if page.count("</head>") != 1:
+        raise ValueError("Expected one blog article head")
+    page = page.replace("</head>", ld + "</head>", 1)
+    published = date.fromisoformat(post["published"])
+    display_date = f"{published:%B} {published.day}, {published.year}"
+    h1 = "<h1>" + html.escape(post["title"]) + "</h1>"
+    if page.count(h1) != 1:
+        raise ValueError("Expected one blog article heading")
+    byline = ('<p class="article-meta">Published <time datetime="' +
+              html.escape(post["published"], quote=True) + '">' +
+              html.escape(display_date) +
+              '</time> · By <a href="/about/">Digital Racer</a></p>')
+    return page.replace(h1, h1 + "\n" + byline, 1)
+
+
 def article_body(post):
     parts = ['<p class="lede">' + html.escape(post["intro"]) + '</p>']
     for section in post["sections"]:
@@ -110,8 +143,8 @@ def build_blog(root, write, check_only=False, changed=None):
     write("blog/index.html", render(template, "Gaming Blog", "Original gaming articles and practical PC gaming insights from Digital Racer.", "Gaming articles", BASE + "/blog/", hub, False))
     for p in posts:
         write("blog/" + p["slug"] + "/index.html",
-              render(template, p["title"], p["summary"], p["category"],
-                     BASE + "/blog/" + p["slug"] + "/", article_body(p), True))
+              article_context(render(template, p["title"], p["summary"], p["category"],
+                                     BASE + "/blog/" + p["slug"] + "/", article_body(p), True), p))
     expected = {p["slug"] for p in posts}
     for page in (root / "blog").glob("*/index.html"):
         if page.parent.name not in expected and MARKER in page.read_text(encoding="utf-8"):
