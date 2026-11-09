@@ -117,3 +117,13 @@ tutorials = relevant(blog_posts, ("tutorial",))
 assert tutorials, "No tutorial articles are discoverable from the guides directory"
 assert len(re.findall(r'href="(/blog/[^"]+/)"', (ROOT / "guides/index.html").read_text(encoding="utf-8"))) >= len(tutorials)
 print(f"Passed: automatic topic-based guide links in {len(TARGETS)} guide pages.")
+# Active catalog products need actual information beyond a WhatsApp purchase link.
+# Empty descriptions produce nearly empty pages that are poor for buyers and crawling.
+from json import loads as json_loads
+catalog = json_loads((ROOT / "inventory.json").read_text(encoding="utf-8"))
+items = catalog if isinstance(catalog, list) else catalog.get("items", [])
+empty_active = [item.get("title", "<untitled>") for item in items
+                if not item.get("reference_only") and not str(item.get("description") or "").strip()]
+assert not empty_active, ("Empty active product descriptions:", empty_active)
+print(f"Passed: {len(items)} product listings have nonempty active descriptions.")
+
