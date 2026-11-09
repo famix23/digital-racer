@@ -2,11 +2,14 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "digital-racer",
   "compatibility_date": "2026-10-19",
+  "main": "src/worker.mjs",
   "observability": {
     "enabled": true
   },
   "assets": {
     "directory": ".",
+    "binding": "ASSETS",
+    "run_worker_first": ["/product", "/product.html"],
     // Serve /404.html with a real 404 status for unknown URLs
     "not_found_handling": "404-page"
   }
