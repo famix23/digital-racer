@@ -534,7 +534,20 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
             buyButton.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
           }
 
-          const related = [...products.filter(p => p !== product && p.category === product.category), ...products.filter(p => p !== product && p.category !== product.category)].slice(0, 4);
+          // Rotate same-category products instead of repeating the same four links on every page.
+          const peers = products.filter(p => p.category === product.category);
+          const peerIndex = peers.indexOf(product);
+          const related = [];
+          for (let step = 1; step < peers.length && related.length < 4; step++) {
+            related.push(peers[(peerIndex + step) % peers.length]);
+          }
+          if (related.length < 4) {
+            const index = products.indexOf(product);
+            for (let step = 1; step < products.length && related.length < 4; step++) {
+              const other = products[(index + step) % products.length];
+              if (other.category !== product.category) related.push(other);
+            }
+          }
           const relGrid = document.getElementById('related-grid');
           if (related.length > 0) {
             relGrid.innerHTML = related.map(p => {
