@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-vehicle-rotation-cover-fuel-guide",
+  "title": "PUBG Mobile Vehicle Rotations: Fuel, Cover and Exit Planning",
+  "summary": "Reduce avoidable squad losses while rotating by vehicle in PUBG Mobile.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "Vehicles can shorten long rotations but they also announce a team's approach and may expose everyone at once. Plan the destination and exit before accelerating into a contested area.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Choose a destination, not only a direction",
+      "paragraphs": [
+        "Open the map and mark a realistic stopping point with nearby cover. Driving toward the center of the next zone without a specific parking or dismount location is risky. A compound can be strong if its entry is clear, but dangerous if another team occupies the windows and staircases. Consider ridges, walls and terrain that shield a stopped vehicle. When multiple paths exist, evaluate exposure to long sightlines and the likelihood of being boxed into a narrow bridge or road. Agree on a backup destination if the first is occupied."
+      ],
+      "points": [
+        "Call out the intended stopping side of a building.",
+        "Avoid approaching a likely contested compound directly from open ground."
+      ]
+    },
+    {
+      "heading": "Manage fuel before it becomes urgent",
+      "paragraphs": [
+        "Look at the fuel indicator when planning a long move, not only after the vehicle starts running low. Fuel availability, vehicle type and driving conditions affect how far you can safely travel, so avoid promising a universal distance from a half tank. A longer covered road may be safer than a shorter route through exposed terrain, but only if you have sufficient fuel. If the map allows a safer refueling stop, make it before the final circle pressure forces a rushed decision. Keep teammates informed when a vehicle cannot complete the planned journey."
+      ],
+      "points": [
+        "Check fuel and vehicle condition while still behind cover.",
+        "Choose a fallback walkable route when fuel margin is uncertain."
+      ]
+    },
+    {
+      "heading": "Decide how your squad will dismount",
+      "paragraphs": [
+        "A team that exits one by one without a plan can be defeated before the last passenger takes cover. Set an approximate stop location and tell teammates which side will be exposed. Use the vehicle's body as temporary cover only where its condition and position make that sensible; a damaged vehicle can be a hazard rather than protection. Do not assume that leaving a moving vehicle is always safe. Game physics and speed can lead to serious damage. Practice controlled arrival and rapid movement to hard cover in low-stakes matches."
+      ],
+      "points": [
+        "Wait until the vehicle is safely stopped before your planned dismount.",
+        "Avoid clustering immediately beside a damaged vehicle."
+      ]
+    },
+    {
+      "heading": "Know when driving is worse than walking",
+      "paragraphs": [
+        "Late circles, narrow sightlines and nearby enemy positions can make an engine sound more costly than the saved travel time. If the next cover is a short quiet walk away, abandoning the vehicle behind concealment may reduce your visibility. Conversely, a long stretch of open ground can make a vehicle essential despite its noise. Base the choice on terrain, distance, available utility and the time remaining. Do not abandon transport just because an opponent fired once; determine whether you have a defensible stop before dismounting."
+      ],
+      "points": [
+        "Use the map timer to decide when a quiet rotation remains possible.",
+        "Avoid stopping in a place where every teammate must cross the same exposed gap."
+      ]
+    },
+    {
+      "heading": "Learn from failed arrivals",
+      "paragraphs": [
+        "Review whether a vehicle loss came from route choice, late timing, driver visibility, bad parking or squad communication. If you were fired on from a predictable ridge, mark an alternate approach for the next match. If passengers were eliminated after stopping, adjust the dismount plan instead of merely searching for a tougher vehicle. Practice with the same squad so each person knows when to call out threats and where to move. A safe arrival is measured by the position and resources you retain after parking, not by how fast you crossed the map."
+      ],
+      "points": [
+        "Review the moment the driver committed to the route.",
+        "Test one alternative approach on the same map."
+      ]
+    }
+  ]
+}
