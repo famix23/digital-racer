@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-squad-roles-igl-scout-support-guide",
+  "title": "PUBG Mobile Squad Roles: IGL, Scout, Support and Fragger",
+  "summary": "Give a PUBG Mobile squad clear responsibilities without rigidly copying professional teams.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "A coordinated squad needs more than four good shooters. Clear responsibility for rotations, information and utility can reduce confusion, especially in a crowded endgame.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Define a simple in-game leader role",
+      "paragraphs": [
+        "The in-game leader is responsible for coordinating a shared plan, not controlling every teammate's aim. This player can set rotation timing, mark a primary destination and decide when the group should disengage. The leader needs input from teammates about visible threats and available equipment. A callout that cannot be acted upon is less useful than a concrete instruction such as hold this wall, then cross when the smoke spreads. Keep decisions short under pressure and review them after the match, not while someone is exposed."
+      ],
+      "points": [
+        "The leader should confirm every player can follow the proposed route.",
+        "Agree on how to override a plan when new danger appears."
+      ]
+    },
+    {
+      "heading": "Make scouting about evidence",
+      "paragraphs": [
+        "A scout checks likely approaches, gathers information and identifies safe movement lanes without wandering far enough to become isolated. Report what was seen, heard or only suspected. An opponent moving behind a rock is confirmed information; a claim that the entire hill is empty usually is not. Use map markers and concise communication to avoid long explanations during combat. A good scout also knows when to stop searching and return to the squad, because information loses value if the team cannot act together."
+      ],
+      "points": [
+        "State direction and cover instead of shouting only enemy.",
+        "Do not turn a scouting task into an unnecessary solo duel."
+      ]
+    },
+    {
+      "heading": "Treat support as an active combat responsibility",
+      "paragraphs": [
+        "Support includes maintaining healing, throwable utility and cover for teammates who reposition or revive. It does not mean carrying all supplies while others fight. A support player may watch an exposed angle, provide smoke for a crossing or call out the safest revive location. Utility works best when planned alongside movement: smoke without a destination can create temporary confusion but no real positional gain. Assign responsibility for important shared items only when the team knows what each player has available."
+      ],
+      "points": [
+        "Communicate when crucial healing or smoke supplies are low.",
+        "Avoid standing beside a downed teammate without checking firing angles."
+      ]
+    },
+    {
+      "heading": "Give the fragger a team context",
+      "paragraphs": [
+        "A strong close-range player can pressure opponents, but aggressive movement should match the squad's plan. The fragger needs information about enemy numbers, a clear escape route and teammates positioned to trade if the push fails. A solo elimination is not worth losing a strong circle position when the rest of the team cannot follow. Practice opening a fight only after another player confirms cover or utility support. Roles can switch mid-match; a low-health fragger may need to hold an angle while someone else advances."
+      ],
+      "points": [
+        "Call out a push before committing to it.",
+        "Prefer a coordinated two-player trade setup to an isolated chase."
+      ]
+    },
+    {
+      "heading": "Review communication after the match",
+      "paragraphs": [
+        "Pick one fight or rotation and listen to what was said. Were directions precise, did two people issue conflicting calls, and did someone miss the instruction because everyone talked at once? Assign the first speaker for a rotation decision, then let teammates supply short factual updates. Adjust responsibilities based on strengths rather than status. A consistent squad often performs better with modest, understandable roles than with a complicated imitation of tournament tactics. Keep the system flexible across maps, teammates and changing circumstances."
+      ],
+      "points": [
+        "Use one shared map marker system for calls.",
+        "After a loss, discuss one specific decision rather than blaming a role."
+      ]
+    }
+  ]
+}
