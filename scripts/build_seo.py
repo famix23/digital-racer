@@ -18,6 +18,7 @@ The output is deterministic: running it twice without changing inventory.json pr
 no diff. Everything inside p/ is owned by this script and is deleted and rebuilt on
 every run. Use `--check` to exit non-zero if any file would change (handy in CI).
 """
+from collections import Counter
 import html
 import json
 import os
@@ -242,6 +243,18 @@ for it in items:
     })
 
 
+
+def original_product_meta(p):
+    """Preserve existing metadata unless its description is duplicated."""
+    price_text = f"${p['price']} USD"
+    delivery = "Last listed price" if p["raw"].get("reference_only") is True else "Order on WhatsApp"
+    lead = f"{p['cat_label']} · {price_text} · {delivery}. "
+    return truncate(lead + (p["desc_clean"] or p["clean_title"]), 158)
+
+
+META_BASES = {p["url"]: original_product_meta(p) for p in products}
+META_COUNTS = Counter(META_BASES.values())
+
 IMAGE_MAP = json.loads(read("assets/image-map.json")) if os.path.exists(path("assets/image-map.json")) else {}
 
 def display_image(image, size=480):
@@ -409,7 +422,19 @@ def product_page(p, others):
     reference_only = it.get("reference_only") is True
     delivery = "Last listed price" if reference_only else "Order on WhatsApp"
     lead = f"{p['cat_label']} · {price_txt} · {delivery}. "
-    meta_desc = truncate(lead + (p["desc_clean"] or p["clean_title"]), 158)
+    meta_desc = META_BASES[p["url"]]
+    if META_COUNTS[meta_desc] > 1:
+        # Some distinct listings share supplier copy and price. Keep supplier
+        # descriptions unchanged, but identify the specific product in the
+        # SEO summary to avoid multiple unrelated pages competing with the
+        # same generic text.
+        same_name = [o for o in products if o["clean_title"] == p["clean_title"]]
+        edition = f" · Listing {same_name.index(p) + 1}" if len(same_name) > 1 else ""
+        distinctive = truncate(p["clean_title"], 82)
+        meta_desc = truncate(
+            f"{distinctive}{edition} – {price_txt}. "
+            f"{p['desc_clean'] or p['category']}", 158
+        )
     canonical = SITE_URL + p["url"]
     image = p["images"][0] if p["images"] else None
 
