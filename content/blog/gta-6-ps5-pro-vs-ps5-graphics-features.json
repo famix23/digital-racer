@@ -1,0 +1,63 @@
+{
+  "slug": "gta-6-ps5-pro-vs-ps5-graphics-features",
+  "title": "GTA VI on PS5 vs PS5 Pro: Confirmed Visual Features",
+  "summary": "Rockstar's November 10 update identifies PS5 Pro-specific visual features for GTA VI.",
+  "category": "GTA VI Guides",
+  "published": "2026-11-11",
+  "intro": "Rockstar's November 10, 2026 pre-load announcement describes how Grand Theft Auto VI targets the current console generation. It also identifies a few PS5 Pro-specific presentation features. Here is what is confirmed and what remains a separate technical question.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "What Rockstar actually confirmed",
+      "paragraphs": [
+        "Rockstar says GTA VI was built for current-generation consoles with a target of 30 frames per second. The same announcement says PS5 Pro has improved clarity using PlayStation Spectral Super Resolution, or PSSR, and ray-traced shadows available only on PS5 Pro. This is a specific feature statement, not a full technical performance analysis. It does not publish a complete resolution matrix, every graphics preset or a comparison of final frame-time behavior under all gameplay conditions. Readers should distinguish publisher claims from independent measurements after release."
+      ],
+      "points": [
+        "Treat the 30 FPS target as a target rather than a captured benchmark.",
+        "Do not invent a PS5 Pro 60 FPS mode without official confirmation."
+      ]
+    },
+    {
+      "heading": "Understand the role of PSSR",
+      "paragraphs": [
+        "PSSR is Sony's image reconstruction technology associated with PlayStation 5 Pro. Its purpose is to improve image clarity from rendered information, not to guarantee that every game runs at a particular resolution or frame rate. A PSSR reference in a promotional post does not specify the game's internal render resolution. Visual sharpness also depends on motion, display settings and the content being viewed. When reviewers publish side-by-side footage, look for identical scenes and capture conditions rather than evaluating compressed screenshots taken at unrelated moments."
+      ],
+      "points": [
+        "Compare still detail and motion clarity separately.",
+        "Do not describe an image reconstruction feature as additional gameplay content."
+      ]
+    },
+    {
+      "heading": "Ray-traced shadows are a named difference",
+      "paragraphs": [
+        "Rockstar specifically identifies ray-traced shadows as PS5 Pro-only in its November 10 message. That is narrower than saying every aspect of the game's lighting is exclusive to the Pro. Shadow quality can vary with object type, distance and the visual scene. A useful comparison should describe the effect in visible terms without claiming that the standard PS5 lacks all sophisticated lighting. It also should not assume that the feature is active identically in every gameplay moment or camera mode before detailed testing is available."
+      ],
+      "points": [
+        "Look for matched foliage, streetlight and moving-object scenes.",
+        "Keep claims limited to the exact graphical feature Rockstar named."
+      ]
+    },
+    {
+      "heading": "The base PS5 still has meaningful features",
+      "paragraphs": [
+        "The same official note highlights DualSense haptics, accessibility adjustments, spatial audio and improved load times on PS5. Those are not automatically removed from the base model simply because PS5 Pro has additional clarity or shadows. When deciding which console to use, consider the display you already own and the price of any hardware change. A person using a conventional display may value other improvements differently from someone comparing image reconstruction on a large 4K screen. Avoid buying hardware based on an unverified benchmark screenshot."
+      ],
+      "points": [
+        "Check the exact console model and storage available before spending.",
+        "Separate confirmed features from assumptions about subjective image quality."
+      ]
+    },
+    {
+      "heading": "How to compare responsibly after release",
+      "paragraphs": [
+        "When full reviews become available, examine performance capture methodology: matched scene, video output mode, display resolution and whether the test measured frame times or only average FPS. Compression can obscure subtle shadow and reconstruction differences. Update an article when new evidence exists rather than silently changing an old prediction into a supposed fact. For now, the reliable position is simple: Rockstar targets 30 FPS and names PSSR clarity and ray-traced shadows for PS5 Pro. Claims beyond that need separate evidence."
+      ],
+      "points": [
+        "Prefer controlled footage to viral comparison thumbnails.",
+        "Check the review date against the final game build."
+      ]
+    }
+  ]
+}
