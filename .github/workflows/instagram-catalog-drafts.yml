@@ -1,6 +1,12 @@
 name: Instagram catalog drafts
 on:
   workflow_dispatch:
+  pull_request:
+    paths:
+      - inventory.json
+      - p/index.json
+      - scripts/export_instagram.py
+      - .github/workflows/instagram-catalog-drafts.yml
   push:
     branches: [main]
     paths:
