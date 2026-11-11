@@ -4,7 +4,7 @@ import json
 import sys
 from html.parser import HTMLParser
 from pathlib import Path
-from urllib.request import urlopen
+from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
 CLIENT = "ca-pub-3636750354534911"
@@ -34,17 +34,25 @@ def check_html(text, label):
     assert in_head and attrs.get("src") == SRC, (label, "wrong head placement or publisher")
     assert "async" in attrs and attrs.get("crossorigin") == "anonymous", label
 
+def public_request(url):
+    # Cloudflare may challenge urllib's default user agent on otherwise public pages.
+    # Use the same explicit client identity as the independent live indexing audit.
+    return Request(url, headers={
+        "User-Agent": "DigitalRacer-IndexabilityAudit/1.0 (public HTTP health check)",
+        "Accept": "text/html,application/xml,text/plain,*/*",
+    })
+
 if "--live" in sys.argv:
     host = "https://www.digitalracer.store"
     manifest = json.loads((ROOT / "p/index.json").read_text())
     urls = ["/", "/catalog", "/product", "/about/", "/contact/", "/terms/", "/privacy/"]
     urls += [p["url"] for p in manifest]
     for url in urls:
-        with urlopen(host + url, timeout=30) as response:
+        with urlopen(public_request(host + url), timeout=30) as response:
             assert response.status == 200, url
             assert "text/html" in response.headers.get("Content-Type", ""), url
             check_html(response.read().decode(), url)
-    with urlopen(host + "/ads.txt", timeout=30) as response:
+    with urlopen(public_request(host + "/ads.txt"), timeout=30) as response:
         assert response.status == 200
         assert "text/plain" in response.headers.get("Content-Type", "")
         assert response.read().decode().strip() == RECORD
