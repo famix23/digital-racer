@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-revive-smoke-decision-guide",
+  "title": "PUBG Mobile Revive or Retreat? Smoke and Cover Decisions",
+  "summary": "Use cover, timers and squad information to decide whether a knocked teammate can be revived safely.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "A knocked teammate creates urgency, but running straight to a revive can lose the entire squad. Decide whether a rescue is possible by checking enemy sightlines, nearby cover and the zone before committing.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Read the situation before approaching",
+      "paragraphs": [
+        "Locate where your teammate fell, which direction the shots came from and whether the attacker has a clear view of the body. A knock from a single visible opponent is different from an ambush with several unknown positions. Check the time until the zone moves and whether the downed teammate can crawl behind hard cover. Do not sprint across an exposed field simply because a revive icon appears. A successful rescue requires a path to the player, a protected position during the revive and a way to continue playing afterward."
+      ],
+      "points": [
+        "Ask the teammate what they actually saw before the knock.",
+        "Identify at least one safe approach rather than choosing the shortest line."
+      ]
+    },
+    {
+      "heading": "Understand what smoke can and cannot do",
+      "paragraphs": [
+        "Smoke interrupts visual information but it is not hard cover. Opponents can shoot through it, follow footsteps or throw explosives into the obscured area. Place smoke to hide a crossing or obscure a line of sight rather than throwing every grenade directly onto the knocked player without a plan. Smoke development and duration depend on game behavior, so give it time to form before exposing yourself. If a nearby wall can shield the revive without smoke, that may leave the squad with more utility for the next move."
+      ],
+      "points": [
+        "Check whether enemies can approach from behind the smoke.",
+        "Keep an exit direction in mind before starting the revive."
+      ]
+    },
+    {
+      "heading": "Use a clear rescue sequence",
+      "paragraphs": [
+        "Assign one teammate to watch the most dangerous angle while another approaches the downed player. A third teammate can control a second approach or provide utility. If the squad has only two surviving members, be realistic about how much ground can be covered. Do not stack everyone beside the body, where an explosive or single angle can punish the entire team. A teammate who cannot be reached safely may have to remain behind while the squad preserves its chance of surviving."
+      ],
+      "points": [
+        "Communicate who is reviving and who is watching.",
+        "Stop the revive when new information makes the position untenable."
+      ]
+    },
+    {
+      "heading": "Consider the zone and post-revive resources",
+      "paragraphs": [
+        "A successful revive is not enough if the rescued player immediately takes zone damage without healing, cover or a route. Check whether the team has medical supplies and a safe movement plan. A vehicle may help with a long rotation, but entering it from an exposed revive location can create another risky moment. If the timer is short, prioritize moving toward viable terrain rather than staying in a doomed position. The objective is team survival, not a revive statistic."
+      ],
+      "points": [
+        "Plan healing and movement before pressing the revive button.",
+        "Do not spend all available utility on a rescue that cannot be completed in time."
+      ]
+    },
+    {
+      "heading": "Review rescue failures constructively",
+      "paragraphs": [
+        "After the match, separate a risky decision from an execution mistake. Perhaps smoke was placed well but the approach was visible from another window; perhaps the revive was safe until an unreported opponent entered. A rescue that worked once due to poor enemy aim may still be a weak repeatable plan. Use replay footage to identify the moment your squad could have chosen a safer position. Make a simple rule for the next session: confirm cover, assign a watcher and preserve an exit path."
+      ],
+      "points": [
+        "Discuss the decision without blaming the knocked player.",
+        "Practice covering a revive in a low-stakes squad match."
+      ]
+    }
+  ]
+}
