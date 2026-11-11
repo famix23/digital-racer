@@ -25,8 +25,9 @@ UA = "DigitalRacer-IndexabilityAudit/1.0 (public HTTP health check)"
 CANONICAL = re.compile(r'<link\s+rel="canonical"\s+href="([^"]+)"', re.I)
 NOINDEX = re.compile(r'<meta\s+name="(?:robots|googlebot)"\s+content="[^"]*\bnoindex\b', re.I)
 RELATED = re.compile(r'<a href="(/p/[^"]+/)" class="rel-card"')
+DESCRIPTION = re.compile(r'<meta name="description" content="([^"]*)"', re.I)
 
-def test(url: str) -> tuple[str, int | None, str, str | None, list[str]]:
+def test(url: str) -> tuple[str, int | None, str, str | None, list[str], str]:
     # Inspect the whole product body to verify crawlable related-product links.
     is_product = urlsplit(url).path.startswith("/p/")
     # Retry transient connection failures, and slow down on server load signals.
@@ -45,25 +46,27 @@ def test(url: str) -> tuple[str, int | None, str, str | None, list[str]]:
             if attempt < 2:
                 time.sleep((attempt + 1) * 0.5)
                 continue
-            return url, None, "", f"Network failure: {type(exc).__name__}: {str(exc)[:120]}", []
+            return url, None, "", f"Network failure: {type(exc).__name__}: {str(exc)[:120]}", [], ""
         if status in (429, 500, 502, 503, 504) and attempt < 2:
             time.sleep((attempt + 1) * 1.0)
             continue
         if status != 200:
-            return url, status, final, f"Unexpected HTTP status {status}", []
+            return url, status, final, f"Unexpected HTTP status {status}", [], ""
         if final.rstrip("/") != url.rstrip("/"):
-            return url, status, final, "Unexpected redirect from canonical sitemap URL", []
+            return url, status, final, "Unexpected redirect from canonical sitemap URL", [], ""
         if "noindex" in header_noindex.lower():
-            return url, status, final, "X-Robots-Tag blocks indexing", []
+            return url, status, final, "X-Robots-Tag blocks indexing", [], ""
         if NOINDEX.search(page):
-            return url, status, final, "HTML robots noindex", []
+            return url, status, final, "HTML robots noindex", [], ""
         match = CANONICAL.search(page)
         if not match:
-            return url, status, final, "Canonical element absent from fetched HTML", []
+            return url, status, final, "Canonical element absent from fetched HTML", [], ""
         declared = html.unescape(match.group(1))
         if declared != url:
-            return url, status, final, f"Canonical mismatch: {declared[:150]}", []
-        return url, status, final, None, RELATED.findall(page) if is_product else []
+            return url, status, final, f"Canonical mismatch: {declared[:150]}", [], ""
+        description = DESCRIPTION.search(page) if is_product else None
+        return (url, status, final, None, RELATED.findall(page) if is_product else [],
+                html.unescape(description.group(1)) if description else "")
     raise AssertionError("Unreachable retry loop")
 
 def main() -> None:
@@ -78,14 +81,19 @@ def main() -> None:
     products = {u for u in urls if urlsplit(u).path.startswith("/p/")}
     inbound = Counter({u: 0 for u in products})
     related_total = 0
+    product_descriptions = {}
     with ThreadPoolExecutor(max_workers=6) as pool:
         futures = [pool.submit(test, url) for url in urls]
         for future in as_completed(futures):
-            url, status, final, issue, related_paths = future.result()
+            url, status, final, issue, related_paths, meta_description = future.result()
             status_counts[str(status) if status is not None else "network"] += 1
             if issue:
                 failures.append((url, issue, final))
             if url in products and not issue:
+                if not meta_description:
+                    failures.append((url, "Missing live meta description", final))
+                else:
+                    product_descriptions[url] = meta_description
                 if len(related_paths) != min(4, len(products) - 1):
                     failures.append((url, f"Expected four crawlable related product links, found {len(related_paths)}", final))
                 if len(related_paths) != len(set(related_paths)):
@@ -102,6 +110,13 @@ def main() -> None:
     print(f"Live sitemap audit: {len(urls)} canonical URLs tested.", flush=True)
     print("HTTP status distribution: " +
           ", ".join(f"{status}={count}" for status, count in sorted(status_counts.items())), flush=True)
+    description_counts = Counter(product_descriptions.values())
+    duplicates = [desc for desc, count in description_counts.items() if count > 1]
+    for url, desc in product_descriptions.items():
+        if description_counts[desc] > 1:
+            failures.append((url, "Duplicate live product meta description", url))
+    print(f"Live product snippets: {len(product_descriptions)} products checked, "
+          f"{len(description_counts)} distinct meta descriptions, {len(duplicates)} duplicate groups.", flush=True)
     unlinked = [url for url in products if inbound[url] == 0]
     print(f"Live product graph: {related_total} crawlable related-product links; "
           f"{len(products)-len(unlinked)}/{len(products)} products receive incoming links.", flush=True)
