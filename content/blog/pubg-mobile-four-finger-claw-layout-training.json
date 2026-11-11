@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-four-finger-claw-layout-training",
+  "title": "PUBG Mobile Four-Finger Claw: Layout and Training Plan",
+  "summary": "Build a four-finger PUBG Mobile control layout without copying a pro player's screen blindly.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "A useful claw layout should make movement, aiming, shooting and looking around possible at the same time. There is no universal four-finger arrangement because screen size, hand reach and grip differ. This guide offers a repeatable method for tuning your own setup.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Start with fingers and actions, not an imported code",
+      "paragraphs": [
+        "Assign each finger a limited job before moving buttons. One approach is left thumb for movement, right thumb for camera direction, left index for firing and right index for aim or movement actions. Your preferred arrangement may reverse these jobs. Place the most frequent controls where your fingers rest naturally, then test whether you can strafe, track and fire without lifting the aiming finger. Avoid placing a large fire button over the center of the screen, where it can hide enemies or interfere with swipes."
+      ],
+      "points": [
+        "Take a screenshot of the original layout before editing.",
+        "Change a few controls at a time so you can identify what helped."
+      ]
+    },
+    {
+      "heading": "Tune button size and spacing for real use",
+      "paragraphs": [
+        "A button that is easy to press in the lobby may become difficult when you are reacting under pressure. Test with your phone case on and in the posture you normally play. Separate frequently confused controls such as jump, crouch and prone far enough that an index tap does not trigger the wrong action. Consider button opacity as well as size: transparent controls preserve visibility but can become hard to find while learning. Check whether the game offers separate layouts for different modes or devices before assuming one layout will fit everything."
+      ],
+      "points": [
+        "Keep the scope button reachable while you are moving.",
+        "Reserve a clean area of the screen for tracking distant targets."
+      ]
+    },
+    {
+      "heading": "Learn the movements in a deliberate sequence",
+      "paragraphs": [
+        "Begin in training mode with no enemies. Move along a wall while moving the camera, then add aiming and firing without changing your walking direction. Next, practice a strafe-and-fire movement around a fixed target. Only after these steps feel reliable should you introduce peeks, jumping or quick crouches. Record mistakes, not only successful eliminations. If the camera stops whenever you fire, your finger assignments still conflict and the layout needs adjustment before you increase difficulty."
+      ],
+      "points": [
+        "Run ten slow repetitions before trying to play at match speed.",
+        "Treat an accidental prone press as a layout problem to investigate."
+      ]
+    },
+    {
+      "heading": "Compare training with real matches",
+      "paragraphs": [
+        "Training range success does not guarantee a useful layout during a chaotic fight. Try unranked matches or Team Deathmatch and focus on one behavior: maintaining aim while moving. Watch for missed fire presses, blocked vision and fatigue. A control position that requires constant finger stretching will be unreliable over a long session. Avoid copying a content creator's sensitivity values without checking your own display and touch response. Sensitivity and control layout work together, but changing both simultaneously makes it hard to understand what improved."
+      ],
+      "points": [
+        "Review one fight replay for input mistakes after a session.",
+        "Allow several sessions to develop muscle memory before replacing the layout."
+      ]
+    },
+    {
+      "heading": "A practical revision checklist",
+      "paragraphs": [
+        "Keep a simple before-and-after note describing which button changed, which conflict it was meant to solve and what happened in practice. For example, moving the aim button away from the jump control should reduce accidental jumps without preventing quick aiming. Make one revision, repeat the same drill and compare results. When your setup lets you run, look, aim and shoot at once without finger strain, additional complexity may make it worse rather than better. Comfort and repeatability matter more than matching a fashionable screenshot."
+      ],
+      "points": [
+        "Save a backup of a layout you can already use comfortably.",
+        "Recheck the setup after major game UI changes or when switching phones."
+      ]
+    }
+  ]
+}
