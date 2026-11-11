@@ -188,13 +188,24 @@ def main():
             warnings.append(f"Duplicate <title> across {count} product pages: {title[:100]}")
     for desc, count in description_count.items():
         if count > 1:
-            warnings.append(f"Duplicate meta description across {count} product pages: {desc[:100]}")
+            failures.append(f"Duplicate meta description across {count} product pages: {desc[:100]}")
     for name, url in missing_local_image_files:
         failures.append(f"{name}: Product image file not in published static source: {url}")
 
     print(f"PRODUCT_SEO_REPORT product_count={len(items)} meta_titles={len(title_count)} unique_descriptions={len(description_count)}")
     print(f"PRODUCT_SEO_REPORT structured_offers_priced={offers_count} product_schema_with_image={image_count} whatsapp_links={buy_count}")
     print(f"PRODUCT_SEO_REPORT categories={dict(counts)}")
+    categories = Counter()
+    for warning in warnings:
+        if "long document title" in warning:
+            categories["long_seo_titles"] += 1
+        elif "source description is brief" in warning:
+            categories["short_source_descriptions"] += 1
+        elif "meta description" in warning:
+            categories["meta_description_length"] += 1
+        else:
+            categories["other"] += 1
+    print(f"PRODUCT_SEO_REPORT warning_categories={dict(categories)}")
     print(f"PRODUCT_SEO_REPORT warnings={len(warnings)} errors={len(failures)}")
     for msg in warnings[:TOP]:
         print("SEO_WARNING " + msg)
