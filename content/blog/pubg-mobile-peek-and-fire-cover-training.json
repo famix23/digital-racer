@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-peek-and-fire-cover-training",
+  "title": "PUBG Mobile Peek and Fire Guide: Safer Cover Drills",
+  "summary": "Practice PUBG Mobile right- and left-side peeks while reducing unnecessary exposure.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "The purpose of peeking is to gather information or fire while limiting how much of your character is exposed. A fast peek is not automatically a useful peek when the opponent already knows the angle or your controls are unreliable.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Start with cover that actually blocks shots",
+      "paragraphs": [
+        "Practice from a wall, large rock or solid building corner. Identify which part of the object blocks the enemy's line of fire and where an opponent could approach from another direction. Small objects may conceal part of your character without providing reliable protection, and the effective shape can differ from what a low camera angle suggests. Avoid assuming that grass and smoke work like hard cover. Begin by standing fully behind a known object and observing how far you must move to see the target."
+      ],
+      "points": [
+        "Use a training area where you can repeat the same corner.",
+        "Do not confuse visual concealment with bullet-stopping cover."
+      ]
+    },
+    {
+      "heading": "Compare leaning with a full-body swing",
+      "paragraphs": [
+        "If your layout supports peek controls, test the time and effort required to lean around a corner. Then compare a brief strafe out of cover with the same target position. Neither method is universally superior: the right choice depends on the angle, weapon and whether you need to retreat quickly. Practice with your crosshair already near the expected target location so the peek exposes you for less time. If the lean button causes accidental firing or crouching, revise the layout before increasing speed."
+      ],
+      "points": [
+        "Practice peeking from both sides of the same obstacle.",
+        "Watch whether your crosshair moves away from the target when you lean."
+      ]
+    },
+    {
+      "heading": "Limit repeated exposure to the same angle",
+      "paragraphs": [
+        "An opponent who sees your first peek can aim at the location before you return. Repeating the identical angle and timing becomes predictable even if your mechanics are fast. After a missed burst, consider repositioning, using a different sightline or coordinating with a teammate. Avoid leaning out to check an area that another enemy can see from the side. A safe peek also depends on knowledge of nearby threats. If you lack that information, gather clues with the smallest practical exposure rather than making a wide committed push."
+      ],
+      "points": [
+        "Do not repeat three identical peeks after being shot at.",
+        "Change position only when the new route is actually covered."
+      ]
+    },
+    {
+      "heading": "Add firing and recoil control",
+      "paragraphs": [
+        "Start with a stationary target and fire a short burst while peeking, then return to cover. Repeat without rushing the return motion. Once the sequence is stable, use a moving target and a reasonable magazine size. If your aim becomes erratic, reduce speed instead of changing recoil settings mid-drill. Focus on getting the sight aligned before the exposed moment rather than trying to fix a poor angle once the gun is firing. This also helps distinguish aim errors from cover decisions."
+      ],
+      "points": [
+        "Test the same weapon before changing attachments.",
+        "Return fully behind cover between practice repetitions."
+      ]
+    },
+    {
+      "heading": "Use the technique in a squad fight",
+      "paragraphs": [
+        "Tell teammates which angle you are watching so they do not accidentally expose the same lane while you are reloading. When an opponent is distracted by one player, another can establish a separate angle from safe cover. Do not force a peek solely because a teammate has knocked someone; check whether another opponent can trade the elimination. Review replays for the duration you remained exposed and whether the position offered a safe exit. Good cover play is about risk control and shared information, not the number of flashy lean animations."
+      ],
+      "points": [
+        "Call out the enemy's actual cover, not only a vague direction.",
+        "Avoid crossing a teammate's firing lane during a reposition."
+      ]
+    }
+  ]
+}
