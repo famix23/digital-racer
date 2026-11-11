@@ -1,0 +1,65 @@
+{
+  "slug": "pubg-mobile-fake-support-friend-request-phishing",
+  "title": "PUBG Mobile Fake Support and Friend Request Scams",
+  "summary": "Spot common account phishing tactics involving giveaways, fake support and social messages.",
+  "category": "PUBG Mobile Account Safety",
+  "published": "2026-11-11",
+  "intro": "A friendly message promising a rare X-Suit or special car skin can be an attempt to obtain your account credentials. The safest response is to verify communications through the publisher's actual support channels.",
+  "topics": [
+    "account-security",
+    "uc-safety",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Recognize authority impersonation",
+      "paragraphs": [
+        "A scammer may use an avatar, username or page design that resembles a game moderator, esports organizer or publisher employee. These appearances are easy to copy and do not establish official status. Be skeptical of messages claiming your account will be deleted unless you immediately log in through an unfamiliar link. Real account security notices should be checked by opening the game or authentication provider through a known app or website, not through an unsolicited chat attachment. An urgent deadline is a reason to verify carefully, not to skip verification."
+      ],
+      "points": [
+        "Do not enter a password into a link sent by an unknown player.",
+        "Look up support through the official game interface."
+      ]
+    },
+    {
+      "heading": "Treat unexpected friend requests cautiously",
+      "paragraphs": [
+        "Friend requests are part of normal social gameplay, but a new contact does not automatically deserve access to recovery information. Be wary when someone quickly moves the conversation to another app, asks for screenshots of security settings or promises a gift that requires logging into a third-party portal. A safe gaming acquaintance can communicate and play without access to your email or linked social accounts. You can decline, block or report accounts that repeatedly pressure you. Keeping your friends list manageable also makes unusual requests easier to notice."
+      ],
+      "points": [
+        "Never share one-time verification codes in a friend chat.",
+        "Do not approve device-login prompts that you did not initiate."
+      ]
+    },
+    {
+      "heading": "Examine giveaway and reward claims",
+      "paragraphs": [
+        "A promotion may display beautiful vehicle or X-Suit artwork while asking users to complete a fake claim form. Check whether the giveaway exists on a verified publisher channel, what countries are eligible and whether a real claim requires any account action. Be especially careful of websites that imitate login screens but use slightly altered domain names. A screenshot of a successful reward does not establish that the page is legitimate. Avoid installing modified APKs or browser extensions to unlock a supposed free gift."
+      ],
+      "points": [
+        "Type known official addresses yourself rather than clicking shortened links.",
+        "Be skeptical of claims that premium cosmetics are unlocked by sharing a password."
+      ]
+    },
+    {
+      "heading": "Respond quickly to a suspicious login",
+      "paragraphs": [
+        "If you entered credentials on a suspicious page, use a trusted device to change the affected provider password and review active sessions and recovery settings. Enable available multi-factor authentication and check connected accounts for unfamiliar changes. If financial transactions are affected, contact the payment provider using its official contact details. Preserve a concise record of messages, URLs and dates without reposting sensitive codes. Do not negotiate with an attacker or pay a so-called recovery agent who demands another login."
+      ],
+      "points": [
+        "Review the linked email account as well as the game login.",
+        "Use official account recovery forms if access has already been lost."
+      ]
+    },
+    {
+      "heading": "Explain risks without exposing others",
+      "paragraphs": [
+        "When warning teammates, describe the tactic rather than distributing an active phishing URL that more people might click. Remove private phone numbers, email addresses and recovery data from screenshots. Encourage friends to verify through official channels and report suspicious profiles using the game's supported tools. Account buying or lending can add recovery disputes and may violate publisher terms, making already risky offers even worse. A basic security habit—never sharing passwords or codes—prevents many avoidable losses."
+      ],
+      "points": [
+        "Report repeat scams instead of amplifying the links.",
+        "Keep security discussions factual rather than identifying innocent lookalike accounts."
+      ]
+    }
+  ]
+}
