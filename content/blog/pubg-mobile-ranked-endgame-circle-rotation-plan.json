@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-ranked-endgame-circle-rotation-plan",
+  "title": "PUBG Mobile Endgame Rotations: Ranked Circle Decision Guide",
+  "summary": "Make safer late-game rotation decisions using terrain, cover, timing and team information.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "Late circles reward decisions made before the zone forces a move. This guide explains how to think about cover, timing and information without promising one always-winning route.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Read the next circle before the current one closes",
+      "paragraphs": [
+        "Open the map whenever your team has a safe moment and identify two or three paths into playable terrain. A straight line is rarely the only route. Look for ridges, compounds, shallow depressions and any open ground that would force a long exposed run. The shortest path may be the worst when another squad controls the only doorway or ridge. Consider where your teammates are, whether a vehicle is available and how long you have before the zone begins to move. The goal is to arrive with resources and options rather than barely surviving the timer."
+      ],
+      "points": [
+        "Mark a preferred route and one fallback.",
+        "Do not stand in open ground while studying the map."
+      ]
+    },
+    {
+      "heading": "Compare edge play with early positioning",
+      "paragraphs": [
+        "Playing the zone edge can reduce the number of directions you must watch, but it may leave your team arriving late to contested cover. Moving early can secure a strong position but exposes you to teams that rotate through the same terrain. Decide based on what is actually known: nearby fights, sightlines, vehicle noise and the remaining safe routes. If several teams are visible ahead, waiting briefly behind cover may be better than driving straight between them. Conversely, a clear approach may justify a deliberate early move."
+      ],
+      "points": [
+        "Keep information calls factual: seen, heard or inferred.",
+        "Avoid treating a quiet area as guaranteed empty."
+      ]
+    },
+    {
+      "heading": "Cross open ground in controlled stages",
+      "paragraphs": [
+        "Before leaving cover, decide who moves first, which teammate watches the exposed angle and where everyone will stop. Use terrain to break a long crossing into shorter moves, and reserve utility for the part that cannot be covered naturally. Smoke can conceal a crossing but also tells other teams that someone is moving; do not treat it as invulnerability. If an opponent begins firing, your team needs a nearby fallback rather than a vague instruction to run faster. Avoid grouping so tightly that one burst or explosive affects everyone."
+      ],
+      "points": [
+        "Identify the next hard-cover location before moving.",
+        "Do not force a revive if it creates a second exposed player."
+      ]
+    },
+    {
+      "heading": "Balance survival, eliminations and resources",
+      "paragraphs": [
+        "A ranked match is not the time to take every distant gunfight. Firing can disclose a position and consume ammunition needed for the final encounter. Consider whether a knock can be converted safely, whether the target has cover and whether the fight blocks your route into the next zone. Keep healing items accessible and communicate when someone cannot move at the planned time. A team with fewer eliminations but full equipment and strong angles may be better prepared for the next circle than a team that wins an unnecessary fight in the blue."
+      ],
+      "points": [
+        "Check ammunition and healing before a long rotation.",
+        "Avoid chasing a single retreating player away from the next safe area."
+      ]
+    },
+    {
+      "heading": "Review the decision rather than the outcome alone",
+      "paragraphs": [
+        "After a match, look at one late-circle moment and ask which information was available at the time. A successful risky drive does not make it the best repeatable strategy, and an unlucky loss does not automatically make a careful decision wrong. Note whether the squad marked a backup route, moved together and reached the intended cover. Repeat the same review on different maps because terrain changes the tradeoffs. Over time, the useful skill is recognizing why a rotation is safe enough, not memorizing one route from a highlight video."
+      ],
+      "points": [
+        "Save a replay timestamp for one key rotation decision.",
+        "Make one communication improvement before your next ranked session."
+      ]
+    }
+  ]
+}
