@@ -1,0 +1,65 @@
+{
+  "slug": "pubg-mobile-event-reward-claim-expiry-checklist",
+  "title": "PUBG Mobile Event Rewards: Claim Dates and Expiring Tokens",
+  "summary": "Find unclaimed rewards, read event timers and avoid losing time-limited PUBG Mobile materials.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "PUBG Mobile events can have separate periods for earning, exchanging and claiming rewards. A limited-time item visible on an event page may disappear or stop being redeemable before a player expects.",
+  "topics": [
+    "events",
+    "uc-safety",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Separate participation from reward collection",
+      "paragraphs": [
+        "Completing a task and receiving a reward are not always the same step. Some events award items automatically, while others require tapping a claim button or exchanging tokens in a different panel. Read the actual instructions instead of assuming all event interfaces use the same process. If you completed an objective but nothing appears in inventory, check the event history, messages and claim section before assuming a technical problem. Keep a note of the reward name and the exact stage at which progress stopped."
+      ],
+      "points": [
+        "Verify whether a completed task still shows an unclaimed button.",
+        "Check event messages and inventory after collecting the reward."
+      ]
+    },
+    {
+      "heading": "Read each clock in context",
+      "paragraphs": [
+        "An event may show one timer for earning points and another for using materials or collecting a final reward. The displayed countdown could also use server time rather than the time zone you expect. Do not turn a screenshot countdown into a universal date without knowing when the image was captured. Check the live client on the account and region you intend to use. If a cosmetic is important, plan to complete the required action before the final hours to allow for connection or update problems."
+      ],
+      "points": [
+        "Write down the earning and exchange deadlines separately.",
+        "Do not assume all event tabs share the same closing time."
+      ]
+    },
+    {
+      "heading": "Identify temporary currencies and materials",
+      "paragraphs": [
+        "Not every token remains useful after its event closes. Read descriptions for expiration, conversion and exchange restrictions. A material earned in one collaboration may not automatically work for a future event with similar artwork. If you have several partial balances, prioritize rewards you can actually complete rather than spreading resources across incompatible goals. Avoid trusting an unsupported conversion rate or a claim that a token can be sold safely to other players. The game's own event rules are the appropriate reference."
+      ],
+      "points": [
+        "Separate permanent items from temporary event currency.",
+        "Check whether an exchange produces a permanent or time-limited reward."
+      ]
+    },
+    {
+      "heading": "Protect purchases near the deadline",
+      "paragraphs": [
+        "Countdowns can create urgency even when the remaining draw or upgrade is unaffordable. Before buying UC, confirm the exact amount required, available channels and current region restrictions. Random rewards should be evaluated using the event's disclosed rules, not another person's lucky result. If a payment or delivery is delayed, keep the official receipt and use the payment provider's or publisher's support channels. Never give a stranger your login credentials to recover a reward before a timer expires."
+      ],
+      "points": [
+        "Set a spending limit before any paid attempt.",
+        "Skip an event when its final outcome is too uncertain or expensive."
+      ]
+    },
+    {
+      "heading": "Keep a small event record",
+      "paragraphs": [
+        "Use a brief note with event name, remaining tasks, token balance, expiration and the item you want to claim. Revisit it when you log in, but do not let it become a reason for compulsive play. If a claimed item is missing, capture the current game version, event title, progress panel and transaction details that are safe to share with support. Do not publish personal recovery or payment identifiers in a public post. A short, accurate record is more useful than screenshots without timestamps or context."
+      ],
+      "points": [
+        "Confirm the inventory entry after claiming.",
+        "Review only the events you actually intend to complete."
+      ]
+    }
+  ]
+}
