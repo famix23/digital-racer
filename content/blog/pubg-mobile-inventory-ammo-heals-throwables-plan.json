@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-inventory-ammo-heals-throwables-plan",
+  "title": "PUBG Mobile Backpack Management: Ammo, Healing and Throwables",
+  "summary": "A practical PUBG Mobile inventory framework for different weapons, squad roles and zone stages.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "An overfilled backpack can make a player slow to react when a useful item appears. Inventory planning begins with what you are actually carrying and the fights you expect, not a universal fixed ammunition count.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Plan around your two weapons",
+      "paragraphs": [
+        "Start by noting which ammunition types your current weapons use. Two weapons sharing one ammo type may be easier to manage than a combination requiring separate supplies, but they can also create a larger shared demand during extended fights. Check the magazine capacities and how often you are actually reloading. Do not copy an exact ammo quantity from a different player without considering match pace, squad access to resupply and your preferred engagement distance. A marksman weapon may need a different reserve from a frequently sprayed automatic rifle."
+      ],
+      "points": [
+        "Keep ammunition compatible with the weapons you carry.",
+        "Review reserve ammo after switching weapons mid-match."
+      ]
+    },
+    {
+      "heading": "Create a balanced healing reserve",
+      "paragraphs": [
+        "Medical supplies help only when you can access them before the next engagement. Keep a mixture appropriate to the mode's current healing rules and check what you have already used. An inventory filled entirely with one type of healing item can leave no space for other essentials. Ask whether teammates are missing supplies before hoarding extras. Avoid stopping in open ground to use medicine; the best inventory cannot compensate for unsafe positioning. In late circles, consider the likely travel and exposure before deciding what to drop."
+      ],
+      "points": [
+        "Keep commonly needed healing easy to locate.",
+        "Offer spare supplies to a teammate who has none."
+      ]
+    },
+    {
+      "heading": "Reserve space for tactical utility",
+      "paragraphs": [
+        "Smoke, fragmentation and other supported throwables can solve different tactical problems. Smoke can obscure a crossing or revive line; damaging utility may punish an opponent in cover or deny a route. Do not collect a huge assortment without knowing when you will use it. Keep at least some room for items you may encounter later, such as a better attachment or a teammate's emergency supplies. Current carrying limits and throwable mechanics should be checked inside the game instead of treated as permanent values."
+      ],
+      "points": [
+        "Choose utility for the terrain and squad plan.",
+        "Practice selecting the intended throwable without fumbling in a fight."
+      ]
+    },
+    {
+      "heading": "Adjust the backpack as the circle changes",
+      "paragraphs": [
+        "Early in a match, spare ammunition and basic attachments may have higher value because future fights are uncertain. In late circles, short movements and repeated close engagements can change priorities. If you are leaving a remote compound, verify that you have what you need before crossing open ground. If a vehicle or teammate carries an alternative weapon, coordinate supplies so the group does not run out of one caliber while hoarding another. Avoid rearranging items while the circle timer is forcing an unsafe move."
+      ],
+      "points": [
+        "Review inventory immediately after a major fight.",
+        "Keep the next safe-zone route in mind when looting."
+      ]
+    },
+    {
+      "heading": "Build a repeatable ten-second check",
+      "paragraphs": [
+        "Use the same order after every safe looting opportunity: two usable guns, suitable ammo, helmet, vest, essential healing, throwables and next zone. A checklist is faster to remember than a long table of ideal quantities. When the backpack is nearly full, identify the item with the lowest practical usefulness for the next encounter and drop it in a safe place. Review fights where you ran out of resources to determine whether the issue was planning, aim or unnecessary firing."
+      ],
+      "points": [
+        "Do the inventory check while a teammate covers the area.",
+        "Treat your own match observations as more useful than rigid universal counts."
+      ]
+    }
+  ]
+}
