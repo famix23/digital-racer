@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-drop-location-risk-map-planning",
+  "title": "PUBG Mobile Hot Drop vs Safe Drop: Landing Risk Guide",
+  "summary": "Choose PUBG Mobile landing spots based on plane path, team objective, loot and escape routes.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "There is no universally best landing spot. A crowded location may offer fast combat practice, while a quieter area can give a ranked squad time to collect equipment and plan a rotation.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Decide what the match is for",
+      "paragraphs": [
+        "A squad practicing close-range fights may deliberately choose a crowded drop. A ranked team protecting placement points may prefer a location with enough initial equipment and a realistic route into the zone. Agree on the objective before the plane reaches your area of the map. Avoid treating loot rarity as the only priority: landing late or becoming separated can make a good-looking location dangerous. A successful drop gives the team weapons, communication and a next destination, not merely a high-value crate."
+      ],
+      "points": [
+        "Agree on one landing mark and a nearby backup.",
+        "Do not judge a drop solely by the first item you see."
+      ]
+    },
+    {
+      "heading": "Read the plane path and surrounding traffic",
+      "paragraphs": [
+        "Observe which named areas sit directly under the flight line and which require a longer glide. Watch nearby parachutes when the game allows, noting where other squads appear to be heading. A drop that is usually quiet may become crowded because of the current plane path or an event objective. Do not assume an area is empty merely because no one landed on your roof. Check adjacent compounds and roads for likely movement after the first minute."
+      ],
+      "points": [
+        "Communicate observed parachutes rather than making unsupported squad counts.",
+        "Avoid splitting across distant compounds without a regrouping plan."
+      ]
+    },
+    {
+      "heading": "Make the first minute deliberate",
+      "paragraphs": [
+        "Land close enough to help a teammate but not so tightly that everyone competes for one weapon. Prioritize a usable firearm, ammunition and protective gear before spending time comparing rare attachments. If you land beside an enemy, cover and positioning matter as much as the first weapon found. Clear the nearest threat or move as a team instead of letting one player chase a distant opponent with no support. Remember that early loot availability can vary between matches."
+      ],
+      "points": [
+        "Choose initial buildings with at least one safe exit.",
+        "Share critical ammo or healing when teammates need it."
+      ]
+    },
+    {
+      "heading": "Create a rotation plan during looting",
+      "paragraphs": [
+        "Once the first fight or loot phase settles, open the map and identify a safe next location. Check vehicles and likely choke points rather than continuing to loot indefinitely. If the next circle is far away, a quiet early departure can be safer than waiting until every attachment is perfect. If you are inside the zone, assess which nearby teams may rotate through your position. Treat the drop as the start of a route, not an isolated decision."
+      ],
+      "points": [
+        "Set a rough departure time based on the next zone.",
+        "Keep a fallback path when the preferred road is contested."
+      ]
+    },
+    {
+      "heading": "Compare locations with a short scorecard",
+      "paragraphs": [
+        "After several matches, record how often the squad landed together, collected basic gear, survived the first fights and reached a useful second position. A location that produces a rare weapon once but repeated immediate squad wipes may be a poor ranked choice. Likewise, a quiet spot is not helpful if it consistently leaves the team stranded with no transport. Separate the outcome of individual gunfights from the quality of the landing plan. Revise the team mark when plane path or game modes change."
+      ],
+      "points": [
+        "Track early survival and usable equipment, not only kills.",
+        "Use consistent objectives when comparing two drop locations."
+      ]
+    }
+  ]
+}
