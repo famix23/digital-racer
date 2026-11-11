@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-helmet-vest-durability-gear-guide",
+  "title": "PUBG Mobile Helmets and Vests: Durability and Loot Decisions",
+  "summary": "Make better armor choices in PUBG Mobile by checking condition, protection and the next fight.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "Armor choices should reflect both the protective item's level and its remaining condition. A high-tier vest that has taken heavy damage may require a different decision from a fresh lower-tier item.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Inspect condition instead of only tier",
+      "paragraphs": [
+        "When choosing between protective items, check the current in-game durability and the protection information displayed for each item. A popular shorthand such as always take the higher-level vest ignores how much condition it has left and whether you expect a fight soon. Do not invent one fixed damage-reduction percentage for all helmets and vests; mechanics and balancing can change, and the game may apply protection differently across hit locations. Compare current item condition and game descriptions instead of relying on a single screenshot or old stat graphic."
+      ],
+      "points": [
+        "Check item type, level and remaining condition together.",
+        "Avoid assuming a damaged high-tier item always beats a fresh alternative."
+      ]
+    },
+    {
+      "heading": "Understand helmets and body armor separately",
+      "paragraphs": [
+        "Helmets protect the head, while vests protect other covered hit areas. A good vest does not substitute for a helmet when an opponent lands a headshot. Think about which equipment slot needs attention while looting, and communicate missing protection to teammates. In an early fight, a usable helmet and vest may matter more than a specialized attachment that provides a small handling change. Do not spend a long time comparing minor equipment differences while remaining exposed in the open."
+      ],
+      "points": [
+        "Check both slots before leaving a quiet compound.",
+        "Loot from behind cover when the area may still be contested."
+      ]
+    },
+    {
+      "heading": "Avoid unsafe swaps in combat",
+      "paragraphs": [
+        "Replacing armor requires interacting with loot while your awareness may be reduced. If a nearby enemy can see the crate, rushing toward a fresh vest may be more dangerous than keeping your current damaged one until the fight ends. Assign a teammate to cover the angle if the group needs urgent equipment. Do not assume an unlooted box is safe. After securing the area, inspect the actual item before swapping and check whether the game's current version applies any restoration or repair mechanic in that mode."
+      ],
+      "points": [
+        "Prioritize immediate survival over an exposed inventory action.",
+        "Use a safe pause to verify the item's remaining condition."
+      ]
+    },
+    {
+      "heading": "Balance armor with movement and supplies",
+      "paragraphs": [
+        "Protective equipment is only one part of fight readiness. A player with good armor but no ammunition, healing or useful cover is still vulnerable. When sharing loot, prioritize the teammate who currently has no protection or who must take the riskiest position, while keeping the squad's overall situation in mind. Avoid overcommitting to a single high-tier item when the zone is moving. A modest equipment improvement is not worth missing a rotation or separating from teammates."
+      ],
+      "points": [
+        "Share information about available helmets and vests.",
+        "Keep enough time for the next circle before sorting every crate."
+      ]
+    },
+    {
+      "heading": "Use a simple post-fight routine",
+      "paragraphs": [
+        "After a fight, move to safety, heal as necessary and then inspect armor durability along with ammunition and throwables. A quick repeated checklist is more reliable than remembering equipment only after the next fight begins. If you lose a match with unused healing or neglected armor, review when you last checked inventory. A careful routine helps players adapt even when specific protection values change after an update. The aim is predictable decisions under pressure, not memorizing a table that may become outdated."
+      ],
+      "points": [
+        "Review helmet, vest, ammo, heals and zone after each fight.",
+        "Do not treat cosmetic armor appearances as a substitute for gameplay protection."
+      ]
+    }
+  ]
+}
