@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-tdm-aim-practice-routine",
+  "title": "PUBG Mobile Team Deathmatch Aim Routine: 20-Minute Plan",
+  "summary": "Use short TDM drills to improve crosshair placement, tracking and first-shot discipline.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "Team Deathmatch is useful for repetition, but repeated fights only help when you know what you are practicing. A short structured routine can reveal aim problems more clearly than endlessly playing matches.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Five minutes of steady crosshair placement",
+      "paragraphs": [
+        "Begin by keeping your crosshair where an opponent is likely to appear instead of pointed at the ground. Move between corners and imagine an enemy at the next doorway or lane. Maintain the height that would make your first correction small. Avoid flicking randomly just because the mode is fast. In the first few encounters, focus on placing the crosshair before firing, even if that means accepting a slower elimination. This stage develops a more stable habit than reacting from a poor starting position with an exaggerated swipe."
+      ],
+      "points": [
+        "Pick one predictable lane for your first repetitions.",
+        "Notice whether the first shot misses because the crosshair started too low."
+      ]
+    },
+    {
+      "heading": "Five minutes of tracking without panic",
+      "paragraphs": [
+        "When a target moves laterally, try following with a smooth continuous camera movement rather than a series of sudden corrections. Do not use the same amount of thumb or gyroscope input for a nearby fast-moving target and one far across the map. Keep your movement steady so you can tell whether the camera is lagging behind. If you repeatedly overshoot, record that before changing sensitivity. One missed duel is not enough evidence for a new setting; look for a consistent pattern across several encounters."
+      ],
+      "points": [
+        "Practice one direction of strafe before switching directions.",
+        "Separate camera tracking errors from recoil after firing."
+      ]
+    },
+    {
+      "heading": "Five minutes of controlled bursts",
+      "paragraphs": [
+        "Start each encounter with a brief, deliberate burst and observe where the sights move. Long spraying can be appropriate at close range, but it also hides whether your initial aim was correct. Choose a familiar weapon setup so attachment changes are not the source of variation. Release the fire button when you lose the target rather than following the entire miss with more ammunition. Reacquire and fire again. This drill is not about reaching a particular kill count; it is about making the first half of every duel more controlled."
+      ],
+      "points": [
+        "Use the same weapon and optic during a single practice block.",
+        "Review whether misses happen before recoil has time to matter."
+      ]
+    },
+    {
+      "heading": "Five minutes of movement plus shooting",
+      "paragraphs": [
+        "Combine a short strafe with tracking and firing. Your objective is to remain difficult to hit while keeping your own aim stable. Avoid adding jumping, repeated crouching and elaborate peeks all at once. First prove that you can move and shoot without lifting the finger responsible for aiming. Next, practice stopping briefly for a more precise shot when appropriate. This exercise will expose control-layout conflicts that stationary training conceals. If fingers collide on the screen, fix the layout before adding more speed."
+      ],
+      "points": [
+        "Alternate moving left and right instead of favoring one direction.",
+        "Test the drill with your normal grip and phone case."
+      ]
+    },
+    {
+      "heading": "Use a simple session review",
+      "paragraphs": [
+        "After twenty minutes, write one sentence about what changed: better initial alignment, more controlled tracking, fewer accidental buttons or more deliberate bursts. Do not overinterpret a single TDM scoreboard because opponents and circumstances vary. Transfer one skill to a regular match, where positioning and patience matter as much as quick aim. If you feel wrist or finger discomfort, stop and revise your grip. Consistency across short sessions is more useful than a marathon that ends in fatigue and careless inputs."
+      ],
+      "points": [
+        "Choose one measurement to observe next session.",
+        "Do not make several sensitivity changes between every practice duel."
+      ]
+    }
+  ]
+}
