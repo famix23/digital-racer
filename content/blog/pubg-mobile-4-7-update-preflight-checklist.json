@@ -1,0 +1,66 @@
+{
+  "slug": "pubg-mobile-4-7-update-preflight-checklist",
+  "title": "PUBG Mobile 4.7 Update Checklist: Storage, Login and Data",
+  "summary": "Prepare for the Version 4.7 rollout without trusting unverified downloads or losing settings.",
+  "category": "PUBG Mobile Updates",
+  "published": "2026-11-11",
+  "intro": "PUBG Mobile Version 4.7 has been discussed in official beta announcements. An update preparation checklist is more useful than guessing the exact download size or promising that every beta feature will appear in the first live build.",
+  "topics": [
+    "events",
+    "account-security",
+    "emulator",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Confirm the actual rollout for your device",
+      "paragraphs": [
+        "Check the in-game update notice and the official distribution channel for your Android, iOS or supported emulator installation. A beta announcement does not guarantee that the same feature is already live in every region. App-store availability, staged rollout timing and optional resource packs can differ. If the game asks for additional content after launch, read the displayed size instead of using an old installation estimate from social media. Avoid downloading modified APK files presented as early access or secret final builds."
+      ],
+      "points": [
+        "Verify the app publisher and package source before installing.",
+        "Treat beta test footage as a preview until the live client confirms the feature."
+      ]
+    },
+    {
+      "heading": "Protect your login before reinstalling",
+      "paragraphs": [
+        "Confirm you can sign in to the linked authentication provider, and review its recovery information before performing a major update. Do not assume that deleting the app will always restore every local preference automatically. Save screenshots of your control layout, sensitivity, audio options and any important custom settings the game permits you to export. Keep one-time verification codes private. A real update should never require giving another player your email password or paying a stranger for a login unlock."
+      ],
+      "points": [
+        "Test that you can access the linked email or social login.",
+        "Avoid unnecessary uninstall-and-reinstall attempts when a normal update is available."
+      ]
+    },
+    {
+      "heading": "Prepare storage and network capacity",
+      "paragraphs": [
+        "An app update may need temporary free space beyond the final installed size because packages are downloaded, unpacked and verified. Check available storage before beginning, and leave enough capacity for the operating system and optional assets. Use a stable connection and avoid repeated restarts during active installation. If a resource download pauses, first check the game's own status and device storage before concluding that the server is broken. Do not delete unknown folders to force space; make a deliberate backup of personal files first."
+      ],
+      "points": [
+        "Use the size displayed by your actual installer rather than a rumor.",
+        "Prefer a reliable network to a faster but unstable download."
+      ]
+    },
+    {
+      "heading": "Restore gameplay settings carefully",
+      "paragraphs": [
+        "After the update, open settings before entering a serious ranked match. Check your control layout, gyroscope behavior, microphone routing, sensitivity, frame-rate cap and graphics preset. On GameLoop, inspect the keymapping layout because game interface changes can move buttons. Test common actions in training before assuming that everything transferred correctly. If a feature is missing, check which mode and server it belongs to; event content often has a separate activation window from the core client update."
+      ],
+      "points": [
+        "Try movement, scope, fire, crouch and inventory controls in training.",
+        "Do not modify multiple graphics settings before confirming basic stability."
+      ]
+    },
+    {
+      "heading": "Troubleshoot with specific evidence",
+      "paragraphs": [
+        "If the client crashes or refuses to update, capture the exact error message and note device model, available storage, version shown and where the failure occurs. Compare with official publisher or store status information. Rebooting and retrying can be reasonable first steps, but repeated deletion of installation files may make the problem worse. Report an unresolved error through legitimate support channels without disclosing passwords or tokens. A useful support report states the steps to reproduce a problem and what was already tested."
+      ],
+      "points": [
+        "Separate a download failure from a login failure.",
+        "Do not install unofficial unlockers or edited game files as a repair."
+      ]
+    }
+  ]
+}
