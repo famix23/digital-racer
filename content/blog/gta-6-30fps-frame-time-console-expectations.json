@@ -1,0 +1,63 @@
+{
+  "slug": "gta-6-30fps-frame-time-console-expectations",
+  "title": "GTA VI 30 FPS Target: Frame Time and Console Expectations",
+  "summary": "What Rockstar's confirmed 30 FPS target means for motion and input response.",
+  "category": "GTA VI Guides",
+  "published": "2026-11-11",
+  "intro": "Rockstar stated on November 10, 2026 that GTA VI targets 30 frames per second on the current console generation. That is useful information, but a target frame rate is not the same as an independent analysis of the final game.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Translate a frame-rate target into frame timing",
+      "paragraphs": [
+        "At a perfectly even 30 frames per second, each new frame is presented roughly every 33.3 milliseconds. The mathematical relationship helps explain why evenly spaced frames can feel smoother than irregular delivery with the same average rate. It does not describe the game's actual frame-time distribution before measurement. A short dip or pacing inconsistency can affect responsiveness without greatly changing a long-term average. Console output and display technology can also influence how smooth a game appears. Treat frame time and frame rate as related but distinct measures."
+      ],
+      "points": [
+        "The 33.3 ms figure is arithmetic, not a GTA VI benchmark.",
+        "Look for both averages and frame-time consistency in technical reviews."
+      ]
+    },
+    {
+      "heading": "Do not assume a hidden performance mode",
+      "paragraphs": [
+        "Some console games offer quality and performance presets, but Rockstar's announcement does not itself confirm a selectable 60 FPS mode for GTA VI. A video appearing unusually smooth may have frame interpolation, edited playback or camera-motion effects. Without a verified settings menu and controlled capture, claims about 40, 60 or 120 FPS gameplay remain unproven. Console resolution, reconstruction and frame pacing must be tested separately. Avoid using a speculative mode list when planning a purchase or giving advice to readers."
+      ],
+      "points": [
+        "Watch the actual gameplay settings after launch.",
+        "Treat social clips labeled 120 FPS with skepticism unless independently measured."
+      ]
+    },
+    {
+      "heading": "Consider your television and display settings",
+      "paragraphs": [
+        "A display's refresh rate is not identical to the number of frames the game renders. A 120 Hz television can show repeated frames from a 30 FPS source; it does not transform native gameplay into 120 unique frames each second. Motion processing on televisions may add interpolated frames, sometimes with artifacts or latency. If you value responsive controls, compare the display's game mode with its motion-smoothing options. HDMI features and VRR support vary by device and implementation, so do not claim that one checkbox solves all pacing problems."
+      ],
+      "points": [
+        "Try the display's low-latency game mode as a baseline.",
+        "Do not confuse a 120 Hz signal with a 120 FPS game."
+      ]
+    },
+    {
+      "heading": "Compare responsiveness with appropriate context",
+      "paragraphs": [
+        "Input response includes controller sampling, game simulation, rendering, display delay and any streaming transport. A lower frame target can affect how quickly a new action appears on screen, but it does not by itself tell you the full end-to-end latency. If you stream through cloud gaming or remote play, network stability adds another variable. Evaluate responsiveness in a consistent scene and on the same display. Resist drawing conclusions from two unrelated YouTube recordings, since editing and capture methods can alter timing."
+      ],
+      "points": [
+        "Measure or observe the same actions under matched conditions.",
+        "Treat subjective impressions as impressions unless measurements are supplied."
+      ]
+    },
+    {
+      "heading": "What evidence would update this article",
+      "paragraphs": [
+        "After release, credible frame-time captures, verified graphics-menu screenshots and official technical notes could clarify performance options. Until then, the strongest supported statement is that Rockstar targets 30 FPS while presenting ambitious environmental fidelity. Do not convert a target into a guarantee of zero drops, and do not assume that the PS5 Pro's named visual advantages imply a different frame-rate target. Readers can make better console decisions by waiting for controlled tests instead of treating hype headlines as specifications."
+      ],
+      "points": [
+        "Verify the tested build and device in any comparison.",
+        "Prefer a transparent method to a single impressive number."
+      ]
+    }
+  ]
+}
