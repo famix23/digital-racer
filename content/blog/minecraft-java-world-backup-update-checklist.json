@@ -1,0 +1,63 @@
+{
+  "slug": "minecraft-java-world-backup-update-checklist",
+  "title": "Minecraft Java World Backup: Update Without Losing Builds",
+  "summary": "Protect Minecraft Java worlds with manual backups, version checks and safer mod updates.",
+  "category": "Other Gaming Guides",
+  "published": "2026-11-11",
+  "intro": "A Minecraft world can represent months of building and exploration. Before changing game versions, modpacks or devices, create a verified copy so that one failed update does not become a permanent loss.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Identify the exact edition and world",
+      "paragraphs": [
+        "Minecraft Java Edition and Bedrock Edition have different storage formats and backup procedures, so do not follow a Java world-folder tutorial for an unrelated Bedrock installation. In Java Edition, check the world name and game version currently in use. If you play through a modded launcher, identify the specific instance and its save directory rather than assuming every installation uses the default folder. Launching a world in a different version can change data, so a backup should happen before any first launch in the new environment."
+      ],
+      "points": [
+        "Record the current Minecraft version and modpack name.",
+        "Make sure you selected the correct world, not a similarly named test copy."
+      ]
+    },
+    {
+      "heading": "Make a separate backup copy",
+      "paragraphs": [
+        "Close the game before copying the selected world to a separate location. A backup should include the relevant save folder and its contents, not just screenshots or the seed. Use a clearly dated folder name so you can distinguish multiple versions. Prefer storing an additional copy on a different drive or trusted storage location if the world is important. A copy that remains on the same failing disk may not protect you from hardware loss. Do not overwrite the only previous backup each time you make a new one."
+      ],
+      "points": [
+        "Keep the source world untouched during the copy.",
+        "Use a dated folder name and record the game version."
+      ]
+    },
+    {
+      "heading": "Verify that the backup is usable",
+      "paragraphs": [
+        "After copying, compare the expected folder structure and file sizes. If you have a separate testing instance, try opening a duplicate copy of the backup rather than the original. Confirm that the correct buildings, inventory and location are present. A backup that was interrupted mid-copy or taken while the world was actively saving may be incomplete. Do not assume a file browser thumbnail or archive name proves the world is recoverable. Verification is part of the backup process, not an optional last step after data loss."
+      ],
+      "points": [
+        "Test restoration on a duplicate, not on your only original.",
+        "Do not launch the backup in a newer game version until you are ready to convert it."
+      ]
+    },
+    {
+      "heading": "Update mods and resource packs carefully",
+      "paragraphs": [
+        "For modded Java worlds, check whether the loader, game version and installed mods are compatible. Some mods alter world generation or stored items, so simply removing them can affect the saved world. Make changes on a copied instance first and review official project compatibility notes. Texture and resource packs may be less disruptive than gameplay mods, but errors can still occur if versions do not match. Avoid downloading repackaged launchers or mod updates from unknown sites offering magical performance improvements."
+      ],
+      "points": [
+        "Update one major component at a time where practical.",
+        "Keep a list of mods and versions attached to the backup."
+      ]
+    },
+    {
+      "heading": "Plan restoration before it is needed",
+      "paragraphs": [
+        "Know where the backup is stored, how to locate the correct instance directory and how to copy the world back if needed. If cloud synchronization is active, remember that a corrupted version can sometimes synchronize too; an independent dated copy is useful. Before restoring, preserve the current damaged state separately in case it contains recoverable progress. Check the intended game version and mods rather than opening an older world in a random new instance. A verified restoration plan protects the work you enjoy without requiring advanced software."
+      ],
+      "points": [
+        "Keep at least two recent backup dates for important worlds.",
+        "Review the backup routine before major version upgrades."
+      ]
+    }
+  ]
+}
