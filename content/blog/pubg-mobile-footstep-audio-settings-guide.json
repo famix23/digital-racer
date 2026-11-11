@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-footstep-audio-settings-guide",
+  "title": "PUBG Mobile Footstep Audio: Headphones and Positioning",
+  "summary": "A practical footstep listening routine for PUBG Mobile without exaggerated directional-audio claims.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "Hearing an opponent is valuable only when you can separate the cue from gunfire, vehicles and your own teammates. The aim is to improve consistency, not to promise perfect enemy locations from one sound.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Establish a clean starting configuration",
+      "paragraphs": [
+        "Use the same headphones and volume during practice so that comparisons mean something. Begin with the game's standard sound settings and your phone's normal audio mode, then disable any third-party equalizer preset that makes footsteps hard to recognize. Excessive bass may mask quieter movement, but making everything sharp can also become fatiguing. Keep volume at a comfortable level rather than turning it up to potentially harmful levels. Wired connections can eliminate one source of Bluetooth audio delay, although the exact latency depends on the device and codec."
+      ],
+      "points": [
+        "Do not change equalizer, volume and in-game mix simultaneously.",
+        "Check left and right channels with a familiar stereo test."
+      ]
+    },
+    {
+      "heading": "Separate direction from distance",
+      "paragraphs": [
+        "Directional sound can suggest the side or broad area of a movement, but indoor reflections, occlusion and game mixing can make a single footstep ambiguous. Listen for a sequence of cues as an opponent moves rather than immediately committing to a corner based on one noise. Compare sound with door openings, footsteps on different surfaces and any visible movement indicators available in your current game mode. When you hear a cue, use cover and an angle that lets you verify the position safely instead of rushing into an uncertain room."
+      ],
+      "points": [
+        "A nearby footstep does not establish an exact floor or doorway.",
+        "Sound without visual confirmation is a clue rather than a guaranteed location."
+      ]
+    },
+    {
+      "heading": "Practice with a cooperating teammate",
+      "paragraphs": [
+        "Create a practice routine in a mode that allows both players to move freely. Have one player walk, run, crouch and stop at several known directions while the listener faces a fixed direction. Then repeat with the listener moving. The purpose is to recognize differences in cadence and loudness, not to memorize a supposedly universal distance. Swap roles so both players understand what the mover was doing. If the sound becomes confusing, lower competing game audio settings where supported and retest one variable at a time."
+      ],
+      "points": [
+        "Keep an informal record of directions you consistently mistake.",
+        "Test stairs and multiple floors separately from open terrain."
+      ]
+    },
+    {
+      "heading": "Manage communication during a squad fight",
+      "paragraphs": [
+        "Footsteps are often masked by teammates talking over one another. Agree on concise callouts: side, approximate cover, number of distinct opponents if known, and whether the enemy is moving. Avoid claiming an exact distance from the sound alone. During a push, one player can briefly listen while others hold safe angles. A clear callout like movement near the rear staircase is more useful than several simultaneous guesses. If a teammate's cue contradicts yours, pause the push and use another observation to resolve the difference."
+      ],
+      "points": [
+        "Prefer short, location-based callouts to constant commentary.",
+        "Do not follow an unidentified footstep straight into an exposed doorway."
+      ]
+    },
+    {
+      "heading": "Troubleshoot missing or confusing cues",
+      "paragraphs": [
+        "If footsteps seem absent, first confirm the game is outputting stereo sound to the intended device. Check in-game sound settings, Windows or phone audio routing, Bluetooth hands-free mode, and headphone balance. If an emulator switches to a low-quality microphone profile, test with the microphone disabled or a separate input. Finally, compare the same in-game situation on the same device after restarting. Cosmetic audio claims, unverified sound packs and modified game files are not reliable solutions and may introduce security problems."
+      ],
+      "points": [
+        "Check audio routing before reinstalling the game.",
+        "Avoid high volume as a substitute for diagnosing a missing audio channel."
+      ]
+    }
+  ]
+}
