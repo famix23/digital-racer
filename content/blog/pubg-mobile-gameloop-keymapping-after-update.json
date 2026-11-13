@@ -1,0 +1,65 @@
+{
+  "slug": "pubg-mobile-gameloop-keymapping-after-update",
+  "title": "PUBG Mobile GameLoop Keymapping: Fix Controls After Updates",
+  "summary": "Diagnose broken movement, mouse aim, firing and interaction mappings after a PUBG Mobile update.",
+  "category": "PUBG Mobile GameLoop",
+  "published": "2026-11-11",
+  "intro": "When a PUBG Mobile update changes the interface, GameLoop controls may no longer line up with the buttons on screen. Fix the actual mapping conflict before installing third-party scripts or changing random emulator files.",
+  "topics": [
+    "emulator",
+    "tutorial",
+    "account-security"
+  ],
+  "sections": [
+    {
+      "heading": "Identify exactly which input stopped working",
+      "paragraphs": [
+        "Start in a training area and test movement, camera control, aim, fire, crouch, jump, inventory and the interact key individually. A keyboard key that does nothing is a different problem from a key that activates the wrong on-screen button. Record which actions fail in normal gameplay and whether the same mapping behaves differently in menus. Check that the keyboard and mouse work normally in Windows outside the emulator. An input issue limited to one game interface is unlikely to be repaired by replacing working peripherals."
+      ],
+      "points": [
+        "Use a short checklist of affected keys before editing.",
+        "Test one action at a time to avoid confusing overlapping assignments."
+      ]
+    },
+    {
+      "heading": "Open the supported mapping editor",
+      "paragraphs": [
+        "Use GameLoop's own keymapping tools and inspect where each control overlay sits relative to the current PUBG Mobile buttons. If the game's buttons moved, reposition the mapping overlay to match. Check whether the game is in the expected orientation, resolution and control layout; a different aspect ratio can change alignment. Avoid downloading scripts that claim secret aim assistance or bypass competitive restrictions. Such tools can present account and malware risks and do not reliably solve basic coordinate mismatches."
+      ],
+      "points": [
+        "Preserve a screenshot of the previous working overlay.",
+        "Keep important movement and firing regions free from conflicting shortcuts."
+      ]
+    },
+    {
+      "heading": "Check mouse capture and sensitivity separately",
+      "paragraphs": [
+        "If the camera does not rotate, examine whether GameLoop has correctly captured the mouse pointer or switched to menu interaction mode. If camera movement works but is too fast or too slow, sensitivity may be the issue rather than keymapping. Change one of these variables at a time. Unusual DPI or Windows pointer settings can complicate comparisons, so use a consistent baseline. Distinguish an emulator pointer that escapes the window from a game control that no longer responds at the intended location."
+      ],
+      "points": [
+        "Test mouse capture before reinstalling input drivers.",
+        "Do not copy an unrelated player's entire sensitivity configuration blindly."
+      ]
+    },
+    {
+      "heading": "Watch for overlapping interface controls",
+      "paragraphs": [
+        "After a version update, a new event button or altered inventory screen may cover an old mapped region. Look for keys that trigger one action in a match and another in a menu. Test interactions near doors, vehicles and loot containers, as these are common contexts where the screen changes. If a layout is correct only at one resolution, keep that resolution stable until all controls pass a test. Restoring a familiar control preset may be faster than moving every key manually, but verify it afterward."
+      ],
+      "points": [
+        "Check interaction controls in more than one game context.",
+        "Save the stable mapping before experimenting with a new layout."
+      ]
+    },
+    {
+      "heading": "Escalate without risky modifications",
+      "paragraphs": [
+        "If supported settings do not resolve the issue, note the GameLoop version, Windows version, PUBG Mobile build, current resolution and exact key names affected. Consult official GameLoop guidance and report the reproducible problem. A clean reinstall may be considered after saving settings, but it should not be the first response to every misplaced button. Avoid editing protected game files or installing modified emulators to chase a temporary fix; competitive game policies may restrict such modifications."
+      ],
+      "points": [
+        "Collect a screenshot that shows a misplaced mapping overlay.",
+        "Recheck the behavior after an official mapping update."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "slug": "gta-6-preload-download-stuck-ps5-xbox-fix",
+  "title": "GTA VI Pre-Load Stuck? PS5 and Xbox Troubleshooting",
+  "summary": "Diagnose interrupted GTA VI pre-loads using official store status, storage and network checks.",
+  "category": "GTA VI Guides",
+  "published": "2026-11-11",
+  "intro": "Rockstar confirmed GTA VI digital pre-loading from November 10, 2026, ahead of the November 19 console launch. A slow or stalled download can have several causes; avoid deleting a large installation before checking which one applies.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Confirm the download is actually eligible",
+      "paragraphs": [
+        "Make sure you are signed into the console account that purchased GTA VI or redeemed a legitimate code. On PlayStation 5, Rockstar's regional support information says digital pre-load began at midnight local time on November 10. On Xbox Series X|S it began globally at 12 a.m. GMT that day. A purchase under another account, an unredeemed physical code or an incorrect region assumption can make a download appear unavailable. Check official order history and the game library before reinstalling or contacting a reseller."
+      ],
+      "points": [
+        "Verify the purchasing account and displayed edition.",
+        "Pre-loading is not the same as being allowed to launch before November 19."
+      ]
+    },
+    {
+      "heading": "Separate a paused download from a slow connection",
+      "paragraphs": [
+        "Look at the console's own download queue: is the task paused, queued behind an update, showing an error or progressing slowly? A stalled display with no connection may need different help from a transfer that is simply using available bandwidth. Check for platform service incidents and test another supported download if appropriate. Avoid repeatedly restarting the entire game download while there is still progress. A router reboot can help certain home-network issues, but it should not be the first response to a scheduled server outage."
+      ],
+      "points": [
+        "Record the exact error message or queue status.",
+        "Check whether another download is consuming the same connection."
+      ]
+    },
+    {
+      "heading": "Inspect storage and temporary requirements",
+      "paragraphs": [
+        "Large games may need additional working space for updates, verification and installation. Sony's GTA VI preparation guidance recommends reserving at least 212 GB on PS5 for the pre-load, though actual storage needs can change with updates. Check the console's current free space rather than assuming an external USB drive can run every current-generation title directly. Free storage using supported management menus and preserve saved-game data. Avoid unknown cleaner utilities promising to shrink the download or unlock hidden files."
+      ],
+      "points": [
+        "Use the console's measured remaining space for decisions.",
+        "Confirm where the game is installed and whether that location is supported."
+      ]
+    },
+    {
+      "heading": "Check network stability deliberately",
+      "paragraphs": [
+        "If the queue repeatedly fails, try a stable supported connection and ensure the console stays connected under its current power settings. Wi-Fi interference, congestion and router issues can interrupt a large transfer. If practical, a wired connection can reduce wireless variability, though it does not guarantee faster service from every network. Do not change DNS servers, MTU, router firmware and console settings simultaneously; one-variable testing makes it possible to see what helped. If another household device is saturating the connection, schedule the download for a less busy period."
+      ],
+      "points": [
+        "Check whether the problem affects other downloads.",
+        "Keep a note of any exact network error code."
+      ]
+    },
+    {
+      "heading": "Escalate with a useful support report",
+      "paragraphs": [
+        "If the purchase is valid, the correct version is available and the download still fails, collect the console model, store account region, displayed error, time and attempted fixes. Use PlayStation, Xbox or Rockstar's official help channels as appropriate. A support agent may need transaction evidence, but no stranger should request your password or one-time login code. Do not install alleged GTA VI preload files from a social-media message. Official console stores are the correct distribution channel, and a pre-load problem is not evidence that an early-access bypass exists."
+      ],
+      "points": [
+        "Keep the order receipt private but accessible for support.",
+        "Do not erase and redownload everything without diagnosing the failure."
+      ]
+    }
+  ]
+}

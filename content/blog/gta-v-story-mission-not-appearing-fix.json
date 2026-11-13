@@ -1,0 +1,63 @@
+{
+  "slug": "gta-v-story-mission-not-appearing-fix",
+  "title": "GTA V Story Missions Not Appearing: Troubleshooting Guide",
+  "summary": "Check character switching, map markers, saves and mission prerequisites when GTA V progress stalls.",
+  "category": "GTA V Guides",
+  "published": "2026-11-11",
+  "intro": "A missing mission marker can feel like a broken save, but GTA V Story Mode uses multiple characters, call triggers and mission-specific prerequisites. Troubleshoot the state you can observe before deleting progress.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Check the active protagonist and the map",
+      "paragraphs": [
+        "Open the map and look for available mission markers, including icons associated with another playable character. Some story events are triggered only from the correct character or after completing another task. Switch characters through the game's normal controls if the story has unlocked that ability, then review available markers again. A mission that is absent for one protagonist may be accessible for another. Do not assume every letter marker means the same kind of story objective; identify it from its current description."
+      ],
+      "points": [
+        "Check each currently available character for new markers.",
+        "Use the map legend rather than guessing from an icon color."
+      ]
+    },
+    {
+      "heading": "Review prerequisites and messages",
+      "paragraphs": [
+        "Certain missions depend on phone calls, time passing, a prior objective or preparation steps. Inspect the in-game phone and recent notifications for clues before declaring a bug. If you have just finished a long mission sequence, try normal free-roam activity and allow an expected call or prompt to occur. Avoid following a random online guide that instructs you to skip a major storyline without matching the mission name and your current progress. Spoiler-heavy walkthroughs can reveal later events unnecessarily."
+      ],
+      "points": [
+        "Write down the last mission you completed successfully.",
+        "Verify the exact mission name when searching a walkthrough."
+      ]
+    },
+    {
+      "heading": "Use saves carefully",
+      "paragraphs": [
+        "Before experimenting, create a manual save where supported and keep an older working slot if one exists. Repeatedly overwriting the only available save can make diagnosis harder. If cloud sync is enabled, check its current status before attempting a recovery. Do not download strangers' completed save files as a substitute for troubleshooting; compatibility, security and progress integrity can be uncertain. A known earlier save may help isolate when the problem started, but returning to it will also discard later progress."
+      ],
+      "points": [
+        "Keep at least one backup save slot before major experimentation.",
+        "Do not erase saved data merely because a marker is temporarily absent."
+      ]
+    },
+    {
+      "heading": "Rule out mods and version problems on PC",
+      "paragraphs": [
+        "If the game runs on PC with third-party mods, test whether the problem occurs with a supported unmodified configuration. Script modifications can change mission behavior or create conflicts after updates. Check the game platform's file-integrity options and the installed version before altering files manually. On consoles, review available official updates and storage status. Avoid copying unknown executable fixes from video descriptions. A clean environment makes it easier to determine whether the issue is a game state, a mod conflict or a genuine software error."
+      ],
+      "points": [
+        "Record installed mods and their recent changes before disabling them.",
+        "Prefer official integrity-check tools over random repair downloads."
+      ]
+    },
+    {
+      "heading": "Escalate with precise details",
+      "paragraphs": [
+        "If no mission appears after checking characters, markers, prerequisites and saves, document your platform, game version, most recent completed mission and the behavior you see. A screenshot of the map and a concise description of the last in-game prompt can help support or a knowledgeable community diagnose the issue. Avoid publishing personal account credentials or save files containing unrelated private information. Not every delay is a defect, and not every defect has a universal workaround. Reliable troubleshooting narrows the exact condition rather than promising one secret fix."
+      ],
+      "points": [
+        "State whether the issue repeats after loading a known save.",
+        "Record what you tested so others do not suggest the same failed steps."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "slug": "gta-6-launch-day-bug-report-evidence-guide",
+  "title": "GTA VI Launch Bug Reports: What Evidence to Collect",
+  "summary": "A practical checklist for documenting GTA VI crashes, freezes and save problems after launch.",
+  "category": "GTA VI Guides",
+  "published": "2026-11-11",
+  "intro": "A useful technical bug report is specific enough that support staff or another player can understand what happened. With GTA VI scheduled for November 19, preparing a reporting method is more sensible than claiming a future patch will fix an unverified issue.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Record the platform and build",
+      "paragraphs": [
+        "If you encounter a problem after launch, start with the console model, store edition, system software version and game version displayed by the platform. These details distinguish a general issue from something affecting a particular build. Note whether the error began after an update, a new save or a change in console settings. Avoid treating all crashes as the same bug; a game that closes at startup differs from one that freezes after a specific mission. Clear version details help make reports reproducible without disclosing personal account information."
+      ],
+      "points": [
+        "Record the time and error code when available.",
+        "Distinguish a crash, freeze, disconnect and locked-license message."
+      ]
+    },
+    {
+      "heading": "Describe exact reproduction steps",
+      "paragraphs": [
+        "Write what you were doing immediately before the issue: where you were in the game, which menu or mission was involved and whether the behavior repeats after loading. Use a short chronological sequence rather than a vague statement such as the game is broken. If the problem occurs only once, say so. If it repeats, identify the simplest sequence that triggers it and whether other settings matter. Do not invent events to make a support ticket sound more urgent; accurate details are more valuable than dramatic language."
+      ],
+      "points": [
+        "Use short numbered steps in a private support note.",
+        "Mark whether the error is consistent or intermittent."
+      ]
+    },
+    {
+      "heading": "Capture evidence safely",
+      "paragraphs": [
+        "A console screenshot or short clip can demonstrate a frozen screen or unexpected behavior, but check whether it includes story spoilers, private notifications or identifying account information. Use the platform's built-in capture tools where supported instead of installing unknown applications. For save problems, preserve the existing file and cloud synchronization state before experimenting. Avoid posting a full transaction receipt or account email in public forums. A sanitized image of the error message often gives enough context for ordinary community discussion."
+      ],
+      "points": [
+        "Hide personal details before sharing screenshots.",
+        "Keep an untouched original capture for official support when needed."
+      ]
+    },
+    {
+      "heading": "Try reversible troubleshooting first",
+      "paragraphs": [
+        "Check official service status, pending updates and available storage before deleting game files or saves. If an issue affects only online or streamed play, test network conditions separately from local rendering. A restart or supported integrity check may be reasonable when recommended by the platform, but do not perform risky system modifications to fix an unidentified crash. Changing graphics, network and controller settings all at once obscures what actually helped. Preserve a stable baseline and document the outcome of each attempted remedy."
+      ],
+      "points": [
+        "Revert settings that clearly make the issue worse.",
+        "Do not erase saved progress as a first troubleshooting step."
+      ]
+    },
+    {
+      "heading": "Send the report through a verified channel",
+      "paragraphs": [
+        "Use the publisher or console platform's actual support form and supply the requested version, reproduction steps and evidence. A report does not guarantee a fix date, and an automated acknowledgment does not prove a patch is scheduled. Revisit the ticket only with new information that materially changes the diagnosis. Be wary of private messages that offer a secret patch executable or demand a login code. Following official channels and retaining a clear record is safer than relying on an anonymous launch-day troubleshooting video."
+      ],
+      "points": [
+        "Keep the ticket reference number for follow-up.",
+        "Do not promise a specific fix until a real patch note confirms it."
+      ]
+    }
+  ]
+}

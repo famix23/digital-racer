@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-hip-fire-vs-ads-close-range-drills",
+  "title": "PUBG Mobile Hip Fire vs ADS: Close-Range Practice Plan",
+  "summary": "Learn when hip firing, aiming down sights and movement practice make sense in close PUBG Mobile fights.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "A close fight is often decided before a player has time to aim carefully. Hip fire and aiming down sights serve different situations, and the useful skill is knowing which one to choose without changing every sensitivity setting after a lost duel.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Understand the two aiming choices",
+      "paragraphs": [
+        "Hip fire means firing without bringing up the weapon's aimed sight, which lets you keep a wider view of the area around the target. Aiming down sights narrows attention and can make deliberate shots easier, but activation and visual obstruction can matter in a rapid encounter. Exact accuracy and movement behavior vary with the weapon, attachments, stance and the current game build. Do not assume one method has a fixed winning distance. Instead, compare how fast you can acquire targets and how consistently your first shots land in your actual setup."
+      ],
+      "points": [
+        "Use the same weapon and no attachments for your first controlled comparison.",
+        "Measure initial aim, not merely the result of one duel."
+      ]
+    },
+    {
+      "heading": "Create two equal-distance tests",
+      "paragraphs": [
+        "Place a target at one close-range distance in the training area. Fire several controlled hip-fire bursts while keeping movement steady, then repeat with ADS without changing distance or weapon. Do not compare one standing burst with one jumping or crouched burst because stance becomes an extra variable. Watch the time required to locate the target and whether your shots drift after the first hit. Repeat the test slightly farther away to identify where your own performance changes. Your crossover point is personal, not a universal number to copy from a highlight reel."
+      ],
+      "points": [
+        "Record whether misses came from spread or misaligned crosshair.",
+        "Repeat trials rather than deciding from a lucky first attempt."
+      ]
+    },
+    {
+      "heading": "Practice transitions instead of constant toggling",
+      "paragraphs": [
+        "Run a simple drill: move toward a doorway with your crosshair at expected enemy height, engage a close target without ADS, then switch to aimed fire for a target farther down the lane. This tests how quickly you can choose the appropriate view. Avoid rapid random scope tapping because it can interrupt tracking and increase finger conflicts. If you use claw controls, make sure the aim button does not cover the camera swipe area. If you use two thumbs, test whether the layout lets you aim, move and fire without pausing the camera."
+      ],
+      "points": [
+        "Practice the same sequence slowly before increasing speed.",
+        "Keep your control scheme unchanged during a test session."
+      ]
+    },
+    {
+      "heading": "Add realistic movement in stages",
+      "paragraphs": [
+        "After stationary tests, strafe sideways while engaging. Then practice stepping from behind a wall, shooting and returning to cover. Do not add repeated jumps, crouches and spins all at once; these make it difficult to determine why shots missed. When a fight moves to medium range, consider ADS for precision instead of continuing a close-range habit. Conversely, in a very short reaction window, the delay and blocked view from aiming may not suit your situation. Evaluate each choice by the target's movement and the cover around you, not only by range."
+      ],
+      "points": [
+        "Try both left and right peeks to expose layout weaknesses.",
+        "Focus on retaining target visibility during the first burst."
+      ]
+    },
+    {
+      "heading": "Review one fight at a time",
+      "paragraphs": [
+        "After a regular match, ask whether the missed fight required faster acquisition, tighter aiming or better positioning. A hip-fire loss may actually be a crosshair-placement error, while an ADS loss may reflect an exposed position rather than the aiming method. Avoid changing sensitivity to solve every problem. Revisit the same training drill with only one adjustment so you can tell whether it helped. Comfort and predictable inputs matter more than copying a professional player's setting values. Use a short daily session and stop if your fingers become strained."
+      ],
+      "points": [
+        "Keep a note of the specific duel type you want to improve.",
+        "Compare similar fights rather than a single scoreboard number."
+      ]
+    }
+  ]
+}

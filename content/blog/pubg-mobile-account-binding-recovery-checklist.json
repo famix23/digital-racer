@@ -1,0 +1,64 @@
+{
+  "slug": "pubg-mobile-account-binding-recovery-checklist",
+  "title": "PUBG Mobile Account Binding and Recovery: Safety Checklist",
+  "summary": "Protect legitimate account access by reviewing linked services, recovery options and login alerts.",
+  "category": "PUBG Mobile Account Safety",
+  "published": "2026-11-11",
+  "intro": "Losing control of a linked login can also threaten access to a game account. The best time to examine recovery settings is before a device is lost or a suspicious sign-in occurs.",
+  "topics": [
+    "account-security",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Inventory your linked login methods",
+      "paragraphs": [
+        "Open the game's account and security screens and list the currently connected authentication providers. Then review each provider separately using its official security page. Check the recovery email address, phone number if used, recent devices and whether multi-factor authentication is available. Do not assume that linking more providers is always safer: every extra account can create another route for an attacker if it has a weak password. Keep recovery details in a secure password manager or similarly protected location, not in an unencrypted public note."
+      ],
+      "points": [
+        "Record which provider you actually use for daily sign-in.",
+        "Remove obsolete sessions using the provider's official controls."
+      ]
+    },
+    {
+      "heading": "Strengthen the accounts behind the game",
+      "paragraphs": [
+        "Use a distinct password for each email or social login and enable multi-factor authentication where supported. App-based authenticators or security keys may provide better phishing resistance than SMS alone, depending on your account options. Check whether someone else knows an old password or still has access on a shared device. A password change is more effective when followed by reviewing active sessions and recovery settings. Avoid installing third-party tools that offer free premium cosmetics in exchange for a game login; such offers are a frequent account-security risk."
+      ],
+      "points": [
+        "Protect the email inbox used for account recovery.",
+        "Never approve an unfamiliar sign-in prompt just to make it disappear."
+      ]
+    },
+    {
+      "heading": "Recognize takeover warning signs",
+      "paragraphs": [
+        "Unexpected password-reset messages, new-device notifications, changed binding information and unfamiliar purchases deserve prompt investigation. Do not click the first link in a frightening message; open the provider's known app or type its official address yourself. Confirm whether the alert is genuine, then change compromised credentials from a trusted device and revoke unauthorized sessions. If in-game purchases are affected, preserve transaction confirmations for the relevant support channel. Avoid sending a scammer additional money to unlock an allegedly frozen account."
+      ],
+      "points": [
+        "Capture the date and nature of suspicious activity for support.",
+        "Do not publish screenshots containing recovery tokens or private contact details."
+      ]
+    },
+    {
+      "heading": "Plan for a lost or replaced phone",
+      "paragraphs": [
+        "Before changing phones, confirm you can independently sign in to the linked provider and retrieve any two-factor authentication backups. If your authenticator is stored only on the old device, transfer or back up it according to the provider's instructions before wiping that device. On a new device, install the official game and sign in through a known method. Do not attempt risky shortcuts that promise to bypass account binding or device restrictions. Recovery rules can vary by platform and region, so rely on the current publisher support workflow."
+      ],
+      "points": [
+        "Keep important purchase receipts where you can access them later.",
+        "Verify the new login before resetting the original device."
+      ]
+    },
+    {
+      "heading": "What to give legitimate support",
+      "paragraphs": [
+        "If access is lost, use the game's official help channels and provide the specific information requested there, such as account identifiers or purchase records you are authorized to share. Explain what happened in chronological order and avoid inventing facts to satisfy a form. Do not send passwords, one-time codes or full payment details to social-media strangers claiming to work for support. Account buying or selling can violate publisher terms and create recovery disputes; a third-party transaction does not establish support eligibility. Keep any recovery conversation inside the verified platform."
+      ],
+      "points": [
+        "Ask which identity documents are necessary before uploading anything sensitive.",
+        "Retain ticket numbers and outcomes in one private place."
+      ]
+    }
+  ]
+}

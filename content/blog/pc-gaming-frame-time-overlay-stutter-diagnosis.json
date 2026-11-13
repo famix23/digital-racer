@@ -1,0 +1,63 @@
+{
+  "slug": "pc-gaming-frame-time-overlay-stutter-diagnosis",
+  "title": "Gaming Stutter Explained: Frame-Time Overlay Diagnosis",
+  "summary": "Use frame-time graphs to separate occasional stutter from low average FPS on Windows PCs.",
+  "category": "PC Gaming Guides",
+  "published": "2026-11-11",
+  "intro": "Two games can show the same average FPS while feeling very different. A frame-time graph helps explain why: it shows how consistently frames arrive, not merely how many were counted over a whole second.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Translate FPS into frame time",
+      "paragraphs": [
+        "Frames per second is a rate, while frame time is the time taken to deliver one frame. At 60 FPS with perfectly even timing, that is about 16.7 milliseconds per frame; at 120 FPS, about 8.3 milliseconds. Those figures are arithmetic baselines rather than measurements of a particular game. If most frames arrive quickly but a few take much longer, the average may remain high while a visible hitch occurs. Inspect the graph for sudden spikes and repeating patterns rather than focusing only on a single FPS counter."
+      ],
+      "points": [
+        "Compare the same gameplay scene when evaluating changes.",
+        "Do not confuse monitor refresh rate with rendered frame rate."
+      ]
+    },
+    {
+      "heading": "Set up a trustworthy measurement",
+      "paragraphs": [
+        "Choose a reputable performance overlay supported by your GPU or game platform and display frame time, GPU load, CPU usage and memory pressure if those measurements are available. Avoid installing multiple overlapping recorders during the initial test, since capture itself can affect performance. Use a repeatable route or built-in benchmark so you can compare changes fairly. Note whether the stutter appears when loading a new area, entering combat or interacting with a menu. Context can be more informative than a huge list of unrelated sensor readings."
+      ],
+      "points": [
+        "Record the scene and game settings before the test.",
+        "Check whether the overlay itself introduces a new problem."
+      ]
+    },
+    {
+      "heading": "Identify possible GPU and CPU bottlenecks",
+      "paragraphs": [
+        "High GPU load with consistently long frame times may point to a graphics workload that needs reduced settings. Periodic spikes with a relatively idle GPU can suggest CPU scheduling, memory activity, streaming or external processes. Overall CPU percentage can conceal a busy core, so a single utilization number is not enough. Temperatures and clock behavior may also matter during sustained sessions. None of these clues proves one root cause alone; change one variable and repeat the same workload to see whether the suspected problem responds."
+      ],
+      "points": [
+        "Avoid interpreting a low GPU percentage as proof of a faulty graphics card.",
+        "Inspect per-core load and memory pressure when practical."
+      ]
+    },
+    {
+      "heading": "Distinguish shader compilation and streaming",
+      "paragraphs": [
+        "Some games pause when compiling new shaders or loading assets for the first time. Other titles have repeated streaming problems due to storage, memory or engine behavior. If a hitch happens only the first time you visit an effect and disappears on repetition, that is a different pattern from spikes every few seconds. Do not delete shader caches automatically; doing so may force the work to repeat. Check current game and driver notes before changing cache or storage settings. A solid-state drive can help certain loading patterns but will not solve every engine problem."
+      ],
+      "points": [
+        "Note whether the same action stutters a second time.",
+        "Do not rely on one isolated spike for a hardware purchase decision."
+      ]
+    },
+    {
+      "heading": "Apply controlled fixes and verify stability",
+      "paragraphs": [
+        "Try a sensible frame-rate cap, reduce one expensive setting, close unnecessary background applications or test a stable driver version depending on the evidence. Preserve a way to revert each step. After an apparent improvement, test long enough to catch the original hitch pattern. If online networking causes rubber-banding, that may not appear as a local frame-time spike; investigate network conditions separately. Good diagnosis ends with a measurable change or a clear unresolved hypothesis, not a list of registry tweaks that might hide a problem."
+      ],
+      "points": [
+        "Keep a short before-and-after log of frame-time behavior.",
+        "Never disable important security features merely to improve an overlay number."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,63 @@
+{
+  "slug": "pubg-mobile-dmr-scope-tap-fire-practice",
+  "title": "PUBG Mobile DMR Aim: Scope Control and Tap-Firing Drills",
+  "summary": "Improve PUBG Mobile DMR accuracy with repeatable scope, lead and timing exercises.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-11",
+  "intro": "Designated marksman rifles reward deliberate aiming and controlled follow-up shots. Aiming faster is useful only when each new shot begins from a stable sight picture.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Start with a single scope and distance",
+      "paragraphs": [
+        "Choose one DMR, one optic and a stationary target at a known range in training mode. Fire individual shots without rushing the follow-up. Observe where the sight returns after recoil and how much correction you need to place the next round. Do not change scope magnification or sensitivity after every miss; repeated conditions help identify whether the problem is mechanical control or target reading. A player can have excellent close-range spraying skill while struggling with deliberate shots through a magnified optic, so train the task separately."
+      ],
+      "points": [
+        "Keep the same weapon and attachments during a test block.",
+        "Record whether you missed the first shot or the follow-up."
+      ]
+    },
+    {
+      "heading": "Practice a steady shot rhythm",
+      "paragraphs": [
+        "Rapid tapping can create recoil accumulation or rushed corrections that undermine accuracy. Try a slow sequence with enough time to reacquire the target between shots. Gradually increase the pace only while the group stays controlled. Do not assume a universal shots-per-second figure, because recoil handling varies with the gun, stance, attachment and user input. The important comparison is how many deliberate hits you achieve, not how quickly you empty the magazine. If accuracy falls apart, reduce speed and rebuild the rhythm."
+      ],
+      "points": [
+        "Count controlled hits rather than raw trigger presses.",
+        "Pause briefly whenever the sight loses the target."
+      ]
+    },
+    {
+      "heading": "Add a moving target",
+      "paragraphs": [
+        "After stationary practice, track a target moving predictably across your field of view. A moving opponent may require aiming ahead of the direction of travel, depending on projectile travel time, range and speed. Avoid memorizing one fixed lead amount for every distance or weapon. Start with short, consistent movements and compare your misses: behind the target, ahead of it or above and below. Change one parameter at a time. When you begin hitting predictably, try varied movement patterns and practice reacquiring the target after a miss."
+      ],
+      "points": [
+        "Practice following a moving target without firing first.",
+        "Use misses to identify overleading versus underleading."
+      ]
+    },
+    {
+      "heading": "Use cover and planned firing windows",
+      "paragraphs": [
+        "DMRs often reward positions with clear sightlines and a safe retreat. Avoid standing motionless on an exposed roof solely to line up a distant shot. Peek from hard cover, make a deliberate shot and return before opponents can easily return fire. If your target has cover or nearby teammates, consider whether continuing to tap exposes your squad without offering a realistic elimination. Communicate observed movement and likely escape routes rather than firing every time someone appears at the edge of the scope."
+      ],
+      "points": [
+        "Choose a protected position before starting a long engagement.",
+        "Stop firing when the target can no longer be safely confirmed."
+      ]
+    },
+    {
+      "heading": "Transfer training to actual matches",
+      "paragraphs": [
+        "Use a consistent DMR setup across several ordinary matches and review one missed engagement afterward. Ask whether the issue was tracking, recoil recovery, exposed position, target lead or choice of fight. A long-range miss is not always a sensitivity error; wind-up time, terrain and movement can also matter. If an update changes a weapon or attachment, repeat the stationary test before revising your whole control system. Your goal is repeatable accuracy while remaining safe, not the longest highlight shot."
+      ],
+      "points": [
+        "Write down one specific correction for the next session.",
+        "Compare like-for-like shots instead of judging a single montage clip."
+      ]
+    }
+  ]
+}

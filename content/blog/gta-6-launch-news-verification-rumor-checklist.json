@@ -1,0 +1,63 @@
+{
+  "slug": "gta-6-launch-news-verification-rumor-checklist",
+  "title": "GTA VI News Verification: Official Posts vs Viral Rumors",
+  "summary": "A repeatable GTA VI fact-checking method for updates, leaks and viral claims.",
+  "category": "GTA VI Guides",
+  "published": "2026-11-11",
+  "intro": "The final days before a major release create a flood of supposed leaks. A useful news article should explain where each factual claim came from and label everything else as speculation, not amplify the loudest rumor.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Find the primary announcement first",
+      "paragraphs": [
+        "When a headline says Rockstar confirmed a new feature, look for the original Rockstar Newswire entry, product page or verified platform announcement. Note the publication date and exact wording. Secondary websites may paraphrase a statement more aggressively than the source. For example, an announcement of Remote Play support does not itself establish native PC availability; a target frame rate does not prove a special unlocked high-FPS mode. A screenshot with no URL, date or identifiable publisher context is weaker evidence than a current official statement."
+      ],
+      "points": [
+        "Open the cited original rather than trusting the headline alone.",
+        "Record which platform and edition the announcement actually describes."
+      ]
+    },
+    {
+      "heading": "Distinguish footage from feature guarantees",
+      "paragraphs": [
+        "Trailer and promotional footage can demonstrate an art style, environment or story premise while withholding implementation details. A vehicle seen in an edited cinematic sequence is not a promise about customization menus. Likewise, an image may establish that a character appears in marketing but not how much playable time they have. Look for gameplay labels and publisher descriptions, and avoid extracting precise technical specifications from compressed video. A responsible article separates what is visibly depicted, what Rockstar explicitly states and what the viewer is interpreting."
+      ],
+      "points": [
+        "Do not turn an edited trailer shot into a full gameplay mechanic.",
+        "Describe the evidence before drawing conclusions."
+      ]
+    },
+    {
+      "heading": "Check dates and reused screenshots",
+      "paragraphs": [
+        "Old claims are often recirculated with a new caption. Search for the earliest identifiable publication of a screenshot or trailer frame, then compare it with the latest official information. A release date can change, and an old article may remain indexed long after a correction. When multiple pages copy the same unsourced graphic, that is not independent confirmation. Note the date the original event occurred and the date the current claim was posted. Readers should not have to guess whether information refers to a 2025 announcement or a 2026 update."
+      ],
+      "points": [
+        "Look for the publisher date on each cited news item.",
+        "Treat identical unsourced reposts as one claim, not several confirmations."
+      ]
+    },
+    {
+      "heading": "Handle anonymous leaks with uncertainty",
+      "paragraphs": [
+        "An anonymous account can publish a genuine-looking map, UI screenshot or feature list without a verifiable source. Even if a leak later proves accurate, it should not be described as confirmed when published. Do not share private data, stolen account details or files that invite readers to break platform protections. When discussing rumors, explain that their authenticity is unknown and why the claim has not been established. A cautious summary helps readers without giving an unsupported screenshot the credibility of a press release."
+      ],
+      "points": [
+        "Avoid inventing probability estimates for whether a leak is genuine.",
+        "Never ask readers to install files offered by alleged insiders."
+      ]
+    },
+    {
+      "heading": "Maintain a clear correction trail",
+      "paragraphs": [
+        "If a publisher contradicts an earlier report, update the article's claim and mark the substantive change. Keep publication and modification dates accurate rather than changing every timestamp merely to look recent. Link readers to the most directly relevant official explanation where the publishing system allows it, and do not quietly remove a false prediction as if it never existed. Source discipline is particularly important near a launch, when rumors can drive expensive hardware or preorder decisions. Accurate corrections build more trust than unqualified certainty."
+      ],
+      "points": [
+        "Correct the claim and explain what changed.",
+        "Do not use speculative details in SEO titles as though they were confirmed."
+      ]
+    }
+  ]
+}
