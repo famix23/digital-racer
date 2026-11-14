@@ -9428,6 +9428,138 @@
       "supplier_listing_id": "dr-account-25111315",
       "preserve_description": true,
       "account_level": "57"
+    },
+    {
+      "title": "PUBG Mobile 81,000 UC – UID Top-Up – $1100.00 Offer",
+      "price": "1100.00",
+      "category": "UC Top-Up",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-4414211-01.webp",
+      "gallery": [],
+      "description": "81,000 UC for PUBG Mobile, delivered using your player UID. No account login is required. This offer is not available for Japan, Korea, Taiwan or Vietnam servers. Double-check your player UID before ordering.",
+      "supplier_listing_id": "dr-uc-zx-4414211",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile 660 UC – UID Top-Up – $15.00 Offer",
+      "price": "15.00",
+      "category": "UC Top-Up",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-4414191-01.webp",
+      "gallery": [],
+      "description": "660 UC for PUBG Mobile, delivered using your player UID. No account login is required. This offer is not available for Japan, Korea, Taiwan or Vietnam servers. Double-check your player UID before ordering.",
+      "supplier_listing_id": "dr-uc-zx-4414191",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile 1,800 WOW Coins – UID – $25.60 Offer",
+      "price": "25.60",
+      "category": "In-Game Items",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-23569905-01.webp",
+      "gallery": [],
+      "description": "1,800 WOW Coins for PUBG Mobile. Direct top-up using your player UID. Not available for Vietnam, India, Korea, Taiwan or Japan accounts. Check the UID carefully before ordering; a completed top-up sent to an incorrect UID cannot be refunded.",
+      "supplier_listing_id": "dr-item-23569905",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile Elite Pass Plus – Levels 1–100 – UID – $29.00 Offer",
+      "price": "29.00",
+      "category": "In-Game Items",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-23569935-01.webp",
+      "gallery": [],
+      "description": "Elite Pass Plus for levels 1–100 in PUBG Mobile. Direct top-up using your player UID. Not available for Vietnam, India, Korea, Taiwan or Japan accounts. Check the UID carefully before ordering; a completed top-up sent to an incorrect UID cannot be refunded.",
+      "supplier_listing_id": "dr-item-23569935",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile 3,850 WOW Coins – UID – $52.00 Offer",
+      "price": "52.00",
+      "category": "In-Game Items",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-23569980-01.webp",
+      "gallery": [],
+      "description": "3,850 WOW Coins for PUBG Mobile. Direct top-up using your player UID. Not available for Vietnam, India, Korea, Taiwan or Japan accounts. Check the UID carefully before ordering; a completed top-up sent to an incorrect UID cannot be refunded.",
+      "supplier_listing_id": "dr-item-23569980",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile 8,100 WOW Coins – UID – $103.00 Offer",
+      "price": "103.00",
+      "category": "In-Game Items",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-23570033-01.webp",
+      "gallery": [],
+      "description": "8,100 WOW Coins for PUBG Mobile. Direct top-up using your player UID. Not available for Vietnam, India, Korea, Taiwan or Japan accounts. Check the UID carefully before ordering; a completed top-up sent to an incorrect UID cannot be refunded.",
+      "supplier_listing_id": "dr-item-23570033",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile Prime Subscription – 12 Months – UID – $14.00 Offer",
+      "price": "14.00",
+      "category": "In-Game Items",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-25056316-01.webp",
+      "gallery": [],
+      "description": "12-month PUBG Mobile Prime subscription. Global version. Direct top-up using your PUBG Mobile player UID; no account login is required. Double-check the player UID before ordering.",
+      "supplier_listing_id": "dr-item-25056316",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile Saitama & Genos Card – $5.00 Offer",
+      "price": "5.00",
+      "category": "In-Game Items",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-25108773-01.webp",
+      "gallery": [],
+      "description": "Delivery through the in-game gift system using your player UID. Requires accepting a friend request and completing 20 synergy before the card can be sent. Source delivery estimate: 10–60 minutes.",
+      "supplier_listing_id": "dr-item-25108773",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile Sixtino Seventino Card – $5.00 Offer",
+      "price": "5.00",
+      "category": "In-Game Items",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-25108789-01.webp",
+      "gallery": [],
+      "description": "Delivery through the in-game gift system using your player UID. Accept the in-game friend request to receive the card. Source delivery estimate: 10–60 minutes.",
+      "supplier_listing_id": "dr-item-25108789",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile Çay Collectible Card – $5.00 Offer",
+      "price": "5.00",
+      "category": "In-Game Items",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-25108825-01.webp",
+      "gallery": [],
+      "description": "Delivery through the in-game gift system using your player UID. Accept the in-game friend request to receive the card. Source delivery estimate: 10–60 minutes.",
+      "supplier_listing_id": "dr-item-25108825",
+      "preserve_description": true
+    },
+    {
+      "title": "PUBG Mobile Reaper Scorpion Collectible Card – $7.00 Offer",
+      "price": "7.00",
+      "category": "In-Game Items",
+      "tag": "GLOBAL",
+      "badge": "",
+      "thumbnail": "/images/uploads/digitalracer-item-25109378-01.webp",
+      "gallery": [],
+      "description": "Delivery through the in-game gift system using your player UID. Accept the in-game friend request to receive the card. Source delivery estimate: 10–60 minutes.",
+      "supplier_listing_id": "dr-item-25109378",
+      "preserve_description": true
     }
   ]
 }
