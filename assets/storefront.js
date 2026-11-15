@@ -30,6 +30,12 @@ if (typeof document !== 'undefined' && typeof window !== 'undefined' && window.l
       style.rel = 'stylesheet';
       style.href = '/assets/mobile-shopping.css';
       document.head.appendChild(style);
+      if (!document.querySelector('link[href="/assets/storefront-polish.css"]')) {
+        const polish = document.createElement('link');
+        polish.rel = 'stylesheet';
+        polish.href = '/assets/storefront-polish.css';
+        document.head.appendChild(polish);
+      }
     }
   }
 }

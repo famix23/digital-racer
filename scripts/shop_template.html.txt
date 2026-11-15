@@ -70,7 +70,7 @@ p{color:var(--muted);margin:0 0 14px}.lede{font-size:1.12rem;color:var(--text);m
 }
 @media(max-width:350px){.cards{grid-template-columns:1fr;}.product-card{min-height:96px;}}
 footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:.85rem}
-</style></head><body>
+</style><link rel="stylesheet" href="/assets/storefront-polish.css"></head><body class="dr-category-page">
 <header><a href="/"><strong>Digital Racer</strong></a><nav aria-label="Main navigation"><a href="/catalog">Catalog</a><a href="/guides/">Guides</a><a href="/blog/">Blog</a><a href="/contact/">Contact</a></nav></header>
 <main id="content">
 <p class="crumb"><a href="/">Home</a> / <a href="/catalog">Catalog</a> / %%CATEGORY%%</p>
