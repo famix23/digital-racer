@@ -1,0 +1,49 @@
+{
+  "slug": "gta-vi-accessibility-and-controls-first-session",
+  "title": "GTA VI First-Session Controls and Accessibility Setup Checklist",
+  "summary": "Prepare controller comfort, subtitle preferences, camera settings and a spoiler-free first session.",
+  "category": "GTA VI Guides",
+  "published": "2026-11-15",
+  "intro": "GTA VI is scheduled for release on November 19, 2026, and first-time players may want to adjust comfort and accessibility settings before committing to the story. Exact in-game options should be verified after release, not assumed from GTA V. This guide focuses on a reliable approach: start with console-level tools, inspect the game's real menus and adjust one variable at a time.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Start with the controller you know",
+      "paragraphs": [
+        "Charge your controller, install normal console updates and check any accessibility features available at the system level. Reassigning controls can help players with different grip preferences, but make a note of the default layout first. Do not assume an unofficial list of GTA VI button mappings is correct before launch. Test a low-pressure movement sequence to see whether aiming, driving and camera controls feel intuitive."
+      ]
+    },
+    {
+      "heading": "Inspect subtitles and dialogue settings",
+      "paragraphs": [
+        "If subtitles are available in the final game, review their size, background and speaker-identification options before starting long scenes. Use the console's accessibility settings as a fallback where supported. Headphones can help with dialogue clarity, but comfort and volume matter more than maximum loudness. Avoid publishing claimed subtitle options as confirmed until they appear in the released settings menu."
+      ]
+    },
+    {
+      "heading": "Tune camera motion gradually",
+      "paragraphs": [
+        "Camera inversion, sensitivity and any motion-related options may help with comfort, depending on the final menu. Change one value and test it during walking and driving. A setting that helps free exploration may feel different during action scenes, so use more than one safe test. If motion makes you uncomfortable, take a break and consider display settings rather than forcing yourself through a long session."
+      ]
+    },
+    {
+      "heading": "Check visual presentation",
+      "paragraphs": [
+        "Adjust the console's HDR calibration and television's Game Mode using supported tools. Overly bright highlights or crushed shadow detail can make dark scenes harder to read. Do not apply aggressive color filters simply because a creator recommends them for a trailer. Compare the setting in several environments when possible and save your previous configuration so you can reverse unwanted changes."
+      ]
+    },
+    {
+      "heading": "Protect the opening story experience",
+      "paragraphs": [
+        "If you want to avoid spoilers, mute GTA VI keywords on social platforms before November 19 and disable notification previews during gameplay or streaming. Consider a private first session before posting clips. Take time to learn the real save interface and pause options. An online checklist should guide setup without revealing plot turns or suggesting hidden missions that have not been verified in the released game."
+      ]
+    },
+    {
+      "heading": "Revisit settings after a few hours",
+      "paragraphs": [
+        "Your ideal controls may change after learning the game's movement and vehicle feel. Record which setting helped and why rather than continually copying new configurations. If an accessibility option is missing, check platform support or official patch information. The goal is comfortable, consistent play on your own hardware, not an imaginary perfect setup based on another person's speculative performance video."
+      ]
+    }
+  ]
+}

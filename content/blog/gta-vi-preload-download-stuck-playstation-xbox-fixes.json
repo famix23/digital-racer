@@ -1,0 +1,49 @@
+{
+  "slug": "gta-vi-preload-download-stuck-playstation-xbox-fixes",
+  "title": "GTA VI Pre-Load Stuck? Safe PS5 and Xbox Download Troubleshooting",
+  "summary": "Troubleshoot entitlement, storage, network and installation problems before GTA VI's November 19 launch.",
+  "category": "GTA VI Guides",
+  "published": "2026-11-15",
+  "intro": "Grand Theft Auto VI pre-loading began in November 2026 for eligible pre-orders on PlayStation 5 and Xbox Series X|S. With launch day approaching, a paused download or locked game icon can be worrying. Many common cases are account, storage or network issues rather than a defective console. This guide starts with reversible checks and avoids untrusted early-access files.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Confirm the correct account owns the game",
+      "paragraphs": [
+        "Sign into the console account that placed the pre-order or redeemed the eligible code. Open your platform's purchase history or game library and check the title's entitlement. A purchase confirmation email alone does not always establish that the same console profile is selected. If the store shows a different edition or asks you to buy again, inspect the transaction before changing accounts or deleting existing files."
+      ]
+    },
+    {
+      "heading": "Understand a locked pre-load",
+      "paragraphs": [
+        "Pre-loading places game files on a device ahead of release; it does not grant permission to play before the unlock time. Rockstar lists GTA VI for November 19, 2026 at midnight local time in supported release regions. A downloaded icon may therefore remain locked until its scheduled release. Avoid paying for supposedly exclusive activation codes from strangers simply because the launch button is still unavailable."
+      ]
+    },
+    {
+      "heading": "Check free space and install destination",
+      "paragraphs": [
+        "Open the console's storage settings and confirm that the download destination has enough usable room. Game installation may temporarily require more space than the final displayed package. Remove old captures or move legitimate games using the console's own storage tools if needed. Do not trust screenshots claiming an exact universal install size without checking the current platform download information."
+      ]
+    },
+    {
+      "heading": "Check network and queue status",
+      "paragraphs": [
+        "A paused or slow download can result from network congestion, other active downloads or platform maintenance. Test the console's internet connection, pause unrelated transfers and restart the download queue using supported options. Restart the console if the queue is unresponsive. Avoid repeatedly deleting a large pre-load as the first step, because that may waste bandwidth and create the same problem again."
+      ]
+    },
+    {
+      "heading": "Verify updates and license status",
+      "paragraphs": [
+        "Install normal system updates and check whether a legitimate title update is pending. If the platform has a built-in restore-license or purchase-verification function, follow its published support instructions. Be cautious about region changes, because store entitlements, payment methods and release rules can differ. Do not use unofficial firmware or modified console software to bypass an activation screen."
+      ]
+    },
+    {
+      "heading": "Escalate with useful details",
+      "paragraphs": [
+        "If the issue persists, record the console model, exact error code, account region and whether the game appears in the library. Contact the relevant platform's official support using a sanitized screenshot. Never post a full receipt, recovery code or account token publicly. A precise report is more likely to resolve an entitlement problem than random reinstalls or social-media troubleshooting offers."
+      ]
+    }
+  ]
+}

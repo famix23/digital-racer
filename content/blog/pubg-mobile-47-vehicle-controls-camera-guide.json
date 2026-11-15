@@ -1,0 +1,50 @@
+{
+  "slug": "pubg-mobile-47-vehicle-controls-camera-guide",
+  "title": "PUBG Mobile 4.7 Vehicle Controls: Camera and Rotation Practice",
+  "summary": "Build safer vehicle rotations after 4.7 changes with driving drills, seat coordination and realistic settings tests.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-15",
+  "intro": "PUBG Mobile 4.7 brings additional Classic Mode changes and vehicle-related improvements discussed in the official update material. A patch can affect the feel of driving, but winning rotations still depends on route selection, team communication and safe arrival points. This guide offers repeatable practice sessions instead of claiming that an obscure setting guarantees faster movement or removes collision risk.",
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Start by verifying the live controls",
+      "paragraphs": [
+        "Open the current control settings and identify the vehicle camera, steering and seat-switch options actually available on your device. Do not assume every beta menu appears in the final game or across touch and emulator builds. Save a record of your old layout before changing it. Test steering response and camera visibility in a quiet area rather than discovering unfamiliar controls while crossing an exposed road."
+      ]
+    },
+    {
+      "heading": "Choose routes for cover, not speed alone",
+      "paragraphs": [
+        "A straight road can be quick but highly predictable. Compare the zone distance, known compounds, elevation changes and likely enemy sight lines. Plan a primary road route and an alternative through natural cover. A team rotating late should avoid parking directly in the open at the edge of a popular compound. An extra short detour may preserve vehicle condition and squad health."
+      ]
+    },
+    {
+      "heading": "Coordinate the driver and passengers",
+      "paragraphs": [
+        "Assign one player to drive, one to make route calls and others to watch flanks. Agree when passengers should heal, scout or prepare to dismount. Shouting conflicting left and right calls can create more risk than a slightly slower route. The driver should focus on maintaining control and choosing an escape path, while the caller monitors zone timing and whether an approaching bridge appears occupied."
+      ]
+    },
+    {
+      "heading": "Practice stopping under pressure",
+      "paragraphs": [
+        "Stopping at a building is not only about reaching the correct destination. Position the vehicle so passengers can exit toward immediate cover without clustering in one firing line. Avoid blocking your own path out with walls or parked vehicles. Rehearse a simple procedure: call the stop, identify enemy angles, exit deliberately and regroup behind a structure. The best sequence depends on terrain and enemy position."
+      ]
+    },
+    {
+      "heading": "Do a controlled settings comparison",
+      "paragraphs": [
+        "Test any new camera or steering option over the same short route and approximate speed. Note visibility around corners, ease of reversing and how naturally you can track threats without losing road awareness. Change one option at a time. If a setting helps in a training area but causes mistakes during combat, revert it. Copying another player's sensitivity without testing does not account for your display or input device."
+      ]
+    },
+    {
+      "heading": "Avoid risky third-party advantages",
+      "paragraphs": [
+        "Do not use steering macros, speed modifications or tools claiming they can disable collision or anti-cheat checks. Such tools can harm account security and game integrity. Keep drivers and emulator software on supported versions and use normal practice to improve. A stable control layout, realistic route planning and coordinated dismounts offer meaningful benefits without violating game policies."
+      ]
+    }
+  ]
+}

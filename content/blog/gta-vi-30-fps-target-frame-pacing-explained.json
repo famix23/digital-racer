@@ -1,0 +1,49 @@
+{
+  "slug": "gta-vi-30-fps-target-frame-pacing-explained",
+  "title": "GTA VI Targets 30 FPS: Frame Pacing, Input Lag and TV Setup",
+  "summary": "What a 30 FPS target means for GTA VI and how to avoid misleading smoothness claims.",
+  "category": "GTA VI Guides",
+  "published": "2026-11-15",
+  "intro": "Rockstar's November 10, 2026 announcement states that GTA VI targets 30 frames per second on its supported launch consoles. A target is not the same as a technical benchmark of every street, traffic event or cutscene. This article explains frame rate, frame pacing and display processing so players can make sensible setup choices without chasing unofficial patches or fake unlocks.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Thirty frames is a timing target",
+      "paragraphs": [
+        "At 30 FPS, evenly delivered frames arrive about every 33.3 milliseconds. What the eyes and hands experience also depends on whether those frames arrive consistently. A game with a stable cadence can feel more predictable than one that frequently changes frame time, even when an overlay briefly reports a higher figure. Release-day testing is needed to determine how closely GTA VI maintains its target across demanding scenes."
+      ]
+    },
+    {
+      "heading": "Frame rate and refresh rate differ",
+      "paragraphs": [
+        "A 120 Hz television can refresh its panel more often than a 30 FPS game generates new images. A high refresh-rate label on the TV therefore does not prove the title runs at 120 FPS. Display features such as variable refresh rate have compatibility conditions and may not solve every frame-pacing issue. Read the console's supported video-output settings and the TV's current signal information rather than guessing from a marketing sticker."
+      ]
+    },
+    {
+      "heading": "Understand input lag and processing",
+      "paragraphs": [
+        "Controls can feel sluggish when the television adds motion smoothing, noise reduction or heavy image processing. Game Mode usually reduces some of that processing, although its behavior varies by model. Try the manufacturer's low-latency setting and verify whether it changes the image in ways you like. Do not assume every cinematic animation delay is a TV fault; some response characteristics come from the game itself."
+      ]
+    },
+    {
+      "heading": "Avoid fake FPS unlockers",
+      "paragraphs": [
+        "Claims of a secret 60 FPS console patch, modified installer or universal FPS boost should be checked against official platform updates. External software that asks you to sign in or install unsigned packages is not a trusted performance fix. A console's normal graphics settings and legitimate firmware updates are safer. Unless Rockstar announces another supported mode, the 30 FPS target remains the verified launch expectation."
+      ]
+    },
+    {
+      "heading": "Prepare a clean display setup",
+      "paragraphs": [
+        "Update the console, use the television's appropriate input mode and check HDR calibration using the built-in system tools. Avoid simultaneously changing sharpness, contrast, motion interpolation and color settings; doing so makes any improvement hard to diagnose. If motion feels uncomfortable, adjust seating distance and take breaks. A consistent picture and predictable controls matter more than an unrealistic number on an edited video."
+      ]
+    },
+    {
+      "heading": "Evaluate performance after release",
+      "paragraphs": [
+        "Run the game on the hardware you actually own, preferably in several environments instead of one quiet street. Look for noticeable stutter, display mode changes and how quickly controls respond during driving. Compare results only when captures use equivalent settings. The official performance target provides context, not a guarantee that every screenshot or third-party benchmark circulating before launch is authentic."
+      ]
+    }
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "slug": "pubg-metro-seal-city-extraction-route-planning",
+  "title": "PUBG Mobile Seal City Extraction: Risk, Loot and Safe Exit Planning",
+  "summary": "A practical Seal City decision framework for loot collection, PvE threats and extraction timing.",
+  "category": "PUBG Mobile Metro Royale",
+  "published": "2026-11-15",
+  "intro": "Seal City is the new PvE-focused Metro Royale map described in PUBG Mobile's Version 4.7 announcement. The mode combines enemy encounters, searchable containers, story material and extraction. That loop rewards judgment more than reckless looting. This article offers a decision framework for choosing which fights to take and when to leave, without claiming fabricated loot percentages or guaranteed safe extraction spots.",
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Establish the objective before loading in",
+      "paragraphs": [
+        "Decide whether the run is for supplies, Gallery progress, learning enemy behavior or helping a teammate. These objectives can conflict. A collection run may justify searching secondary rooms, while a learning run should favor clear escape routes and manageable encounters. Agree on one primary goal so the squad knows when to stop pursuing optional rewards. Re-evaluate if ammunition, health or team size changes."
+      ]
+    },
+    {
+      "heading": "Distinguish high-loot from high-threat zones",
+      "paragraphs": [
+        "The official announcement says High-Loot Zones can appear at certain bases and offer better supplies. High-Threat Zones can feature stronger enemies and improved rewards. These are dynamic events rather than permanent guarantees at every location. Read the current in-match notification and weigh whether extra reward offsets the risk. A wounded squad carrying expensive loot may be better off leaving an attractive area unvisited."
+      ]
+    },
+    {
+      "heading": "Manage searchable containers",
+      "paragraphs": [
+        "The 4.7 notes describe improvements to search interactions and backpack organization. Shorter wait times do not eliminate exposure while you are inspecting loot. Have one teammate keep watch, choose high-priority items and avoid opening every container when the area is contested. Record which categories of items matter for your goal. A crowded bag can become a problem if you find a rare item near extraction."
+      ]
+    },
+    {
+      "heading": "Prepare for night and enemy behavior",
+      "paragraphs": [
+        "Seal City's day-night cycle affects atmosphere and PvE behavior according to the update. Avoid assuming the same enemy response in every light condition. Keep the team close enough to share information but far enough apart to avoid blocking movement. If a fight becomes chaotic, disengage toward known cover instead of splitting across unfamiliar corridors. Familiarity with one safe path can save more items than memorizing a speculative loot chart."
+      ]
+    },
+    {
+      "heading": "Use consumables strategically",
+      "paragraphs": [
+        "The update announces a Scream Grenade that draws PvE enemies and a Stealth Syringe that helps avoid detection temporarily. Their value depends on timing, nearby threats and the actual live rules. A distraction may be more useful for reaching a safe route than for collecting one more crate. Test consumables in less valuable runs before relying on them with expensive equipment."
+      ]
+    },
+    {
+      "heading": "Know when to extract",
+      "paragraphs": [
+        "Set a personal stop condition before entering: a filled bag, low healing stock, multiple teammate knockdowns or an unfavorable zone event can all justify leaving. Make the exit call early enough for everyone to follow safely. Do not guarantee that a route is empty of enemies simply because it worked last time. Sustainable Metro progression comes from repeatable successful extraction, not from maximizing every single high-risk run."
+      ]
+    }
+  ]
+}

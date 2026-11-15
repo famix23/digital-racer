@@ -1,0 +1,49 @@
+{
+  "slug": "gta-vi-ps5-pro-vs-ps5-visual-features-guide",
+  "title": "GTA VI on PS5 Pro vs PS5: PSSR, Ray-Traced Shadows and Expectations",
+  "summary": "Understand Rockstar's announced console visual differences without inventing a 60 FPS mode.",
+  "category": "GTA VI Guides",
+  "published": "2026-11-15",
+  "intro": "Rockstar's November 2026 pre-load announcement confirms that Grand Theft Auto VI targets 30 frames per second on its current-generation console release. It also specifically highlights improved image clarity through PlayStation Spectral Super Resolution and ray-traced shadows on PlayStation 5 Pro. Those facts are a good starting point for comparing the experience, but they do not establish every resolution, graphics preset or future performance option.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "What Rockstar has actually said",
+      "paragraphs": [
+        "The latest official launch material describes a game built for current-generation consoles, with a 30 FPS target. PlayStation 5 Pro is singled out for improved clarity using PSSR and ray-traced shadows. It would be misleading to turn that statement into a promise of native 4K at 60 FPS or a specific performance mode. Check the final game's menu and official platform notes for any additional settings."
+      ]
+    },
+    {
+      "heading": "PSSR is about image reconstruction",
+      "paragraphs": [
+        "PlayStation Spectral Super Resolution is Sony's image-reconstruction technology for supported PS5 Pro games. Its goal is to produce a cleaner image from the rendering pipeline, but the visible benefit depends on the game and display. Fine foliage, road signs and dense city scenes may reveal differences in sharpness. Avoid treating a promotional screenshot as a controlled side-by-side test because camera, compression and capture settings can influence the comparison."
+      ]
+    },
+    {
+      "heading": "Ray-traced shadows need context",
+      "paragraphs": [
+        "Rockstar highlights ray-traced shadows on PS5 Pro. That means some shadow presentation may differ from other platforms, but the announcement does not provide a full rendering breakdown. Time of day, weather, surface detail and scene complexity can change what you notice. A better comparison uses the same in-game location, camera position and display calibration. A claim that every lighting effect is exclusive is not supported by this announcement."
+      ]
+    },
+    {
+      "heading": "What about Xbox Series X and Series S",
+      "paragraphs": [
+        "GTA VI is listed for both Xbox Series X and Series S, but the official source cited here does not give a complete side-by-side performance table for all consoles. Do not invent resolution or frame-rate figures for individual Xbox models. Verify the final store page and console options on the device you own. Marketing phrases like optimized for next generation should not replace exact supported feature details."
+      ]
+    },
+    {
+      "heading": "Set up a fair comparison",
+      "paragraphs": [
+        "Use a display with the same picture mode, HDR calibration and motion-processing configuration when comparing consoles. Turn off any television interpolation that changes motion appearance without changing the game's actual FPS. Check whether the capture is being shown at its original resolution. If possible, compare direct gameplay rather than compressed clips. Differences that matter during normal play may be different from ones noticed only in paused screenshots."
+      ]
+    },
+    {
+      "heading": "Decide based on your whole library",
+      "paragraphs": [
+        "A PS5 Pro can offer visual advantages in compatible games, but GTA VI alone does not establish that everyone needs new hardware. Consider cost, existing console ownership, display size and other games you play. If your current system supports the title and you prefer its platform features, that may be enough. Choose based on confirmed capabilities, not rumors of an unannounced PC port or secret graphics mode."
+      ]
+    }
+  ]
+}
