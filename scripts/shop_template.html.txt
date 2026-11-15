@@ -17,7 +17,7 @@ header{background:var(--panel);border-bottom:1px solid var(--line);padding:17px 
 header a{color:var(--text);text-decoration:none}header strong{letter-spacing:1.5px;font-size:1.05rem}header nav{display:flex;gap:15px;flex-wrap:wrap;font-size:.88rem}
 main{max-width:1120px;margin:auto;padding:32px max(24px,5vw) 65px}
 .crumb{color:var(--muted);font-size:.84rem}.eyebrow{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);margin-top:24px}
-h1{font-size:clamp(2rem,4vw,3rem);line-height:1.17;max-width:840px;margin:10px 0 18px}h2{font-size:1.35rem;line-height:1.25;color:var(--gold);margin:30px 0 12px}
+h1{font-size:clamp(1.7rem,2.9vw,2.35rem);line-height:1.17;max-width:840px;margin:10px 0 18px}h2{font-size:1.35rem;line-height:1.25;color:var(--gold);margin:30px 0 12px}
 p{color:var(--muted);margin:0 0 14px}.lede{font-size:1.12rem;color:var(--text);max-width:920px}
 .cta{display:inline-block;background:var(--gold);color:#111;text-decoration:none;padding:11px 19px;border-radius:5px;font-weight:750;margin:12px 0}
 .detail{max-width:920px}.listing-head{margin-top:44px;border-top:1px solid var(--line);padding-top:12px}.count{color:var(--muted);font-size:.9rem}
@@ -31,20 +31,27 @@ p{color:var(--muted);margin:0 0 14px}.lede{font-size:1.12rem;color:var(--text);m
 .directory-list a{display:block;line-height:1.45;font-size:.88rem;overflow-wrap:anywhere}
 .directory-list small{font-size:.8rem;color:var(--muted)}
 .directory{padding:20px;border:1px solid var(--line);border-radius:7px;background:var(--panel);margin-top:34px}.directory a{display:inline-block;margin:5px 14px 5px 0;font-size:.92rem}
+.dr-buying-advice{margin:30px 0 18px;border:1px solid var(--line);border-radius:9px;padding:14px 20px;background:#12110e;}
+.dr-buying-advice summary{color:#e7c661;font-size:1rem;font-weight:750;cursor:pointer;list-style:revert;padding:6px 0;}
+.dr-buying-advice[open] summary{margin-bottom:18px;border-bottom:1px solid var(--line);padding-bottom:12px;}
+.dr-buying-advice summary:focus-visible{outline:3px solid #f3d273;outline-offset:3px;}
+.listing-head{margin-top:24px;}
+.cards .product-card{min-height:128px;transition:border-color .18s,transform .18s;}
+.cards .product-card:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(0,0,0,.3)}
 footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:.85rem}
 </style></head><body>
 <header><a href="/"><strong>Digital Racer</strong></a><nav aria-label="Main navigation"><a href="/catalog">Catalog</a><a href="/guides/">Guides</a><a href="/blog/">Blog</a><a href="/contact/">Contact</a></nav></header>
 <main id="content">
 <p class="crumb"><a href="/">Home</a> / <a href="/catalog">Catalog</a> / %%CATEGORY%%</p>
-<p class="eyebrow">Digital Racer • Category overview</p><h1>%%HEADING%%</h1>
+<p class="eyebrow">Digital Racer • Category storefront</p><h1>%%HEADING%%</h1>
 <p class="lede">%%INTRO%%</p>
 <a class="cta" href="/catalog?category=%%QUERY%%">Browse all %%CATEGORY%% listings</a>
-<div class="detail">%%SECTIONS%%</div>
-<section class="listing-head"><h2>Browse product listings</h2><p class="count">%%COUNT%% listings in this category. Showing up to 12 examples; visit the full catalog for every entry. Verify current availability and regional eligibility before ordering.</p>
+<section class="listing-head"><h2>Explore available products</h2><p class="count">%%COUNT%% listings in this category. Showing up to 12 examples; visit the full catalog for every entry. Verify current availability and regional eligibility before ordering.</p>
 <div class="cards">%%CARDS%%</div>
 %%DIRECTORY%%
 <a href="/catalog?category=%%QUERY%%">See all %%CATEGORY%% entries in the full catalog</a></section>
-<nav class="directory" aria-label="Other product categories"><h2>Explore other categories</h2>%%HUBLINKS%%</nav>
+<details class="detail dr-buying-advice"><summary>Buying guide and item details</summary>%%SECTIONS%%</details>
+<nav class="directory" aria-label="Other product categories"><h2>Shop other categories</h2>%%HUBLINKS%%</nav>
 <p style="margin-top:25px">These are independent product and educational listings, not official publisher endorsements. Read <a href="/guides/pubg-mobile-account-safety/">account restrictions</a>, <a href="/guides/pubg-mobile-uc-top-up-safety/">UC safety</a> and our <a href="/contact/">international enquiry information</a>.</p>
 </main><footer>© 2026 Digital Racer · Independent gaming marketplace information</footer>
 </body></html>

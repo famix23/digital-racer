@@ -190,6 +190,7 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
 .skip-link { position: fixed; left: 16px; top: -80px; padding: 12px; background: #f3d66e; color: #000; z-index: 10002; }
 .skip-link:focus { top: 12px; }
 </style>
+<link rel="stylesheet" href="/assets/category-nav.css">
 <script src="/assets/image-map.js"></script>
 <script src="/assets/storefront.js"></script>
 </head>
@@ -220,7 +221,19 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
     <a href="/catalog?category=Rank%20Boosting" class="hero-btn secondary">Rank Boosting</a>
   </div>
 </header>
-<nav aria-label="PUBG Mobile category guides" style="max-width:1240px;margin:12px auto 0;padding:10px 5vw;color:#d0d0d0;font-size:.84rem;line-height:2">Browse categories: <a href="/shop/pubg-mobile-accounts/">Accounts</a> · <a href="/shop/pubg-mobile-car-cards/">Car Cards</a> · <a href="/shop/pubg-mobile-uc-top-ups/">UC Top-Ups</a> · <a href="/shop/pubg-mobile-in-game-items/">In-Game Items</a> · <a href="/shop/pubg-mobile-rank-boosting/">Rank Boosting</a> · <a href="/shop/pubg-mobile-popularity/">Popularity</a></nav>
+<section class="dr-shop-categories" aria-labelledby="dr-shop-title">
+  <div class="dr-shop-inner">
+    <div class="dr-shop-heading"><h2 id="dr-shop-title">Shop by category</h2><p>Go straight to the products, photos and prices</p></div>
+    <nav class="dr-shop-grid" aria-label="Shop product categories">
+      <a class="dr-shop-tile" href="/catalog?category=Account"><span class="dr-shop-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="7" r="3.2"/><path d="M5.3 20a6.7 6.7 0 0 1 13.4 0"/></svg></span><span class="dr-shop-label">Accounts</span><span class="dr-shop-arrow" aria-hidden="true">›</span></a>
+      <a class="dr-shop-tile" href="/catalog?category=Car%20Card"><span class="dr-shop-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17H4V11l2.3-5h11.4L20 11v6h-1"/><path d="M5 17h14M4 11h16M7 14h.01M17 14h.01M6 17v2m12-2v2"/></svg></span><span class="dr-shop-label">Car Cards</span><span class="dr-shop-arrow" aria-hidden="true">›</span></a>
+      <a class="dr-shop-tile" href="/catalog?category=UC%20Top-Up"><span class="dr-shop-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9H9v6h6M9 12h5"/></svg></span><span class="dr-shop-label">UC Top-Ups</span><span class="dr-shop-arrow" aria-hidden="true">›</span></a>
+      <a class="dr-shop-tile" href="/catalog?category=In-Game%20Items"><span class="dr-shop-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="11" rx="4"/><path d="M7 12h4m-2-2v4M15.5 11h.01M17.5 14h.01"/></svg></span><span class="dr-shop-label">In-Game Items</span><span class="dr-shop-arrow" aria-hidden="true">›</span></a>
+      <a class="dr-shop-tile" href="/catalog?category=Rank%20Boosting"><span class="dr-shop-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 4h10v6a5 5 0 0 1-10 0V4ZM7 6H4v2c0 3 2 4 4 4m9-6h3v2c0 3-2 4-4 4M12 15v5m-4 0h8"/></svg></span><span class="dr-shop-label">Rank Boosting</span><span class="dr-shop-arrow" aria-hidden="true">›</span></a>
+      <a class="dr-shop-tile" href="/catalog?category=Popularity"><span class="dr-shop-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s-8.5-5.1-8.5-11.1A4.8 4.8 0 0 1 12 6.6a4.8 4.8 0 0 1 8.5 3.3C20.5 15.9 12 21 12 21Z"/></svg></span><span class="dr-shop-label">Popularity</span><span class="dr-shop-arrow" aria-hidden="true">›</span></a>
+    </nav>
+  </div>
+</section>
 
 <div class="container" id="main-content" role="main" tabindex="-1">
   <section>

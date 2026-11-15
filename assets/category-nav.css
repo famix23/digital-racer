@@ -1,0 +1,21 @@
+/* DigitalRacer premium shopping-category links: real catalog filters, not editorial hubs. */
+.dr-shop-categories{background:linear-gradient(180deg,#11100d 0%,#090909 92%);border-top:1px solid #302a1d;border-bottom:1px solid #373022;padding:18px max(18px,4vw) 23px;color:#f5f4f0;}
+.dr-shop-inner{max-width:1280px;margin-inline:auto}
+.dr-shop-heading{display:flex;align-items:baseline;justify-content:space-between;gap:14px;flex-wrap:wrap;margin-bottom:13px;}
+.dr-shop-heading h2{color:#e3bb45;font:800 .9rem/1.3 'Montserrat',system-ui,sans-serif;letter-spacing:.085em;text-transform:uppercase;margin:0;}
+.dr-shop-heading p{color:#bcb6a8;font:400 .83rem/1.5 'Open Sans',system-ui,sans-serif;margin:0;}
+nav.dr-shop-grid{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;position:static;top:auto;z-index:auto;width:100%;margin:0;padding:0;border:0;background:none;backdrop-filter:none;box-shadow:none;align-items:stretch;}
+a.dr-shop-tile,a.dr-shop-tile:visited{display:flex;align-items:center;justify-content:flex-start;gap:9px;min-height:58px;min-width:0;padding:10px 12px;background:linear-gradient(145deg,#24231f 0%,#151515 86%);border:1px solid #494235;border-radius:9px;color:#f5f3ed;text-decoration:none;box-shadow:inset 0 1px rgba(255,255,255,.045),0 5px 16px rgba(0,0,0,.17);transition:background .18s ease,border-color .18s ease,transform .18s ease,box-shadow .18s ease;font:700 .79rem/1.25 'Montserrat',system-ui,sans-serif;letter-spacing:.01em;}
+a.dr-shop-tile:hover{background:linear-gradient(145deg,#393122,#1d1b18);border-color:#d4af37;color:#fff;transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.28)}
+a.dr-shop-tile:focus-visible{outline:3px solid #f4d66c;outline-offset:3px;border-color:#d4af37;}
+.dr-shop-icon{display:flex;align-items:center;justify-content:center;flex:none;width:31px;height:31px;background:rgba(212,175,55,.11);border:1px solid rgba(212,175,55,.22);color:#e9c55a;border-radius:8px;}
+.dr-shop-icon svg{width:19px;height:19px;flex:none;}
+.dr-shop-label{min-width:0;flex:1;overflow-wrap:break-word;}
+.dr-shop-arrow{color:#d4af37;font-size:1.25rem;line-height:1;font-weight:400;flex:none;}
+.catalog-container .filter-group .filter-btn{border-radius:8px;border-color:#4a4335;background:#1b1a18;color:#f1ede4;min-height:43px;padding:9px 15px;letter-spacing:.035em;}
+.catalog-container .filter-group .filter-btn:hover{border-color:#e4bf4f;color:#f8dc87;background:#29251c;}
+.catalog-container .filter-group .filter-btn.active{background:#d4af37;border-color:#d4af37;color:#11100c;box-shadow:0 2px 12px rgba(212,175,55,.21);}
+.catalog-container .filter-group .filter-btn:focus-visible{outline:3px solid #f4d66c;outline-offset:3px;}
+@media(max-width:1080px){nav.dr-shop-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:600px){.dr-shop-categories{padding:15px 4vw 18px;}.dr-shop-heading p{font-size:.74rem;}nav.dr-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}a.dr-shop-tile{min-height:54px;padding:9px 10px;gap:7px;font-size:.75rem;}.dr-shop-icon{width:28px;height:28px;}.dr-shop-icon svg{width:17px;height:17px;}}
+@media(prefers-reduced-motion:reduce){a.dr-shop-tile{transition:none;}a.dr-shop-tile:hover{transform:none;}}
