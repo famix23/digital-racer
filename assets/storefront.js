@@ -19,3 +19,17 @@ function displayImage(path, size = 480) {
   const safe = safeImagePath(path);
   return (window.DR_IMAGES?.[safe]?.[String(size)]) || safe;
 }
+
+/* Progressive product-page mobile styling. Existing generated /p/ pages stay crawlable
+   without JavaScript; this loads optional presentation refinements before body parsing. */
+if (typeof document !== 'undefined' && typeof window !== 'undefined' && window.location) {
+  const route = window.location.pathname;
+  if (/^\/p\/[^/]+\/?$/.test(route) || route === '/product' || route === '/product.html') {
+    if (!document.querySelector('link[href="/assets/mobile-shopping.css"]')) {
+      const style = document.createElement('link');
+      style.rel = 'stylesheet';
+      style.href = '/assets/mobile-shopping.css';
+      document.head.appendChild(style);
+    }
+  }
+}
