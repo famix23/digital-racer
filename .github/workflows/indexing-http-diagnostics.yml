@@ -7,17 +7,31 @@ on:
       - 'scripts/audit_product_seo.py'
       - '.github/workflows/indexing-http-diagnostics.yml'
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'sitemap.xml'
+      - 'inventory.json'
+      - 'p/index.json'
+      - 'shop/**'
+      - 'scripts/audit_live_sitemap.py'
+      - '.github/workflows/indexing-http-diagnostics.yml'
+  schedule:
+    - cron: '19 5 * * 1'
 permissions:
   contents: read
 jobs:
   inspect:
     runs-on: ubuntu-latest
-    timeout-minutes: 12
+    timeout-minutes: 25
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - name: Allow production CDN deployment to complete
+        if: github.event_name == 'push'
+        run: sleep 45
       - name: Validate all listing SEO signals, images and purchase links
         run: python3 scripts/audit_product_seo.py
       - name: Check external HTTP fetch from GitHub runner
