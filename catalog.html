@@ -4032,6 +4032,7 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
 .skip-link { position: fixed; left: 16px; top: -80px; padding: 12px; background: #f3d66e; color: #000; z-index: 10002; }
 .skip-link:focus { top: 12px; }
 </style>
+<link rel="stylesheet" href="/assets/category-nav.css">
 <script src="/assets/image-map.js"></script>
 <script src="/assets/storefront.js"></script>
 </head>
@@ -4057,7 +4058,7 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
     <p style="margin:10px 0 0">International visitor? Catalog prices are shown in USD. Ask us to confirm server or country eligibility, actual availability, full payment amount and delivery conditions before placing an order. See the <a href="/contact/" style="color:#dfbd51">international enquiry checklist</a>.</p>
   </aside>
   <div class="catalog-top-bar">
-    <h1 class="page-title">Full <span>Catalog</span></h1>
+    <h1 class="page-title" id="catalog-page-title"><span id="catalog-heading-prefix">Full</span> <span id="catalog-heading-focus">Catalog</span></h1>
     <div class="controls-wrapper">
       <div class="filter-group">
         <button class="filter-btn active" data-filter="all">All</button>
@@ -4076,7 +4077,6 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
       </select>
     </div>
   </div>
-  <nav aria-label="Browse dedicated PUBG Mobile categories" style="margin:12px 0 22px;line-height:2;color:#d0d0d0;font-size:.88rem">Category guides: <a href="/shop/pubg-mobile-accounts/">Accounts</a> · <a href="/shop/pubg-mobile-car-cards/">Car Cards</a> · <a href="/shop/pubg-mobile-uc-top-ups/">UC Top-Ups</a> · <a href="/shop/pubg-mobile-in-game-items/">In-Game Items</a> · <a href="/shop/pubg-mobile-rank-boosting/">Rank Boosting</a> · <a href="/shop/pubg-mobile-popularity/">Popularity</a></nav>
   <p id="catalog-count" role="status" aria-live="polite" style="color:var(--muted);margin-bottom:16px">645 products</p>
 <div class="grid" id="full-catalog">
     <!-- SEO:GRID:catalog:BEGIN -->
@@ -4778,6 +4778,15 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
   }
 
   function processAndRender() {
+    const categoryTitles = {
+      all: ['Full','Catalog'], Account: ['PUBG Mobile','Accounts'],
+      'Car Card': ['Car Skin','Cards'], 'UC Top-Up': ['UC','Top-Ups'],
+      'In-Game Items': ['In-Game','Items'], 'Rank Boosting': ['Rank','Boosting'],
+      Popularity: ['PUBG Mobile','Popularity']
+    };
+    const parts = categoryTitles[currentCategory] || categoryTitles.all;
+    document.getElementById('catalog-heading-prefix').textContent = parts[0];
+    document.getElementById('catalog-heading-focus').textContent = parts[1];
     document.querySelectorAll('.filter-btn').forEach(button => button.setAttribute('aria-pressed', String(button.getAttribute('data-filter') === currentCategory)));
     let result = currentCategory === 'all' ? [...allProducts] : allProducts.filter(p => p.category === currentCategory);
     if (searchQuery) result = result.filter(p => p.title.toLowerCase().includes(searchQuery) || (p.description && p.description.toLowerCase().includes(searchQuery)));
@@ -4804,7 +4813,14 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
   document.querySelectorAll('.filter-btn').forEach(btn => {
     btn.addEventListener('click', (e) => {
       document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active'); currentCategory = btn.getAttribute('data-filter'); processAndRender();
+      btn.classList.add('active');
+      currentCategory = btn.getAttribute('data-filter');
+      // Keep shareable URLs synchronized with the selected product filter.
+      const nextUrl = new URL(window.location.href);
+      if (currentCategory === 'all') nextUrl.searchParams.delete('category');
+      else nextUrl.searchParams.set('category', currentCategory);
+      window.history.replaceState(null, '', nextUrl.pathname + nextUrl.search);
+      processAndRender();
     });
   });
   document.getElementById('sort-select').addEventListener('change', (e) => { currentSort = e.target.value; processAndRender(); });
