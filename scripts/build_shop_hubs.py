@@ -38,7 +38,10 @@ def build_shop_hubs(root, products, write):
             ' listings</summary><ul class="directory-list">' +
             "".join(
                 '<li><a class="directory-product" href="' + esc(p["url"]) + '">' +
-                esc(p["title"]) + '</a><small>
+                esc(p["title"]) + '</a><small>' + chr(36) + esc(p["price"]) +
+                ' USD</small></li>' for p in remaining
+            ) + '</ul></details>'
+        ) if remaining else ""
         canonical = SITE + "/shop/" + slug + "/"
         schema = {
             "@context": "https://schema.org", "@type": "CollectionPage",
