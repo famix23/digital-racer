@@ -38,6 +38,37 @@ p{color:var(--muted);margin:0 0 14px}.lede{font-size:1.12rem;color:var(--text);m
 .listing-head{margin-top:24px;}
 .cards .product-card{min-height:128px;transition:border-color .18s,transform .18s;}
 .cards .product-card:hover{transform:translateY(-2px);box-shadow:0 9px 22px rgba(0,0,0,.3)}
+/* Mobile category storefront: product listings stay ahead of optional guides. */
+@media(max-width:750px){
+  body{font-size:15px;line-height:1.6;}
+  header{padding:12px 4vw;gap:8px;position:static;}
+  header strong{font-size:.95rem;letter-spacing:.6px;}
+  header nav{display:flex;flex-wrap:wrap;gap:8px 13px;font-size:.78rem;}
+  header nav a{min-height:40px;display:inline-flex;align-items:center;}
+  main{padding:15px 4vw 40px;}
+  .crumb{font-size:.78rem;}
+  .eyebrow{margin-top:14px;font-size:.7rem;}
+  h1{font-size:clamp(1.35rem,5vw,2.05rem);line-height:1.25;margin:8px 0 12px;}
+  h2{font-size:1.13rem;margin:19px 0 10px;}
+  p{margin-bottom:10px;}
+  .lede{font-size:.9rem;line-height:1.55;}
+  a.cta{display:flex;align-items:center;justify-content:center;min-height:48px;width:100%;padding:10px 15px;text-align:center;margin:12px 0;}
+  .listing-head{margin-top:15px;}
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin:12px 0;}
+  .product-card{min-width:0;padding:12px;gap:10px;min-height:122px;border-radius:9px;}
+  .product-card strong{font-size:.8rem;line-height:1.4;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden;}
+  .product-card span{font-size:.92rem;}
+  .listing-directory{padding:10px 12px;margin:14px 0;}
+  .listing-directory summary{font-size:.88rem;min-height:43px;display:flex;align-items:center;}
+  .directory-list{grid-template-columns:1fr;gap:3px;max-height:48vh;overflow-y:auto;overscroll-behavior:contain;}
+  .directory-list li{padding:9px 2px;min-width:0;}
+  .dr-buying-advice{padding:10px 12px;margin-top:22px;}
+  .dr-buying-advice summary{font-size:.9rem;min-height:44px;display:flex;align-items:center;}
+  .directory{margin-top:22px;padding:15px;}
+  .directory a{min-height:40px;display:inline-flex;align-items:center;margin:2px 12px 2px 0;}
+  footer{padding:20px 4vw;font-size:.77rem;}
+}
+@media(max-width:350px){.cards{grid-template-columns:1fr;}.product-card{min-height:96px;}}
 footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:.85rem}
 </style></head><body>
 <header><a href="/"><strong>Digital Racer</strong></a><nav aria-label="Main navigation"><a href="/catalog">Catalog</a><a href="/guides/">Guides</a><a href="/blog/">Blog</a><a href="/contact/">Contact</a></nav></header>
