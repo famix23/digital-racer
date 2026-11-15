@@ -592,6 +592,7 @@ if os.path.isdir(path(OUT_DIR)):
 x = ['<?xml version="1.0" encoding="UTF-8"?>',
      '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">']
 x += [f"  <url><loc>{SITE_URL}/</loc></url>", f"  <url><loc>{SITE_URL}/catalog</loc></url>"]
+x += [f"  <url><loc>{SITE_URL}/{slug}/</loc></url>" for slug in ("pubg-mobile-accounts", "pubg-mobile-items", "pubg-mobile-car-skins", "pubg-mobile-popularity", "pubg-mobile-uc")]
 x += [f"  <url><loc>{SITE_URL}/{page}/</loc></url>" for page in ("about", "contact", "terms", "privacy",
                                                      "guides", "guides/pubg-mobile-account-safety",
                                                      "guides/pubg-mobile-uc-top-up-safety",
