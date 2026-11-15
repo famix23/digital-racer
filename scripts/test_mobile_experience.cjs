@@ -29,7 +29,8 @@ assert.ok(catalog.includes("grid.insertAdjacentHTML('beforeend'"), 'Next batch m
 assert.ok(catalog.includes('filteredProducts = result;') && catalog.includes('renderedCount = 0;'), 'Filters must reset pagination.');
 assert.ok(catalog.includes('loadWrap.hidden = renderedCount >= total;'), 'Show more must disappear when all products are shown.');
 assert.ok(catalog.includes('keeping pre-rendered product cards'), 'Failed requests must not wipe crawlable catalog cards.');
-const htmlCards = [...catalog.matchAll(/class="product-card item-card" data-category="([^"]+)"/g)];
+const staticGrid = catalog.split('<!-- SEO:GRID:catalog:BEGIN -->')[1].split('<!-- SEO:GRID:catalog:END -->')[0];
+const htmlCards = [...staticGrid.matchAll(/class="product-card item-card" data-category="([^"]+)"/g)];
 assert.equal(htmlCards.length, inventory.length, 'Retain all server-rendered product links for Google and non-JS users.');
 assert.ok(helper.includes("window.location.pathname") && helper.includes('/assets/mobile-shopping.css'), 'Generated product pages must receive progressive mobile styling.');
 assert.ok(template.includes('@media(max-width:750px)') && template.includes('listing-directory'), 'Responsive category landing page missing.');
