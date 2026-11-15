@@ -63,7 +63,7 @@ def build_shop_hubs(root, products, write):
             esc(p["price"]) + ' USD</span></a>' for p in chosen
         )
         links = " ".join(
-            '<a href="/shop/' + esc(other["slug"]) + '/">' +
+            '<a href="/catalog?category=' + esc(quote(other["category"], safe="")) + '">' +
             esc(other["category"]) + '</a>' for other in hubs if other["slug"] != slug
         )
         tokens = {
