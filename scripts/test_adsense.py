@@ -47,6 +47,8 @@ if "--live" in sys.argv:
     manifest = json.loads((ROOT / "p/index.json").read_text())
     urls = ["/", "/catalog", "/product", "/about/", "/contact/", "/terms/", "/privacy/"]
     urls += [p["url"] for p in manifest]
+    hubs = json.loads((ROOT / "content/shop-hubs.json").read_text(encoding="utf-8"))
+    urls += ["/shop/" + hub["slug"] + "/" for hub in hubs]
     for url in urls:
         with urlopen(public_request(host + url), timeout=30) as response:
             assert response.status == 200, url
