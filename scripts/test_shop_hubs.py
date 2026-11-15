@@ -37,6 +37,13 @@ def main():
         schema = json.loads(scripts[0])
         assert schema["@type"] == "CollectionPage" and schema["url"] == canonical
         expected = [manifest[i]["url"] for i, item in enumerate(items) if item["category"] == hub["category"]][-12:][::-1]
+        # All current category products have direct HTML links from the hub.
+        all_category = [manifest[i] for i, item in enumerate(items) if item["category"] == hub["category"]]
+        featured_set = set(expected)
+        remaining = [x for x in all_category if x["url"] not in featured_set]
+        directory_urls = re.findall(r'<a class="directory-product" href="([^"]+)"', page)
+        assert directory_urls == [x["url"] for x in remaining], (slug, "full directory out of date")
+        assert len(set(expected + directory_urls)) == len(all_category), (slug, "directory missing product")
         actual = re.findall(r'<a class="product-card" href="([^"]+)"', page)
         assert expected == actual, (slug, "stale product list", expected, actual)
         schema_urls = [x["url"] for x in schema["mainEntity"]["itemListElement"]]

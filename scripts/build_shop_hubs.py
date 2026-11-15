@@ -30,6 +30,18 @@ def build_shop_hubs(root, products, write):
         matches = [p for p in products if p["category"] == hub["category"]]
         chosen = list(reversed(matches))[:12]
         assert matches, f"Shop category is empty: {slug}"
+        featured_urls = {p["url"] for p in chosen}
+        remaining = [p for p in matches if p["url"] not in featured_urls]
+        directory = (
+            '<details class="listing-directory"><summary>Browse the remaining ' +
+            str(len(remaining)) + ' ' + esc(hub["category"]) +
+            ' listings</summary><ul class="directory-list">' +
+            "".join(
+                '<li><a class="directory-product" href="' + esc(p["url"]) + '">' +
+                esc(p["title"]) + '</a><small>' + chr(36) + esc(p["price"]) +
+                ' USD</small></li>' for p in remaining
+            ) + '</ul></details>'
+        ) if remaining else ""
         canonical = SITE + "/shop/" + slug + "/"
         schema = {
             "@context": "https://schema.org", "@type": "CollectionPage",
@@ -60,7 +72,7 @@ def build_shop_hubs(root, products, write):
             "CANONICAL": esc(canonical), "SCHEMA": json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"),
             "CATEGORY": esc(hub["category"]), "HEADING": esc(hub["title"]),
             "INTRO": esc(hub["intro"]), "SECTIONS": sections, "CARDS": cards,
-            "COUNT": str(len(matches)), "HUBLINKS": links,
+            "COUNT": str(len(matches)), "DIRECTORY": directory, "HUBLINKS": links,
             "QUERY": esc(quote(hub["category"], safe=""))
         }
         page = template
