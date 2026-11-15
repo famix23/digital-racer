@@ -1,0 +1,50 @@
+{
+  "slug": "pubg-47-vargr-ai-ally-commands-guide",
+  "title": "PUBG Mobile 4.7 Vargr AI Ally: Scout, Loot, Heal and Rescue",
+  "summary": "Learn how to coordinate Vargr's supported commands in Arctic Chronicles without relying on unsafe automation.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-15",
+  "intro": "Vargr is a summonable AI ally introduced with PUBG Mobile 4.7's Arctic Chronicles mode. The official update describes an Oath Seal used to summon it and preset or voice commands that guide its behavior. This practical guide focuses on team coordination, realistic limitations and decisions to make before trusting an ally during a fight.",
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Summoning and control",
+      "paragraphs": [
+        "The announcement identifies the Oath Seal as the item associated with Vargr. Locate the item through normal match play, read the prompt before using it and confirm that the selected mode supports the ally. Do not assume it follows you in ordinary Classic matches or that it survives every engagement. A summon is a tactical resource, not a permanent account companion, so confirm the available commands whenever the version or themed event changes."
+      ]
+    },
+    {
+      "heading": "Scouting before a rotation",
+      "paragraphs": [
+        "Scout makes Vargr sense nearby opponents and warn by barking toward their direction. A warning is information, not a wallhack or a precise enemy marker. When the ally reacts, move into cover, listen for footsteps and check visible sight lines before pushing. Have one teammate scan the likely flank while another watches your rear; a barking cue should improve awareness rather than replace ordinary game sense."
+      ]
+    },
+    {
+      "heading": "Using loot and delivery",
+      "paragraphs": [
+        "Loot allows Vargr to search ground supplies, elimination crates and air drops. Deliver can bring supplies to its owner or a teammate. This can reduce exposure when a useful crate is outside safe cover, but enemy teams may still watch the area. Agree on which player needs ammunition or healing first and keep inventory room available. Avoid assuming the ally can retrieve every item through walls or in restricted areas."
+      ]
+    },
+    {
+      "heading": "Guard, bite and healing",
+      "paragraphs": [
+        "Guard keeps the ally near a teammate, while Bite can inflict a small amount of damage on nearby opponents. Neither should be treated as a substitute for active aiming and coordinated fire. The Heal command can provide recovery, which is useful between fights. However, you should still carry consumables and retreat from unsafe positions. Try these controls in lower-pressure matches to understand how the summon actually responds."
+      ]
+    },
+    {
+      "heading": "Rescue limits matter",
+      "paragraphs": [
+        "The official description says Rescue can assist knocked teammates a limited number of times. A squad that counts on endless automated revives may lose a match to one badly positioned push. Communicate when a revive has been spent, protect the downed teammate with cover and be prepared to revive manually. If enemy pressure is high, prioritize surviving players and a safe approach instead of issuing repeated commands in the open."
+      ]
+    },
+    {
+      "heading": "Build a simple squad protocol",
+      "paragraphs": [
+        "Before pushing a hotspot, assign one caller to decide when Vargr scouts and another player to monitor the zone. After a fight, choose between loot delivery and healing based on immediate shortages. Save rescue opportunities for moments when teammates can protect the downed player. Check the mode rules and update notes as the event evolves. Unofficial programs promising stronger AI behavior or invisible scouting should be avoided."
+      ]
+    }
+  ]
+}
