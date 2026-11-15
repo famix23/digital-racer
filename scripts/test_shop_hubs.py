@@ -31,7 +31,11 @@ def main():
         assert 'name="description"' in page and hub["description"] in page, (slug, "summary")
         assert page.count("<h1>") == 1, (slug, "one h1")
         assert page.count("adsbygoogle.js") == 1, (slug, "one ad client")
-        assert 'href="' + target + '"' in home and 'href="' + target + '"' in catalog, (slug, "navigation")
+        # Visible shopping categories must open actual filtered product listings.
+        from urllib.parse import quote
+        real_category = "/catalog?category=" + quote(hub["category"], safe="")
+        assert 'href="' + real_category + '"' in home, (slug, "category link should open catalog")
+        assert 'data-filter="' + hub["category"] + '"' in catalog, (slug, "catalog filter missing")
         scripts = re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, flags=re.S)
         assert len(scripts) == 1, (slug, "schema")
         schema = json.loads(scripts[0])
