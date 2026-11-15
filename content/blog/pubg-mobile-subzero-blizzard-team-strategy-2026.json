@@ -1,0 +1,50 @@
+{
+  "slug": "pubg-mobile-subzero-blizzard-team-strategy-2026",
+  "title": "PUBG Mobile Erangel Subzero: Blizzard Squad Survival Strategy",
+  "summary": "Prepare squad roles, routes and cold-weather decision making for the December Erangel Subzero event.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-15",
+  "intro": "Erangel Subzero is scheduled to begin on December 3, 2026, as a separate part of the PUBG Mobile 4.7 winter update. The announced mode adds blizzard conditions, satellite crash sites and altered environments. This guide is a preparation plan, not a claim that the mode is already live on November 15. Use it to identify the decisions your squad should test when the actual playlist becomes available.",
+  "topics": [
+    "events",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Distinguish Subzero from Arctic Chronicles",
+      "paragraphs": [
+        "Although both belong to Version 4.7, Arctic Chronicles and Erangel Subzero have different scheduled launch dates and gameplay. Do not assume mechanics shown in one are present in the other. The publisher's notes identify changing winter weather and special exploration features for Subzero. Keep your current standard Erangel settings unchanged unless the live mode presents a reason to adapt them."
+      ]
+    },
+    {
+      "heading": "Plan around reduced visibility",
+      "paragraphs": [
+        "Blizzards can make distant visual detection less reliable, so prioritize terrain, buildings and team communication. Mark a fallback position before crossing open ground and avoid spreading teammates across several sight lines. If you cannot see the next compound clearly, rotate using known hard cover instead of blindly sprinting toward a marker. Check sound cues, but remember that environmental noise and audio behavior may differ from ordinary matches."
+      ]
+    },
+    {
+      "heading": "Handle satellite crash sites carefully",
+      "paragraphs": [
+        "The update describes satellite crash sites with potentially rare supplies. Higher-value loot can draw multiple squads, and the precise risk will depend on the active route and lobby. Approach from an angle with an exit route rather than landing all four players on one objective. Have one player watch the surrounding high ground while another handles any interaction. Leave if the zone or enemy position makes the reward too costly."
+      ]
+    },
+    {
+      "heading": "Use winter equipment with purpose",
+      "paragraphs": [
+        "The pre-release material discusses cold-weather items and specialized equipment. Wait for the live item descriptions before asserting exact duration or immunity. A survival tool is useful only when a situation calls for it; carrying too many experimental objects can crowd ammunition and heals. Test one item at a time and record what it actually does in public matches rather than extrapolating from a beta video."
+      ]
+    },
+    {
+      "heading": "Assign communication roles",
+      "paragraphs": [
+        "Choose a route caller, a close-range support player and teammates watching either flank during difficult weather. When visibility drops, agree on simple callouts such as nearest cover, retreat direction and next safe structure. Avoid simultaneous conflicting instructions. If a player is knocked in exposed terrain, create a safe recovery plan rather than assuming a winter-themed ability can rescue everyone instantly."
+      ]
+    },
+    {
+      "heading": "Test, review and update in December",
+      "paragraphs": [
+        "On release day, verify the mode's map, weather schedule, available vehicles and item rules in-game. Run several low-pressure matches before committing to rank-sensitive strategies. After each one, review whether the squad lost time at an objective or crossed exposed terrain. A strategy that works in one weather state may fail in another; treat adaptation as the main skill rather than promising one permanent best route."
+      ]
+    }
+  ]
+}

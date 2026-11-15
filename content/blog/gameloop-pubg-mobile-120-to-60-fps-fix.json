@@ -1,0 +1,50 @@
+{
+  "slug": "gameloop-pubg-mobile-120-to-60-fps-fix",
+  "title": "GameLoop PUBG Mobile Drops From 120 to 60 FPS: Diagnosis Guide",
+  "summary": "Find whether GameLoop's 120-to-60 FPS swings come from caps, throttling, game settings or frame pacing.",
+  "category": "PUBG Mobile GameLoop Guides",
+  "published": "2026-11-15",
+  "intro": "A PUBG Mobile session on GameLoop can feel inconsistent even when a frame counter briefly displays 120 FPS. A repeating fall to 60 FPS calls for a controlled diagnosis before changing Windows registry keys or installing unofficial optimization panels. This guide separates game caps, rendering load, heat and background interference, with low-risk checks that can be reversed.",
+  "topics": [
+    "emulator",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Start by recording the pattern",
+      "paragraphs": [
+        "Note whether the drop occurs immediately, after several minutes, on specific maps or during combat. Watch frame time as well as the displayed FPS number. A flat 60 FPS plateau is different from fluctuating 55 to 75 FPS under heavy rendering load. Record the exact in-game frame-rate option, display refresh rate and renderer used for each test so that the next result can be compared meaningfully."
+      ]
+    },
+    {
+      "heading": "Check caps before hardware upgrades",
+      "paragraphs": [
+        "Review the game's supported frame-rate setting, GameLoop's performance controls, NVIDIA per-program settings and Windows display refresh rate. V-Sync, half-refresh synchronization or a profile-level cap can create a stable 60 FPS ceiling. An emulator may also enforce limits independent of GPU horsepower. Change one setting at a time, restart where required and keep a note of the original value for easy reversal."
+      ]
+    },
+    {
+      "heading": "Understand CPU and GPU bottlenecks",
+      "paragraphs": [
+        "A graphics card being less than fully utilized does not necessarily mean Windows is refusing to use it. One busy CPU thread, emulator scheduling or game-side frame pacing can prevent the GPU from receiving more work. Observe total system memory, per-process CPU use and GPU load during a repeatable scene. If reducing graphics quality does not raise the 60 FPS plateau, investigate a cap or CPU-limited path rather than forcing maximum GPU usage."
+      ]
+    },
+    {
+      "heading": "Thermal and memory behavior",
+      "paragraphs": [
+        "Sustained play can raise component temperatures, and thermal limits may reduce CPU or GPU clocks. A system with 16 GB of RAM may also suffer if the emulator and Windows approach the available-memory limit, but reserving more RAM does not automatically improve performance. Monitor memory pressure and temperatures over a full match. Close genuinely unnecessary background software before changing emulator memory allocation or buying hardware."
+      ]
+    },
+    {
+      "heading": "Use Windows optimizations conservatively",
+      "paragraphs": [
+        "Keep supported graphics drivers current, select the discrete GPU for the emulator executable and use a suitable Windows power mode. Reboot before measuring a new configuration. Avoid disabling security services, editing dozens of undocumented registry values or installing tools that patch protected game files. These changes can create instability or account risk without fixing the root cause of frame pacing."
+      ]
+    },
+    {
+      "heading": "Run an A-B comparison",
+      "paragraphs": [
+        "Test two matches or repeatable scenes using the same resolution, emulator build, map and display mode. Record minimum and sustained FPS, not only the highest reading. Revert any change that creates crashes or worse latency. If a clean configuration still hard-caps at 60, check official GameLoop and PUBG Mobile version support instead of using bypasses that may violate game policy."
+      ]
+    }
+  ]
+}
