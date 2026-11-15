@@ -32,7 +32,7 @@ def main():
         assert page.count("<h1>") == 1, (slug, "one h1")
         assert page.count("adsbygoogle.js") == 1, (slug, "one ad client")
         assert 'href="' + target + '"' in home and 'href="' + target + '"' in catalog, (slug, "navigation")
-        scripts = re.findall(r'<script type="application/ld\\+json">(.*?)</script>', page, flags=re.S)
+        scripts = re.findall(r'<script type="application/ld\+json">(.*?)</script>', page, flags=re.S)
         assert len(scripts) == 1, (slug, "schema")
         schema = json.loads(scripts[0])
         assert schema["@type"] == "CollectionPage" and schema["url"] == canonical
