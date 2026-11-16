@@ -231,3 +231,36 @@ h1 span{color:var(--gold-bright)}
   .delivery-guide p{font-size:12px;line-height:1.5}
   .delivery-guide small{font-size:10px}
 }
+
+
+/* Full DigitalRacer Car Card catalog: real listing tiles and buy action. */
+.catalog-tools{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin:0 0 15px}
+.catalog-tools .search{width:min(100%,340px);flex:1 1 235px;font-size:16px}
+.catalog-tools .catalog-label{font-size:12px;font-weight:800;color:#e8d8b1}
+.catalog-tools .counter{margin-left:auto}
+.gallery-more-wrap{text-align:center;margin:18px 0 0}
+.galleryvisual{position:relative;aspect-ratio:4/3;min-height:110px;overflow:hidden;display:grid;place-items:center;background:radial-gradient(ellipse at bottom,var(--shade,#55402a),#171923 72%)}
+.galleryvisual img{display:block;width:100%;height:100%;object-fit:cover}
+.galleryvisual svg{width:95%}
+.gallery-info{padding:12px;min-width:0}
+.gallery-info h3{font-size:12px;font-weight:750;line-height:1.45;min-height:54px;margin:0 0 9px;color:#f3e8d0;overflow-wrap:anywhere}
+.gallery-price-row{display:flex;gap:7px;align-items:center;justify-content:space-between;flex-wrap:wrap;border-top:1px solid #483d30;padding-top:9px}
+.gallery-price{color:#ffe08b;font-size:14px;font-weight:900}
+.gallery-cta{font-size:10px;font-weight:850;color:#fff1bb;white-space:nowrap}
+.galleryitem:hover,.galleryitem:focus-visible{border-color:#e0b953;box-shadow:0 0 0 1px #c69f4a40}
+@media(max-width:750px){
+  .catalog-tools{display:grid;grid-template-columns:1fr auto;gap:9px}
+  .catalog-tools .catalog-label{grid-column:1/-1}
+  .catalog-tools .search{width:100%;grid-column:1/-1;min-width:0}
+  .catalog-tools .counter{grid-column:1/-1;margin:0;justify-self:start}
+  .galleryvisual{min-height:115px}
+  .gallery-info{padding:10px}
+  .gallery-info h3{font-size:11px;min-height:66px;line-height:1.4}
+  .gallery-price{font-size:13px}
+  .gallery-cta{font-size:10px}
+}
+@media(max-width:390px){
+  .galleryvisual{min-height:99px}
+  .gallery-info{padding:8px}
+  .gallery-info h3{font-size:10.5px;min-height:73px}
+}
