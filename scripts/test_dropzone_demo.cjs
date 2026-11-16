@@ -30,6 +30,10 @@ for(const brand of ["Bentley","Ferrari","Lamborghini","Bugatti","Pagani","Dodge"
 assert.ok(cars.every(c => c.image?.startsWith("/images/uploads/")),"Every vehicle needs an image path");
 assert.equal(new Set(cars.map(c => [c.brand,c.model,c.finish].join(":"))).size,cars.length,"Duplicate variant");
 assert.equal(payment.network,"TRON (TRC20)");
+assert.equal(payment.unitPriceUSD,120,"Car card USD unit price");
+assert.equal(payment.unitPriceUSDT,120,"USDT unit amount");
+assert.ok(html.includes("id=\"detailTotal\"") && html.includes("id=\"reviewTotal\"") && html.includes("id=\"paymentTotal\""),"Price totals must render at every stage");
+assert.ok(!/Speed Drift\s*<span[^>]*>\s*Demo\s*<\/span>/i.test(homepage),"Homepage demo badge must be removed");
 assert.match(payment.walletAddress,/^T[1-9A-HJ-NP-Za-km-z]{33}$/);
 assert.ok(html.includes('src="/dropzone/payment-config.js"'),"Payment settings must load before app.js");
 const ids = new Set([...html.matchAll(/\bid="([^"]+)"/g)].map(m => m[1]));
