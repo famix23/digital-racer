@@ -116,3 +116,26 @@ h1 span{color:var(--gold-bright)}
 @media(max-width:520px){.tagdemo{padding:5px 7px;font-size:9px}.navright a:first-child{display:none}.wordmark{font-size:14px;letter-spacing:1px}.nav{min-height:61px}.step{gap:6px}.step b{width:25px;height:25px;font-size:12px}.sectionhead{align-items:start}.surface{padding:14px}.vehvisual{height:110px}.vehbody{padding:10px}.vehbody h3{font-size:12px}.vehbody .finish{font-size:10px;min-height:32px}.fields{grid-template-columns:1fr}.actionbar .btn.primary{width:100%}.qtybar{flex-wrap:wrap}.footer{margin-top:22px}.gallerygrid{gap:8px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;transition:none!important;animation:none!important}}
 @media print{.nav,.stepper,.controls,.actionbar,.footer,.gallery,.note{display:none!important}body{background:white;color:black}.surface,.receipt{border:1px solid #666;background:white;color:black}.receipt:after{color:#7775}.stage[hidden]{display:none!important}}
+
+/* Image-rich collection, mobile checkout, and wallet verification experience */
+.vehvisual img{width:100%;height:100%;object-fit:cover;display:block}
+.vehvisual:has(img){background:#171a20}
+.minicar img{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}
+.minicar{overflow:hidden}
+.preview h3{overflow-wrap:anywhere}
+.walletcard{margin:18px 0;background:linear-gradient(145deg,#24251f,#15191f);border:1px solid #a08240;border-radius:14px;padding:20px}
+.wallethead{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:12px;color:#f4dfa8}
+.walletlabel{display:block;color:#d8ceb4;font-size:12px;font-weight:800;margin:17px 0 8px}
+.walletline{display:flex;gap:9px;align-items:stretch}
+.walletline input{flex:1;min-width:0;border-radius:9px;border:1px solid #6d5934;background:#0b0d11;color:#f2dfab;padding:12px 13px;font-size:clamp(11px,1.9vw,14px);font-family:ui-monospace,SFMono-Regular,Consolas,monospace;letter-spacing:.02em}
+.walletline .btn{min-width:142px}
+.walletcard .muted{margin:10px 0 0}
+.paymentactions{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end}
+.hashText{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:11px;word-break:break-all;max-width:70%}
+.pending{color:#f2d57c}
+.hero-cars{display:flex;align-items:center;justify-content:center;gap:7px;padding:15px;width:100%;height:100%}
+.hero-cars img{width:32%;aspect-ratio:1.15;object-fit:cover;border-radius:10px;filter:drop-shadow(0 12px 10px #0006);border:1px solid #6b5835}
+.hero-cars img:nth-child(2){transform:scale(1.13);z-index:1}
+.btn[aria-disabled="true"]{opacity:.5;pointer-events:none}
+@media(max-width:750px){.hero-cars{display:none}.paymentactions{width:100%;justify-content:stretch}.paymentactions .btn{flex:1}}
+@media(max-width:520px){.walletline{flex-wrap:wrap}.walletline input,.walletline .btn{width:100%;flex:none;min-height:48px}.paymentactions{display:grid;grid-template-columns:1fr}.paymentactions .btn{width:100%}.walletcard{padding:14px}.hashText{max-width:60%}}
