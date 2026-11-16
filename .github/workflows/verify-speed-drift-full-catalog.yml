@@ -1,0 +1,46 @@
+name: Verify Speed Drift Full Catalog Live
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/verify-speed-drift-full-catalog.yml"
+permissions:
+  contents: read
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - name: Probe live Speed Drift HTML, app JS and inventory data
+        run: |
+          python3 - <<'PY'
+          import urllib.request,json,time,sys
+          base="https://www.digitalracer.store/"
+          sources=[
+            ("page","dropzone/",["id=\"delivery-guide-title\"","How Car Card Delivery Works","id=\"catalogSearch\"","id=\"storeGallery\""]),
+            ("app","dropzone/app.js",["state.galleryItems=rows.filter","x.category===\"Car Card\"","activeUnitUSD()","function renderGallery","function galleryTile"]),
+            ("style","dropzone/style.css",["Full DigitalRacer Car Card catalog","delivery-guide"]),
+            ("inventory","inventory.json",[])
+          ]
+          all_ok=True
+          for name,path,markers in sources:
+            try:
+              req=urllib.request.Request(base+path,headers={"User-Agent":"Mozilla/5.0 (DigitalRacer deployment check)","Cache-Control":"no-cache"})
+              with urllib.request.urlopen(req,timeout=20) as response:
+                body=response.read(8000000).decode("utf-8","replace")
+                missing=[m for m in markers if m not in body]
+                result={"name":name,"status":response.status,"missing":missing,"bytes":len(body)}
+                if name=="inventory":
+                  data=json.loads(body)
+                  result["car_card_count"]=sum(x.get("category")=="Car Card" for x in data.get("items",[]))
+                  if result["car_card_count"]<27:missing.append("27 Car Card listings")
+                ok=response.status==200 and not missing
+                all_ok=all_ok and ok
+                print("RESULT "+json.dumps(result),flush=True)
+            except Exception as exc:
+              print("RESULT "+json.dumps({"name":name,"error":str(exc)}),flush=True)
+              all_ok=False
+          if not all_ok:
+            print("WARNING: live deployment does not yet serve all new files",flush=True)
+            sys.exit(1)
+          print("PASS: full Car Card selection page and UID delivery guide are publicly served",flush=True)
+          PY
