@@ -24,7 +24,9 @@ class Element{
  fire(type,payload={}){for(const fn of this.events[type]||[])fn({target:this,preventDefault(){},...payload})}
 }
 const elements=Object.fromEntries(ids.map(id=>[id,new Element()]));
+elements.recipientForm.reset=function(){for(const field of ["uid","nickname","server","region"])elements[field].value="";};
 for(const id of ids){
+  elements[id].id=id;
   const marker=new RegExp('<[^>]+\\bid="'+id+'"[^>]*>','i').exec(html)?.[0]||"";
   elements[id].disabled=/\bdisabled\b/i.test(marker);
   elements[id].hidden=/\bhidden\b/i.test(marker);
