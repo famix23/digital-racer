@@ -1,4 +1,4 @@
-/* DigitalRacer DropZone: frontend-only demonstration. No network writes, payments or game API. */
+/* DigitalRacer Speed Drift: frontend-only demonstration. No network writes, payments or game API. */
 (function(){
 "use strict";
 var all=Array.isArray(window.DROPZONE_CARS)?window.DROPZONE_CARS:[];
