@@ -2,13 +2,23 @@
 (function(){
 "use strict";
 var all=Array.isArray(window.DROPZONE_CARS)?window.DROPZONE_CARS:[];
-var state={brand:"All",search:"",limit:12,selected:null,qty:1,recipient:null,txHash:"",screen:1};
+var state={brand:"All",search:"",limit:12,selected:null,qty:1,recipient:null,txHash:"",screen:1,galleryItems:[],gallerySearch:"",galleryLimit:12};
 var payment=window.SPEED_DRIFT_PAYMENT||{};
 var brandImages=window.SPEED_DRIFT_BRAND_IMAGES||{};
 var unitUSD=Number(payment.unitPriceUSD)||120;
 var unitUSDT=Number(payment.unitPriceUSDT)||120;
-function totalUSD(){return "$"+(state.qty*unitUSD).toFixed(2)}
-function totalUSDT(){return (state.qty*unitUSDT).toFixed(2)+" USDT"}
+function activeUnitUSD(){return state.selected&&Number.isFinite(state.selected.unitPriceUSD)?state.selected.unitPriceUSD:unitUSD}
+function activeUnitUSDT(){return state.selected&&Number.isFinite(state.selected.unitPriceUSD)?state.selected.unitPriceUSD:unitUSDT}
+function dollar(v){return "$"+Number(v).toFixed(2)}
+function totalUSD(){return dollar(state.qty*activeUnitUSD())}
+function totalUSDT(){return (state.qty*activeUnitUSDT()).toFixed(2)+" USDT"}
+function quantityLabel(){return state.selected&&state.selected.catalogTitle?"item(s)":"Car Card(s)"}
+function showUnitPrices(){
+var label=state.selected&&state.selected.catalogTitle?"Price per listing":"Price per Car Card";
+text("detailPriceLabel",label);text("detailUnitPrice",dollar(activeUnitUSD()));
+text("reviewPriceLabel",label);text("reviewUnitPrice",dollar(activeUnitUSD()));
+text("paymentPriceLabel",label);text("paymentUnitPrice",dollar(activeUnitUSD())+" USD");
+}
 var $=function(id){return document.getElementById(id)};
 var palette={Bentley:"#766a4c",Lamborghini:"#756129",Ferrari:"#763327",Bugatti:"#34556a",Pagani:"#4c5976",Dodge:"#634133",McLaren:"#895c33",Porsche:"#4b5267",Koenigsegg:"#3b6d72","Aston Martin":"#476555"};
 var carSVG='<svg viewBox="0 0 330 140" aria-hidden="true" focusable="false"><defs><linearGradient id="dz-car-body" x2="0" y2="1"><stop stop-color="#f4e8c4"/><stop offset=".35" stop-color="#8b9299"/><stop offset=".75" stop-color="#242c3a"/><stop offset="1" stop-color="#0d1018"/></linearGradient></defs><ellipse cx="160" cy="120" rx="139" ry="8" fill="#08080a" opacity=".6"/><path d="M29 88Q43 72 78 67L117 59 139 36Q154 26 181 27L226 34Q242 38 265 65L290 72Q311 78 309 95L305 106H26L25 94Z" fill="url(#dz-car-body)" stroke="#d4cab1" stroke-width="1.1"/><path d="M125 60L149 38Q161 32 181 33L212 38 232 61Z" fill="#20364e" stroke="#8798a5" stroke-width="1"/><path d="M234 40Q251 49 258 64L237 63Z" fill="#15293c"/><path d="M43 77L107 68 100 85 33 91Z" fill="#f7eec6" opacity=".9"/><path d="M264 76L297 81 303 92 268 90Z" fill="#e6b653"/><path d="M38 98H306" stroke="#bbc8d3" stroke-width="2" opacity=".65"/><circle cx="93" cy="103" r="20" fill="#0c1017" stroke="#a8a3a0" stroke-width="4"/><circle cx="93" cy="103" r="9" fill="#818b96"/><circle cx="256" cy="103" r="20" fill="#0c1017" stroke="#a8a3a0" stroke-width="4"/><circle cx="256" cy="103" r="9" fill="#818b96"/></svg>';
@@ -36,7 +46,7 @@ function putPhoto(path){
 putPhoto(src||backup);
 return container;
 }
-function displayLabel(car){return car.brand+" "+car.model}
+function displayLabel(car){return car.catalogTitle||car.brand+" "+car.model}
 function renderVehicles(){
 var filtered=all.filter(function(c){return(state.brand==="All"||state.brand===c.brand)&&((c.brand+" "+c.model+" "+c.finish).toLowerCase().includes(state.search))});
 var area=$("vehicles");area.replaceChildren();var slice=filtered.slice(0,state.limit);
@@ -57,6 +67,7 @@ openPlayerDetails();
 }
 function openPlayerDetails(){
 if(!state.selected)return;
+showUnitPrices();
 showPreview("detailPreview");
 text("detailTotal",totalUSD());
 step(2);
@@ -74,22 +85,23 @@ if(!fromHistory&&window.history&&window.history.pushState){window.history.pushSt
 if(target&&typeof target.scrollIntoView==="function")target.scrollIntoView({behavior:"auto",block:"start"});
 else window.scrollTo({top:0,behavior:"auto"});
 }
-function showPreview(id){var root=$(id);root.replaceChildren();if(!state.selected)return;var vis=visual(state.selected,"minicar");root.append(vis);var body=document.createElement("div"),h=document.createElement("h3"),p=document.createElement("p");h.textContent=displayLabel(state.selected);p.textContent=state.selected.finish+" · "+state.qty+" Car Card(s) · "+totalUSD();body.append(h,p);root.append(body)}
+function showPreview(id){var root=$(id);root.replaceChildren();if(!state.selected)return;var vis=visual(state.selected,"minicar");root.append(vis);var body=document.createElement("div"),h=document.createElement("h3"),p=document.createElement("p");h.textContent=displayLabel(state.selected);p.textContent=state.selected.finish+" · "+state.qty+" "+quantityLabel()+" · "+totalUSD();body.append(h,p);root.append(body)}
 function qty(n){state.qty=Math.max(1,Math.min(10,n));text("qtyValue",state.qty);text("detailTotal",totalUSD());showPreview("detailPreview")}
 function valid(){var uid=$("uid").value.trim(),name=$("nickname").value.trim(),server=$("server").value,region=$("region").value;if(!/^[0-9]{6,20}$/.test(uid))return"Enter a numeric Player UID (6–20 digits).";if(!name)return"Enter a character nickname.";if(!server||!region)return"Choose both server and country/region.";state.recipient={uid:uid,name:name,server:server,region:region};return""}
 function review(){
 var err=valid();text("formError",err);if(err)return;
-showPreview("reviewPreview");text("r-uid",state.recipient.uid);text("r-nick",state.recipient.name);text("r-server",state.recipient.server);text("r-region",state.recipient.region);text("r-qty",state.qty+" card(s)");
+showPreview("reviewPreview");text("r-uid",state.recipient.uid);text("r-nick",state.recipient.name);text("r-server",state.recipient.server);text("r-region",state.recipient.region);text("r-qty",state.qty+" "+quantityLabel());
 text("r-item",displayLabel(state.selected)+" — "+state.selected.finish);
 text("reviewTotal",totalUSD());
+showUnitPrices();
 step(3);
 }
 function orderMessage(includeTx){
 var parts=[
 "Hello DigitalRacer — Speed Drift Car Card order",
 "Vehicle: "+displayLabel(state.selected)+" — "+state.selected.finish,
-"Quantity: "+state.qty+" Car Card(s)",
-"Price per card: $"+unitUSD.toFixed(2),
+"Quantity: "+state.qty+" "+quantityLabel(),
+"Price per selection: "+dollar(activeUnitUSD()),
 "Order total: "+totalUSD()+" / "+totalUSDT(),
 "Player UID: "+state.recipient.uid,
 "Character name: "+state.recipient.name,
@@ -110,6 +122,7 @@ if(!external){window.location.href=url}
 }
 function showPayment(){
 showPreview("paymentPreview");
+showUnitPrices();
 text("paymentTotal",totalUSDT());
 text("paymentUSD",totalUSD());
 text("paymentNetwork",payment.network||"Network not configured");
@@ -133,7 +146,7 @@ text("paymentError","");
 showPreview("statusPreview");
 text("receiptRef","SD-"+String(Date.now()).slice(-10));
 text("receiptItem",displayLabel(state.selected)+" — "+state.selected.finish);
-text("receiptQty",state.qty+" Card(s)");
+text("receiptQty",state.qty+" "+quantityLabel());
 text("receiptTotal",totalUSD()+" / "+totalUSDT());
 text("receiptPlayer",state.recipient.name+" · "+state.recipient.uid);
 text("receiptServer",state.recipient.server+" / "+state.recipient.region);
@@ -162,18 +175,43 @@ text("qtyValue",1);text("detailTotal",totalUSD());text("formError","");text("pay
 text("selected","No vehicle selected");$("next1").disabled=true;renderVehicles();step(1);
 }
 function galleryTile(item){
-var b=document.createElement("button");b.type="button";b.className="galleryitem";b.setAttribute("aria-label","Use catalogue sample: "+item.title);
-var img=document.createElement("img"),src=safePhoto(item.thumbnail||item.image||"");if(src){img.src=src;img.alt=item.title;img.loading="lazy";img.decoding="async";img.addEventListener("error",function(){img.hidden=true})}else{img.hidden=true}b.append(img);
-var p=document.createElement("p");p.textContent=item.title;b.append(p);
-b.addEventListener("click",function(){
-var brand=["Bentley","Ferrari","Lamborghini","Bugatti","Pagani","Dodge"].find(function(x){return item.title.toLowerCase().includes(x.toLowerCase())})||"Car Card";
-select({id:"inventory-"+item.title,brand:brand,model:item.title,finish:"DigitalRacer listing example",type:"Car Card",origin:"store",image:src});
-// Selecting a storefront card also advances directly to player details.
-});return b
+var title=String(item.title||"Car Card");
+var brand=["Bentley","Ferrari","Lamborghini","Bugatti","Pagani","Dodge","McLaren","Porsche","Koenigsegg","Aston Martin"].find(function(x){return title.toLowerCase().includes(x.toLowerCase())})||"Car Card";
+var src=safePhoto(item.thumbnail||item.image||"");
+var rawPrice=Number(item.price);
+var price=Number.isFinite(rawPrice)&&rawPrice>0?rawPrice:unitUSD;
+var car={id:"inventory-"+String(item.id||item.slug||title),brand:brand,model:title,catalogTitle:title,finish:"DigitalRacer Car Card catalog",type:"Car Card",origin:"store",image:src||brandImages[brand]||"",unitPriceUSD:price};
+var b=document.createElement("button");b.type="button";b.className="galleryitem";
+b.setAttribute("aria-label","Select "+title+" at "+dollar(price)+" and continue to Player Details");
+var visualBox=visual(car,"galleryvisual");b.append(visualBox);
+var info=document.createElement("div");info.className="gallery-info";
+var h=document.createElement("h3");h.textContent=title;info.append(h);
+var row=document.createElement("div");row.className="gallery-price-row";
+var priceEl=document.createElement("strong");priceEl.className="gallery-price";priceEl.textContent=dollar(price);row.append(priceEl);
+var cta=document.createElement("span");cta.className="gallery-cta";cta.textContent="Buy now →";row.append(cta);
+info.append(row);b.append(info);
+b.addEventListener("click",function(){select(car)});
+return b;
 }
-function loadGallery(){fetch("/inventory.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("unavailable");return r.json()}).then(function(j){var rows=Array.isArray(j.items)?j.items:[];var samples=rows.filter(function(x){return x.category==="Car Card"&&/Bentley|Ferrari|Lamborghini|Bugatti|Pagani|Dodge/i.test(x.title||"")&&safePhoto(x.thumbnail||x.image||"")}).sort(function(a,b){return (a.title.includes("Bentley")?-1:0)-(b.title.includes("Bentley")?-1:0)}).slice(0,8);if(!samples.length)return;var area=$("storeGallery");area.replaceChildren();samples.forEach(function(p){area.append(galleryTile(p))});$("gallerySection").hidden=false}).catch(function(){/* Static demonstration works without inventory access. */})}
+function renderGallery(){
+var rows=state.galleryItems.filter(function(x){return String(x.title||"").toLowerCase().includes(state.gallerySearch)});
+var area=$("storeGallery");area.replaceChildren();
+rows.slice(0,state.galleryLimit).forEach(function(item){area.append(galleryTile(item))});
+text("catalogCount",rows.length+" Car Card listings");
+$("galleryMore").hidden=state.galleryLimit>=rows.length;
+}
+function loadGallery(){
+fetch("/inventory.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("Inventory unavailable");return r.json()}).then(function(j){
+var rows=Array.isArray(j.items)?j.items:[];
+state.galleryItems=rows.filter(function(x){return x&&x.category==="Car Card"&&String(x.title||"").trim()});
+$("gallerySection").hidden=state.galleryItems.length===0;
+renderGallery();
+}).catch(function(){text("catalogCount","Catalog temporarily unavailable");$("gallerySection").hidden=false});
+}
 $("search").addEventListener("input",function(e){state.search=e.target.value.trim().toLowerCase();state.limit=12;renderVehicles()});
 $("more").addEventListener("click",function(){state.limit+=12;renderVehicles()});
+$("catalogSearch").addEventListener("input",function(e){state.gallerySearch=String(e.target.value||"").trim().toLowerCase();state.galleryLimit=12;renderGallery()});
+$("galleryMore").addEventListener("click",function(){state.galleryLimit+=12;renderGallery()});
 $("next1").addEventListener("click",openPlayerDetails);
 $("back1").addEventListener("click",function(){step(1)});
 $("back2").addEventListener("click",function(){step(2)});
