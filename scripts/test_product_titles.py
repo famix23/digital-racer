@@ -6,6 +6,9 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
+cms = (ROOT / "admin/config.yml").read_text(encoding="utf-8")
+assert 'name: "original_title"' in cms, "CMS must expose original seller title corrections"
+assert 'name: "title"' in cms, "CMS title input required"
 source = json.loads((ROOT / "inventory.json").read_text(encoding="utf-8"))
 products = source if isinstance(source, list) else source["items"]
 manifest = json.loads((ROOT / "p/index.json").read_text(encoding="utf-8"))
