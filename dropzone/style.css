@@ -140,3 +140,78 @@ h1 span{color:var(--gold-bright)}
 .btn[aria-disabled="true"]{opacity:.5;pointer-events:none}
 @media(max-width:750px){.hero-cars{display:none}.paymentactions{width:100%;justify-content:stretch}.paymentactions .btn{flex:1}}
 @media(max-width:520px){.walletline{flex-wrap:wrap}.walletline input,.walletline .btn{width:100%;flex:none;min-height:48px}.paymentactions{display:grid;grid-template-columns:1fr}.paymentactions .btn{width:100%}.walletcard{padding:14px}.hashText{max-width:60%}}
+
+
+/* Speed Drift mobile-first interaction: the whole card advances to Player Details. */
+.stage{scroll-margin-top:86px}
+.vehicle{touch-action:manipulation;cursor:pointer}
+.vehiclehint{display:block;margin-top:8px;padding-top:8px;border-top:1px solid #39342b;color:#eac978;font-size:11px;font-weight:800}
+.galleryitem{cursor:pointer;touch-action:manipulation}
+.galleryitem:focus-visible,.vehicle:focus-visible{outline:3px solid var(--gold-bright);outline-offset:2px}
+@media(max-width:750px){
+  .container{padding-left:16px;padding-right:16px}
+  .hero{padding:19px 0 12px}
+  .hero h1{font-size:clamp(29px,8vw,43px);margin:7px 0 10px}
+  .hero .herodesc{font-size:13px;line-height:1.48;margin-bottom:12px}
+  .hero .note{font-size:11px;line-height:1.45;padding:9px 11px}
+  .stepper{gap:7px;margin:9px 0 16px}
+  .step{padding:9px 8px;gap:7px}
+  .step b{flex:0 0 25px;width:25px;height:25px;font-size:11px}
+  .step strong{font-size:11px;line-height:1.25}
+  .surface{padding:16px;margin-bottom:14px}
+  .sectionhead{align-items:flex-start;flex-direction:column;gap:8px;margin-bottom:12px}
+  .sectionhead h2{font-size:19px;line-height:1.3}
+  .sectionhead p{font-size:12px;margin:5px 0 0}
+  .counter{align-self:flex-start}
+  .controls{display:grid;grid-template-columns:minmax(0,1fr);gap:11px;margin-bottom:14px}
+  .filters{display:flex;flex-wrap:nowrap;width:100%;min-width:0;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x proximity;padding:2px 1px 8px;-webkit-overflow-scrolling:touch;scrollbar-width:thin}
+  .filters .filter{flex:none;scroll-snap-align:start;white-space:nowrap;min-height:45px}
+  .controls label{display:block;width:100%;min-width:0}
+  .search{display:block;width:100%;min-height:48px;font-size:16px}
+  .vehgrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .vehvisual{height:auto;aspect-ratio:5/4;min-height:124px}
+  .vehbody{padding:11px}
+  .vehbody h3{font-size:13px}
+  .vehbody .finish{font-size:11px;min-height:31px}
+  .vehbody .category{font-size:9px;float:none;display:block;margin-top:6px}
+  .vehbody .vehicleprice{margin-top:9px}
+  .vehiclehint{margin-top:7px}
+  .fields{grid-template-columns:1fr;gap:14px}
+  .field input,.field select{min-height:50px;font-size:16px}
+  .field .help{font-size:11px}
+  .formpanel h2{font-size:22px}
+  .preview{gap:11px;padding:10px}
+  .preview .minicar{width:90px}
+  .qtybar{gap:12px}
+  .qtycontrol button{width:44px;height:44px}
+  .btn,.filter{min-height:46px}
+  .actionbar{gap:9px;align-items:stretch}
+  .actionbar .btn{flex:1}
+  .actionbar .btn.primary{flex:1 1 100%}
+  .gallerygrid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .walletline{flex-wrap:wrap}
+  .walletline input{min-height:50px;font-size:16px;width:100%;flex-basis:100%}
+  .walletline .btn{width:100%}
+  .summaryline{gap:11px}
+  .receipt{padding:13px}
+  .hashText{max-width:60%}
+}
+@media(max-width:390px){
+  .container{padding-left:12px;padding-right:12px}
+  .nav{gap:5px}
+  .wordmark{font-size:13px}
+  .navright{gap:8px}
+  .tagdemo{font-size:8px}
+  .surface{padding:12px}
+  .vehgrid{gap:8px}
+  .vehvisual{min-height:99px}
+  .vehbody{padding:9px}
+  .vehbody h3{font-size:12px}
+  .vehbody .finish{font-size:10px}
+  .vehiclebadge{font-size:8px}
+  .step{padding:7px 5px;gap:5px}
+  .step strong{font-size:10px}
+  .step b{width:23px;height:23px;flex-basis:23px}
+  .actionbar{flex-direction:column}
+  .actionbar .btn{width:100%}
+}
