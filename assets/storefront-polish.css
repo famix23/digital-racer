@@ -155,3 +155,12 @@ body.dr-category-page{background:radial-gradient(ellipse 70% 300px at 50% 0%,rgb
 @media(prefers-reduced-motion:reduce){
  .dr-category-page .product-card{transition:none;}
 }
+
+/* Speed Drift demo links: scoped to homepage car skins and nav. */
+.dr-demo-mark{display:inline-block;font-size:.54rem;font-weight:800;letter-spacing:.06em;color:#1b1507;background:#e2be53;border-radius:3px;padding:2px 4px;margin-left:4px;vertical-align:middle}
+.dr-car-links{display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:flex-end}
+.dr-demo-btn{min-height:41px;display:inline-flex;gap:8px;align-items:center;text-decoration:none;border:1px solid #8a713a;background:#302819;color:#f6dea0;padding:8px 13px;border-radius:8px;font-size:.76rem;font-weight:800;white-space:nowrap}
+.dr-demo-btn span{font-size:.58rem;padding:2px 5px;background:#e2be53;border-radius:3px;color:#161005;letter-spacing:.07em}
+.dr-demo-btn:hover{border-color:#e2be53;background:#4d3b1c;color:#fff}
+@media(max-width:850px){.dr-gift-nav{display:none!important}}
+@media(max-width:600px){.dr-car-links{gap:6px}.dr-car-links .view-all{padding:0}.dr-demo-btn{font-size:.65rem;padding:7px 8px;min-height:44px}}

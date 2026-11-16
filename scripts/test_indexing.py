@@ -111,16 +111,18 @@ def main():
                     f"Redirect fallback canonical wrong: {source}")
 
     # Deliberate exclusions: utility pages and legacy redirect fallbacks.
-    for path in ("404.html", "product.html"):
+    for path in ("404.html", "product.html", "dropzone/index.html"):
         require(any("noindex" in tag for tag in parse(ROOT / path).robots),
                 f"Expected noindex missing on {path}")
     headers = (ROOT / "_headers").read_text(encoding="utf-8")
     require("/admin/*\n  X-Robots-Tag: noindex" in headers, "Admin X-Robots-Tag missing")
+    require("/dropzone/*\n  X-Robots-Tag: noindex" in headers, "DropZone demo X-Robots-Tag missing")
     robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
     require("Sitemap: " + HOST + "/sitemap.xml" in robots, "Wrong robots.txt sitemap")
     require("Disallow: /\n" not in robots, "Global robots.txt block")
 
-    utility = {ROOT / "404.html", ROOT / "product.html", ROOT / "admin/index.html"}
+    utility = {ROOT / "404.html", ROOT / "product.html", ROOT / "admin/index.html",
+               ROOT / "dropzone/index.html"}
     fallback = {page_for(src) for src in rules if src.endswith("/")}
     known = {page_for(route) for route in routes} | utility | fallback
     html_files = [p for p in ROOT.rglob("*.html")

@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090d">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>Speed Drift — PUBG MOBILE Vehicle Cards | DigitalRacer</title>
+<meta name="description" content="Browse vehicle skin collections, enter player details, and request USDT payment verification with DigitalRacer.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/dropzone/style.css">
+<script src="/dropzone/catalog.js" defer></script>
+<script src="/dropzone/payment-config.js" defer></script>
+<script src="/dropzone/app.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to vehicle selection</a>
+<div class="topbar">
+  <nav class="nav container" aria-label="Main navigation">
+    <a class="wordmark" href="/">DIGITAL<em>.</em>RACER</a>
+    <div class="navright">
+      <a href="/catalog">Store catalog</a>
+      <a href="/">Home</a>
+      <span class="tagdemo" aria-label="Speed Drift car collection">CAR CARDS</span>
+    </div>
+  </nav>
+</div>
+<main class="container" id="main">
+  <section class="hero" aria-labelledby="hero-heading">
+    <div>
+      <div class="kicker">SPEED DRIFT / VEHICLE GIFT STUDIO</div>
+      <h1 id="hero-heading">Legendary rides.<br><span>One gift away.</span></h1>
+      <p class="herodesc">Explore iconic PUBG MOBILE vehicle collaborations, choose your preferred finish, and prepare a Car Card order for your recipient.</p>
+      <div class="note">Before paying, confirm the current price and availability with DigitalRacer. Payment and gift delivery require manual verification.</div>
+    </div>
+    <div class="heroart" aria-hidden="true"><div class="hero-cars"><img src="/images/uploads/digitalracer-bentley-batur-preview.png" alt="" loading="eager"><img src="/images/uploads/7ef94944-d9ec-4c5f-9356-c2b48dfc6408.jpg" alt="" loading="eager"><img src="/images/uploads/digitalracer-account-25123094-05.webp" alt="" loading="eager"></div></div>
+  </section>
+  <div class="stepper" aria-label="Speed Drift checkout progress">
+    <div class="step active" id="step-1" aria-current="step"><b>01</b><div><strong>Choose car skin</strong><small>Vehicle collection</small></div></div>
+    <div class="step" id="step-2"><b>02</b><div><strong>Player details</strong><small>UID &amp; server</small></div></div>
+    <div class="step" id="step-3"><b>03</b><div><strong>Payment review</strong><small>USDT (TRC20)</small></div></div>
+  </div>
+
+  <section class="stage" id="stage-1" aria-labelledby="collection-title">
+    <div class="surface">
+      <div class="sectionhead"><div><h2 id="collection-title">Vehicle Collection</h2><p>Browse vehicle skin models and available finishes. Confirm availability before making payment.</p></div><span id="resultCount" class="counter">Loading collection</span></div>
+      <div class="controls"><div class="filters" id="filters" aria-label="Filter by manufacturer"></div><label><span class="skip">Search vehicle collection</span><input class="search" id="search" placeholder="Search vehicle / finish" autocomplete="off" aria-label="Search vehicle collection"></label></div>
+      <div class="vehgrid" id="vehicles" aria-live="polite"></div>
+      <p class="empty" id="empty" hidden>No matching vehicles. Try another brand or search term.</p>
+      <div style="text-align:center;margin:22px 0"><button type="button" class="btn subtle" id="more" hidden>Show more vehicles</button></div>
+      <div class="actionbar"><p class="selection" id="selected" aria-live="polite">No vehicle selected</p><button class="btn primary" type="button" id="next1" disabled>Continue to player details →</button></div>
+    </div>
+    <section class="surface gallery" id="gallerySection" aria-labelledby="gallery-title" hidden>
+      <div class="sectionhead"><div><h2 id="gallery-title">From DigitalRacer's Car Card catalog</h2><p>Browse existing DigitalRacer Car Card listings with original product photos.</p></div><a href="/catalog?category=Car%20Card" style="color:#f2d57c;font-size:12px">View main catalog</a></div>
+      <div id="storeGallery" class="gallerygrid"></div>
+    </section>
+    <div class="note">Vehicles and finishes shown are for selection reference. Car Card availability, rarity and exact appearance must be confirmed with DigitalRacer before purchasing.</div>
+  </section>
+
+  <section class="stage" id="stage-2" hidden aria-labelledby="player-title">
+    <div class="surface formpanel">
+      <div class="kicker">STEP 02 / RECIPIENT DETAILS</div>
+      <h2 id="player-title">Where should the Car Card go?</h2>
+      <p class="muted">Enter the recipient’s player details. Never share passwords, OTPs or game login credentials.</p>
+      <div class="preview" id="detailPreview"></div>
+      <form id="recipientForm" novalidate>
+        <div class="fields">
+          <div class="field"><label for="uid">PUBG MOBILE Player UID *</label><input id="uid" name="uid" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="20" placeholder="Enter numeric Player UID" required><div class="help">UID format is checked locally. Ownership is not verified.</div></div>
+          <div class="field"><label for="nickname">Character name (nickname) *</label><input id="nickname" name="nickname" maxlength="32" autocomplete="off" placeholder="Enter character name" required></div>
+          <div class="field"><label for="server">Server *</label><select id="server" name="server" required><option value="">Select server</option><option>Asia</option><option>Middle East</option><option>Europe</option><option>North America</option><option>South America</option><option>KRJP</option></select></div>
+          <div class="field"><label for="region">Country / region *</label><select id="region" name="region" required><option value="">Select region</option><option>Pakistan</option><option>United Arab Emirates</option><option>Saudi Arabia</option><option>United Kingdom</option><option>United States</option><option>Turkey</option><option>Other</option></select></div>
+        </div>
+        <div class="qtybar"><div><strong>Number of Car Cards</strong><div class="muted">Select a quantity from 1 to 10</div></div><div class="qtycontrol"><button type="button" id="qtyMinus" aria-label="Decrease quantity">−</button><output id="qtyValue" aria-live="polite">1</output><button type="button" id="qtyPlus" aria-label="Increase quantity">+</button></div></div>
+        <div class="note">Your details stay on this page until you choose to send them to DigitalRacer on WhatsApp.</div>
+        <p id="formError" class="error" role="alert" aria-live="polite"></p>
+        <div class="actionbar"><button class="btn subtle" type="button" id="back1">← Back to collection</button><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn subtle" type="button" id="sample">Fill example fields</button><button class="btn primary" type="submit">Review gift →</button></div></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="stage" id="stage-3" hidden aria-labelledby="review-title">
+    <div class="surface formpanel">
+      <div class="kicker">STEP 03 / ORDER REVIEW</div>
+      <h2 id="review-title">Review your Car Card order</h2>
+      <p class="muted">Check the selected vehicle, recipient information and card quantity carefully before continuing.</p>
+      <div class="preview" id="reviewPreview"></div>
+      <div class="summarylines">
+        <div class="summaryline"><span>Vehicle skin / finish</span><strong id="r-item"></strong></div>
+        <div class="summaryline"><span>Player UID</span><strong id="r-uid"></strong></div>
+        <div class="summaryline"><span>Character name</span><strong id="r-nick"></strong></div>
+        <div class="summaryline"><span>Server</span><strong id="r-server"></strong></div>
+        <div class="summaryline"><span>Country / region</span><strong id="r-region"></strong></div>
+        <div class="summaryline"><span>Car Cards</span><strong id="r-qty"></strong></div>
+      </div>
+      <div class="note">Your order will only be sent for manual review after you contact DigitalRacer. No automated game-account verification or delivery is available.</div>
+      <div class="actionbar" style="margin-top:18px"><button class="btn subtle" id="back2" type="button">← Edit recipient</button><button class="btn primary" id="toPayment" type="button">Continue to USDT details →</button></div>
+    </div>
+  </section>
+
+  <section class="stage" id="stage-4" hidden aria-labelledby="payment-title">
+    <div class="surface formpanel">
+      <div class="kicker">USDT / TRON (TRC20)</div>
+      <h2 id="payment-title">Payment details</h2>
+      <p class="muted">Check your final amount with DigitalRacer before sending USDT. Transfer only on the specified network.</p>
+      <div class="preview" id="paymentPreview"></div>
+      <div class="walletcard">
+        <div class="wallethead"><span class="tagdemo">USDT</span><strong id="paymentNetwork">TRON (TRC20)</strong></div>
+        <div class="summaryline"><span>Amount due</span><strong>Confirm with DigitalRacer</strong></div>
+        <label for="walletAddress" class="walletlabel">Receiving wallet address</label>
+        <div class="walletline"><input id="walletAddress" readonly spellcheck="false" aria-label="USDT TRC20 receiving address"><button class="btn primary" id="copyWallet" type="button">Copy address</button></div>
+        <p id="copyMessage" class="muted" role="status" aria-live="polite">Network: TRON (TRC20). Check the full address in your wallet before transferring.</p>
+      </div>
+      <div class="note">Only send USDT using the TRON (TRC20) network. Sending over the wrong network could result in lost funds. A displayed wallet address does not verify payment.</div>
+      <div class="field full" style="margin-top:21px">
+        <label for="txHash">Transaction hash / TXID (after transferring)</label>
+        <input id="txHash" name="txHash" autocomplete="off" inputmode="text" spellcheck="false" placeholder="Paste your 64-character TRON transaction hash" maxlength="64">
+        <div class="help">The TXID can be checked on TRONSCAN; matching it to your payment still requires merchant review.</div>
+      </div>
+      <p id="paymentError" class="error" role="alert" aria-live="polite"></p>
+      <div class="actionbar" style="margin-top:19px">
+        <button class="btn subtle" id="backPayment" type="button">← Back to review</button>
+        <div class="paymentactions">
+          <button class="btn subtle" id="requestQuote" type="button">Ask for exact USDT amount</button>
+          <button class="btn primary" id="requestVerification" type="button">Send TXID for verification →</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="stage" id="stage-5" hidden aria-labelledby="status-title">
+    <div class="surface formpanel">
+      <div class="kicker">ORDER VERIFICATION</div>
+      <h2 id="status-title">Awaiting manual payment verification</h2>
+      <p class="muted">Your details are ready to review with DigitalRacer. No payment or delivery has been automatically confirmed.</p>
+      <div class="preview" id="statusPreview"></div>
+      <div class="receipt">
+        <div class="summaryline"><span>Order reference</span><strong id="receiptRef"></strong></div>
+        <div class="summaryline"><span>Vehicle</span><strong id="receiptItem"></strong></div>
+        <div class="summaryline"><span>Car Cards</span><strong id="receiptQty"></strong></div>
+        <div class="summaryline"><span>Player</span><strong id="receiptPlayer"></strong></div>
+        <div class="summaryline"><span>Server / region</span><strong id="receiptServer"></strong></div>
+        <div class="summaryline"><span>Request prepared</span><strong id="receiptDate"></strong></div>
+        <div class="summaryline"><span>Transaction hash</span><strong class="hashText" id="receiptHash"></strong></div>
+        <div class="summaryline"><span>Payment</span><strong class="pending">Pending merchant verification</strong></div>
+        <div class="summaryline"><span>Car Card delivery</span><strong class="pending">Not confirmed</strong></div>
+      </div>
+      <div class="note">To complete this request, send the order details and TXID to DigitalRacer on WhatsApp. The merchant must independently check the TRON blockchain transfer before confirming payment or delivery.</div>
+      <div class="actionbar" style="margin-top:20px">
+        <button class="btn subtle" type="button" id="backStatus">← Back to payment</button>
+        <a class="btn primary" id="sendDetailsLink" href="#" rel="noopener noreferrer" target="_blank">Open WhatsApp review ↗</a>
+      </div>
+      <div class="actionbar"><button class="btn subtle" id="restart" type="button">Start another order ↻</button><a href="/" class="btn subtle" style="text-decoration:none">DigitalRacer homepage</a></div>
+    </div>
+  </section>
+</main>
+<footer class="footer container">
+  <strong>DigitalRacer · Speed Drift</strong><br>
+  Speed Drift is an independent DigitalRacer service interface and is not affiliated with or endorsed by PUBG MOBILE, Tencent, KRAFTON or vehicle manufacturers.<br>
+  Vehicle skin artwork and finishes may vary. Verify product availability, payment and delivery directly with DigitalRacer.<br>
+  Sources: <a href="https://www.pubgmobile.com/en/event/BentleyCollab/" target="_blank" rel="noopener noreferrer">PUBG MOBILE × Bentley</a> · <a href="https://www.pubgmobile.com/en/event/LamborghiniCollab/" target="_blank" rel="noopener noreferrer">PUBG MOBILE × Lamborghini</a> · <a href="https://www.pubgmobile.com/" target="_blank" rel="noopener noreferrer">PUBG MOBILE official site</a>.
+</footer>
+<noscript><div class="note container">This interactive demonstration requires JavaScript to run.</div></noscript>
+</body>
+</html>
