@@ -62,6 +62,16 @@ async function main() {
     const response = await get(rootURL + uri);
     assert.equal(response.status, 200, 'Unknown/non-product requests retain asset behavior');
   }
+  // Custom route must resolve to the HTML asset even with tracking parameters.
+  for (const uri of ['/dropzone/', '/dropzone', '/dropzone/?utm_source=chatgpt.com', '/speed-drift/', '/speed-drift']) {
+    const n = assetCalls.length;
+    const response = await get(rootURL + uri);
+    assert.equal(response.status, 200, 'Speed Drift route must return the landing page');
+    assert.equal(assetCalls[n], '/dropzone/index.html', 'Speed Drift must use the explicit index asset');
+  }
+  const wrangler = fs.readFileSync(path.join(root, 'wrangler.jsonc'), 'utf8');
+  assert.ok(wrangler.includes('"/dropzone/*"') && wrangler.includes('"/speed-drift/*"'),
+            'Worker must be first for Speed Drift routes');
   assert.equal(canonicalProductRoute('__unknown__', manifest), null);
   assert.equal(canonicalProductRoute(manifest[0].title, [{title: manifest[0].title, url: 'https://evil.example'}]), null);
   assert.ok(assetCalls.includes('/product.html') && assetCalls.includes('/p/index.json'));
