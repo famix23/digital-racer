@@ -6,7 +6,7 @@ Use **the original title written by the seller** as the inventory \`title\` for 
 
 If an existing inventory entry needs to keep its historical internal identity or URL while showing a verified source title, add the exact text under \`original_title\`, \`source_title\` or \`seller_title\`. The product builder prefers that text for the visible heading, cards, accessibility text and Product structured data but keeps the original title for lookup and the canonical URL slug.
 
-For specifically confirmed owner corrections where the vendor's original wording was **not stored**, use \`content/product-title-overrides.json\`. Do not apply regex stripping to 645 old titles: it can erase genuine seller titles. The screenshot-confirmed Fireman Set heading has one owner correction. To restore any other previously summarized product **exactly**, obtain the original seller title or listing page first.
+For legacy account summaries whose heading appears to have received an extra **PUBG Mobile Account** prefix during earlier DigitalRacer imports, `content/product-title-overrides.json` contains an explicit display-only mapping of the 201 affected inventory titles. This removes the repetitive prefix from the storefront but **does not claim the remaining summary is the verified verbatim reseller title**. These mappings are frozen to existing titles only; new imported products are never automatically stripped. Inventory titles and URLs remain unchanged. A verified `original_title`, `source_title`, or `seller_title` always overrides the legacy display correction, even if the authentic reseller wording contains PUBG Mobile Account. Do not use general regex stripping for future imports.
 
 ## Correcting an older title in the admin editor
 
