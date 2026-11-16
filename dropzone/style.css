@@ -1,4 +1,4 @@
-/* DigitalRacer DropZone concept – scoped, standalone storefront UI */
+/* DigitalRacer Speed Drift concept – scoped, standalone storefront UI */
 :root{color-scheme:dark;--bg:#08090d;--panel:#15171d;--panel2:#1e2129;--panel3:#101218;--gold:#d4af37;--gold-bright:#f2d57c;--line:#34312b;--text:#f6f4ee;--muted:#bbb8b2;--green:#8dd8a0}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
