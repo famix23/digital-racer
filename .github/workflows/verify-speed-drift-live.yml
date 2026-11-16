@@ -20,6 +20,11 @@ jobs:
             "https://www.digitalracer.store/dropzone/",
             "https://www.digitalracer.store/dropzone/?utm_source=chatgpt.com",
             "https://www.digitalracer.store/speed-drift/",
+            "https://www.digitalracer.store/dropzone/app.js",
+            "https://www.digitalracer.store/dropzone/catalog.js",
+            "https://www.digitalracer.store/dropzone/payment-config.js",
+            "https://www.digitalracer.store/dropzone/style.css",
+            "https://www.digitalracer.store/images/uploads/digitalracer-bentley-batur-preview.png",
             "https://deploy-preview-81--symphonious-banoffee-d6efee.netlify.app/dropzone/",
           ]
           for url in urls:
@@ -29,6 +34,11 @@ jobs:
                 body=res.read(2000000).decode("utf-8","replace")
                 title=re.search(r"<title[^>]*>(.*?)</title>",body,re.I|re.S)
                 output={"url":url,"status":res.status,"final_url":res.url,"content_type":res.headers.get("Content-Type",""),"length":len(body),"title":title.group(1).strip()[:180] if title else None,"speed_drift":("Speed Drift" in body or "SPEED DRIFT" in body),"price_120":("$120" in body),"demo_badge":bool(re.search(r'class="dr-demo-mark"|Speed Drift\\s*\\(Demo\\)',body,re.I))}
+                if url.endswith("payment-config.js"):
+                  output["wallet_configured"]=("TF9TxdLcw1BdhVFKc3egwKHBTyis4fmPys" in body)
+                  output["unit_price_120"]=("unitPriceUSD: 120" in body)
+                if url.endswith("app.js"):
+                  output["quantity_calculation"]=("function totalUSD()" in body)
                 print("RESULT",json.dumps(output,ensure_ascii=False),flush=True)
             except Exception as e:
               print("RESULT",json.dumps({"url":url,"error":type(e).__name__+": "+str(e)[:230]}),flush=True)
