@@ -4,6 +4,7 @@ on:
     paths:
       - "dropzone/**"
       - "scripts/test_dropzone_demo.cjs"
+      - "scripts/test_speed_drift_interactions.cjs"
       - "index.html"
       - "_headers"
       - "assets/storefront-polish.css"
@@ -26,4 +27,6 @@ jobs:
       - name: Check out repository
         uses: actions/checkout@v4
       - name: Validate DropZone integration and scripts
-        run: node scripts/test_dropzone_demo.cjs
+        run: |
+          node scripts/test_dropzone_demo.cjs
+          node scripts/test_speed_drift_interactions.cjs
