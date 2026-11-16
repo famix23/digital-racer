@@ -213,8 +213,10 @@ write("assets/storefront.js", js)
 data = json.loads(read("inventory.json"))
 items = data if isinstance(data, list) else (data.get("items") or data.get("products") or data.get("inventory") or [])
 
-# Only explicitly verified owner corrections may override existing labels.
-# Never infer/remove "PUBG Mobile" from a real reseller title.
+# Display-only legacy-prefix corrections use a frozen, explicit mapping rather than
+# changing inventory identities or stripping titles from future imports.
+# Verified original_title/source_title/seller_title always wins, including when
+# the seller genuinely included 'PUBG Mobile Account'.
 products, used = [], set()
 for it in items:
     title = str(it.get("title") or "").strip()

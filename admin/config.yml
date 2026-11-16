@@ -18,10 +18,17 @@ collections:
             label: "Products"
             widget: "list"
             fields:
-              - label: "Title"
+              - label: "Title (Exact Reseller Wording)"
                 name: "title"
                 widget: "string"
-              
+                hint: "For a new listing, paste the reseller title exactly. Do not prepend PUBG Mobile Account or other SEO keywords."
+
+              - label: "Original Reseller Title (Optional, for Existing Listings)"
+                name: "original_title"
+                widget: "string"
+                required: false
+                hint: "Use the verified original seller title to correct an existing product without changing its URL or inventory identity. Keep punctuation and emojis exactly; leave blank if Title is already correct."
+
               - label: "Price (USD)"
                 name: "price"
                 widget: "string"

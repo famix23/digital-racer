@@ -6,6 +6,9 @@ from pathlib import Path
 import re
 
 ROOT = Path(__file__).resolve().parents[1]
+cms = (ROOT / "admin/config.yml").read_text(encoding="utf-8")
+assert 'name: "original_title"' in cms, "CMS must expose original seller title corrections"
+assert 'name: "title"' in cms, "CMS title input required"
 source = json.loads((ROOT / "inventory.json").read_text(encoding="utf-8"))
 products = source if isinstance(source, list) else source["items"]
 manifest = json.loads((ROOT / "p/index.json").read_text(encoding="utf-8"))
@@ -13,6 +16,14 @@ overrides = json.loads((ROOT / "content/product-title-overrides.json").read_text
 assert len(products) == len(manifest)
 assert all(isinstance(k, str) and isinstance(v, str) and v.strip() for k, v in overrides.items())
 assert set(overrides).issubset({str(p["title"]).strip() for p in products}), "Override key has no product"
+# Frozen legacy display corrections must never silently alter source inventory fields.
+# The 201 legacy-only mappings must not rename any product or affect future uploads.
+assert len(overrides) == 201, "Unexpected legacy title override count"
+for saved_title, visible in overrides.items():
+    assert saved_title.startswith(("PUBG Mobile Account", "PUBG Mobile Old Account"))
+    assert not visible.startswith(("PUBG Mobile Account", "PUBG Mobile Old Account"))
+    assert visible.strip() == visible and visible, "Empty or padded display label"
+
 key = "PUBG Mobile Old Account – Fireman Set, 4x Red Loot Crate Max, 2 Sports Cars, 23 Kill Msgs"
 assert overrides.get(key) == "Fireman Set, 4x Red Loot Crate Max, 2 Sports Cars, 23 Kill Msgs"
 safe_categories = {"Account", "Car Card", "UC Top-Up", "Rank Boosting", "Popularity"}
