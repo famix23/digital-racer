@@ -19,6 +19,7 @@ jobs:
       - run: python3 scripts/test_adsense.py
       - run: python3 scripts/test_content_quality.py
       - run: python3 scripts/test_indexing.py
+      - run: python3 scripts/test_product_titles.py
       - run: python3 scripts/test_shop_hubs.py
       - run: python3 scripts/audit_product_seo.py
       - run: python3 scripts/build_seo.py --check
