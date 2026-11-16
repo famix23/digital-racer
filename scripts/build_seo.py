@@ -237,6 +237,11 @@ for it in items:
             images.append(p)
     category = it.get("category") or "Product"
     desc_raw = it.get("description") or ""
+    # Do not incorrectly label unrelated game merchandise as PUBG Mobile.
+    # Use an explicitly supported game attribution from the listing itself.
+    category_label = CATEGORY_LABELS.get(category, f"PUBG Mobile {category}")
+    if category == "In-Game Items" and "pubg mobile" not in (title + " " + desc_raw).casefold():
+        category_label = "In-Game Item"
     # Prefer the exact, supplied reseller title for all categories. The original
     # inventory title remains the immutable listing identity and URL slug source.
     supplied = next((it.get(key) for key in ("original_title", "source_title", "seller_title")
@@ -254,7 +259,7 @@ for it in items:
         "price": it.get("price", ""),
         "price_num": fmt_price(it.get("price", "")),
         "category": category,
-        "cat_label": CATEGORY_LABELS.get(category, f"PUBG Mobile {category}"),
+        "cat_label": category_label,
         "images": images,
         "desc_raw": desc_raw,
         "desc_clean": strip_symbols(desc_raw),
