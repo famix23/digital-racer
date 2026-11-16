@@ -201,10 +201,10 @@ def parse_description(text):
 
 
 # ---------------------------------------------------------------- data
-# Keep all future owner/supplier title corrections synchronized with browser JS.
+TITLE_OVERRIDES = json.loads(read("content/product-title-overrides.json"))
+# Keep verified title corrections synchronized with the browser's original-title renderer.
 js = read("assets/storefront.js")
-js_overrides = json.dumps(TITLE_OVERRIDES if "TITLE_OVERRIDES" in globals() else
-                           json.loads(read("content/product-title-overrides.json")), ensure_ascii=False, indent=2)
+js_overrides = json.dumps(TITLE_OVERRIDES, ensure_ascii=False, indent=2)
 js = replace_block(js, "/* PRODUCT_TITLE_OVERRIDES:BEGIN */",
                    "/* PRODUCT_TITLE_OVERRIDES:END */",
                    "\nconst DR_TITLE_OVERRIDES = Object.freeze(" + js_overrides + ");\n",
@@ -215,7 +215,6 @@ items = data if isinstance(data, list) else (data.get("items") or data.get("prod
 
 # Only explicitly verified owner corrections may override existing labels.
 # Never infer/remove "PUBG Mobile" from a real reseller title.
-TITLE_OVERRIDES = json.loads(read("content/product-title-overrides.json"))
 products, used = [], set()
 for it in items:
     title = str(it.get("title") or "").strip()
@@ -263,13 +262,26 @@ for it in items:
 
 
 
+def keyword_safe_description(p):
+    """Add genuine game/category context to metadata only when source text omits it.
+
+    The generic In-Game Items category may cover unrelated games, so never
+    infer PUBG Mobile for those items without explicit source attribution.
+    Seller-provided text is never rewritten or padded in inventory.json.
+    """
+    source = p["desc_clean"] or p["clean_display_title"]
+    safe = {"Account", "Car Card", "UC Top-Up", "Rank Boosting", "Popularity"}
+    if p["category"] in safe and "pubg mobile" not in source.casefold():
+        return f"{p['cat_label']}. {source}"
+    return source
+
+
 def original_product_meta(p):
-    """Preserve existing metadata unless its description is duplicated."""
+    """Keep product type in SEO description without repeating seller keywords."""
     price_text = f"${p['price']} USD"
     delivery = "Last listed price" if p["raw"].get("reference_only") is True else "Order on WhatsApp"
-    lead = f"{p['cat_label']} · {price_text} · {delivery}. "
-    return truncate(lead + (p["desc_clean"] or p["clean_title"]), 158)
-
+    lead = f"{price_text} · {delivery}. "
+    return truncate(lead + keyword_safe_description(p), 158)
 
 META_BASES = {p["url"]: original_product_meta(p) for p in products}
 META_COUNTS = Counter(META_BASES.values())
@@ -456,7 +468,7 @@ def product_page(p, others):
         distinctive = truncate(p["clean_title"], 82)
         meta_desc = truncate(
             f"{distinctive}{edition} – {price_txt}. "
-            f"{p['desc_clean'] or p['category']}", 158
+            f"{keyword_safe_description(p)}", 158
         )
     canonical = SITE_URL + p["url"]
     image = p["images"][0] if p["images"] else None
@@ -468,8 +480,8 @@ def product_page(p, others):
     if p["price_num"]:
         offer["price"] = p["price_num"]
     product_ld = {"@context": "https://schema.org", "@type": "Product", "@id": canonical + "#product",
-                  "name": truncate(p["clean_display_title"], 150), "sku": p["slug"], "category": p["cat_label"],
-                  "description": truncate(p["desc_clean"] or p["clean_title"], 4900),
+                  "name": p["display_title"], "sku": p["slug"], "category": p["cat_label"],
+                  "description": truncate(keyword_safe_description(p), 4900),
                   "image": [abs_url(i) for i in p["images"]], "url": canonical, "offers": offer}
     if not product_ld["image"]:
         del product_ld["image"]
