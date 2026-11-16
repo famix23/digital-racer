@@ -51,7 +51,7 @@ const window={
  open(url){external.push(url);return {}},
  navigator:{clipboard:{writeText:()=>Promise.resolve()}},
 };
-const context={window,document,navigator:window.navigator,fetch:()=>Promise.reject(Error("offline test")),console,Date,Promise,setTimeout,clearTimeout};
+const context={window,document,navigator:window.navigator,fetch:()=>({then(first){const data=first({ok:true,json:()=>JSON.parse(read("inventory.json"))});return {then(second){second(data);return {catch:()=>{}}}}}}),console,Date,Promise,setTimeout,clearTimeout};
 vm.createContext(context);
 for(const file of ["dropzone/catalog.js","dropzone/payment-config.js","dropzone/app.js"]){
  vm.runInContext(read(file),context,{filename:file});
@@ -60,6 +60,10 @@ const fire=id=>{assert.ok(elements[id].events.click?.length,"Missing click handl
 const stage=n=>assert.equal(elements["stage-"+n].hidden,false,"Stage "+n+" should be visible");
 assert.ok(elements.vehicles.children.length>0,"Catalog didn't render");
 assert.ok(elements.filters.children.length>=8,"Brand filters didn't render");
+assert.equal(elements.storeGallery.children.length,JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length,"All category Car Cards should appear in Speed Drift");
+assert.ok(elements.storeGallery.children.every(el=>el.events.click?.length),"Every Car Card catalog item must be clickable");
+assert.ok(elements.catalogCount.textContent.includes("27"),"Display full Car Card listing count");
+
 assert.equal(elements.next1.disabled,true,"Initially require a selected car");
 elements.filters.children.find(el=>el.textContent==="Ferrari").click();
 assert.ok(elements.vehicles.children.length>0,"Ferrari filter has no results");
@@ -119,4 +123,22 @@ fire("requestVerification");stage(5);
 fire("restart");stage(1);
 assert.equal(elements.next1.disabled,true,"Restart should clear selection");
 assert.equal(elements.qtyValue.textContent,"1","Restart should reset quantity");
+
+// Real storefront listing selection should carry the exact title, real listing price and photo.
+// A bundle must not be silently re-priced at the $120 finish-card price.
+const inventory=JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card");
+const expensive=inventory.find(x=>Number(x.price)>500);
+assert.ok(expensive,"Fixture should include an actual bundle listing with distinct pricing");
+let card=elements.storeGallery.children.find(el=>el.attrs["aria-label"].includes(expensive.title));
+assert.ok(card,"Actual catalog listing should be visible and selectable");
+card.click();stage(2);
+assert.equal(elements.detailTotal.textContent,"$"+Number(expensive.price).toFixed(2),"Selected original listing price must be preserved");
+assert.ok(elements.detailPreview.children[1].children[0].textContent===expensive.title,"Use exact listing title in review");
+fire("qtyPlus");
+assert.equal(elements.detailTotal.textContent,"$"+(Number(expensive.price)*2).toFixed(2),"Storefront listing quantity should recalculate at its own price");
+fire("back1");stage(1);
+elements.catalogSearch.value="Bentley";elements.catalogSearch.fire("input");
+assert.ok(elements.storeGallery.children.length>0,"Catalog search should find Bentley listings");
+assert.ok(elements.storeGallery.children.every(el=>el.attrs["aria-label"].toLowerCase().includes("bentley")),"Catalog search should filter to Bentley");
+
 console.log("Speed Drift interactions passed: mobile auto-advance on vehicle tap, scroll-to-form, brand filters, back/next, quantity, UID validation, wallet copy, TXID, WhatsApp, reset.");

@@ -42,6 +42,12 @@
   </div>
 
   <section class="stage" id="stage-1" aria-labelledby="collection-title">
+    <section class="surface gallery" id="gallerySection" aria-labelledby="gallery-title" hidden>
+      <div class="sectionhead"><div><h2 id="gallery-title">Shop all DigitalRacer Car Cards</h2><p>Browse every Car Card listing from our catalog, see the listed price, and tap any item to continue to Player Details.</p></div><a href="/catalog?category=Car%20Card" style="color:#f2d57c;font-size:12px">View main catalog</a></div>
+      <div class="catalog-tools"><label for="catalogSearch" class="catalog-label">Search Car Cards</label><input class="search" id="catalogSearch" type="search" placeholder="Search Ferrari, Bentley, cards…" autocomplete="off"><span class="counter" id="catalogCount" aria-live="polite">Loading Car Cards</span></div>
+      <div id="storeGallery" class="gallerygrid"></div>
+      <div class="gallery-more-wrap"><button type="button" class="btn subtle" id="galleryMore" hidden>Show more Car Cards</button></div>
+    </section>
     <div class="surface">
       <div class="sectionhead"><div><h2 id="collection-title">Vehicle Collection · $120 per Card</h2><p>Tap or click any vehicle to open Player Details instantly. Confirm availability before making payment.</p></div><span id="resultCount" class="counter">Loading collection</span></div>
       <div class="controls"><div class="filters" id="filters" aria-label="Filter by manufacturer"></div><label><span class="skip">Search vehicle collection</span><input class="search" id="search" placeholder="Search vehicle / finish" autocomplete="off" aria-label="Search vehicle collection"></label></div>
@@ -50,10 +56,6 @@
       <div style="text-align:center;margin:22px 0"><button type="button" class="btn subtle" id="more" hidden>Show more vehicles</button></div>
       <div class="actionbar"><p class="selection" id="selected" aria-live="polite">No vehicle selected</p><button class="btn primary" type="button" id="next1" disabled>Continue to player details →</button></div>
     </div>
-    <section class="surface gallery" id="gallerySection" aria-labelledby="gallery-title" hidden>
-      <div class="sectionhead"><div><h2 id="gallery-title">From DigitalRacer's Car Card catalog</h2><p>Browse existing DigitalRacer Car Card listings with original product photos.</p></div><a href="/catalog?category=Car%20Card" style="color:#f2d57c;font-size:12px">View main catalog</a></div>
-      <div id="storeGallery" class="gallerygrid"></div>
-    </section>
     <div class="note">Vehicles and finishes shown are for selection reference. Car Card availability, rarity and exact appearance must be confirmed with DigitalRacer before purchasing.</div>
   </section>
 
@@ -62,8 +64,15 @@
       <div class="kicker">STEP 02 / RECIPIENT DETAILS</div>
       <h2 id="player-title">Where should the Car Card go?</h2>
       <p class="muted">Enter the recipient’s player details. Never share passwords, OTPs or game login credentials.</p>
+      <aside class="delivery-guide" aria-labelledby="delivery-guide-title">
+        <div class="delivery-guide-icon" aria-hidden="true">✓</div>
+        <div class="delivery-guide-content">
+          <h3 id="delivery-guide-title">How Car Card Delivery Works</h3>
+          <p>Enter your <strong>PUBG MOBILE Player UID</strong> (the number shown in your game profile). After successful payment confirmation, your selected Car Card will be delivered directly to your PUBG MOBILE account as quickly as possible.</p>
+        </div>
+      </aside>
       <div class="preview" id="detailPreview"></div>
-      <div class="summaryline"><span>Price per Car Card</span><strong>$120.00</strong></div>
+      <div class="summaryline"><span id="detailPriceLabel">Price per Car Card</span><strong id="detailUnitPrice">$120.00</strong></div>
       <div class="summaryline"><span>Total</span><strong id="detailTotal">$120.00</strong></div>
       <form id="recipientForm" novalidate>
         <div class="fields">
@@ -72,7 +81,7 @@
           <div class="field"><label for="server">Server *</label><select id="server" name="server" required><option value="">Select server</option><option>Asia</option><option>Middle East</option><option>Europe</option><option>North America</option><option>South America</option><option>KRJP</option></select></div>
           <div class="field"><label for="region">Country / region *</label><select id="region" name="region" required><option value="">Select region</option><option>Pakistan</option><option>United Arab Emirates</option><option>Saudi Arabia</option><option>United Kingdom</option><option>United States</option><option>Turkey</option><option>Other</option></select></div>
         </div>
-        <div class="qtybar"><div><strong>Number of Car Cards</strong><div class="muted">Select a quantity from 1 to 10</div></div><div class="qtycontrol"><button type="button" id="qtyMinus" aria-label="Decrease quantity">−</button><output id="qtyValue" aria-live="polite">1</output><button type="button" id="qtyPlus" aria-label="Increase quantity">+</button></div></div>
+        <div class="qtybar"><div><strong>Quantity</strong><div class="muted">Select a quantity from 1 to 10</div></div><div class="qtycontrol"><button type="button" id="qtyMinus" aria-label="Decrease quantity">−</button><output id="qtyValue" aria-live="polite">1</output><button type="button" id="qtyPlus" aria-label="Increase quantity">+</button></div></div>
         <div class="note">Your details stay on this page until you choose to send them to DigitalRacer on WhatsApp.</div>
         <p id="formError" class="error" role="alert" aria-live="polite"></p>
         <div class="actionbar"><button class="btn subtle" type="button" id="back1">← Back to collection</button><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn subtle" type="button" id="sample">Fill example fields</button><button class="btn primary" type="submit">Review gift →</button></div></div>
@@ -92,11 +101,11 @@
         <div class="summaryline"><span>Character name</span><strong id="r-nick"></strong></div>
         <div class="summaryline"><span>Server</span><strong id="r-server"></strong></div>
         <div class="summaryline"><span>Country / region</span><strong id="r-region"></strong></div>
-        <div class="summaryline"><span>Car Cards</span><strong id="r-qty"></strong></div>
-        <div class="summaryline"><span>Unit price</span><strong>$120.00</strong></div>
+        <div class="summaryline"><span>Quantity</span><strong id="r-qty"></strong></div>
+        <div class="summaryline"><span id="reviewPriceLabel">Unit price</span><strong id="reviewUnitPrice">$120.00</strong></div>
         <div class="summaryline"><span>Order total (USD)</span><strong id="reviewTotal">$120.00</strong></div>
       </div>
-      <div class="note">Your order will only be sent for manual review after you contact DigitalRacer. No automated game-account verification or delivery is available.</div>
+      <div class="note">After entering your Player UID and reviewing your order, send the payment details to DigitalRacer for confirmation and processing.</div>
       <div class="actionbar" style="margin-top:18px"><button class="btn subtle" id="back2" type="button">← Edit recipient</button><button class="btn primary" id="toPayment" type="button">Continue to USDT details →</button></div>
     </div>
   </section>
@@ -109,7 +118,7 @@
       <div class="preview" id="paymentPreview"></div>
       <div class="walletcard">
         <div class="wallethead"><span class="tagdemo">USDT</span><strong id="paymentNetwork">TRON (TRC20)</strong></div>
-        <div class="summaryline"><span>Price per Car Card</span><strong>$120.00 USD</strong></div>
+        <div class="summaryline"><span id="paymentPriceLabel">Price per selection</span><strong id="paymentUnitPrice">$120.00 USD</strong></div>
         <div class="summaryline"><span>Order total (USD)</span><strong id="paymentUSD">$120.00</strong></div>
         <div class="summaryline"><span>USDT amount</span><strong id="paymentTotal">120 USDT</strong></div>
         <label for="walletAddress" class="walletlabel">Receiving wallet address</label>
@@ -142,7 +151,7 @@
       <div class="receipt">
         <div class="summaryline"><span>Order reference</span><strong id="receiptRef"></strong></div>
         <div class="summaryline"><span>Vehicle</span><strong id="receiptItem"></strong></div>
-        <div class="summaryline"><span>Car Cards</span><strong id="receiptQty"></strong></div>
+        <div class="summaryline"><span>Quantity</span><strong id="receiptQty"></strong></div>
         <div class="summaryline"><span>Order total</span><strong id="receiptTotal"></strong></div>
         <div class="summaryline"><span>Player</span><strong id="receiptPlayer"></strong></div>
         <div class="summaryline"><span>Server / region</span><strong id="receiptServer"></strong></div>
