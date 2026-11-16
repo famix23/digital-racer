@@ -1,4 +1,15 @@
 /* Shared storefront boundaries: catalog values are text, never executable markup. */
+/* PRODUCT_TITLE_OVERRIDES:BEGIN */
+const DR_TITLE_OVERRIDES = Object.freeze({
+  "PUBG Mobile Old Account – Fireman Set, 4x Red Loot Crate Max, 2 Sports Cars, 23 Kill Msgs": "Fireman Set, 4x Red Loot Crate Max, 2 Sports Cars, 23 Kill Msgs"
+});
+/* PRODUCT_TITLE_OVERRIDES:END */
+function productDisplayTitle(product) {
+  const fromSupplier = ['original_title', 'source_title', 'seller_title']
+    .map(key => product?.[key]).find(value => typeof value === 'string' && value.trim());
+  return fromSupplier || DR_TITLE_OVERRIDES[product?.title] || product?.title || '';
+}
+
 function escapeHTML(value) {
   return String(value ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 }

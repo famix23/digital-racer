@@ -38,7 +38,7 @@ def build_shop_hubs(root, products, write):
             ' listings</summary><ul class="directory-list">' +
             "".join(
                 '<li><a class="directory-product" href="' + esc(p["url"]) + '">' +
-                esc(p["title"]) + '</a><small>' + chr(36) + esc(p["price"]) +
+                esc(p["display_title"]) + '</a><small>' + chr(36) + esc(p["price"]) +
                 ' USD</small></li>' for p in remaining
             ) + '</ul></details>'
         ) if remaining else ""
@@ -49,7 +49,7 @@ def build_shop_hubs(root, products, write):
             "mainEntity": {"@type": "ItemList", "numberOfItems": len(chosen),
                 "itemListElement": [
                     {"@type": "ListItem", "position": i + 1,
-                     "name": p["title"], "url": SITE + p["url"]}
+                     "name": p["display_title"], "url": SITE + p["url"]}
                     for i, p in enumerate(chosen)]}
         }
         sections = "\n".join(
@@ -59,7 +59,7 @@ def build_shop_hubs(root, products, write):
         )
         cards = "\n".join(
             '<a class="product-card" href="' + esc(p["url"]) +
-            '"><strong>' + esc(p["title"]) + '</strong><span>$' +
+            '"><strong>' + esc(p["display_title"]) + '</strong><span>$' +
             esc(p["price"]) + ' USD</span></a>' for p in chosen
         )
         links = " ".join(
