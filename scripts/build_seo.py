@@ -201,9 +201,20 @@ def parse_description(text):
 
 
 # ---------------------------------------------------------------- data
+TITLE_OVERRIDES = json.loads(read("content/product-title-overrides.json"))
+# Keep verified title corrections synchronized with the browser's original-title renderer.
+js = read("assets/storefront.js")
+js_overrides = json.dumps(TITLE_OVERRIDES, ensure_ascii=False, indent=2)
+js = replace_block(js, "/* PRODUCT_TITLE_OVERRIDES:BEGIN */",
+                   "/* PRODUCT_TITLE_OVERRIDES:END */",
+                   "\nconst DR_TITLE_OVERRIDES = Object.freeze(" + js_overrides + ");\n",
+                   "assets/storefront.js")
+write("assets/storefront.js", js)
 data = json.loads(read("inventory.json"))
 items = data if isinstance(data, list) else (data.get("items") or data.get("products") or data.get("inventory") or [])
 
+# Only explicitly verified owner corrections may override existing labels.
+# Never infer/remove "PUBG Mobile" from a real reseller title.
 products, used = [], set()
 for it in items:
     title = str(it.get("title") or "").strip()
@@ -226,17 +237,29 @@ for it in items:
             images.append(p)
     category = it.get("category") or "Product"
     desc_raw = it.get("description") or ""
+    # Do not incorrectly label unrelated game merchandise as PUBG Mobile.
+    # Use an explicitly supported game attribution from the listing itself.
+    category_label = CATEGORY_LABELS.get(category, f"PUBG Mobile {category}")
+    if category == "In-Game Items" and "pubg mobile" not in (title + " " + desc_raw).casefold():
+        category_label = "In-Game Item"
+    # Prefer the exact, supplied reseller title for all categories. The original
+    # inventory title remains the immutable listing identity and URL slug source.
+    supplied = next((it.get(key) for key in ("original_title", "source_title", "seller_title")
+                     if isinstance(it.get(key), str) and it.get(key).strip()), None)
+    display_title = supplied if supplied is not None else TITLE_OVERRIDES.get(title, title)
     clean_title = strip_symbols(title)
     products.append({
         "raw": it,
         "title": title,
+        "display_title": display_title,
+        "clean_display_title": strip_symbols(display_title),
         "clean_title": clean_title,
         "slug": slug,
         "url": f"/{OUT_DIR}/{slug}/",
         "price": it.get("price", ""),
         "price_num": fmt_price(it.get("price", "")),
         "category": category,
-        "cat_label": CATEGORY_LABELS.get(category, f"PUBG Mobile {category}"),
+        "cat_label": category_label,
         "images": images,
         "desc_raw": desc_raw,
         "desc_clean": strip_symbols(desc_raw),
@@ -244,13 +267,26 @@ for it in items:
 
 
 
+def keyword_safe_description(p):
+    """Add genuine game/category context to metadata only when source text omits it.
+
+    The generic In-Game Items category may cover unrelated games, so never
+    infer PUBG Mobile for those items without explicit source attribution.
+    Seller-provided text is never rewritten or padded in inventory.json.
+    """
+    source = p["desc_clean"] or p["clean_display_title"]
+    safe = {"Account", "Car Card", "UC Top-Up", "Rank Boosting", "Popularity"}
+    if p["category"] in safe and "pubg mobile" not in source.casefold():
+        return f"{p['cat_label']}. {source}"
+    return source
+
+
 def original_product_meta(p):
-    """Preserve existing metadata unless its description is duplicated."""
+    """Keep product type in SEO description without repeating seller keywords."""
     price_text = f"${p['price']} USD"
     delivery = "Last listed price" if p["raw"].get("reference_only") is True else "Order on WhatsApp"
-    lead = f"{p['cat_label']} · {price_text} · {delivery}. "
-    return truncate(lead + (p["desc_clean"] or p["clean_title"]), 158)
-
+    lead = f"{price_text} · {delivery}. "
+    return truncate(lead + keyword_safe_description(p), 158)
 
 META_BASES = {p["url"]: original_product_meta(p) for p in products}
 META_COUNTS = Counter(META_BASES.values())
@@ -265,11 +301,11 @@ def card_html(p, indent, eager=False):
     img = display_image(p["images"][0]) if p["images"] else ""
     badge = f'<div class="prod-badge">{esc(p["raw"].get("badge"))}</div>' if p["raw"].get("badge") else ""
     extra = f' item-card" data-category="{esc(p["category"])}' if indent == "catalog" else ""
-    image_html = (f'<img src="{esc(img)}" class="prod-img" alt="{esc(p["clean_title"])}" {'fetchpriority="high"' if eager else 'loading="lazy"'} decoding="async" onerror="this.style.display=\'none\'">' if img else '<span style="color: var(--muted); padding: 1rem; display: block;">No image available</span>')
+    image_html = (f'<img src="{esc(img)}" class="prod-img" alt="{esc(p["display_title"])}" {'fetchpriority="high"' if eager else 'loading="lazy"'} decoding="async" onerror="this.style.display=\'none\'">' if img else '<span style="color: var(--muted); padding: 1rem; display: block;">No image available</span>')
     return (f'<a href="{p["url"]}" class="product-card{extra}">'
             f'<div class="prod-img-wrap">{image_html} {badge}</div>'
             f'<div class="prod-content"><div class="prod-category">{esc(p["category"])}</div>'
-            f'<div class="prod-title">{esc(p["title"])}</div>'
+            f'<div class="prod-title">{esc(p["display_title"])}</div>'
             f'<div class="prod-footer"><div class="prod-price">${esc(p["price"])} USD</div><div class="prod-btn">View</div></div></div></a>')
 
 
@@ -362,7 +398,7 @@ catalog_products = list(reversed(products))  # Match the catalog's default newes
 item_list = {"@context": "https://schema.org", "@type": "ItemList", "name": "Digital Racer catalog",
              "numberOfItems": len(products),
              "itemListElement": [{"@type": "ListItem", "position": i + 1, "url": SITE_URL + p["url"],
-                                  "name": p["clean_title"]} for i, p in enumerate(catalog_products)]}
+                                  "name": p["clean_display_title"]} for i, p in enumerate(catalog_products)]}
 s = read("catalog.html")
 s = replace_block(s, "<!-- SEO:HEAD:BEGIN (generated by scripts/build_seo.py; do not edit by hand) -->",
                   "<!-- SEO:HEAD:END -->",
@@ -414,10 +450,14 @@ def related_choices(product, all_products, limit=4):
 # ---------------------------------------------------------------- product pages
 def product_page(p, others):
     it = p["raw"]
-    short = truncate(p["clean_title"], 60)
+    short = truncate(p["clean_display_title"], 60)
     if sum(1 for o in products if o["clean_title"] == p["clean_title"]) > 1:
         short = f"{truncate(p['clean_title'], 42)} · Listing {1 + [o for o in products if o['clean_title'] == p['clean_title']].index(p)} (${p['price']})"  # keep duplicate titles distinct
-    page_title = f"{short} | {SITE_NAME}" if "pubg" in p["clean_title"].lower() else f"{short} – {p['cat_label']} | {SITE_NAME}"
+    # Keep the browser title faithful to the supplied title. Product category
+    # keywords are already present in meta description, schema and breadcrumbs.
+    page_title = (f"{short} | {SITE_NAME}" if p["display_title"] != p["title"]
+                  else (f"{short} | {SITE_NAME}" if "pubg" in p["clean_title"].lower()
+                        else f"{short} – {p['cat_label']} | {SITE_NAME}"))
     price_txt = f"${p['price']} USD"
     reference_only = it.get("reference_only") is True
     delivery = "Last listed price" if reference_only else "Order on WhatsApp"
@@ -433,7 +473,7 @@ def product_page(p, others):
         distinctive = truncate(p["clean_title"], 82)
         meta_desc = truncate(
             f"{distinctive}{edition} – {price_txt}. "
-            f"{p['desc_clean'] or p['category']}", 158
+            f"{keyword_safe_description(p)}", 158
         )
     canonical = SITE_URL + p["url"]
     image = p["images"][0] if p["images"] else None
@@ -445,8 +485,8 @@ def product_page(p, others):
     if p["price_num"]:
         offer["price"] = p["price_num"]
     product_ld = {"@context": "https://schema.org", "@type": "Product", "@id": canonical + "#product",
-                  "name": truncate(p["clean_title"], 150), "sku": p["slug"], "category": p["cat_label"],
-                  "description": truncate(p["desc_clean"] or p["clean_title"], 4900),
+                  "name": p["display_title"], "sku": p["slug"], "category": p["cat_label"],
+                  "description": truncate(keyword_safe_description(p), 4900),
                   "image": [abs_url(i) for i in p["images"]], "url": canonical, "offers": offer}
     if not product_ld["image"]:
         del product_ld["image"]
@@ -466,7 +506,7 @@ def product_page(p, others):
     s = replace_one(s, r'(<a href="/catalog" id="bread-cat">).*?(</a>)',
                     lambda m: f'<a href="/catalog?category={esc(quote(p["category"]))}" id="bread-cat">{esc(p["category"])}</a>', f, "breadcrumb")
     s = replace_one(s, r'(<h1 class="main-title" id="prod-title">).*?(</h1>)',
-                    lambda m: m.group(1) + esc(p["title"]) + m.group(2), f, "title h1")
+                    lambda m: m.group(1) + esc(p["display_title"]) + m.group(2), f, "title h1")
     s = replace_one(s, r'(<div class="buy-price" id="prod-price">).*?(</div>)',
                     lambda m: m.group(1) + esc(price_txt) + m.group(2), f, "price")
     s = replace_one(s, r'(<span id="prod-tag">).*?(</span>)',
@@ -494,19 +534,19 @@ def product_page(p, others):
         s = replace_one(s, r'<div class="main-nav-btn main-prev" id="main-prev"', f'<div class="main-nav-btn main-prev" id="main-prev" style="display: {disp};"', f, "prev btn")
         s = replace_one(s, r'<div class="main-nav-btn main-next" id="main-next"', f'<div class="main-nav-btn main-next" id="main-next" style="display: {disp};"', f, "next btn")
         s = replace_one(s, r'<img src="" alt="" id="main-display-img"[^>]*>',
-                        lambda m: f'<img src="{esc(display_image(image, 960))}" alt="{esc(p["clean_title"])}" role="button" tabindex="0" aria-label="Enlarge product image" onkeydown="if(event.key===&quot;Enter&quot;||event.key===&quot; &quot;){{event.preventDefault();this.click()}}" id="main-display-img" data-index="0" fetchpriority="high" onclick="openLightbox(this.getAttribute(\'data-index\'))" style="display: block;">', f, "main image")
+                        lambda m: f'<img src="{esc(display_image(image, 960))}" alt="{esc(p["display_title"])}" role="button" tabindex="0" aria-label="Enlarge product image" onkeydown="if(event.key===&quot;Enter&quot;||event.key===&quot; &quot;){{event.preventDefault();this.click()}}" id="main-display-img" data-index="0" fetchpriority="high" onclick="openLightbox(this.getAttribute(\'data-index\'))" style="display: block;">', f, "main image")
         if multi:
             thumbs = "".join(f'<img src="{esc(display_image(im))}" alt="Product image {i + 1}" role="button" tabindex="0" aria-label="Show product image {i + 1}" onkeydown="if(event.key===&quot;Enter&quot;||event.key===&quot; &quot;){{event.preventDefault();this.click()}}" class="gal-thumb {"active" if i == 0 else ""}" loading="lazy" decoding="async" onclick="changeMainImage({i})">'
                              for i, im in enumerate(p["images"]))
             s = replace_one(s, r'(<div id="gallery-container" class="gallery-wrap">)(</div>)', lambda m: m.group(1) + thumbs + m.group(2), f, "gallery")
         else:
             s = replace_one(s, r'<div id="gallery-container" class="gallery-wrap"></div>', '<div id="gallery-container" class="gallery-wrap" style="display: none;"></div>', f, "gallery")
-    msg = f"Hello Digital Racer! I want to acquire: {p['title']} for ${p['price']} USD."
+    msg = f"Hello Digital Racer! I want to acquire: {p['display_title']} for ${p['price']} USD."
     s = replace_one(s, r'<a href="#" class="whatsapp-btn" id="buy-btn">',
                     lambda m: f'<a href="https://wa.me/{WHATSAPP}?text={esc(quote(msg, safe=""))}" class="whatsapp-btn" id="buy-btn">', f, "buy button")
     rel = "".join(
-        f'<a href="{o["url"]}" class="rel-card"><img src="{esc(display_image(o["images"][0])) if o["images"] else ""}" class="rel-img" alt="{esc(o["clean_title"])}" loading="lazy" onerror="this.style.display=\'none\'">'
-        f'<div class="rel-content"><div class="rel-title">{esc(o["title"])}</div><div class="rel-price">${esc(o["price"])} USD</div></div></a>'
+        f'<a href="{o["url"]}" class="rel-card"><img src="{esc(display_image(o["images"][0])) if o["images"] else ""}" class="rel-img" alt="{esc(o["display_title"])}" loading="lazy" onerror="this.style.display=\'none\'">'
+        f'<div class="rel-content"><div class="rel-title">{esc(o["display_title"])}</div><div class="rel-price">${esc(o["price"])} USD</div></div></a>'
         for o in others) or '<p style="color: var(--muted);">No other products available.</p>'
     s = replace_one(s, r'(<div class="related-grid" id="related-grid">).*?(</div>\n</div>)',
                     lambda m: m.group(1) + rel + m.group(2), f, "related grid")
