@@ -51,8 +51,10 @@
       <div class="actionbar"><p class="selection" id="selected" aria-live="polite">No vehicle selected</p><button class="btn primary" type="button" id="next1" disabled>Continue to player details →</button></div>
     </div>
     <section class="surface gallery" id="gallerySection" aria-labelledby="gallery-title" hidden>
-      <div class="sectionhead"><div><h2 id="gallery-title">From DigitalRacer's Car Card catalog</h2><p>Browse existing DigitalRacer Car Card listings with original product photos.</p></div><a href="/catalog?category=Car%20Card" style="color:#f2d57c;font-size:12px">View main catalog</a></div>
+      <div class="sectionhead"><div><h2 id="gallery-title">Shop all DigitalRacer Car Cards</h2><p>Browse every Car Card listing from our catalog, see the listed price, and tap any item to continue to Player Details.</p></div><a href="/catalog?category=Car%20Card" style="color:#f2d57c;font-size:12px">View main catalog</a></div>
+      <div class="catalog-tools"><label for="catalogSearch" class="catalog-label">Search Car Cards</label><input class="search" id="catalogSearch" type="search" placeholder="Search Ferrari, Bentley, cards…" autocomplete="off"><span class="counter" id="catalogCount" aria-live="polite">Loading Car Cards</span></div>
       <div id="storeGallery" class="gallerygrid"></div>
+      <div class="gallery-more-wrap"><button type="button" class="btn subtle" id="galleryMore" hidden>Show more Car Cards</button></div>
     </section>
     <div class="note">Vehicles and finishes shown are for selection reference. Car Card availability, rarity and exact appearance must be confirmed with DigitalRacer before purchasing.</div>
   </section>
@@ -66,12 +68,11 @@
         <div class="delivery-guide-icon" aria-hidden="true">✓</div>
         <div class="delivery-guide-content">
           <h3 id="delivery-guide-title">How Car Card Delivery Works</h3>
-          <p>Enter your <strong>PUBG MOBILE Player UID</strong> (the number shown in your game profile) so we know which account should receive your Car Card. Once your payment is successfully verified, <strong>DigitalRacer will arrange immediate delivery</strong> to the account linked to that UID.</p>
-          <small>Payment verification and availability are checked before dispatch. Delivery is confirmed by DigitalRacer, not automatically by this page.</small>
+          <p>Enter your <strong>PUBG MOBILE Player UID</strong> (the number shown in your game profile). After successful payment confirmation, your selected Car Card will be delivered directly to your PUBG MOBILE account as quickly as possible.</p>
         </div>
       </aside>
       <div class="preview" id="detailPreview"></div>
-      <div class="summaryline"><span>Price per Car Card</span><strong>$120.00</strong></div>
+      <div class="summaryline"><span id="detailPriceLabel">Price per Car Card</span><strong id="detailUnitPrice">$120.00</strong></div>
       <div class="summaryline"><span>Total</span><strong id="detailTotal">$120.00</strong></div>
       <form id="recipientForm" novalidate>
         <div class="fields">
@@ -101,7 +102,7 @@
         <div class="summaryline"><span>Server</span><strong id="r-server"></strong></div>
         <div class="summaryline"><span>Country / region</span><strong id="r-region"></strong></div>
         <div class="summaryline"><span>Car Cards</span><strong id="r-qty"></strong></div>
-        <div class="summaryline"><span>Unit price</span><strong>$120.00</strong></div>
+        <div class="summaryline"><span id="reviewPriceLabel">Unit price</span><strong id="reviewUnitPrice">$120.00</strong></div>
         <div class="summaryline"><span>Order total (USD)</span><strong id="reviewTotal">$120.00</strong></div>
       </div>
       <div class="note">Your order will only be sent for manual review after you contact DigitalRacer. No automated game-account verification or delivery is available.</div>
@@ -117,7 +118,7 @@
       <div class="preview" id="paymentPreview"></div>
       <div class="walletcard">
         <div class="wallethead"><span class="tagdemo">USDT</span><strong id="paymentNetwork">TRON (TRC20)</strong></div>
-        <div class="summaryline"><span>Price per Car Card</span><strong>$120.00 USD</strong></div>
+        <div class="summaryline"><span id="paymentPriceLabel">Price per selection</span><strong id="paymentUnitPrice">$120.00 USD</strong></div>
         <div class="summaryline"><span>Order total (USD)</span><strong id="paymentUSD">$120.00</strong></div>
         <div class="summaryline"><span>USDT amount</span><strong id="paymentTotal">120 USDT</strong></div>
         <label for="walletAddress" class="walletlabel">Receiving wallet address</label>
