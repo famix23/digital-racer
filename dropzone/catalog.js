@@ -53,7 +53,25 @@ window.DROPZONE_CARS = [
 ["Koenigsegg","Jesko","Account-collection example","Hypercar","example",""],
 ["Koenigsegg","Gemera","Account-collection example","Hypercar","example",""],
 ["Aston Martin","DBX707","Concept catalogue example","SUV","example",""]
-].map(function(r,i){return {id:i+1,brand:r[0],model:r[1],finish:r[2],type:r[3],origin:r[4],image:r[5]}});
+];
+/* Existing DigitalRacer product/account imagery used as visual catalogue references,
+   not exact individual finish screenshots. No blank tile is left by default. */
+window.SPEED_DRIFT_BRAND_IMAGES = Object.freeze({
+  "Bentley":"/images/uploads/digitalracer-bentley-batur-preview.png",
+  "Ferrari":"/images/uploads/7ef94944-d9ec-4c5f-9356-c2b48dfc6408.jpg",
+  "Lamborghini":"/images/uploads/digitalracer-account-25123094-05.webp",
+  "Bugatti":"/images/uploads/digitalracer-pubgm-24435694-01.webp",
+  "Pagani":"/images/uploads/digitalracer-account-8030128-01.jpg",
+  "Dodge":"/images/uploads/digitalracer-account-7846364-01.jpg",
+  "McLaren":"/images/uploads/digitalracer-pubgm-24437468-01.webp",
+  "Porsche":"/images/uploads/digitalracer-pubgm-24437126-01.webp",
+  "Koenigsegg":"/images/uploads/digitalracer-account-7736539-01.png",
+  "Aston Martin":"/images/uploads/digitalracer-account-8030154-01.jpg"
+});
+window.DROPZONE_CARS = window.DROPZONE_CARS.map(function(r,i){
+  return {id:i+1,brand:r[0],model:r[1],finish:r[2],type:r[3],origin:r[4],
+    image:r[5]||window.SPEED_DRIFT_BRAND_IMAGES[r[0]]||""};
+});
 window.DROPZONE_SOURCES = {
 "Bentley":"https://www.pubgmobile.com/en/event/BentleyCollab/",
 "Lamborghini":"https://www.pubgmobile.com/en/event/LamborghiniCollab/",
