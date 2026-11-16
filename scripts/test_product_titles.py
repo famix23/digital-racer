@@ -17,6 +17,7 @@ assert len(products) == len(manifest)
 assert all(isinstance(k, str) and isinstance(v, str) and v.strip() for k, v in overrides.items())
 assert set(overrides).issubset({str(p["title"]).strip() for p in products}), "Override key has no product"
 # Frozen legacy display corrections must never silently alter source inventory fields.
+# The 201 legacy-only mappings must not rename any product or affect future uploads.
 assert len(overrides) == 201, "Unexpected legacy title override count"
 for saved_title, visible in overrides.items():
     assert saved_title.startswith(("PUBG Mobile Account", "PUBG Mobile Old Account"))
