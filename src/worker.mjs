@@ -38,6 +38,15 @@ export function canonicalProductRoute(title, manifest) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // Always serve the Speed Drift landing asset for both old and branded routes,
+    // including query strings such as ?utm_source=chatgpt.com. Avoid relying on
+    // the host's directory-index resolution, which can return a false 404.
+    if ((request.method === "GET" || request.method === "HEAD") &&
+        (url.pathname === "/dropzone" || url.pathname === "/dropzone/" ||
+         url.pathname === "/speed-drift" || url.pathname === "/speed-drift/")) {
+      const assetURL = new URL("/dropzone/index.html", url.origin);
+      return env.ASSETS.fetch(new Request(assetURL, {method: request.method, headers: request.headers}));
+    }
     if (
       (request.method === "GET" || request.method === "HEAD") &&
       (url.pathname === "/product" || url.pathname === "/product.html")
