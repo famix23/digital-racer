@@ -61,7 +61,8 @@ if "--live" in sys.argv:
     print(f"Passed live AdSense checks for {len(urls)} pages and ads.txt.")
 else:
     pages = list(ROOT.rglob("*.html"))
-    pages = [p for p in pages if not any(x in p.parts for x in (".git", "node_modules", ".wrangler"))]
+    pages = [p for p in pages if not any(x in p.parts for x in (".git", "node_modules", ".wrangler", "dropzone"))]
+    # DropZone is a noindex, non-commercial presentation demo (no AdSense or checkout).
     for page in pages:
         check_html(page.read_text(encoding="utf-8"), str(page.relative_to(ROOT)))
     assert (ROOT / "ads.txt").read_text().strip() == RECORD
