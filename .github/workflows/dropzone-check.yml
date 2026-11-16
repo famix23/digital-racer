@@ -1,0 +1,29 @@
+name: DropZone Demo Checks
+on:
+  pull_request:
+    paths:
+      - "dropzone/**"
+      - "scripts/test_dropzone_demo.cjs"
+      - "index.html"
+      - "_headers"
+      - "assets/storefront-polish.css"
+      - ".github/workflows/dropzone-check.yml"
+  push:
+    branches:
+      - "feat/dropzone-vehicle-gift-demo-20261116"
+    paths:
+      - "dropzone/**"
+      - "scripts/test_dropzone_demo.cjs"
+      - "index.html"
+      - "_headers"
+      - "assets/storefront-polish.css"
+jobs:
+  static-checks:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+      - name: Validate DropZone integration and scripts
+        run: node scripts/test_dropzone_demo.cjs
