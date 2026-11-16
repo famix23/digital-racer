@@ -43,7 +43,7 @@
 
   <section class="stage" id="stage-1" aria-labelledby="collection-title">
     <div class="surface">
-      <div class="sectionhead"><div><h2 id="collection-title">Vehicle Collection</h2><p>Browse vehicle skin models and available finishes. Confirm availability before making payment.</p></div><span id="resultCount" class="counter">Loading collection</span></div>
+      <div class="sectionhead"><div><h2 id="collection-title">Vehicle Collection · $120 per Card</h2><p>Browse vehicle skin models and available finishes. Confirm availability before making payment.</p></div><span id="resultCount" class="counter">Loading collection</span></div>
       <div class="controls"><div class="filters" id="filters" aria-label="Filter by manufacturer"></div><label><span class="skip">Search vehicle collection</span><input class="search" id="search" placeholder="Search vehicle / finish" autocomplete="off" aria-label="Search vehicle collection"></label></div>
       <div class="vehgrid" id="vehicles" aria-live="polite"></div>
       <p class="empty" id="empty" hidden>No matching vehicles. Try another brand or search term.</p>
@@ -63,6 +63,8 @@
       <h2 id="player-title">Where should the Car Card go?</h2>
       <p class="muted">Enter the recipient’s player details. Never share passwords, OTPs or game login credentials.</p>
       <div class="preview" id="detailPreview"></div>
+      <div class="summaryline"><span>Price per Car Card</span><strong>$120.00</strong></div>
+      <div class="summaryline"><span>Total</span><strong id="detailTotal">$120.00</strong></div>
       <form id="recipientForm" novalidate>
         <div class="fields">
           <div class="field"><label for="uid">PUBG MOBILE Player UID *</label><input id="uid" name="uid" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="20" placeholder="Enter numeric Player UID" required><div class="help">UID format is checked locally. Ownership is not verified.</div></div>
@@ -91,6 +93,8 @@
         <div class="summaryline"><span>Server</span><strong id="r-server"></strong></div>
         <div class="summaryline"><span>Country / region</span><strong id="r-region"></strong></div>
         <div class="summaryline"><span>Car Cards</span><strong id="r-qty"></strong></div>
+        <div class="summaryline"><span>Unit price</span><strong>$120.00</strong></div>
+        <div class="summaryline"><span>Order total (USD)</span><strong id="reviewTotal">$120.00</strong></div>
       </div>
       <div class="note">Your order will only be sent for manual review after you contact DigitalRacer. No automated game-account verification or delivery is available.</div>
       <div class="actionbar" style="margin-top:18px"><button class="btn subtle" id="back2" type="button">← Edit recipient</button><button class="btn primary" id="toPayment" type="button">Continue to USDT details →</button></div>
@@ -105,7 +109,9 @@
       <div class="preview" id="paymentPreview"></div>
       <div class="walletcard">
         <div class="wallethead"><span class="tagdemo">USDT</span><strong id="paymentNetwork">TRON (TRC20)</strong></div>
-        <div class="summaryline"><span>Amount due</span><strong>Confirm with DigitalRacer</strong></div>
+        <div class="summaryline"><span>Price per Car Card</span><strong>$120.00 USD</strong></div>
+        <div class="summaryline"><span>Order total (USD)</span><strong id="paymentUSD">$120.00</strong></div>
+        <div class="summaryline"><span>USDT amount</span><strong id="paymentTotal">120 USDT</strong></div>
         <label for="walletAddress" class="walletlabel">Receiving wallet address</label>
         <div class="walletline"><input id="walletAddress" readonly spellcheck="false" aria-label="USDT TRC20 receiving address"><button class="btn primary" id="copyWallet" type="button">Copy address</button></div>
         <p id="copyMessage" class="muted" role="status" aria-live="polite">Network: TRON (TRC20). Check the full address in your wallet before transferring.</p>
@@ -137,6 +143,7 @@
         <div class="summaryline"><span>Order reference</span><strong id="receiptRef"></strong></div>
         <div class="summaryline"><span>Vehicle</span><strong id="receiptItem"></strong></div>
         <div class="summaryline"><span>Car Cards</span><strong id="receiptQty"></strong></div>
+        <div class="summaryline"><span>Order total</span><strong id="receiptTotal"></strong></div>
         <div class="summaryline"><span>Player</span><strong id="receiptPlayer"></strong></div>
         <div class="summaryline"><span>Server / region</span><strong id="receiptServer"></strong></div>
         <div class="summaryline"><span>Request prepared</span><strong id="receiptDate"></strong></div>
