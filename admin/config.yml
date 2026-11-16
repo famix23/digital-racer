@@ -23,6 +23,19 @@ collections:
                 widget: "string"
                 hint: "For a new listing, paste the reseller title exactly. Do not prepend PUBG Mobile Account or other SEO keywords."
 
+              - label: "Supplier Title Proof (New Reseller Imports)"
+                name: "source_title"
+                widget: "string"
+                required: false
+                hint: "For EVERY new reseller-sourced product, paste the exact title from the supplier page here too. It must match Title character-for-character, including PUBG Mobile Account if the seller used it. CI rejects missing or rewritten titles."
+
+              - label: "Listing Origin (New Products)"
+                name: "listing_origin"
+                widget: "select"
+                required: false
+                options: ["reseller", "original"]
+                hint: "Reseller is assumed when omitted. Select original ONLY for your own products, not products copied from another seller."
+
               - label: "Original Reseller Title (Optional, for Existing Listings)"
                 name: "original_title"
                 widget: "string"
