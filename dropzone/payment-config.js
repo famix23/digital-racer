@@ -5,6 +5,7 @@ window.SPEED_DRIFT_PAYMENT = Object.freeze({
   token: "USDT",
   network: "TRON (TRC20)",
   walletAddress: "TF9TxdLcw1BdhVFKc3egwKHBTyis4fmPys",
-  displayAmount: "",
+  unitPriceUSD: 120,
+  unitPriceUSDT: 120,
   supportNumber: "923454342911"
 });

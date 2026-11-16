@@ -5,6 +5,10 @@ var all=Array.isArray(window.DROPZONE_CARS)?window.DROPZONE_CARS:[];
 var state={brand:"All",search:"",limit:12,selected:null,qty:1,recipient:null,txHash:"",screen:1};
 var payment=window.SPEED_DRIFT_PAYMENT||{};
 var brandImages=window.SPEED_DRIFT_BRAND_IMAGES||{};
+var unitUSD=Number(payment.unitPriceUSD)||120;
+var unitUSDT=Number(payment.unitPriceUSDT)||120;
+function totalUSD(){return "$"+(state.qty*unitUSD).toFixed(2)}
+function totalUSDT(){return (state.qty*unitUSDT).toFixed(2)+" USDT"}
 var $=function(id){return document.getElementById(id)};
 var palette={Bentley:"#766a4c",Lamborghini:"#756129",Ferrari:"#763327",Bugatti:"#34556a",Pagani:"#4c5976",Dodge:"#634133",McLaren:"#895c33",Porsche:"#4b5267",Koenigsegg:"#3b6d72","Aston Martin":"#476555"};
 var carSVG='<svg viewBox="0 0 330 140" aria-hidden="true" focusable="false"><defs><linearGradient id="dz-car-body" x2="0" y2="1"><stop stop-color="#f4e8c4"/><stop offset=".35" stop-color="#8b9299"/><stop offset=".75" stop-color="#242c3a"/><stop offset="1" stop-color="#0d1018"/></linearGradient></defs><ellipse cx="160" cy="120" rx="139" ry="8" fill="#08080a" opacity=".6"/><path d="M29 88Q43 72 78 67L117 59 139 36Q154 26 181 27L226 34Q242 38 265 65L290 72Q311 78 309 95L305 106H26L25 94Z" fill="url(#dz-car-body)" stroke="#d4cab1" stroke-width="1.1"/><path d="M125 60L149 38Q161 32 181 33L212 38 232 61Z" fill="#20364e" stroke="#8798a5" stroke-width="1"/><path d="M234 40Q251 49 258 64L237 63Z" fill="#15293c"/><path d="M43 77L107 68 100 85 33 91Z" fill="#f7eec6" opacity=".9"/><path d="M264 76L297 81 303 92 268 90Z" fill="#e6b653"/><path d="M38 98H306" stroke="#bbc8d3" stroke-width="2" opacity=".65"/><circle cx="93" cy="103" r="20" fill="#0c1017" stroke="#a8a3a0" stroke-width="4"/><circle cx="93" cy="103" r="9" fill="#818b96"/><circle cx="256" cy="103" r="20" fill="#0c1017" stroke="#a8a3a0" stroke-width="4"/><circle cx="256" cy="103" r="9" fill="#818b96"/></svg>';
@@ -39,7 +43,7 @@ var area=$("vehicles");area.replaceChildren();var slice=filtered.slice(0,state.l
 slice.forEach(function(car){var btn=document.createElement("button");btn.type="button";btn.className="vehicle";btn.setAttribute("aria-pressed",String(state.selected&&state.selected.id===car.id));btn.setAttribute("aria-label","Select "+displayLabel(car)+" "+car.finish);var vis=visual(car,"vehvisual");
 var badge=document.createElement("span");badge.className="vehiclebadge";badge.textContent=car.brand.toUpperCase();vis.append(badge);
 var tick=document.createElement("span");tick.className="check";tick.textContent="✓";vis.append(tick);btn.append(vis);
-var info=document.createElement("div");info.className="vehbody";var h=document.createElement("h3");h.textContent=car.model;info.append(h);var p=document.createElement("p");p.className="finish";p.textContent=car.finish;info.append(p);var t=document.createElement("span");t.className="type";t.textContent=car.type;info.append(t);var cat=document.createElement("span");cat.className="category";cat.textContent=car.origin==="official"?"COLLAB ARCHIVE":car.origin==="store"?"STORE EXAMPLE":"CONCEPT";info.append(cat);btn.append(info);
+var info=document.createElement("div");info.className="vehbody";var h=document.createElement("h3");h.textContent=car.model;info.append(h);var p=document.createElement("p");p.className="finish";p.textContent=car.finish;info.append(p);var t=document.createElement("span");t.className="type";t.textContent=car.type;info.append(t);var cat=document.createElement("span");cat.className="category";cat.textContent=car.origin==="official"?"COLLAB ARCHIVE":car.origin==="store"?"STORE EXAMPLE":"CONCEPT";info.append(cat);var price=document.createElement("div");price.className="vehicleprice";price.textContent="$"+unitUSD.toFixed(2)+" / Card";info.append(price);btn.append(info);
 btn.addEventListener("click",function(){select(car)});area.append(btn)});
 text("resultCount",filtered.length+" vehicle finishes");$("empty").hidden=filtered.length!==0;$("more").hidden=state.limit>=filtered.length;
 }
@@ -54,13 +58,14 @@ for(var i=1;i<=3;i++){var element=$("step-"+i),active=i===Math.min(n,3);element.
 if(!fromHistory&&window.history&&window.history.pushState){window.history.pushState({speedDriftStep:n},"","#step-"+n)}
 window.scrollTo({top:0,behavior:"smooth"});
 }
-function showPreview(id){var root=$(id);root.replaceChildren();if(!state.selected)return;var vis=visual(state.selected,"minicar");root.append(vis);var body=document.createElement("div"),h=document.createElement("h3"),p=document.createElement("p");h.textContent=displayLabel(state.selected);p.textContent=state.selected.finish+" · "+state.qty+" Car Card(s)";body.append(h,p);root.append(body)}
-function qty(n){state.qty=Math.max(1,Math.min(10,n));text("qtyValue",state.qty);showPreview("detailPreview")}
-function valid(){var uid=$("uid").value.trim(),name=$("nickname").value.trim(),server=$("server").value,region=$("region").value;if(!/^[0-9]{6,20}$/.test(uid))return"Enter a numeric Player UID (6–20 digits) for the demonstration.";if(!name)return"Enter a character nickname.";if(!server||!region)return"Choose both server and country/region.";state.recipient={uid:uid,name:name,server:server,region:region};return""}
+function showPreview(id){var root=$(id);root.replaceChildren();if(!state.selected)return;var vis=visual(state.selected,"minicar");root.append(vis);var body=document.createElement("div"),h=document.createElement("h3"),p=document.createElement("p");h.textContent=displayLabel(state.selected);p.textContent=state.selected.finish+" · "+state.qty+" Car Card(s) · "+totalUSD();body.append(h,p);root.append(body)}
+function qty(n){state.qty=Math.max(1,Math.min(10,n));text("qtyValue",state.qty);text("detailTotal",totalUSD());showPreview("detailPreview")}
+function valid(){var uid=$("uid").value.trim(),name=$("nickname").value.trim(),server=$("server").value,region=$("region").value;if(!/^[0-9]{6,20}$/.test(uid))return"Enter a numeric Player UID (6–20 digits).";if(!name)return"Enter a character nickname.";if(!server||!region)return"Choose both server and country/region.";state.recipient={uid:uid,name:name,server:server,region:region};return""}
 function review(){
 var err=valid();text("formError",err);if(err)return;
 showPreview("reviewPreview");text("r-uid",state.recipient.uid);text("r-nick",state.recipient.name);text("r-server",state.recipient.server);text("r-region",state.recipient.region);text("r-qty",state.qty+" card(s)");
 text("r-item",displayLabel(state.selected)+" — "+state.selected.finish);
+text("reviewTotal",totalUSD());
 step(3);
 }
 function orderMessage(includeTx){
@@ -68,6 +73,8 @@ var parts=[
 "Hello DigitalRacer — Speed Drift Car Card order",
 "Vehicle: "+displayLabel(state.selected)+" — "+state.selected.finish,
 "Quantity: "+state.qty+" Car Card(s)",
+"Price per card: $"+unitUSD.toFixed(2),
+"Order total: "+totalUSD()+" / "+totalUSDT(),
 "Player UID: "+state.recipient.uid,
 "Character name: "+state.recipient.name,
 "Server: "+state.recipient.server,
@@ -87,6 +94,8 @@ if(!external){window.location.href=url}
 }
 function showPayment(){
 showPreview("paymentPreview");
+text("paymentTotal",totalUSDT());
+text("paymentUSD",totalUSD());
 text("paymentNetwork",payment.network||"Network not configured");
 $("walletAddress").value=payment.walletAddress||"";
 $("txHash").value=state.txHash||"";
@@ -109,6 +118,7 @@ showPreview("statusPreview");
 text("receiptRef","SD-"+String(Date.now()).slice(-10));
 text("receiptItem",displayLabel(state.selected)+" — "+state.selected.finish);
 text("receiptQty",state.qty+" Card(s)");
+text("receiptTotal",totalUSD()+" / "+totalUSDT());
 text("receiptPlayer",state.recipient.name+" · "+state.recipient.uid);
 text("receiptServer",state.recipient.server+" / "+state.recipient.region);
 text("receiptHash",hash);
@@ -132,7 +142,7 @@ window.navigator.clipboard.writeText(address).then(function(){done(true)},fallba
 function reset(){
 state.selected=null;state.qty=1;state.recipient=null;state.txHash="";
 $("recipientForm").reset();$("txHash").value="";
-text("qtyValue",1);text("formError","");text("paymentError","");
+text("qtyValue",1);text("detailTotal",totalUSD());text("formError","");text("paymentError","");
 text("selected","No vehicle selected");$("next1").disabled=true;renderVehicles();step(1);
 }
 function galleryTile(item){
