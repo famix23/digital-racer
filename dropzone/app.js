@@ -40,23 +40,39 @@ function displayLabel(car){return car.brand+" "+car.model}
 function renderVehicles(){
 var filtered=all.filter(function(c){return(state.brand==="All"||state.brand===c.brand)&&((c.brand+" "+c.model+" "+c.finish).toLowerCase().includes(state.search))});
 var area=$("vehicles");area.replaceChildren();var slice=filtered.slice(0,state.limit);
-slice.forEach(function(car){var btn=document.createElement("button");btn.type="button";btn.className="vehicle";btn.setAttribute("aria-pressed",String(state.selected&&state.selected.id===car.id));btn.setAttribute("aria-label","Select "+displayLabel(car)+" "+car.finish);var vis=visual(car,"vehvisual");
+slice.forEach(function(car){var btn=document.createElement("button");btn.type="button";btn.className="vehicle";btn.setAttribute("aria-pressed",String(state.selected&&state.selected.id===car.id));btn.setAttribute("aria-label","Choose "+displayLabel(car)+" "+car.finish+" and continue to player details");var vis=visual(car,"vehvisual");
 var badge=document.createElement("span");badge.className="vehiclebadge";badge.textContent=car.brand.toUpperCase();vis.append(badge);
 var tick=document.createElement("span");tick.className="check";tick.textContent="✓";vis.append(tick);btn.append(vis);
-var info=document.createElement("div");info.className="vehbody";var h=document.createElement("h3");h.textContent=car.model;info.append(h);var p=document.createElement("p");p.className="finish";p.textContent=car.finish;info.append(p);var t=document.createElement("span");t.className="type";t.textContent=car.type;info.append(t);var cat=document.createElement("span");cat.className="category";cat.textContent=car.origin==="official"?"COLLAB ARCHIVE":car.origin==="store"?"STORE EXAMPLE":"CONCEPT";info.append(cat);var price=document.createElement("div");price.className="vehicleprice";price.textContent="$"+unitUSD.toFixed(2)+" / Card";info.append(price);btn.append(info);
+var info=document.createElement("div");info.className="vehbody";var h=document.createElement("h3");h.textContent=car.model;info.append(h);var p=document.createElement("p");p.className="finish";p.textContent=car.finish;info.append(p);var t=document.createElement("span");t.className="type";t.textContent=car.type;info.append(t);var cat=document.createElement("span");cat.className="category";cat.textContent=car.origin==="official"?"COLLAB ARCHIVE":car.origin==="store"?"STORE EXAMPLE":"CONCEPT";info.append(cat);var price=document.createElement("div");price.className="vehicleprice";price.textContent="$"+unitUSD.toFixed(2)+" / Card";info.append(price);var hint=document.createElement("span");hint.className="vehiclehint";hint.textContent="Select & continue →";info.append(hint);btn.append(info);
 btn.addEventListener("click",function(){select(car)});area.append(btn)});
 text("resultCount",filtered.length+" vehicle finishes");$("empty").hidden=filtered.length!==0;$("more").hidden=state.limit>=filtered.length;
 }
-function select(car){state.selected=car;text("selected",displayLabel(car)+" — "+car.finish);$("next1").disabled=false;renderVehicles();document.querySelectorAll(".galleryitem").forEach(function(el){el.setAttribute("aria-pressed","false")})}
+function select(car){
+state.selected=car;
+text("selected",displayLabel(car)+" — "+car.finish);
+$("next1").disabled=false;
+renderVehicles();
+document.querySelectorAll(".galleryitem").forEach(function(el){el.setAttribute("aria-pressed","false")});
+openPlayerDetails();
+}
+function openPlayerDetails(){
+if(!state.selected)return;
+showPreview("detailPreview");
+text("detailTotal",totalUSD());
+step(2);
+}
 function step(n,fromHistory){
 if(n>1&&!state.selected)n=1;
 if(n>2&&!state.recipient)n=2;
 n=Math.max(1,Math.min(5,n));
 state.screen=n;
-Array.prototype.forEach.call(document.querySelectorAll(".stage"),function(el){el.hidden=el.id!=="stage-"+n});
+var target=$("stage-"+n);
+Array.prototype.forEach.call(document.querySelectorAll(".stage"),function(el){el.hidden=el!==target});
 for(var i=1;i<=3;i++){var element=$("step-"+i),active=i===Math.min(n,3);element.classList.toggle("active",active);element.classList.toggle("done",i<Math.min(3,n));element.setAttribute("aria-current",active?"step":"false")}
 if(!fromHistory&&window.history&&window.history.pushState){window.history.pushState({speedDriftStep:n},"","#step-"+n)}
-window.scrollTo({top:0,behavior:"smooth"});
+// Scroll directly to the newly active stage so the form is visible immediately on mobile.
+if(target&&typeof target.scrollIntoView==="function")target.scrollIntoView({behavior:"auto",block:"start"});
+else window.scrollTo({top:0,behavior:"auto"});
 }
 function showPreview(id){var root=$(id);root.replaceChildren();if(!state.selected)return;var vis=visual(state.selected,"minicar");root.append(vis);var body=document.createElement("div"),h=document.createElement("h3"),p=document.createElement("p");h.textContent=displayLabel(state.selected);p.textContent=state.selected.finish+" · "+state.qty+" Car Card(s) · "+totalUSD();body.append(h,p);root.append(body)}
 function qty(n){state.qty=Math.max(1,Math.min(10,n));text("qtyValue",state.qty);text("detailTotal",totalUSD());showPreview("detailPreview")}
@@ -152,13 +168,13 @@ var p=document.createElement("p");p.textContent=item.title;b.append(p);
 b.addEventListener("click",function(){
 var brand=["Bentley","Ferrari","Lamborghini","Bugatti","Pagani","Dodge"].find(function(x){return item.title.toLowerCase().includes(x.toLowerCase())})||"Car Card";
 select({id:"inventory-"+item.title,brand:brand,model:item.title,finish:"DigitalRacer listing example",type:"Car Card",origin:"store",image:src});
-$("next1").focus();
+// Selecting a storefront card also advances directly to player details.
 });return b
 }
 function loadGallery(){fetch("/inventory.json",{cache:"no-store"}).then(function(r){if(!r.ok)throw new Error("unavailable");return r.json()}).then(function(j){var rows=Array.isArray(j.items)?j.items:[];var samples=rows.filter(function(x){return x.category==="Car Card"&&/Bentley|Ferrari|Lamborghini|Bugatti|Pagani|Dodge/i.test(x.title||"")&&safePhoto(x.thumbnail||x.image||"")}).sort(function(a,b){return (a.title.includes("Bentley")?-1:0)-(b.title.includes("Bentley")?-1:0)}).slice(0,8);if(!samples.length)return;var area=$("storeGallery");area.replaceChildren();samples.forEach(function(p){area.append(galleryTile(p))});$("gallerySection").hidden=false}).catch(function(){/* Static demonstration works without inventory access. */})}
 $("search").addEventListener("input",function(e){state.search=e.target.value.trim().toLowerCase();state.limit=12;renderVehicles()});
 $("more").addEventListener("click",function(){state.limit+=12;renderVehicles()});
-$("next1").addEventListener("click",function(){if(!state.selected)return;showPreview("detailPreview");step(2)});
+$("next1").addEventListener("click",openPlayerDetails);
 $("back1").addEventListener("click",function(){step(1)});
 $("back2").addEventListener("click",function(){step(2)});
 $("qtyMinus").addEventListener("click",function(){qty(state.qty-1)});
