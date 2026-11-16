@@ -2,6 +2,12 @@
 
 The storefront is a static website. The admin edits `inventory.json` through GitHub; it is not an order, payment or stock database.
 
+## Required exact supplier titles on new imports
+
+For every **new reseller listing**, save the exact source heading in **both** `title` and `source_title` in `inventory.json`. Do not add a `PUBG Mobile Account` prefix unless it actually exists in the seller's title, and never trim away original game wording, emojis, punctuation, capitalization or item details. The admin editor now exposes a "Supplier Title Proof" field for this. For an original DigitalRacer-created product, use `listing_origin: original`; otherwise `reseller` is assumed.
+
+Pull-request and main-branch checks run `scripts/test_future_import_titles.py` against the previous inventory; newly imported reseller titles that do not exactly equal `source_title` fail validation. The check verifies preservation of the recorded source title; a human or importer must still verify that text against the actual reseller page. Existing listings are grandfathered and never bulk-renamed. `PRODUCT_TITLES.md` has the full policy. After updating inventory, regenerate static pages as noted below.
+
 After changing inventory or templates, run from the repository root:
 
 ```sh

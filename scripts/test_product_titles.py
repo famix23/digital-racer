@@ -7,6 +7,8 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 cms = (ROOT / "admin/config.yml").read_text(encoding="utf-8")
+assert 'name: "source_title"' in cms, "CMS must ask for exact source title on new reseller imports"
+assert 'name: "listing_origin"' in cms, "CMS must distinguish seller sourced from original products"
 assert 'name: "original_title"' in cms, "CMS must expose original seller title corrections"
 assert 'name: "title"' in cms, "CMS title input required"
 source = json.loads((ROOT / "inventory.json").read_text(encoding="utf-8"))
