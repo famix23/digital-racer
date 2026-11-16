@@ -67,7 +67,7 @@ async function main() {
     const n = assetCalls.length;
     const response = await get(rootURL + uri);
     assert.equal(response.status, 200, 'Speed Drift route must return the landing page');
-    assert.equal(assetCalls[n], '/dropzone/index.html', 'Speed Drift must use the explicit index asset');
+    assert.equal(assetCalls[n], '/dropzone/', 'Speed Drift must fetch the canonical directory index');
   }
   const wrangler = fs.readFileSync(path.join(root, 'wrangler.jsonc'), 'utf8');
   assert.ok(wrangler.includes('"/dropzone/*"') && wrangler.includes('"/speed-drift/*"'),
