@@ -18,6 +18,7 @@ class Element{
  setAttribute(name,value){this.attrs[name]=String(value)}
  getAttribute(name){return this.attrs[name]??null}
  focus(){this.focused=true}
+ scrollIntoView(options){this.scrolled=true;this.scrollOptions=options}
  select(){this.selected=true}
  querySelector(_sel){return new Element()}
  click(){for(const fn of this.events.click||[])fn({target:this,preventDefault(){}})}
@@ -68,8 +69,16 @@ assert.equal(elements.vehicles.children.length,0,"Search should filter out all c
 elements.search.value="";elements.search.fire("input");
 const vehicle=elements.vehicles.children[0];
 vehicle.click();
+stage(2);
+assert.ok(elements["stage-2"].scrolled,"Selecting a vehicle should scroll straight to Player Details");
+assert.equal(elements["stage-2"].scrollOptions.block,"start","New stage should align at its start");
 assert.equal(elements.next1.disabled,false,"Selected car didn't enable next");
-fire("next1");stage(2);
+fire("back1");stage(1);
+assert.ok(elements["stage-1"].scrolled,"Back should return to the catalog");
+const secondVehicle=elements.vehicles.children[1];
+secondVehicle.click();
+stage(2);
+assert.ok(elements.detailPreview.children.length>0,"Selected vehicle preview should render immediately");
 fire("back1");stage(1);
 fire("next1");stage(2);
 fire("qtyPlus");assert.equal(elements.qtyValue.textContent,"2");
@@ -110,4 +119,4 @@ fire("requestVerification");stage(5);
 fire("restart");stage(1);
 assert.equal(elements.next1.disabled,true,"Restart should clear selection");
 assert.equal(elements.qtyValue.textContent,"1","Restart should reset quantity");
-console.log("Speed Drift interactions passed: brand filters, search, selection, back/next, quantity, validation, wallet copy, TXID, WhatsApp, reset.");
+console.log("Speed Drift interactions passed: mobile auto-advance on vehicle tap, scroll-to-form, brand filters, back/next, quantity, UID validation, wallet copy, TXID, WhatsApp, reset.");
