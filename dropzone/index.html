@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#08090d">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<title>DropZone Vehicle Gift Studio — Interactive Demo | DigitalRacer</title>
+<meta name="description" content="An interactive presentation prototype showing a PUBG MOBILE-inspired vehicle gift card selection and recipient flow. Demo only; no in-game items are delivered.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="/dropzone/style.css">
+<script src="/dropzone/catalog.js" defer></script>
+<script src="/dropzone/app.js" defer></script>
+</head>
+<body>
+<a href="#main" class="skip">Skip to vehicle selection</a>
+<div class="topbar">
+  <nav class="nav container" aria-label="Main navigation">
+    <a class="wordmark" href="/">DIGITAL<em>.</em>RACER</a>
+    <div class="navright">
+      <a href="/catalog">Store catalog</a>
+      <a href="/">Home</a>
+      <span class="tagdemo" aria-label="Presentation demonstration mode">DEMO MODE</span>
+    </div>
+  </nav>
+</div>
+<main class="container" id="main">
+  <section class="hero" aria-labelledby="hero-heading">
+    <div>
+      <div class="kicker">DROPZONE / VEHICLE GIFT STUDIO</div>
+      <h1 id="hero-heading">Legendary rides.<br><span>One gift away.</span></h1>
+      <p class="herodesc">Explore iconic PUBG MOBILE vehicle collaborations, select your preferred car skin finish, and preview a recipient-based Car Card gifting flow.</p>
+      <div class="note">Company presentation concept. No actual PUBG MOBILE gifting, UID verification, checkout, payment or delivery takes place.</div>
+    </div>
+    <div class="heroart" aria-hidden="true"><svg viewBox="0 0 330 140"><defs><linearGradient id="hero-car" x2="0" y2="1"><stop stop-color="#f8ecca"/><stop offset=".4" stop-color="#9c9da1"/><stop offset="1" stop-color="#0a0c12"/></linearGradient></defs><ellipse cx="163" cy="118" rx="137" ry="8" fill="#0008"/><path d="M28 91L48 73 110 61 135 37Q161 18 215 36L258 62 302 79 308 99 297 108H31Z" fill="url(#hero-car)" stroke="#d3c39a"/><path d="M122 61L150 38 200 37 239 62Z" fill="#192538" stroke="#b9a77a"/><circle cx="90" cy="106" r="20" fill="#111" stroke="#9b9483" stroke-width="4"/><circle cx="259" cy="106" r="20" fill="#111" stroke="#9b9483" stroke-width="4"/></svg></div>
+  </section>
+  <div class="stepper" aria-label="Gift demonstration progress">
+    <div class="step active" id="step-1" aria-current="step"><b>01</b><div><strong>Choose car skin</strong><small>Vehicle collection</small></div></div>
+    <div class="step" id="step-2"><b>02</b><div><strong>Player details</strong><small>UID &amp; server</small></div></div>
+    <div class="step" id="step-3"><b>03</b><div><strong>Gift dispatch</strong><small>Interactive simulation</small></div></div>
+  </div>
+
+  <section class="stage" id="stage-1" aria-labelledby="collection-title">
+    <div class="surface">
+      <div class="sectionhead"><div><h2 id="collection-title">Vehicle Collection</h2><p>Select a vehicle and finish. Archive models are shown for design reference, not as available inventory.</p></div><span id="resultCount" class="counter">Loading collection</span></div>
+      <div class="controls"><div class="filters" id="filters" aria-label="Filter by manufacturer"></div><label><span class="skip">Search vehicle collection</span><input class="search" id="search" placeholder="Search vehicle / finish" autocomplete="off" aria-label="Search vehicle collection"></label></div>
+      <div class="vehgrid" id="vehicles" aria-live="polite"></div>
+      <p class="empty" id="empty" hidden>No matching vehicles. Try another brand or search term.</p>
+      <div style="text-align:center;margin:22px 0"><button type="button" class="btn subtle" id="more" hidden>Show more vehicles</button></div>
+      <div class="actionbar"><p class="selection" id="selected" aria-live="polite">No vehicle selected</p><button class="btn primary" type="button" id="next1" disabled>Continue to player details →</button></div>
+    </div>
+    <section class="surface gallery" id="gallerySection" aria-labelledby="gallery-title" hidden>
+      <div class="sectionhead"><div><h2 id="gallery-title">From DigitalRacer's Car Card catalog</h2><p>Actual images and original listing titles from your storefront. Select any listing to use it in this demonstration.</p></div><a href="/catalog?category=Car%20Card" style="color:#f2d57c;font-size:12px">View main catalog</a></div>
+      <div id="storeGallery" class="gallerygrid"></div>
+    </section>
+    <div class="note">Reference terminology: Car Card, vehicle skin, finish, PUBG MOBILE Player UID and server. Some models are historical collaboration skins; illustrative artwork and storefront photos may differ from a chosen finish. Ferrari and additional concept entries are labelled separately from the official collaboration archive.</div>
+  </section>
+
+  <section class="stage" id="stage-2" hidden aria-labelledby="player-title">
+    <div class="surface formpanel">
+      <div class="kicker">STEP 02 / RECIPIENT DETAILS</div>
+      <h2 id="player-title">Where should the Car Card go?</h2>
+      <p class="muted">Preview the exact fields a recipient-based gifting request might use. Do not enter passwords, OTPs or login information.</p>
+      <div class="preview" id="detailPreview"></div>
+      <form id="recipientForm" novalidate>
+        <div class="fields">
+          <div class="field"><label for="uid">PUBG MOBILE Player UID *</label><input id="uid" name="uid" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="20" placeholder="Enter numeric Player UID" required><div class="help">Format check only — not a real account lookup</div></div>
+          <div class="field"><label for="nickname">Character name (nickname) *</label><input id="nickname" name="nickname" maxlength="32" autocomplete="off" placeholder="Enter character name" required></div>
+          <div class="field"><label for="server">Server *</label><select id="server" name="server" required><option value="">Select server</option><option>Asia</option><option>Middle East</option><option>Europe</option><option>North America</option><option>South America</option><option>KRJP</option></select></div>
+          <div class="field"><label for="region">Country / region *</label><select id="region" name="region" required><option value="">Select region</option><option>Pakistan</option><option>United Arab Emirates</option><option>Saudi Arabia</option><option>United Kingdom</option><option>United States</option><option>Turkey</option><option>Other</option></select></div>
+        </div>
+        <div class="qtybar"><div><strong>Number of Car Cards</strong><div class="muted">Select a quantity from 1 to 10</div></div><div class="qtycontrol"><button type="button" id="qtyMinus" aria-label="Decrease quantity">−</button><output id="qtyValue" aria-live="polite">1</output><button type="button" id="qtyPlus" aria-label="Increase quantity">+</button></div></div>
+        <div class="note">The company demonstration uses these values only in your current browser tab. They are not submitted to DigitalRacer, PUBG MOBILE or another server.</div>
+        <p id="formError" class="error" role="alert" aria-live="polite"></p>
+        <div class="actionbar"><button class="btn subtle" type="button" id="back1">← Back to collection</button><div style="display:flex;gap:8px;flex-wrap:wrap"><button class="btn subtle" type="button" id="sample">Fill demo example</button><button class="btn primary" type="submit">Review gift →</button></div></div>
+      </form>
+    </div>
+  </section>
+
+  <section class="stage" id="stage-3" hidden aria-labelledby="review-title">
+    <div class="surface formpanel">
+      <div class="kicker">STEP 03 / REQUEST REVIEW</div>
+      <h2 id="review-title">Confirm demo gift details</h2>
+      <p class="muted">The selected vehicle finish and recipient information are displayed below. No real delivery will occur.</p>
+      <div class="preview" id="reviewPreview"></div>
+      <div class="summarylines">
+        <div class="summaryline"><span>Vehicle skin / finish</span><strong id="r-item"></strong></div>
+        <div class="summaryline"><span>Player UID</span><strong id="r-uid"></strong></div>
+        <div class="summaryline"><span>Character name</span><strong id="r-nick"></strong></div>
+        <div class="summaryline"><span>Server</span><strong id="r-server"></strong></div>
+        <div class="summaryline"><span>Country / region</span><strong id="r-region"></strong></div>
+        <div class="summaryline"><span>Car Cards</span><strong id="r-qty"></strong></div>
+      </div>
+      <div class="note">DEMO MODE — the button runs a local animation only. No gift is transferred, no PUBG MOBILE service is accessed and no delivery confirmation is generated.</div>
+      <div class="actionbar" style="margin-top:18px"><button class="btn subtle" id="back2" type="button">← Edit recipient</button><button class="btn primary" id="send" type="button">Start gift dispatch demo →</button></div>
+    </div>
+  </section>
+
+  <section class="stage" id="stage-4" hidden aria-labelledby="status-title">
+    <div class="surface formpanel">
+      <div id="demoInProgress">
+        <div class="kicker">STEP 03 / GIFT DISPATCH PREVIEW</div><h2 id="status-title">Simulation in progress</h2>
+        <p class="muted" id="sendingTitle" aria-live="polite">Preparing the example request…</p>
+        <div class="progresscircle" id="ring" style="--progress:0%"><span id="percent">0%</span></div>
+        <ol class="timeline" style="padding:0">
+          <li id="task-1"><i>1</i>Example request prepared</li>
+          <li id="task-2"><i>2</i>UID format reviewed locally</li>
+          <li id="task-3"><i>3</i>Gift sending animation (simulated)</li>
+          <li id="task-4"><i>4</i>Demonstration sequence completed</li>
+        </ol>
+        <div class="note">This is a visual animation, not a real delivery or game connection.</div>
+      </div>
+      <div class="finishpanel" id="demoResult" hidden aria-live="polite">
+        <div class="kicker">PRESENTATION RESULT</div>
+        <h2>Demo sequence complete</h2>
+        <p class="status">✓ Interactive walkthrough completed</p>
+        <p class="muted">The mock gifting flow finished successfully. <strong>No in-game item was delivered.</strong></p>
+        <div class="receipt">
+          <div class="tagdemo">SIMULATION ONLY</div>
+          <div class="summaryline"><span>Demo reference</span><strong id="receiptRef"></strong></div>
+          <div class="summaryline"><span>Vehicle</span><strong id="receiptItem"></strong></div>
+          <div class="summaryline"><span>Quantity</span><strong id="receiptQty"></strong></div>
+          <div class="summaryline"><span>Example recipient</span><strong id="receiptPlayer"></strong></div>
+          <div class="summaryline"><span>Server / region</span><strong id="receiptServer"></strong></div>
+          <div class="summaryline"><span>Preview date</span><strong id="receiptDate"></strong></div>
+          <div class="summaryline"><span>Delivery status</span><strong>NOT SENT — DEMO ONLY</strong></div>
+        </div>
+      </div>
+      <div class="actionbar"><a href="/" class="btn subtle" style="text-decoration:none">DigitalRacer homepage</a><button class="btn primary" id="restart" type="button">New demonstration ↻</button></div>
+    </div>
+  </section>
+</main>
+<footer class="footer container">
+  <strong>DigitalRacer · DropZone concept</strong><br>
+  Independent company presentation prototype. Not an official PUBG MOBILE application and not affiliated with or endorsed by Tencent, KRAFTON, Bentley, Lamborghini, Ferrari or other manufacturers.<br>
+  Vehicle names are historical collaboration and catalogue references; image thumbnails are DigitalRacer listing references and may not depict exact in-game variants.<br>
+  Sources: <a href="https://www.pubgmobile.com/en/event/BentleyCollab/" target="_blank" rel="noopener noreferrer">PUBG MOBILE × Bentley</a> · <a href="https://www.pubgmobile.com/en/event/LamborghiniCollab/" target="_blank" rel="noopener noreferrer">PUBG MOBILE × Lamborghini</a> · <a href="https://www.pubgmobile.com/" target="_blank" rel="noopener noreferrer">PUBG MOBILE official site</a>.
+</footer>
+<noscript><div class="note container">This interactive demonstration requires JavaScript to run.</div></noscript>
+</body>
+</html>
