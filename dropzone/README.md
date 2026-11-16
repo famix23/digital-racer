@@ -1,4 +1,4 @@
-# DropZone Vehicle Gift Studio (presentation demo)
+# Speed Drift Vehicle Gift Studio (presentation demo)
 
 This folder is a standalone, responsive vehicle-gifting **mockup** integrated with DigitalRacer. It runs on the existing Cloudflare static-assets deployment at **/dropzone/**.
 
