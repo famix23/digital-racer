@@ -60,7 +60,7 @@ window.scrollTo({top:0,behavior:"smooth"});
 }
 function showPreview(id){var root=$(id);root.replaceChildren();if(!state.selected)return;var vis=visual(state.selected,"minicar");root.append(vis);var body=document.createElement("div"),h=document.createElement("h3"),p=document.createElement("p");h.textContent=displayLabel(state.selected);p.textContent=state.selected.finish+" · "+state.qty+" Car Card(s) · "+totalUSD();body.append(h,p);root.append(body)}
 function qty(n){state.qty=Math.max(1,Math.min(10,n));text("qtyValue",state.qty);text("detailTotal",totalUSD());showPreview("detailPreview")}
-function valid(){var uid=$("uid").value.trim(),name=$("nickname").value.trim(),server=$("server").value,region=$("region").value;if(!/^[0-9]{6,20}$/.test(uid))return"Enter a numeric Player UID (6–20 digits) for the demonstration.";if(!name)return"Enter a character nickname.";if(!server||!region)return"Choose both server and country/region.";state.recipient={uid:uid,name:name,server:server,region:region};return""}
+function valid(){var uid=$("uid").value.trim(),name=$("nickname").value.trim(),server=$("server").value,region=$("region").value;if(!/^[0-9]{6,20}$/.test(uid))return"Enter a numeric Player UID (6–20 digits).";if(!name)return"Enter a character nickname.";if(!server||!region)return"Choose both server and country/region.";state.recipient={uid:uid,name:name,server:server,region:region};return""}
 function review(){
 var err=valid();text("formError",err);if(err)return;
 showPreview("reviewPreview");text("r-uid",state.recipient.uid);text("r-nick",state.recipient.name);text("r-server",state.recipient.server);text("r-region",state.recipient.region);text("r-qty",state.qty+" card(s)");
