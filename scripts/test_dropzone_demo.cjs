@@ -36,4 +36,4 @@ assert.ok(!/type=["']password["']/.test(html),"Do not collect game credentials")
 assert.ok(!/fetch\([^)]*,\s*\{[^}]*method:\s*["']POST/i.test(script),"Demo must not submit player details");
 assert.ok(styles.includes("@media(max-width:520px)"),"Missing mobile layout");
 assert.ok(/fetch\("\/inventory.json"/.test(script),"Gallery should use live DigitalRacer catalog imagery");
-console.log("DropZone static checks passed:",cars.length,"vehicle examples,",htmlIds.size,"HTML IDs.");
+console.log("Speed Drift static checks passed:",cars.length,"vehicle examples,",htmlIds.size,"HTML IDs.");
