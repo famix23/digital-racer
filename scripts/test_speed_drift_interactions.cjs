@@ -24,6 +24,11 @@ class Element{
  fire(type,payload={}){for(const fn of this.events[type]||[])fn({target:this,preventDefault(){},...payload})}
 }
 const elements=Object.fromEntries(ids.map(id=>[id,new Element()]));
+for(const id of ids){
+  const marker=new RegExp('<[^>]+\\bid="'+id+'"[^>]*>','i').exec(html)?.[0]||"";
+  elements[id].disabled=/\bdisabled\b/i.test(marker);
+  elements[id].hidden=/\bhidden\b/i.test(marker);
+}
 const document={
  createElement:tag=>new Element(tag),
  getElementById:id=>elements[id]||null,
@@ -98,5 +103,5 @@ elements.txHash.value="b".repeat(64);
 fire("requestVerification");stage(5);
 fire("restart");stage(1);
 assert.equal(elements.next1.disabled,true,"Restart should clear selection");
-assert.equal(elements.qtyValue.textContent,1,"Restart should reset quantity");
+assert.equal(elements.qtyValue.textContent,"1","Restart should reset quantity");
 console.log("Speed Drift interactions passed: brand filters, search, selection, back/next, quantity, validation, wallet copy, TXID, WhatsApp, reset.");
