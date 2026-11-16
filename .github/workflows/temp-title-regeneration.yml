@@ -1,0 +1,31 @@
+name: Temporary product title rebuild
+on:
+  push:
+    branches: [fix/preserve-supplier-product-titles-2026-11-16]
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: fix/preserve-supplier-product-titles-2026-11-16
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate SEO pages
+        run: python3 scripts/build_seo.py
+      - name: Commit generated output to feature branch
+        shell: bash
+        run: |
+          git add -A -- index.html catalog.html product.html p/ shop/ assets/storefront.js
+          if ! git diff --cached --quiet; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git commit -m "Rebuild product pages with accurate category metadata"
+            git push origin HEAD:fix/preserve-supplier-product-titles-2026-11-16
+          fi
