@@ -1,9 +1,10 @@
-/* Merchant payment settings. Do not invent wallet addresses or payment status.
-   Configure only after merchant confirms exact USDT network and address.
-   This static frontend cannot verify on-chain payment or gift delivery. */
+/* Merchant USDT destination provided directly by DigitalRacer.
+   No automatic payment verification: manual verification via merchant support.
+   Do not invent prices, successful transfers, or game deliveries. */
 window.SPEED_DRIFT_PAYMENT = Object.freeze({
   token: "USDT",
-  network: "",
-  walletAddress: "",
-  displayAmount: ""
+  network: "TRON (TRC20)",
+  walletAddress: "TF9TxdLcw1BdhVFKc3egwKHBTyis4fmPys",
+  displayAmount: "",
+  supportNumber: "923454342911"
 });
