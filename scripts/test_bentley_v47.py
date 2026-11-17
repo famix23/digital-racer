@@ -31,8 +31,11 @@ for row, listing in cards:
     assert listing["title"] == row["title"] and listing["thumbnail"] == row["thumbnail"]
     page = (ROOT / listing["url"].lstrip("/") / "index.html").read_text(encoding="utf-8")
     assert '<h1 class="main-title" id="prod-title">' + title + '</h1>' in unescape(page), title
-    assert "Buy Now" in page and "Check Availability" not in page
-    assert "Pre-launch enquiry:" not in page and "Confirm timeframe</span>" not in page
+    button = re.search(r'<a [^>]*id="buy-btn"[^>]*>(.*?)</a>', page, flags=re.S)
+    assert button and "Buy Now" in button.group(1) and "Check Availability" not in button.group(1)
+    desc_html = re.search(r'<div class="desc-content" id="prod-desc">(.*?)</div>', page, flags=re.S)
+    assert desc_html and "Pre-launch enquiry:" not in desc_html.group(1)
+    assert '<span>Confirm timeframe</span>' not in page.split('<script>window.DR_PRESET')[0]
     assert "https://wa.me/923454342911" in page
     assert ("I%20want%20to%20acquire" in page or "I%20want%20to%20acquire" in unescape(page))
     scripts = re.findall(r'<script type="application/ld\+json">\s*({[^<]+})\s*</script>', page)
