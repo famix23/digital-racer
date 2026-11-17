@@ -19,3 +19,13 @@ a.dr-shop-tile:focus-visible{outline:3px solid #f4d66c;outline-offset:3px;border
 @media(max-width:1080px){nav.dr-shop-grid{grid-template-columns:repeat(3,minmax(0,1fr));}}
 @media(max-width:600px){.dr-shop-categories{padding:15px 4vw 18px;}.dr-shop-heading p{font-size:.74rem;}nav.dr-shop-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;}a.dr-shop-tile{min-height:54px;padding:9px 10px;gap:7px;font-size:.75rem;}.dr-shop-icon{width:28px;height:28px;}.dr-shop-icon svg{width:17px;height:17px;}}
 @media(prefers-reduced-motion:reduce){a.dr-shop-tile{transition:none;}a.dr-shop-tile:hover{transform:none;}}
+
+/* Compact crawlable links to canonical category collections.
+   Product-first tiles above still open live catalog filters. */
+.dr-seo-hub-links{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:8px 12px;max-width:1280px;margin:18px auto 26px;padding:14px 16px;border:1px solid #373022;border-radius:10px;background:#11100d;box-shadow:0 5px 16px rgba(0,0,0,.14);}
+.dr-seo-hub-label{color:#c5bda9;font:700 .74rem/1.5 'Montserrat',system-ui,sans-serif;letter-spacing:.03em;}
+.dr-seo-hub-links a{color:#e9c967;font:600 .75rem/1.5 'Open Sans',system-ui,sans-serif;text-decoration:none;border-bottom:1px solid rgba(212,175,55,.35);padding:3px 2px;transition:color .18s ease,border-color .18s ease;}
+.dr-seo-hub-links a:hover{color:#fff;border-color:#fff;}
+.dr-seo-hub-links a:focus-visible{outline:3px solid #f4d66c;outline-offset:3px;border-radius:3px;}
+@media(max-width:600px){.dr-seo-hub-links{justify-content:flex-start;gap:6px 13px;margin:12px auto 22px;padding:12px;}.dr-seo-hub-label{flex:0 0 100%;font-size:.72rem;}.dr-seo-hub-links a{font-size:.73rem;min-height:34px;display:inline-flex;align-items:center;}}
+@media(prefers-reduced-motion:reduce){.dr-seo-hub-links a{transition:none;}}
