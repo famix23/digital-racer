@@ -495,7 +495,19 @@ for _ in range(len(products)):
         break
     before = tuple(SEO_META_TITLES[url] for url in colliding)
     for url in colliding:
-        SEO_META_TITLES[url] = SEO_ORIGINAL_TITLES[url]
+        item = next(p for p in products if p["url"] == url)
+        peers = [p for p in products if p["clean_title"] == item["clean_title"]]
+        if len(peers) > 1:
+            # Retain the genuine product's distinguishing listing number in
+            # the metadata suffix, never alter its supplier-written H1.
+            number = 1 + peers.index(item)
+            suffix = f" · Listing {number} | {SITE_NAME}"
+            SEO_META_TITLES[url] = (
+                truncate(item["clean_display_title"], MAX_SEARCH_TITLE_LENGTH - len(suffix))
+                + suffix
+            )
+        else:
+            SEO_META_TITLES[url] = SEO_ORIGINAL_TITLES[url]
     if before == tuple(SEO_META_TITLES[url] for url in colliding):
         raise ValueError("Product SEO titles are not unique even before shortening")
 else:
