@@ -26,7 +26,7 @@ for row, listing in cards:
     assert 90 <= float(row["price"]) <= 270, title
     desc = row["description"]
     assert len(desc) >= 1600 and desc.count("2026") >= 2, title
-    for phrase in ("November 20, 2026", "AI-generated", "confirm", "PUBG Mobile", "region", "gift"):
+    for phrase in ("November 20, 2026", "AI-generated", "confirm", "PUBG Mobile", "country/server", "gift"):
         assert phrase.lower() in desc.lower(), (title, phrase)
     image = ROOT / row["thumbnail"].lstrip("/")
     assert image.is_file() and image.stat().st_size > 40000, (title, image)
