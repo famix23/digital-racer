@@ -26,6 +26,8 @@ def main():
         canonical = HOST + target
         page = (ROOT / "shop" / slug / "index.html").read_text(encoding="utf-8")
         assert canonical in urls, (slug, "sitemap")
+        assert 'href="' + target + '"' in home, (slug, "home must link to canonical category")
+        assert 'href="' + target + '"' in catalog, (slug, "catalog must link to canonical category")
         assert '<link rel="canonical" href="' + canonical + '">' in page, (slug, "canonical")
         assert '<meta name="robots" content="index,follow">' in page, (slug, "indexability")
         assert 'name="description"' in page and hub["description"] in page, (slug, "summary")
