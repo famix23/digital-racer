@@ -449,17 +449,64 @@ def related_choices(product, all_products, limit=4):
     return chosen
 
 
+# Preserve the seller's verbatim visible title (H1 and cards). Only the
+# HTML title/OG/Twitter titles are shortened to avoid overlong search snippets.
+MAX_SEARCH_TITLE_LENGTH = 78
+
+
+def _short_product_title(p):
+    short = truncate(p["clean_display_title"], 60)
+    peers = [o for o in products if o["clean_title"] == p["clean_title"]]
+    if len(peers) > 1:
+        short = (f"{truncate(p['clean_title'], 42)} · Listing "
+                 f"{1 + peers.index(p)} (${p['price']})")
+    return short
+
+
+def _title_suffix(p):
+    if p["display_title"] != p["title"] or "pubg" in p["clean_title"].lower():
+        return f" | {SITE_NAME}"
+    return f" – {p['cat_label']} | {SITE_NAME}"
+
+
+SEO_SHORT_TITLES = {p["url"]: _short_product_title(p) for p in products}
+SEO_ORIGINAL_TITLES = {
+    p["url"]: SEO_SHORT_TITLES[p["url"]] + _title_suffix(p)
+    for p in products
+}
+SEO_META_TITLES = {}
+for p in products:
+    url = p["url"]
+    suffix = _title_suffix(p)
+    original = SEO_ORIGINAL_TITLES[url]
+    if len(original) > MAX_SEARCH_TITLE_LENGTH:
+        SEO_META_TITLES[url] = (
+            truncate(SEO_SHORT_TITLES[url], MAX_SEARCH_TITLE_LENGTH - len(suffix))
+            + suffix
+        )
+    else:
+        SEO_META_TITLES[url] = original
+
+# Never introduce duplicate search titles when two supplier titles begin alike.
+for _ in range(len(products)):
+    counts = Counter(SEO_META_TITLES.values())
+    colliding = [url for url, title in SEO_META_TITLES.items() if counts[title] > 1]
+    if not colliding:
+        break
+    before = tuple(SEO_META_TITLES[url] for url in colliding)
+    for url in colliding:
+        SEO_META_TITLES[url] = SEO_ORIGINAL_TITLES[url]
+    if before == tuple(SEO_META_TITLES[url] for url in colliding):
+        raise ValueError("Product SEO titles are not unique even before shortening")
+else:
+    raise ValueError("Cannot resolve SEO title collisions")
+
+
 # ---------------------------------------------------------------- product pages
 def product_page(p, others):
     it = p["raw"]
-    short = truncate(p["clean_display_title"], 60)
-    if sum(1 for o in products if o["clean_title"] == p["clean_title"]) > 1:
-        short = f"{truncate(p['clean_title'], 42)} · Listing {1 + [o for o in products if o['clean_title'] == p['clean_title']].index(p)} (${p['price']})"  # keep duplicate titles distinct
-    # Keep the browser title faithful to the supplied title. Product category
-    # keywords are already present in meta description, schema and breadcrumbs.
-    page_title = (f"{short} | {SITE_NAME}" if p["display_title"] != p["title"]
-                  else (f"{short} | {SITE_NAME}" if "pubg" in p["clean_title"].lower()
-                        else f"{short} – {p['cat_label']} | {SITE_NAME}"))
+    short = SEO_SHORT_TITLES[p["url"]]
+    page_title = SEO_META_TITLES[p["url"]]
     price_txt = f"${p['price']} USD"
     reference_only = it.get("reference_only") is True
     delivery = "Last listed price" if reference_only else "Order on WhatsApp"
