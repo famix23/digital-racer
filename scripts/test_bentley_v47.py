@@ -37,6 +37,6 @@ for row, listing in cards:
     assert 'Confirm timeframe</span>' in page, title
     assert "https://wa.me/923454342911" in page, title
     assert "availability" not in json.loads(re.search(
-        r'<script type="application/ld\\+json">\\s*({[^<]+})\\s*</script>', page
+        r'<script type="application/ld\+json">\s*({[^<]+})\s*</script>', page
     ).group(1)).get("offers", {}), title
 print("Passed: 10 distinct Bentley promo cards with original image bytes, deep source-aware copy, prices, enquiry checkout and no invented stock claims.")
