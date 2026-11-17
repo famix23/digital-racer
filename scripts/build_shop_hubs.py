@@ -24,6 +24,8 @@ def build_shop_hubs(root, products, write):
     root = Path(root)
     template = (root / "scripts" / "shop_template.html.txt").read_text(encoding="utf-8")
     hubs = load_hubs(root)
+    image_map_path = root / "assets" / "image-map.json"
+    image_map = json.loads(image_map_path.read_text(encoding="utf-8")) if image_map_path.is_file() else {}
     slugs = []
     for hub in hubs:
         slug = hub["slug"]
@@ -63,7 +65,7 @@ def build_shop_hubs(root, products, write):
         )
         cards = "\n".join(
             '<a class="product-card" href="' + esc(p["url"]) + '">' +
-            ('<img class="category-thumb" src="' + esc(p["images"][0]) +
+            ('<img class="category-thumb" src="' + esc(image_map.get(p["images"][0], {}).get("480", p["images"][0])) +
              '" alt="' + esc(p["display_title"]) +
              '" loading="lazy" decoding="async" width="360" height="225">' if p["images"] else '') +
             '<strong>' + esc(p["display_title"]) + '</strong><span>$' +
