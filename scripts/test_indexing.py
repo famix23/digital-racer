@@ -117,6 +117,9 @@ def main():
     headers = (ROOT / "_headers").read_text(encoding="utf-8")
     require("/admin/*\n  X-Robots-Tag: noindex" in headers, "Admin X-Robots-Tag missing")
     require("/dropzone/*\n  X-Robots-Tag: noindex" in headers, "DropZone demo X-Robots-Tag missing")
+    for endpoint in ("/inventory.json", "/p/index.json"):
+        require(endpoint + "\n  Cache-Control: public, max-age=0, must-revalidate\n  X-Robots-Tag: noindex" in headers,
+                f"JSON API excluded from indexing: {endpoint}")
     robots = (ROOT / "robots.txt").read_text(encoding="utf-8")
     require("Sitemap: " + HOST + "/sitemap.xml" in robots, "Wrong robots.txt sitemap")
     require("Disallow: /\n" not in robots, "Global robots.txt block")
