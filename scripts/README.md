@@ -26,6 +26,12 @@ CMS-only additions render in the browser, but their canonical pages and optimize
 
 The CMS dependency is version-pinned with an SRI hash in `admin/index.html`. Update its version and integrity together, then verify the sign-in screen and normal editing workflow. Never commit access tokens. `_headers` supplies baseline Cloudflare security headers and admin noindex directives; it does not replace authentication or a complete CSP that restricts script sources.
 
+## SEO-only product metadata policy
+
+Keep the public catalog layout, category controls, supplier titles, prices and purchase flow unchanged when adjusting search visibility. `scripts/build_seo.py` now bounds HTML `<title>` (and the matching Open Graph/Twitter title) to about 78 characters for search snippets, while keeping the full verified seller name in visible H1s, cards and Product JSON-LD. Listings with otherwise identical shortened search titles retain unique listing numbers. This is **not** permission to shorten or rewrite supplier titles in `inventory.json`.
+
+The public JSON feeds `/inventory.json` and `/p/index.json` are still served for the storefront but carry `X-Robots-Tag: noindex`, so their raw data is not presented as a substitute for canonical HTML product pages. When editing this metadata, regenerate canonical pages and validate `scripts/test_indexing.py`, `scripts/audit_product_seo.py`, and `scripts/build_seo.py --check`. Never add hidden keyword text or invent product attributes for indexing.
+
 ## Legacy product query URLs and Google canonicalization
 
 The canonical product URL is `/p/<slug>/`. Cloudflare Workers runs `src/worker.mjs` **only** before `/product` and `/product.html` requests, where it permanently redirects exact, unambiguous `?item=<title>` matches to the current canonical `/p/` URL found in `p/index.json`. Three known legacy title aliases are handled explicitly. Unknown, ambiguous or title-less URLs continue using the existing generic noindex fallback. The script never redirects unrelated routes, edits product titles or accepts arbitrary external destinations.
