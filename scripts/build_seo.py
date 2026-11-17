@@ -520,8 +520,8 @@ def product_page(p, others):
         specs += f'\n          <div class="mini-spec" data-extra><span>Highest Tier</span><span>{esc(it["highest_tier"])}</span></div>'
     s = replace_one(s, r'(<div class="mini-spec"><span>Delivery</span><span style="color: var\(--accent\);">Instant</span></div>)',
                     lambda m: m.group(1) + specs, f, "specs grid")
-    # Rank services are manually fulfilled, so do not present them as instant delivery.
-    if p["category"] == "Rank Boosting":
+    # Unverified pre-launch offers and manually fulfilled services must not promise instant delivery.
+    if p["category"] == "Rank Boosting" or it.get("availability_unverified") is True:
         s = s.replace(
             '<div class="mini-spec"><span>Delivery</span><span style="color: var(--accent);">Instant</span></div>',
             '<div class="mini-spec"><span>Delivery</span><span style="color: var(--accent);">Confirm timeframe</span></div>',
@@ -543,7 +543,11 @@ def product_page(p, others):
             s = replace_one(s, r'(<div id="gallery-container" class="gallery-wrap">)(</div>)', lambda m: m.group(1) + thumbs + m.group(2), f, "gallery")
         else:
             s = replace_one(s, r'<div id="gallery-container" class="gallery-wrap"></div>', '<div id="gallery-container" class="gallery-wrap" style="display: none;"></div>', f, "gallery")
-    msg = f"Hello Digital Racer! I want to acquire: {p['display_title']} for ${p['price']} USD."
+    if it.get("availability_unverified") is True:
+        msg = (f"Hello Digital Racer! Please confirm the exact item, availability, region, "
+               f"gifting method and final price for: {p['display_title']} (listed ${p['price']} USD).")
+    else:
+        msg = f"Hello Digital Racer! I want to acquire: {p['display_title']} for ${p['price']} USD."
     s = replace_one(s, r'<a href="#" class="whatsapp-btn" id="buy-btn">',
                     lambda m: f'<a href="https://wa.me/{WHATSAPP}?text={esc(quote(msg, safe=""))}" class="whatsapp-btn" id="buy-btn">', f, "buy button")
     rel = "".join(
