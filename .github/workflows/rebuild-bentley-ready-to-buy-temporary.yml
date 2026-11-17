@@ -1,0 +1,40 @@
+name: Build Bentley ready-to-buy catalog (temporary)
+on:
+  push:
+    branches:
+      - catalog/bentley-ready-to-buy-20261117
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: catalog/bentley-ready-to-buy-20261117
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Regenerate SEO pages, catalog, category hubs and sitemap
+        run: python3 scripts/build_seo.py
+      - name: Verify Bentley sales flow and SEO
+        run: |
+          python3 scripts/test_bentley_v47.py
+          python3 scripts/test_indexing.py
+          python3 scripts/test_shop_hubs.py
+          python3 scripts/audit_product_seo.py
+          python3 scripts/build_seo.py --check
+      - name: Commit rebuilt site without keeping temporary workflow
+        run: |
+          rm -f .github/workflows/rebuild-bentley-ready-to-buy-temporary.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Generate Bentley car card Buy Now pages and updated SEO catalog"
+            git push origin HEAD:refs/heads/catalog/bentley-ready-to-buy-20261117
+          fi
