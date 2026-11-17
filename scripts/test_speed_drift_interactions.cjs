@@ -62,7 +62,8 @@ assert.ok(elements.vehicles.children.length>0,"Catalog didn't render");
 assert.ok(elements.filters.children.length>=8,"Brand filters didn't render");
 assert.equal(elements.storeGallery.children.length,JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length,"All category Car Cards should appear in Speed Drift");
 assert.ok(elements.storeGallery.children.every(el=>el.events.click?.length),"Every Car Card catalog item must be clickable");
-assert.ok(elements.catalogCount.textContent.includes("27"),"Display full Car Card listing count");
+const carCardCount = JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length;
+assert.ok(elements.catalogCount.textContent.includes(String(carCardCount)),"Display full Car Card listing count");
 
 assert.equal(elements.next1.disabled,true,"Initially require a selected car");
 elements.filters.children.find(el=>el.textContent==="Ferrari").click();
