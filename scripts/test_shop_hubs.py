@@ -40,6 +40,9 @@ def main():
         assert len(scripts) == 1, (slug, "schema")
         schema = json.loads(scripts[0])
         assert schema["@type"] == "CollectionPage" and schema["url"] == canonical
+        breadcrumb = schema.get("breadcrumb", {}).get("itemListElement", [])
+        assert [part.get("name") for part in breadcrumb] == ["Home", "Catalog", hub["category"]], (slug, "breadcrumb schema")
+        assert breadcrumb[0].get("item") == HOST + "/" and breadcrumb[1].get("item") == HOST + "/catalog", (slug, "breadcrumb URLs")
         expected = [manifest[i]["url"] for i, item in enumerate(items) if item["category"] == hub["category"]][-12:][::-1]
         # All current category products have direct HTML links from the hub.
         all_category = [manifest[i] for i, item in enumerate(items) if item["category"] == hub["category"]]
@@ -50,6 +53,9 @@ def main():
         assert len(set(expected + directory_urls)) == len(all_category), (slug, "directory missing product")
         actual = re.findall(r'<a class="product-card" href="([^"]+)"', page)
         assert expected == actual, (slug, "stale product list", expected, actual)
+        thumbnails = re.findall(r'<img class="category-thumb" src="([^"]+)" alt="([^"]+)" loading="lazy"', page)
+        assert thumbnails and len(thumbnails) <= len(expected), (slug, "visible product images")
+        assert all(source.startswith(("/images/", "https://")) and label.strip() for source, label in thumbnails), (slug, "image URL and alt")
         schema_urls = [x["url"] for x in schema["mainEntity"]["itemListElement"]]
         assert schema_urls == [HOST + route for route in expected], (slug, "structured links")
         body = page.split("<main", 1)[1].split("</main>", 1)[0]
