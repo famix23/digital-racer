@@ -46,6 +46,10 @@ def build_shop_hubs(root, products, write):
         schema = {
             "@context": "https://schema.org", "@type": "CollectionPage",
             "name": hub["title"], "url": canonical, "description": hub["description"],
+            "breadcrumb": {"@type": "BreadcrumbList", "itemListElement": [
+                {"@type": "ListItem", "position": 1, "name": "Home", "item": SITE + "/"},
+                {"@type": "ListItem", "position": 2, "name": "Catalog", "item": SITE + "/catalog"},
+                {"@type": "ListItem", "position": 3, "name": hub["category"]}]},
             "mainEntity": {"@type": "ItemList", "numberOfItems": len(chosen),
                 "itemListElement": [
                     {"@type": "ListItem", "position": i + 1,
@@ -58,8 +62,33 @@ def build_shop_hubs(root, products, write):
             "</section>" for section in hub["sections"]
         )
         cards = "\n".join(
-            '<a class="product-card" href="' + esc(p["url"]) +
-            '"><strong>' + esc(p["display_title"]) + '</strong><span>$' +
+            '<a class="product-card" href="' + esc(p["url"]) + '">' +
+            ('<img class="category-thumb" src="' + esc(p["images"][0]) +
+             '" alt="' + esc(p["display_title"]) +
+             '" loading="lazy" decoding="async" width="360" height="225">' if p["images"] else '') +
+            '<strong>' + esc(p["display_title"]) + '</strong><span>
+        links = " ".join(
+            '<a href="/catalog?category=' + esc(quote(other["category"], safe="")) + '">' +
+            esc(other["category"]) + '</a>' for other in hubs if other["slug"] != slug
+        )
+        tokens = {
+            "TITLE": esc(hub["seo_title"] + " | Digital Racer"),
+            "DESCRIPTION": esc(hub["description"]),
+            "CANONICAL": esc(canonical), "SCHEMA": json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"),
+            "CATEGORY": esc(hub["category"]), "HEADING": esc(hub["title"]),
+            "INTRO": esc(hub["intro"]), "SECTIONS": sections, "CARDS": cards,
+            "COUNT": str(len(matches)), "DIRECTORY": directory, "HUBLINKS": links,
+            "QUERY": esc(quote(hub["category"], safe=""))
+        }
+        page = template
+        for key, value in tokens.items():
+            page = page.replace("%%" + key + "%%", value)
+        if "%%" in page:
+            raise ValueError(f"Unresolved shop token: {slug}")
+        write("shop/" + slug + "/index.html", page)
+        slugs.append(slug)
+    return slugs
+ +
             esc(p["price"]) + ' USD</span></a>' for p in chosen
         )
         links = " ".join(
