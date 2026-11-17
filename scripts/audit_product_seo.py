@@ -116,6 +116,9 @@ def main():
             warnings.append(f"{label}: long SEO meta description ({len(description)} chars)")
         if len(title) > 78:
             warnings.append(f"{label}: long document title ({len(title)} chars)")
+        # Source inventory titles remain untouched; search titles must be unique.
+        if not title.strip():
+            failures.append(f"{label}: empty HTML search title")
         url = HOST + label
         if page.canonicals != [url]:
             failures.append(f"{label}: incorrect/multiple self-canonical tags")
