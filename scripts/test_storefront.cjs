@@ -56,7 +56,10 @@ for (const p of manifest) {
     item.availability_unverified === true ? undefined : 'https://schema.org/InStock';
   assert.equal(product.offers.availability, availability);
   assert.equal(/<a [^>]*id="buy-btn"/.test(html), !referenceOnly);
-  assert.equal(/id="prod-desc">\s*<p><strong>Buy now on whatsapp number/.test(html), !referenceOnly);
+  const isEnquiry = !referenceOnly && item.availability_unverified === true;
+  assert.equal(/id="prod-desc">\s*<p><strong>Buy now on whatsapp number/.test(html), !referenceOnly && !isEnquiry);
+  assert.equal(/id="prod-desc">\s*<p><strong>Pre-launch enquiry:/.test(html), isEnquiry);
+  if (isEnquiry) assert.ok(html.includes('Check Availability'), 'Prelaunch item must confirm availability');
   if (referenceOnly) assert.ok(html.includes('Last listed price'));
 }
 // No rank-boosting listing may promise instant fulfilment while describing a multi-day service.

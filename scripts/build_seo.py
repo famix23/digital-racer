@@ -520,13 +520,16 @@ def product_page(p, others):
         specs += f'\n          <div class="mini-spec" data-extra><span>Highest Tier</span><span>{esc(it["highest_tier"])}</span></div>'
     s = replace_one(s, r'(<div class="mini-spec"><span>Delivery</span><span style="color: var\(--accent\);">Instant</span></div>)',
                     lambda m: m.group(1) + specs, f, "specs grid")
-    # Rank services are manually fulfilled, so do not present them as instant delivery.
-    if p["category"] == "Rank Boosting":
+    # Unverified pre-launch offers and manually fulfilled services must not promise instant delivery.
+    if p["category"] == "Rank Boosting" or it.get("availability_unverified") is True:
         s = s.replace(
             '<div class="mini-spec"><span>Delivery</span><span style="color: var(--accent);">Instant</span></div>',
             '<div class="mini-spec"><span>Delivery</span><span style="color: var(--accent);">Confirm timeframe</span></div>',
             1)
-    desc_prefix = "<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>"
+    desc_prefix = ("<p><strong>Pre-launch enquiry: confirm Bentley card stock, final price and gifting "
+                   "method via WhatsApp +923454342911 before payment.</strong></p><br>"
+                   if it.get("availability_unverified") is True
+                   else "<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>")
     desc_html = ("" if reference_only else desc_prefix) + parse_description(p["desc_raw"])
     s = replace_one(s, r'(<div class="desc-content" id="prod-desc">)(</div>)',
                     lambda m: m.group(1) + desc_html + m.group(2), f, "description")
@@ -543,9 +546,17 @@ def product_page(p, others):
             s = replace_one(s, r'(<div id="gallery-container" class="gallery-wrap">)(</div>)', lambda m: m.group(1) + thumbs + m.group(2), f, "gallery")
         else:
             s = replace_one(s, r'<div id="gallery-container" class="gallery-wrap"></div>', '<div id="gallery-container" class="gallery-wrap" style="display: none;"></div>', f, "gallery")
-    msg = f"Hello Digital Racer! I want to acquire: {p['display_title']} for ${p['price']} USD."
+    if it.get("availability_unverified") is True:
+        msg = (f"Hello Digital Racer! Please confirm the exact item, availability, region, "
+               f"gifting method and final price for: {p['display_title']} (listed ${p['price']} USD).")
+    else:
+        msg = f"Hello Digital Racer! I want to acquire: {p['display_title']} for ${p['price']} USD."
     s = replace_one(s, r'<a href="#" class="whatsapp-btn" id="buy-btn">',
                     lambda m: f'<a href="https://wa.me/{WHATSAPP}?text={esc(quote(msg, safe=""))}" class="whatsapp-btn" id="buy-btn">', f, "buy button")
+    if it.get("availability_unverified") is True:
+        s = s.replace("\n          Buy Now\n        </a>", "\n          Check Availability\n        </a>", 1)
+        s = s.replace("Order directly from Digital Racer using Buy Now.",
+                      "Pre-launch enquiry: confirm exact item and delivery before payment.", 1)
     rel = "".join(
         f'<a href="{o["url"]}" class="rel-card"><img src="{esc(display_image(o["images"][0])) if o["images"] else ""}" class="rel-img" alt="{esc(o["display_title"])}" loading="lazy" onerror="this.style.display=\'none\'">'
         f'<div class="rel-content"><div class="rel-title">{esc(o["display_title"])}</div><div class="rel-price">${esc(o["price"])} USD</div></div></a>'

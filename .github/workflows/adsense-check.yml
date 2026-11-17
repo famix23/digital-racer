@@ -27,6 +27,7 @@ jobs:
           DR_INVENTORY_BASE: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.sha || github.event.before }}
         run: python3 scripts/test_future_import_titles.py
       - run: python3 scripts/test_shop_hubs.py
+      - run: python3 scripts/test_bentley_v47.py
       - run: python3 scripts/audit_product_seo.py
       - run: python3 scripts/build_seo.py --check
       - run: node scripts/test_storefront.cjs
