@@ -66,7 +66,9 @@ def build_shop_hubs(root, products, write):
             ('<img class="category-thumb" src="' + esc(p["images"][0]) +
              '" alt="' + esc(p["display_title"]) +
              '" loading="lazy" decoding="async" width="360" height="225">' if p["images"] else '') +
-            '<strong>' + esc(p["display_title"]) + '</strong><span>
+            '<strong>' + esc(p["display_title"]) + '</strong><span>$' +
+            esc(p["price"]) + ' USD</span></a>' for p in chosen
+        )
         links = " ".join(
             '<a href="/catalog?category=' + esc(quote(other["category"], safe="")) + '">' +
             esc(other["category"]) + '</a>' for other in hubs if other["slug"] != slug
