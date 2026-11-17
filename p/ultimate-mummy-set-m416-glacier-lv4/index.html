@@ -479,7 +479,9 @@ BLACK SHORTS</div><div class="rel-price">$180.00 USD</div></div></a></div>
           const descText = product.description || product.desc || product.body || product.details || product.content || product.text || "";
           
           // Automated Mandatory WhatsApp Line
-          const mandatoryLine = referenceOnly ? "" : `<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>`;
+          const mandatoryLine = referenceOnly ? "" : (product.availability_unverified === true
+            ? `<p><strong>Pre-launch enquiry: confirm Bentley card stock, final price and gifting method via WhatsApp +923454342911 before payment.</strong></p><br>`
+            : `<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>`);
           
           if (descText && descText.trim() !== "") { 
             document.getElementById('prod-desc').innerHTML = mandatoryLine + parseDescription(descText); 
@@ -534,8 +536,20 @@ BLACK SHORTS</div><div class="rel-price">$180.00 USD</div></div></a></div>
             specsGrid.querySelector('.mini-spec:nth-child(2):not([data-extra])')?.remove();
           } else if (buyButton) {
             const waNumber = "923454342911";
-            const message = `Hello Digital Racer! I want to acquire: ${productDisplayTitle(product)} for ${product.price} USD.`;
+            const message = product.availability_unverified === true
+              ? `Hello Digital Racer! Please confirm the exact item, availability, region, gifting method and final price for: ${productDisplayTitle(product)} (listed ${product.price} USD).`
+              : `Hello Digital Racer! I want to acquire: ${productDisplayTitle(product)} for ${product.price} USD.`;
             buyButton.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+            if (product.availability_unverified === true) {
+              const labelNode = buyButton.lastChild;
+              if (labelNode && labelNode.nodeType === 3) labelNode.textContent = ' Check Availability ';
+              const delivery = [...specsGrid.querySelectorAll('.mini-spec')].find(el =>
+                el.firstElementChild && el.firstElementChild.textContent === 'Delivery');
+              if (delivery && delivery.lastElementChild) delivery.lastElementChild.textContent = 'Confirm timeframe';
+              const guarantee = document.querySelector('.guarantee-box div');
+              if (guarantee) guarantee.textContent =
+                'PRE-LAUNCH ENQUIRY: Confirm the exact item, region, price and delivery terms before payment.';
+            }
           }
 
           // Rotate same-category products instead of repeating the same four links on every page.

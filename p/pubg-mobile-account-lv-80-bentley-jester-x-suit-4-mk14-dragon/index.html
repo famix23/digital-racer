@@ -318,7 +318,7 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
       <!-- Description Card Always Displays Now -->
       <div class="desc-card" id="desc-card-wrapper">
         <div class="desc-title">Description</div>
-        <div class="desc-content" id="prod-desc"><p><strong>Buy now on whatsapp number +923454342911</strong></p><br><p>Illustrative Bentley cover image. See the description for this listing’s details.</p><p>Includes a Bentley vehicle skin, 4-star Jester X-Suit and 1-star Pharaoh and Ignim X-Suits.</p><ul><li>MK14 Dragon Domination and AKM Wandering Despot at level 7.</li><li>M416 Jester level 5, M416 Seal of the Underworld level 1 and SCAR-L Imprisoned Soul level 4.</li><li>Includes additional vehicle, motorcycle and weapon skins.</li></ul></div>
+        <div class="desc-content" id="prod-desc"><p><strong>Pre-launch enquiry: confirm Bentley card stock, final price and gifting method via WhatsApp +923454342911 before payment.</strong></p><br><p>Illustrative Bentley cover image. See the description for this listing’s details.</p><p>Includes a Bentley vehicle skin, 4-star Jester X-Suit and 1-star Pharaoh and Ignim X-Suits.</p><ul><li>MK14 Dragon Domination and AKM Wandering Despot at level 7.</li><li>M416 Jester level 5, M416 Seal of the Underworld level 1 and SCAR-L Imprisoned Soul level 4.</li><li>Includes additional vehicle, motorcycle and weapon skins.</li></ul></div>
       </div>
     </div>
     
@@ -333,9 +333,9 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
         </div>
         <a href="https://wa.me/923454342911?text=Hello%20Digital%20Racer%21%20Please%20confirm%20the%20exact%20item%2C%20availability%2C%20region%2C%20gifting%20method%20and%20final%20price%20for%3A%20Lv%2080%20%E2%80%93%20Bentley%2C%20Jester%20X-Suit%204%E2%98%85%2C%20MK14%20Dragon%20Domination%20Lv%207%20%28listed%20%24917.00%20USD%29." class="whatsapp-btn" id="buy-btn">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
-          Buy Now
+          Check Availability
         </a>
-        <div class="guarantee-box"><div><span>ORDER DETAILS:</span> Order directly from Digital Racer using Buy Now.</div></div>
+        <div class="guarantee-box"><div><span>ORDER DETAILS:</span> Pre-launch enquiry: confirm exact item and delivery before payment.</div></div>
       </div>
     </div>
   </div>
@@ -479,7 +479,9 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
           const descText = product.description || product.desc || product.body || product.details || product.content || product.text || "";
           
           // Automated Mandatory WhatsApp Line
-          const mandatoryLine = referenceOnly ? "" : `<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>`;
+          const mandatoryLine = referenceOnly ? "" : (product.availability_unverified === true
+            ? `<p><strong>Pre-launch enquiry: confirm Bentley card stock, final price and gifting method via WhatsApp +923454342911 before payment.</strong></p><br>`
+            : `<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>`);
           
           if (descText && descText.trim() !== "") { 
             document.getElementById('prod-desc').innerHTML = mandatoryLine + parseDescription(descText); 
@@ -534,8 +536,20 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
             specsGrid.querySelector('.mini-spec:nth-child(2):not([data-extra])')?.remove();
           } else if (buyButton) {
             const waNumber = "923454342911";
-            const message = `Hello Digital Racer! I want to acquire: ${productDisplayTitle(product)} for ${product.price} USD.`;
+            const message = product.availability_unverified === true
+              ? `Hello Digital Racer! Please confirm the exact item, availability, region, gifting method and final price for: ${productDisplayTitle(product)} (listed ${product.price} USD).`
+              : `Hello Digital Racer! I want to acquire: ${productDisplayTitle(product)} for ${product.price} USD.`;
             buyButton.href = `https://wa.me/${waNumber}?text=${encodeURIComponent(message)}`;
+            if (product.availability_unverified === true) {
+              const labelNode = buyButton.lastChild;
+              if (labelNode && labelNode.nodeType === 3) labelNode.textContent = ' Check Availability ';
+              const delivery = [...specsGrid.querySelectorAll('.mini-spec')].find(el =>
+                el.firstElementChild && el.firstElementChild.textContent === 'Delivery');
+              if (delivery && delivery.lastElementChild) delivery.lastElementChild.textContent = 'Confirm timeframe';
+              const guarantee = document.querySelector('.guarantee-box div');
+              if (guarantee) guarantee.textContent =
+                'PRE-LAUNCH ENQUIRY: Confirm the exact item, region, price and delivery terms before payment.';
+            }
           }
 
           // Rotate same-category products instead of repeating the same four links on every page.
