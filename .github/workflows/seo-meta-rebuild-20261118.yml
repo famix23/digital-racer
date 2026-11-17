@@ -1,0 +1,61 @@
+name: Temporary SEO-only metadata regeneration
+on:
+  push:
+    branches: [seo/metadata-only-no-ui-20261118]
+permissions:
+  contents: write
+jobs:
+  rebuild:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Rebuild canonical SEO metadata
+        run: python3 scripts/build_seo.py
+      - name: Confirm ONLY SEO head titles changed and all visible page bodies are identical
+        shell: bash
+        run: |
+          python3 - <<'PY'
+          import pathlib, re, subprocess
+          files = subprocess.check_output(["git", "diff", "--name-only"], text=True).splitlines()
+          assert files, "Metadata rebuild changed no product files"
+          assert all(re.fullmatch(r"p/[^/]+/index\.html", p) for p in files), f"Unexpected UI/catalog change: {files[:20]}"
+          def normalized(s):
+              s = re.sub(r"<title>[^<]*</title>", "<title>__SEO_TITLE__</title>", s, count=1)
+              s = re.sub(r'<meta property="og:title" content="[^"]*">', '<meta property="og:title" content="__SEO_TITLE__">', s, count=1)
+              s = re.sub(r'<meta name="twitter:title" content="[^"]*">', '<meta name="twitter:title" content="__SEO_TITLE__">', s, count=1)
+              return s
+          for p in files:
+              old = subprocess.check_output(["git", "show", "HEAD:" + p], text=True)
+              new = pathlib.Path(p).read_text(encoding="utf-8")
+              assert old.split("</head>", 1)[1] == new.split("</head>", 1)[1], f"Visible body changed: {p}"
+              assert normalized(old) == normalized(new), f"Unexpected metadata changed: {p}"
+          print("SEO_ONLY_VALIDATION", len(files), "product pages; no visible UI/UX change")
+          PY
+      - name: SEO and storefront regression tests
+        run: |
+          python3 scripts/test_indexing.py
+          python3 scripts/test_product_titles.py
+          python3 scripts/audit_product_seo.py
+          python3 scripts/build_seo.py --check
+          node scripts/test_storefront.cjs
+          node scripts/test_category_navigation.cjs
+          node scripts/test_mobile_experience.cjs
+      - name: Commit generated SEO metadata and remove this temporary workflow
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm .github/workflows/seo-meta-rebuild-20261118.yml
+          git add -u p .github/workflows/seo-meta-rebuild-20261118.yml
+          git commit -m "Regenerate SEO titles only; preserve every visible product page"
+          git push origin HEAD:seo/metadata-only-no-ui-20261118
