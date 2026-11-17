@@ -35,6 +35,7 @@ for row, listing in cards:
     page = (ROOT / listing["url"].lstrip("/") / "index.html").read_text(encoding="utf-8")
     assert '<h1 class="main-title" id="prod-title">' + title + '</h1>' in unescape(page), title
     assert 'Confirm timeframe</span>' in page, title
+    assert 'Check Availability' in page and 'Pre-launch enquiry:' in page, title
     assert "https://wa.me/923454342911" in page, title
     assert "availability" not in json.loads(re.search(
         r'<script type="application/ld\+json">\s*({[^<]+})\s*</script>', page
