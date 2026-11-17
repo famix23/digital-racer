@@ -28,7 +28,7 @@ for row, listing in cards:
         assert banned not in (title + " " + desc).lower(), (title, banned)
     file = ROOT / row["thumbnail"].lstrip("/")
     assert file.is_file() and file.stat().st_size > 40000 and file.read_bytes()[:4] == b"RIFF"
-    assert listing["title"] == title and listing["thumbnail"] == row["thumbnail"]
+    assert listing["title"] == row["title"] and listing["thumbnail"] == row["thumbnail"]
     page = (ROOT / listing["url"].lstrip("/") / "index.html").read_text(encoding="utf-8")
     assert '<h1 class="main-title" id="prod-title">' + title + '</h1>' in unescape(page), title
     assert "Buy Now" in page and "Check Availability" not in page
