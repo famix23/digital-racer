@@ -1,0 +1,62 @@
+{
+  "slug": "pubg-mobile-hud-backup-sensitivity-migration",
+  "title": "PUBG Mobile HUD and Sensitivity Backup Before Changing Phones",
+  "summary": "Protect your custom controls when switching devices or reinstalling the game.",
+  "category": "PUBG Mobile Guides",
+  "published": "2026-11-18",
+  "intro": "Protect your custom controls when switching devices or reinstalling the game. This Digital Racer guide focuses on decisions a player can check in ordinary gameplay, not secret unlocks or promises of certain results. The exact conditions depend on mode, device and current update, so begin with the rules and settings that the official game actually exposes. Aim for a repeatable process that improves awareness, safety and consistency instead of copying a single dramatic clip.",
+  "topics": [
+    "account-security",
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Capture the full control layout",
+      "paragraphs": [
+        "Save screenshots of every relevant button position, scale and opacity page. A single general HUD image may omit vehicle controls or alternate modes. Keep records privately and avoid publishing screenshots containing account identifiers."
+      ]
+    },
+    {
+      "heading": "Record sensitivity by scope",
+      "paragraphs": [
+        "Note camera, ADS and gyroscope settings separately, because similarly named sliders can control different situations. Preserve values from each available preset. A copied screenshot is easier to verify later than a remembered approximate number."
+      ]
+    },
+    {
+      "heading": "Check supported cloud options",
+      "paragraphs": [
+        "Use only the game's built-in layout sharing or cloud-save functions when available. Confirm which region, account and mode the backup applies to. An unofficial configuration importer may be outdated or expose files that should remain protected."
+      ]
+    },
+    {
+      "heading": "Prepare for different screen ratios",
+      "paragraphs": [
+        "A new phone may have a different aspect ratio or touch layout. Restoring identical percentages can place buttons awkwardly. Adjust a few controls first and test reaching them without losing camera movement."
+      ]
+    },
+    {
+      "heading": "Test before competitive play",
+      "paragraphs": [
+        "Use training or an unranked session to check firing, crouch, peek and vehicle actions. If one button overlaps another, correct it before adjusting every sensitivity value. Keep the old setup as a reference until the new one feels stable."
+      ]
+    },
+    {
+      "heading": "Keep account security separate",
+      "paragraphs": [
+        "A HUD backup does not require handing over a password or one-time code. Use official sign-in and recovery methods. If a tool requests login tokens just to move control settings, stop and use the in-game options instead."
+      ]
+    },
+    {
+      "heading": "How to test the advice without overreacting",
+      "paragraphs": [
+        "For a reliable comparison, note the present settings and record the symptom before changing anything. Make only one supported adjustment, restart the affected application when appropriate and retest the same situation. Revert changes that worsen stability, security or comfort. A percentage or benchmark without practical improvement is not a good reason to keep a tweak. Use only official game and operating-system controls where possible."
+      ]
+    },
+    {
+      "heading": "A practical review after the next session",
+      "paragraphs": [
+        "Return to the central goal of pubg mobile hud and sensitivity backup before changing phones. Identify which of these six decisions you genuinely used and which situations made them difficult. Protect your custom controls when switching devices or reinstalling the game. Compare your first attempt with two later attempts, keeping the main match conditions as similar as reasonable. If you cannot explain why one choice helped, treat the outcome as uncertain rather than making a confident claim. Write down a small next adjustment, preserve any existing safe settings and let the current game's rules determine which tactics remain valid."
+      ]
+    }
+  ]
+}

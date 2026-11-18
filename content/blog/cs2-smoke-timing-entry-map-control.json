@@ -1,0 +1,61 @@
+{
+  "slug": "cs2-smoke-timing-entry-map-control",
+  "title": "CS2 Smoke Timing: Use Utility to Secure Map Control",
+  "summary": "Learn why timing and teammate movement matter more than memorizing dozens of lineups.",
+  "category": "CS2 Guides",
+  "published": "2026-11-18",
+  "intro": "Learn why timing and teammate movement matter more than memorizing dozens of lineups. This original Digital Racer guide offers practical decisions for players who want better coordination and more predictable results. The examples are deliberately grounded in common teamwork principles, not promises of guaranteed rank gains, exact unverified statistics or secret shortcuts. Test the advice on the current live game, because map layouts and ability behavior can change with updates.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "State the purpose of each smoke",
+      "paragraphs": [
+        "A smoke should block a particular sightline long enough for a team action. Before throwing, identify the defender angle, crossing route or rotation you want to influence. An impressive lineup is wasted when teammates cannot capitalize."
+      ]
+    },
+    {
+      "heading": "Check the current map geometry",
+      "paragraphs": [
+        "Maps can change, including walls, boxes and sightlines. Verify a lineup on the current playable version rather than relying on a years-old screenshot. Practice from safe, repeatable starting points and avoid making uncertain claims about every edge."
+      ]
+    },
+    {
+      "heading": "Sync the throw with entry",
+      "paragraphs": [
+        "Announce where the smoke will land and roughly when the group is ready to move. If it activates too early, defenders can reposition before contact. If it activates late, an entry player may already have crossed an unprotected angle."
+      ]
+    },
+    {
+      "heading": "Understand the limits of concealment",
+      "paragraphs": [
+        "Smoke can block vision but does not make a route invulnerable. Opponents may spray, push through or use other legal utility. Hold a trading angle while crossing rather than assuming no defender will contest the space."
+      ]
+    },
+    {
+      "heading": "Preserve a second option",
+      "paragraphs": [
+        "Avoid spending every smoke on the first idea when a late rotation or plant may require another. Economy, utility counts and teammate locations should guide the plan. A simpler execution with one reliable smoke can outperform a complex but mistimed sequence."
+      ]
+    },
+    {
+      "heading": "Practice with a paired teammate",
+      "paragraphs": [
+        "One person can throw while another confirms whether the intended line is obscured. Make small corrections and save the successful reference point. A lineup is useful only if the player can reproduce it during a real round."
+      ]
+    },
+    {
+      "heading": "Review the resulting space",
+      "paragraphs": [
+        "After a match, ask whether the smoke created a safe crossing, forced a rotation or only obscured your own view. Record the reason the team did or did not move. Utility value comes from the decision it enables."
+      ]
+    },
+    {
+      "heading": "How to test and adapt the method",
+      "paragraphs": [
+        "Run a short controlled trial rather than changing several variables in one match. Start with the present game's supported interface and verify the map, agent, rules and team situation before applying a method. If something unexpected happens, communicate the observed fact, adapt and keep a useful fallback. After a few rounds, review the first decision that caused a problem. The best improvement is a repeatable action that teammates understand, not a lucky highlight, exaggerated win-rate claim or unauthorized utility script."
+      ]
+    }
+  ]
+}
