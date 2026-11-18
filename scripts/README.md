@@ -2,6 +2,8 @@
 
 The storefront is a static website. The admin edits `inventory.json` through GitHub; it is not an order, payment or stock database.
 
+Preserve full reseller-written descriptions with `preserve_description: true`; do not replace them with short summaries. `PRODUCT_DESCRIPTIONS.md` defines required source-body preservation, privacy removals and live verification.
+
 ## Required exact supplier titles on new imports
 
 For every **new reseller listing**, save the exact source heading in **both** `title` and `source_title` in `inventory.json`. Do not add a `PUBG Mobile Account` prefix unless it actually exists in the seller's title, and never trim away original game wording, emojis, punctuation, capitalization or item details. The admin editor now exposes a "Supplier Title Proof" field for this. For an original DigitalRacer-created product, use `listing_origin: original`; otherwise `reseller` is assumed.
