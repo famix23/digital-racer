@@ -108,6 +108,18 @@ def main():
         description = plain(descriptions[0]) if descriptions else ""
         title_count[title] += 1
         description_count[description] += 1
+        # Metadata may differ from seller copy, but must retain the known
+        # PUBG Mobile category context on all explicitly typed products.
+        if item.get("category") in {"Account", "Car Card", "UC Top-Up", "Rank Boosting", "Popularity"}:
+            if "pubg mobile" not in description.casefold():
+                failures.append(f"{label}: missing known game/category in search description")
+        # Generic in-game items cover other games. Never manufacture PUBG
+        # Mobile attribution from that broad catalog category alone.
+        if item.get("category") == "In-Game Items":
+            source = str(item.get("title", "")) + " " + str(item.get("description", ""))
+            if "pubg mobile" not in source.casefold() and description.startswith("PUBG Mobile In-Game Item"):
+                failures.append(f"{label}: invented PUBG Mobile attribution")
+
         if not title or len(title) < 20:
             failures.append(f"{label}: missing or unusually short document title")
         if not description or len(description) < 45:
