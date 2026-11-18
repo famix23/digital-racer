@@ -284,11 +284,21 @@ def keyword_safe_description(p):
 
 
 def original_product_meta(p):
-    """Keep product type in SEO description without repeating seller keywords."""
+    """Write factual, buyer-readable search snippets without editing source listings.
+
+    Put the supported game/product category first (except unrelated in-game
+    items), then the actual price, fulfillment context, and supplier facts.
+    When supplier copy is very short, the authentic product title supplies
+    concrete item names/levels rather than fabricated generic SEO filler.
+    """
     price_text = f"${p['price']} USD"
     delivery = "Last listed price" if p["raw"].get("reference_only") is True else "Order on WhatsApp"
-    lead = f"{price_text} · {delivery}. "
-    return truncate(lead + keyword_safe_description(p), 158)
+    summary = p["desc_clean"] or p["clean_display_title"]
+    if len(summary) < 100 and p["clean_display_title"].casefold() not in summary.casefold():
+        summary = f"{p['clean_display_title']} — {summary}"
+    lead = f"{p['cat_label']} · {price_text} · {delivery}. "
+    return truncate(lead + summary, 158)
+
 
 META_BASES = {p["url"]: original_product_meta(p) for p in products}
 META_COUNTS = Counter(META_BASES.values())
