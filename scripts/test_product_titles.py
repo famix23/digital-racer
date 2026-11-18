@@ -30,7 +30,7 @@ key = "PUBG Mobile Old Account – Fireman Set, 4x Red Loot Crate Max, 2 Sports 
 assert overrides.get(key) == "Fireman Set, 4x Red Loot Crate Max, 2 Sports Cars, 23 Kill Msgs"
 safe_categories = {"Account", "Car Card", "UC Top-Up", "Rank Boosting", "Popularity"}
 for p, mapping in zip(products, manifest):
-    title = str(p["title"]).strip()
+    title = str(p["title"])
     assert mapping["title"] == title, "Original listing identity changed"
     original = next((p.get(k) for k in ("original_title", "source_title", "seller_title")
                      if isinstance(p.get(k), str) and p.get(k).strip()), None)
