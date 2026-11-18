@@ -5,6 +5,7 @@ on:
       - 'scripts/diagnose_public_indexing.py'
       - 'scripts/audit_live_sitemap.py'
       - 'scripts/audit_product_seo.py'
+      - 'scripts/report_priority_product_seo.py'
       - '.github/workflows/indexing-http-diagnostics.yml'
   workflow_dispatch:
   push:
@@ -15,9 +16,10 @@ on:
       - 'p/index.json'
       - 'shop/**'
       - 'scripts/audit_live_sitemap.py'
+      - 'scripts/report_priority_product_seo.py'
       - '.github/workflows/indexing-http-diagnostics.yml'
   schedule:
-    - cron: '19 5 * * 1'
+    - cron: '19 5 * * 1,3'  # Monday and Wednesday; includes Nov 25 and Dec 2
 permissions:
   contents: read
 jobs:
@@ -34,6 +36,8 @@ jobs:
         run: sleep 45
       - name: Validate all listing SEO signals, images and purchase links
         run: python3 scripts/audit_product_seo.py
+      - name: Select and verify 24 high-intent PUBG Mobile product pages
+        run: python3 scripts/report_priority_product_seo.py
       - name: Check external HTTP fetch from GitHub runner
         run: python3 scripts/diagnose_public_indexing.py
       - name: Audit every live sitemap URL for HTTP 200 and indexable canonical tags
