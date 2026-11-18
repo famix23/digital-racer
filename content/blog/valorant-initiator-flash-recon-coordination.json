@@ -56,6 +56,12 @@
       "paragraphs": [
         "Run a short controlled trial rather than changing several variables in one match. Start with the present game's supported interface and verify the map, agent, rules and team situation before applying a method. If something unexpected happens, communicate the observed fact, adapt and keep a useful fallback. After a few rounds, review the first decision that caused a problem. The best improvement is a repeatable action that teammates understand, not a lucky highlight, exaggerated win-rate claim or unauthorized utility script."
       ]
+    },
+    {
+      "heading": "Prepare a fallback when information is denied",
+      "paragraphs": [
+        "A defensive opponent can destroy an information ability, leave its scan area or hold a position that the tool does not cover. Tell the team exactly what failed rather than treating the missing detection as an empty site. Select a second angle to clear or delay the entry until teammates can support it. This fallback prevents a single failed recon attempt from turning into several isolated fights."
+      ]
     }
   ]
 }
