@@ -1,0 +1,61 @@
+{
+  "slug": "cs2-rush-3v3-team-trading",
+  "title": "CS2 Rush 3v3: Faster Team Trading and Positioning",
+  "summary": "Adjust Counter-Strike 2 team spacing and communication for Valve's Rush mode.",
+  "category": "CS2 Guides",
+  "published": "2026-11-18",
+  "intro": "Adjust Counter-Strike 2 team spacing and communication for Valve's Rush mode. This original Digital Racer guide offers practical decisions for players who want better coordination and more predictable results. The examples are deliberately grounded in common teamwork principles, not promises of guaranteed rank gains, exact unverified statistics or secret shortcuts. Test the advice on the current live game, because map layouts and ability behavior can change with updates.",
+  "topics": [
+    "tutorial"
+  ],
+  "sections": [
+    {
+      "heading": "Understand the smaller format",
+      "paragraphs": [
+        "Valve announced Rush as a fast-paced queued 3v3 mode in September 2026. Fewer teammates make each elimination more consequential. Check the displayed map and objective rules instead of treating a Rush round as a shortened version of every five-on-five setup."
+      ]
+    },
+    {
+      "heading": "Use nearby trading pairs",
+      "paragraphs": [
+        "An isolated player may lose before support arrives. Move close enough that a teammate can challenge the opponent after first contact, while avoiding stacking on the same firing line. A useful trade setup preserves two angles without exposing both players to one spray."
+      ]
+    },
+    {
+      "heading": "Keep the third player purposeful",
+      "paragraphs": [
+        "The remaining teammate can hold an alternate entrance or guard the objective rather than wandering alone for a flank. A distant unexpected attack can work, but only when timing and escape options are understood by the team."
+      ]
+    },
+    {
+      "heading": "Give three-part calls",
+      "paragraphs": [
+        "Name the location, observed action and whether information is current. Long round-by-round storytelling can mask footsteps. Do not call a target certainly gone because they disappeared behind a wall; distinguish what was actually seen from a guess."
+      ]
+    },
+    {
+      "heading": "Spend utility around a specific action",
+      "paragraphs": [
+        "Coordinate a flash or smoke for the entry the team is about to make. Randomly throwing all utility early sacrifices opportunities later in the round. Read current mode-specific purchase rules; do not assume regular competitive economy behavior applies unchanged."
+      ]
+    },
+    {
+      "heading": "Convert the player advantage",
+      "paragraphs": [
+        "After an early elimination, consider whether the objective is already secure. Chasing for unnecessary kills can turn a favorable three-versus-two into a risky sequence of isolated duels. Protect an important angle and force opponents to spend time."
+      ]
+    },
+    {
+      "heading": "Review positioning rather than aim alone",
+      "paragraphs": [
+        "After each close loss, ask whether the second player was close enough to trade and whether the third watched a useful route. Correct one spacing problem before changing sensitivity. The smaller format rewards simple, repeatable coordination."
+      ]
+    },
+    {
+      "heading": "How to test and adapt the method",
+      "paragraphs": [
+        "Run a short controlled trial rather than changing several variables in one match. Start with the present game's supported interface and verify the map, agent, rules and team situation before applying a method. If something unexpected happens, communicate the observed fact, adapt and keep a useful fallback. After a few rounds, review the first decision that caused a problem. The best improvement is a repeatable action that teammates understand, not a lucky highlight, exaggerated win-rate claim or unauthorized utility script."
+      ]
+    }
+  ]
+}
