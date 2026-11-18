@@ -219,8 +219,8 @@ items = data if isinstance(data, list) else (data.get("items") or data.get("prod
 # the seller genuinely included 'PUBG Mobile Account'.
 products, used = [], set()
 for it in items:
-    title = str(it.get("title") or "").strip()
-    if not title:
+    title = str(it.get("title") or "")
+    if not title.strip():
         continue
     slug = slugify(title)
     if slug in used:
