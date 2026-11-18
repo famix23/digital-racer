@@ -87,7 +87,7 @@ def main():
     path = os.getenv("GITHUB_STEP_SUMMARY")
     if path:
         with open(path, "a", encoding="utf-8") as f:
-            f.write("\n".join(summary) + "\\n")
+            f.write("\n".join(summary) + "\n")
 
 
 if __name__ == "__main__":
