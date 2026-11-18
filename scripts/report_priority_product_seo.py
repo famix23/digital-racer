@@ -19,7 +19,7 @@ HOST = "https://www.digitalracer.store"
 CATEGORY_LIMITS = {"Account": 12, "Car Card": 8, "UC Top-Up": 4}
 CHECKS = {
     "Account": [
-        (r"glacier(?:\\s+|[- ])?m416|m416(?:\\s+|[- ])?glacier", 7),
+        (r"glacier(?:\s+|[- ])?m416|m416(?:\s+|[- ])?glacier", 7),
         (r"x[- ]?suits?", 5),
         (r"mythics?|ultimate|gunlabs?", 2),
         (r"conqueror|collection|level|lvl", 1),
@@ -80,14 +80,14 @@ def main():
     for category, item in selected:
         url = HOST + item["url"]
         result.append(f"{category}: {url}")
-        title = re.sub(r"[\\[\\]\\|]", " ", unescape(item["title"]))[:100]
+        title = unescape(item["title"]).replace("[", "(").replace("]", ")").replace("|", " ")[:100]
         summary.append(f"- **{category}:** [{title}]({url})")
-    output = "\\n".join(result)
+    output = "\n".join(result)
     print(output, flush=True)
     path = os.getenv("GITHUB_STEP_SUMMARY")
     if path:
         with open(path, "a", encoding="utf-8") as f:
-            f.write("\\n".join(summary) + "\\n")
+            f.write("\n".join(summary) + "\\n")
 
 
 if __name__ == "__main__":
