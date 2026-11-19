@@ -20,6 +20,14 @@ def main():
     assert len(config) == 6 and len({h["slug"] for h in config}) == 6
     home = (ROOT / "index.html").read_text(encoding="utf-8")
     catalog = (ROOT / "catalog.html").read_text(encoding="utf-8")
+    # Keep the two principal search snippets readable without touching supplier titles.
+    for page_name, markup in (("home", home), ("catalog", catalog)):
+        title = re.search(r"<title>(.*?)</title>", markup, flags=re.S)
+        summary = re.search(r'<meta name="description" content="([^"]+)"', markup)
+        assert title and summary, (page_name, "missing SEO snippet")
+        assert len(unescape(title.group(1))) <= 60, (page_name, "long browser title")
+        assert 70 <= len(unescape(summary.group(1))) <= 160, (page_name, "meta description length")
+
     for hub in config:
         slug = hub["slug"]
         target = "/shop/" + slug + "/"
