@@ -89,6 +89,16 @@ def build_shop_hubs(root, products, write):
             page = page.replace("%%" + key + "%%", value)
         if "%%" in page:
             raise ValueError(f"Unresolved shop token: {slug}")
+        # Use the current real Car Card product photo for social link previews.
+        # The preview updates automatically when catalog items change.
+        if slug == "pubg-mobile-car-cards" and chosen[0]["images"]:
+            raw_image = chosen[0]["images"][0]
+            social_image = image_map.get(raw_image, {}).get("960", raw_image)
+            social_url = social_image if social_image.startswith("https://") else SITE + social_image
+            social_meta = ('<meta property="og:image" content="' + esc(social_url) + '">\n'
+                           '<meta name="twitter:card" content="summary_large_image">\n'
+                           '<meta name="twitter:image" content="' + esc(social_url) + '">\n')
+            page = page.replace('<meta name="theme-color"', social_meta + '<meta name="theme-color"', 1)
         write("shop/" + slug + "/index.html", page)
         slugs.append(slug)
     return slugs

@@ -31,6 +31,12 @@ def main():
         assert 'name="description"' in page and hub["description"] in page, (slug, "summary")
         assert page.count("<h1>") == 1, (slug, "one h1")
         assert page.count("adsbygoogle.js") == 1, (slug, "one ad client")
+        if slug == "pubg-mobile-car-cards":
+            assert "Bentley" in hub["seo_title"] and "November 20, 2026" in page, "Bentley event metadata missing"
+            assert 'href="/shop/pubg-mobile-car-cards/"' in home, "Homepage Bentley shopping link missing"
+            assert '<meta property="og:image" content="https://www.digitalracer.store/images/' in page, "Bentley social image missing"
+            assert '<meta name="twitter:card" content="summary_large_image">' in page, "Bentley Twitter preview missing"
+
         # Visible shopping categories must open actual filtered product listings.
         from urllib.parse import quote
         real_category = "/catalog?category=" + quote(hub["category"], safe="")
