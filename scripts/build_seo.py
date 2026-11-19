@@ -32,13 +32,12 @@ from urllib.parse import quote, urlsplit
 SITE_URL = "https://www.digitalracer.store"  # canonical host (no trailing slash)
 SITE_NAME = "Digital Racer"
 WHATSAPP = "923454342911"
-HOME_TITLE = "Digital Racer — PUBG Mobile Accounts, Car Cards, UC, Items & Rank Boosting"
+HOME_TITLE = "PUBG Mobile Accounts, Car Cards & UC | Digital Racer"
 HOME_DESC = ("Browse PUBG Mobile accounts, car cards, UC top-ups, in-game items and "
              "rank boosting. See USD prices and product photos. Buy directly on WhatsApp.")
-CATALOG_TITLE = "Full Catalog — PUBG Mobile Accounts, Car Cards, UC, Items & Boosting | Digital Racer"
-CATALOG_DESC = ("Browse every PUBG Mobile account, car skin card, UC top-up, in-game item and rank boosting "
-                "service listed at Digital Racer. "
-                "View USD prices and order directly on WhatsApp.")
+CATALOG_TITLE = "PUBG Mobile Accounts, Car Cards & More | Digital Racer"
+CATALOG_DESC = ("Browse PUBG Mobile accounts, Bentley car cards, UC top-ups, in-game items and boosting. "
+                "Compare USD prices and product photos at Digital Racer.")
 LOGO_PATH = "/images/icons/icon-512.png"
 CATEGORY_LABELS = {"Account": "PUBG Mobile Account", "Car Card": "PUBG Mobile Car Skin Card",
                    "UC Top-Up": "PUBG Mobile UC Top-Up", "In-Game Items": "PUBG Mobile In-Game Item",
