@@ -64,13 +64,27 @@ ADSENSE_SCRIPT = '<script async src="https://pagead2.googlesyndication.com/pagea
 ADSENSE_AUTHORIZATION = "google.com, pub-3636750354534911, DIRECT, f08c47fec0942fa0\n"
 
 
+THEME_HEAD = (
+    '<script>(function(){var theme="dark";try{if(localStorage.getItem("digitalracer-theme")==="light")theme="light";}catch(e){}'
+    'document.documentElement.setAttribute("data-dr-theme",theme);document.documentElement.style.colorScheme=theme;})();</script>\n'
+    '<link rel="stylesheet" href="/assets/theme.css">\n'
+    '<script src="/assets/theme.js" defer></script>\n'
+)
+
+
 def with_adsense(content):
-    """Keep exactly one publisher loader in every generated HTML head."""
-    if ADSENSE_SCRIPT in content:
-        return content
-    if "<head>" not in content:
+    """Provide one AdSense loader and consistent accessible themes on every HTML page.
+
+    Applied by the generator to home, catalog, all products, editorial articles,
+    shop hubs and standalone information pages. Idempotent for --check rebuilds.
+    """
+    if "<head>" not in content or "</head>" not in content:
         raise ValueError("HTML page is missing its head")
-    return content.replace("<head>", "<head>\n" + ADSENSE_SCRIPT, 1)
+    if ADSENSE_SCRIPT not in content:
+        content = content.replace("<head>", "<head>\n" + ADSENSE_SCRIPT, 1)
+    if '<link rel="stylesheet" href="/assets/theme.css">' not in content:
+        content = content.replace("</head>", THEME_HEAD + "</head>", 1)
+    return content
 
 
 def write(rel, content):
