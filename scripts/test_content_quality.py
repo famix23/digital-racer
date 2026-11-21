@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Checks for useful, indexable, reachable editorial pages; not an AdSense approval test."""
 from html.parser import HTMLParser
+import json
 from pathlib import Path
 import re
 
