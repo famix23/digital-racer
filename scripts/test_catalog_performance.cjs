@@ -57,7 +57,7 @@ const inline=[...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)]
 assert.ok(inline,"Interactive catalog script not found");
 new vm.Script(inline,{filename:"catalog.html"});
 class Element {
-  constructor(){this.value="";this.textContent="";this.innerHTML="";this.hidden=false;this.attrs={};this.events={};this.parentElement={scrollWidth:1,clientWidth:1,scrollLeft:0,offsetLeft:0};this.offsetLeft=0;}
+  constructor(){this.value="";this.textContent="";this.innerHTML="";this.hidden=false;this.attrs={};this.events={};this.classList={add(){},remove(){},toggle(){}};this.parentElement={scrollWidth:1,clientWidth:1,scrollLeft:0,offsetLeft:0};this.offsetLeft=0;}
   setAttribute(k,v){this.attrs[k]=String(v);}
   getAttribute(k){return this.attrs[k]??null;}
   addEventListener(k,fn){this.events[k]=fn;}
