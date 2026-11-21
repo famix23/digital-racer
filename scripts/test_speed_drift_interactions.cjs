@@ -60,8 +60,13 @@ const fire=id=>{assert.ok(elements[id].events.click?.length,"Missing click handl
 const stage=n=>assert.equal(elements["stage-"+n].hidden,false,"Stage "+n+" should be visible");
 assert.ok(elements.vehicles.children.length>0,"Catalog didn't render");
 assert.ok(elements.filters.children.length>=8,"Brand filters didn't render");
-assert.equal(elements.storeGallery.children.length,JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length,"All category Car Cards should appear in Speed Drift");
+assert.equal(elements.storeGallery.children.length,Math.min(12,JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length),"Speed Drift must show 12 real listing previews first");
 assert.ok(elements.storeGallery.children.every(el=>el.events.click?.length),"Every Car Card catalog item must be clickable");
+assert.equal(elements.galleryMore.hidden,false,"Show more must let buyers browse the full Car Card inventory");
+fireGalleryMore=()=>elements.galleryMore.click();
+fireGalleryMore();
+assert.equal(elements.storeGallery.children.length,Math.min(24,JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length),"Next gallery batch must be accessible");
+
 const carCardCount = JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length;
 assert.ok(elements.catalogCount.textContent.includes(String(carCardCount)),"Display full Car Card listing count");
 
