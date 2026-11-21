@@ -19,6 +19,7 @@ jobs:
         with:
           node-version: '22'
       - run: python3 scripts/test_adsense.py
+      - run: node scripts/test_ads_txt_worker.cjs
       - run: python3 scripts/test_content_quality.py
       - run: python3 scripts/test_indexing.py
       - run: python3 scripts/test_product_titles.py
