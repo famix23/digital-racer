@@ -63,8 +63,7 @@ assert.ok(elements.filters.children.length>=8,"Brand filters didn't render");
 assert.equal(elements.storeGallery.children.length,Math.min(12,JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length),"Speed Drift must show 12 real listing previews first");
 assert.ok(elements.storeGallery.children.every(el=>el.events.click?.length),"Every Car Card catalog item must be clickable");
 assert.equal(elements.galleryMore.hidden,false,"Show more must let buyers browse the full Car Card inventory");
-fireGalleryMore=()=>elements.galleryMore.click();
-fireGalleryMore();
+elements.galleryMore.click();
 assert.equal(elements.storeGallery.children.length,Math.min(24,JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length),"Next gallery batch must be accessible");
 
 const carCardCount = JSON.parse(read("inventory.json")).items.filter(x=>x.category==="Car Card").length;
