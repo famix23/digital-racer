@@ -44,8 +44,9 @@ for(const hub of hubs){
 }
 assert.equal(manifest.length,inventory.length,'Product count changed during design polish');
 const staticCatalog=catalog.split('<!-- SEO:GRID:catalog:BEGIN -->')[1].split('<!-- SEO:GRID:catalog:END -->')[0];
-assert.equal((staticCatalog.match(/class="product-card item-card"/g)||[]).length,inventory.length,
-  'All pre-rendered canonical products must remain crawlable');
+assert.equal((staticCatalog.match(/class="product-card item-card"/g)||[]).length,Math.min(inventory.length,24),
+  'Keep 24 useful server-rendered cards instead of making mobile parse the full inventory');
+assert.ok(catalog.includes('class="catalog-directory-links"'),'Crawlable links to full category directories missing');
 // Lightweight CSS structure check; catches accidental truncation or misplaced braces.
 let depth=0;
 for(const c of css){if(c==='{')depth++;if(c==='}')depth--;assert.ok(depth>=0,'Stray closing CSS brace');}
