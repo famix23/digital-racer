@@ -7185,6 +7185,8 @@ BLACK SHORTS</div><div class="prod-footer"><div class="prod-price">$180.00 USD</
   // Full category directories and product URLs remain crawlable and accessible.
   // Interactive browsing loads one lean product feed instead of inventory + manifest.
   const catalogBatchSize = window.matchMedia('(max-width: 600px)').matches ? 24 : 48;
+  const catalogPreviewSize = 24;
+  let staticPreviewReused = false;
   let filteredProducts = [];
   let renderedCount = 0;
   const loadWrap = document.getElementById('catalog-load-wrap');
@@ -7273,8 +7275,22 @@ BLACK SHORTS</div><div class="prod-footer"><div class="prod-price">$180.00 USD</
       grid.innerHTML = '<p style="color: var(--muted);">No products found matching your search.</p>';
       document.getElementById('catalog-count').textContent = 'No products match these filters';
       loadWrap.hidden = true;
+      staticPreviewReused = true;
       return;
     }
+    // Preserve the first real HTML cards on a normal first visit. Rebuilding
+    // them immediately would repeat image/layout work and cause visual flashes.
+    if (!staticPreviewReused && currentCategory === 'all' && currentSort === 'newest' && !searchQuery) {
+      staticPreviewReused = true;
+      renderedCount = Math.min(catalogPreviewSize, result.length);
+      document.getElementById('catalog-count').textContent =
+        'Showing ' + renderedCount + ' of ' + result.length + ' products';
+      loadWrap.hidden = renderedCount >= result.length;
+      if (!loadWrap.hidden) loadButton.textContent =
+        'Show more products (' + (result.length - renderedCount) + ' remaining)';
+      return;
+    }
+    staticPreviewReused = true;
     grid.innerHTML = '';
     appendCatalogBatch();
   }
