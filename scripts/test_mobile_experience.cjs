@@ -19,6 +19,14 @@ assert.ok(home.includes('class="dr-shop-categories"'), 'Category shopping shortc
 assert.ok(css.includes('header .hero-ctas{display:none;'), 'Mobile hero duplicates must be hidden.');
 assert.ok(css.includes('.dr-shop-tile{min-height:50px'), 'Category tap targets must remain generous.');
 assert.ok(css.includes('body > nav'), 'Main mobile navigation must not target nested category navigation.');
+assert.match(css,
+  /@media\s*\(max-width:\s*850px\)\s*\{\s*body\s*>\s*nav\s*\{\s*position:\s*relative;\s*top:\s*auto;/,
+  'On phones, the two-row site header must scroll away to make room for products.');
+assert.match(css,
+  /\.catalog-container\s*>\s*nav\.catalog-directory-links\s*\{\s*position:\s*static;\s*top:\s*auto;\s*z-index:\s*auto;/,
+  'Catalog directory navigation must not inherit the sticky global nav rule or cover product cards.');
+assert.ok(catalog.includes('nav class="catalog-directory-links"'),
+  'Catalog directory scroll regression test requires its exact nav element.');
 assert.ok(css.includes('@media(max-width:350px)'), 'Small phone breakpoint missing.');
 assert.ok(css.includes('prefers-reduced-motion'), 'Reduced-motion support missing.');
 assert.ok(catalog.includes('<details class="catalog-safety"'), 'Buyer tips should be optional, not above all products.');
