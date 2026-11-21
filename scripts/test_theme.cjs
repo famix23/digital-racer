@@ -50,3 +50,46 @@ assert.ok(studio.includes('id="sample" hidden'),'Example UID must not be suggest
 console.log("Theme + event checks passed: dark/light preference across "+manifest.length+
   " product pages, 6 shopping hubs, editorial pages and payment studio.");
 
+
+
+/* Exercise the actual theme button with a small DOM double. */
+const stored = new Map([["digitalracer-theme","light"]]);
+const element = (tag) => {
+  const attrs={}, events={};
+  return {tag,attrs,events,innerHTML:"",appendChild(child){this.child=child;},
+    addEventListener(name,fn){events[name]=fn;},
+    setAttribute(name,value){attrs[name]=String(value);},
+    getAttribute(name){return attrs[name]||null;},
+    classList:{add(){}}
+  };
+};
+const host=element("nav");
+const themeButton=element("button");
+const htmlRoot=element("html");htmlRoot.style={};
+const browserBar=element("meta");
+const documentMock={
+  readyState:"complete",documentElement:htmlRoot,
+  getElementById(){return null;},
+  createElement(type){assert.equal(type,"button");return themeButton;},
+  querySelector(css){
+    if(css==='body > nav .nav-links')return host;
+    if(css==='meta[name="theme-color"]')return browserBar;
+    return null;
+  },
+  body:element("body")
+};
+const windowMock={addEventListener(){}};
+const storageMock={getItem:key=>stored.get(key)||null,setItem:(key,value)=>stored.set(key,value)};
+vm.runInNewContext(script,{document:documentMock,window:windowMock,localStorage:storageMock});
+assert.equal(htmlRoot.getAttribute("data-dr-theme"),"light","Restored light theme");
+assert.equal(themeButton.attrs["aria-pressed"],"true");
+assert.equal(host.child,themeButton,"Navigation must own switch");
+themeButton.events.click();
+assert.equal(htmlRoot.getAttribute("data-dr-theme"),"dark");
+assert.equal(stored.get("digitalracer-theme"),"dark","Choice must persist");
+assert.equal(themeButton.attrs["aria-pressed"],"false");
+assert.equal(browserBar.attrs.content,"#050505");
+themeButton.events.click();
+assert.equal(htmlRoot.getAttribute("data-dr-theme"),"light");
+assert.equal(browserBar.attrs.content,"#f8f7f4");
+console.log("Appearance toggle interactive tests passed.");
