@@ -1,0 +1,320 @@
+/* DigitalRacer premium appearance system.
+   Dark is the original black/gold design. Light: warm porcelain, ink and champagne gold.
+   Applies to the storefront, product pages, editorial pages and Speed Drift. */
+
+/* The theme control stays small, reachable and visually consistent on all screens. */
+.dr-theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;gap:8px;flex:0 0 auto;
+  padding:0 13px;min-height:42px;min-width:42px;border:1px solid #796438;
+  border-radius:999px;background:linear-gradient(145deg,#28231b,#111215);
+  color:#f4d989;font:700 12px/1.15 system-ui,-apple-system,"Segoe UI",sans-serif;
+  letter-spacing:.015em;cursor:pointer;box-shadow:inset 0 1px rgba(255,255,255,.08),0 3px 12px rgba(0,0,0,.16);
+  transition:background-color .18s ease,border-color .18s ease,transform .18s ease;
+  white-space:nowrap;text-transform:none;z-index:5;
+}
+.dr-theme-toggle svg{display:block;flex:none;width:17px;height:17px}
+.dr-theme-toggle:hover{border-color:#eac66d;background:#363020;color:#fff;transform:translateY(-1px)}
+.dr-theme-toggle:focus-visible{outline:3px solid #d4af37;outline-offset:3px}
+.dr-theme-sr{position:absolute;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
+.dr-theme-floating{position:fixed;top:14px;right:18px;z-index:9990}
+@media(max-width:850px){
+  body > nav .nav-links .dr-theme-toggle{padding:0;min-height:42px;min-width:42px;border-radius:12px}
+  body > nav .nav-links .dr-theme-label{display:none}
+  body > header nav .dr-theme-toggle{min-height:42px;min-width:42px;padding:0 10px}
+  .topbar .navright .dr-theme-toggle{min-width:42px;min-height:42px;padding:0 9px}
+}
+@media(max-width:520px){
+  body > header nav .dr-theme-label,.topbar .navright .dr-theme-label{display:none}
+  .topbar .navright{gap:8px}
+  .topbar .navright .tagdemo{display:none}
+}
+
+/* Refined launch feature: merchandising-first, no modal or motion flashes. */
+.dr-event-feature{
+  display:grid;grid-template-columns:minmax(0,1.2fr) minmax(250px,.8fr);align-items:center;
+  gap:clamp(14px,3vw,32px);position:relative;overflow:hidden;
+  width:min(1340px,100%);margin:22px auto 0;padding:clamp(18px,2.6vw,32px);
+  border-radius:18px;border:1px solid #766039;
+  background:radial-gradient(ellipse at 80% 100%,rgba(221,173,79,.20),transparent 56%),
+             linear-gradient(120deg,#211c18 0%,#111217 55%,#16151b 100%);
+  box-shadow:0 18px 38px rgba(0,0,0,.19);
+  text-align:left;isolation:isolate;
+}
+.dr-event-feature::before{content:"";position:absolute;inset:1px;border:1px solid rgba(255,232,171,.08);border-radius:17px;pointer-events:none}
+.dr-event-copy{position:relative;z-index:1;min-width:0}
+.dr-event-eyebrow{
+  display:inline-flex;align-items:center;gap:9px;color:#f2d88b;
+  letter-spacing:.13em;font:750 .66rem/1.4 system-ui,sans-serif;text-transform:uppercase
+}
+.dr-event-dot{width:7px;height:7px;background:#95deb1;border-radius:100%;box-shadow:0 0 0 4px rgba(120,225,164,.12)}
+.dr-event-feature h2{
+  font:900 clamp(1.48rem,2.7vw,2.55rem)/1.12 "Montserrat",system-ui,sans-serif;
+  color:#fff!important;letter-spacing:-.045em;margin:12px 0 10px;text-transform:none;
+}
+.dr-event-feature h2 span{color:#eccb73}
+.dr-event-feature p{font-size:clamp(.8rem,1.05vw,.94rem);line-height:1.6;color:#ded8ce;max-width:620px;margin:0 0 16px}
+.dr-event-actions{display:flex;align-items:center;flex-wrap:wrap;gap:9px}
+.dr-event-actions a{
+  display:inline-flex;justify-content:center;align-items:center;min-height:44px;padding:10px 16px;
+  border-radius:9px;text-decoration:none;font:800 .78rem/1.2 "Montserrat",system-ui,sans-serif;
+  letter-spacing:.005em;transition:background .2s,border-color .2s,transform .2s;
+}
+.dr-event-actions a:focus-visible{outline:3px solid #ffe0a5;outline-offset:3px}
+.dr-event-primary{background:#e2bd62;border:1px solid #e2bd62;color:#17130c}
+.dr-event-primary:hover{background:#f5d992;color:#110e0a;transform:translateY(-1px)}
+.dr-event-secondary{background:rgba(255,255,255,.055);border:1px solid #79683e;color:#fff}
+.dr-event-secondary:hover{background:rgba(255,255,255,.13);color:#fff;transform:translateY(-1px)}
+.dr-event-art{height:100%;min-height:190px;display:flex;align-items:center;justify-content:center;position:relative}
+.dr-event-art::before{content:"";position:absolute;width:78%;height:78%;border-radius:50%;background:radial-gradient(ellipse,#bd9b5138,transparent 65%);filter:blur(15px)}
+.dr-event-art img{position:relative;width:min(56%,260px);aspect-ratio:4/3;object-fit:cover;object-position:center;
+  border-radius:13px;border:1px solid #8e7446;box-shadow:0 13px 27px rgba(0,0,0,.43)}
+.dr-event-art img:first-child{transform:rotate(-7deg) translateX(16px);z-index:2}
+.dr-event-art img:last-child{transform:rotate(7deg) translateX(-15px);z-index:1}
+.dr-event-disclaimer{font-size:.69rem!important;color:#b6ac9c!important;margin:11px 0 0!important;max-width:650px}
+@media(max-width:700px){
+ .dr-event-feature{grid-template-columns:1fr;gap:7px;border-radius:13px;padding:16px;margin:13px auto 0}
+ .dr-event-feature h2{font-size:clamp(1.3rem,5.5vw,1.75rem);margin:7px 0 8px}
+ .dr-event-feature p{font-size:.82rem;line-height:1.5;margin-bottom:12px}
+ .dr-event-art{display:none}
+ .dr-event-actions{gap:7px}
+ .dr-event-actions a{font-size:.72rem;padding:9px 12px;flex:1 1 132px;min-height:45px}
+ .dr-event-disclaimer{font-size:.65rem!important;margin-top:9px!important}
+}
+@media(prefers-reduced-motion:reduce){
+ .dr-theme-toggle,.dr-event-actions a{transition:none!important}
+ .dr-theme-toggle:hover,.dr-event-actions a:hover{transform:none!important}
+}
+
+/* Studio discovery on homepage - distinct from generic Car Skins. */
+.dr-studio-feature{
+  display:flex;justify-content:space-between;align-items:center;gap:12px;
+  border-radius:12px;border:1px solid #52432b;
+  background:linear-gradient(110deg,#292317,#151515);
+  padding:13px 19px;margin:18px 0 7px;min-height:76px;
+}
+.dr-studio-feature strong{display:block;font-weight:850;color:#f6e1a8;font-size:.95rem}
+.dr-studio-feature p{margin:3px 0 0;color:#cfc7b8;font-size:.78rem;line-height:1.5}
+.dr-studio-feature a{display:inline-flex;align-items:center;justify-content:center;white-space:nowrap;
+  border-radius:8px;background:#e2be65;border:1px solid #d5aa4c;color:#16130b;
+  text-decoration:none;font-size:.78rem;font-weight:800;min-height:44px;padding:10px 15px}
+.dr-studio-feature a:hover{background:#f4d78d}
+@media(max-width:600px){.dr-studio-feature{margin:12px 0 4px;align-items:stretch;flex-direction:column;padding:13px}.dr-studio-feature a{width:100%}}
+
+/* White & champagne-gold design tokens. */
+html[data-dr-theme="light"]{
+  color-scheme:light;
+  --bg:#f8f7f4;--surface:#fff;--surface2:#f2f0eb;--panel:#fff;--panel2:#f2eee6;--panel3:#f9f8f5;
+  --border:#ddd8ce;--line:#e4ded3;--text:#20252d;--muted:#58616d;
+  --accent:#906419;--gold:#946918;--gold-bright:#946918;
+  --dr-gold:#9a701f;--dr-gold-soft:#825b15;--dr-outline:#ddd3c2;
+}
+/* General surfaces and body typography. */
+html[data-dr-theme="light"] body,
+html[data-dr-theme="light"] body:not(.dr-category-page),
+html[data-dr-theme="light"] body.dr-category-page{background:#f8f7f4!important;color:#222832!important}
+html[data-dr-theme="light"] a{color:#825b17}
+html[data-dr-theme="light"] :focus-visible{outline-color:#a87820}
+html[data-dr-theme="light"] .dr-theme-toggle{
+  color:#5a4319;background:linear-gradient(145deg,#fff,#f4f0e7);border-color:#c9b88c;
+  box-shadow:0 2px 11px rgba(60,44,17,.10)
+}
+html[data-dr-theme="light"] .dr-theme-toggle:hover{background:#fff8e6;color:#1e2936;border-color:#a77b29}
+html[data-dr-theme="light"] body>nav,
+html[data-dr-theme="light"] body:not(.dr-category-page)>nav,
+html[data-dr-theme="light"] body>header,
+html[data-dr-theme="light"] body>footer,
+html[data-dr-theme="light"] footer,
+html[data-dr-theme="light"] header:not(.store-hero),
+html[data-dr-theme="light"] .topbar{
+  background:#fff!important;border-color:#e3dbcb!important;color:#20252d!important;
+  box-shadow:0 3px 18px rgba(38,32,20,.06)
+}
+html[data-dr-theme="light"] body>nav .logo,
+html[data-dr-theme="light"] body>header .brand,
+html[data-dr-theme="light"] .wordmark,
+html[data-dr-theme="light"] header .brand,
+html[data-dr-theme="light"] header strong,
+html[data-dr-theme="light"] body>nav .nav-link,
+html[data-dr-theme="light"] body>header nav a,
+html[data-dr-theme="light"] footer a,
+html[data-dr-theme="light"] header nav a,
+html[data-dr-theme="light"] .navright a{color:#25303c!important}
+html[data-dr-theme="light"] body>nav .logo span,
+html[data-dr-theme="light"] header .brand span,
+html[data-dr-theme="light"] .wordmark em{color:#987023!important}
+html[data-dr-theme="light"] body>nav .nav-search,
+html[data-dr-theme="light"] .nav-search{background:#f5f3ee!important;border-color:#d9cfbb!important;color:#27313b!important}
+html[data-dr-theme="light"] .nav-search input,
+html[data-dr-theme="light"] input:not([type="checkbox"]),
+html[data-dr-theme="light"] select{color:#25303c;background:#fff;border-color:#d6ccba}
+html[data-dr-theme="light"] .nav-search input::placeholder,
+html[data-dr-theme="light"] input::placeholder{color:#757b83}
+html[data-dr-theme="light"] body>header .store-badge{background:#fff8e6!important;border-color:#e6d8b2!important;color:#825c18!important}
+html[data-dr-theme="light"] body>header .store-title{color:#222b38!important}
+html[data-dr-theme="light"] body>header .store-sub{color:#576270!important}
+html[data-dr-theme="light"] body>header .store-title span{color:#9d741e!important}
+html[data-dr-theme="light"] h1,
+html[data-dr-theme="light"] h3{color:#222832}
+html[data-dr-theme="light"] h2:not(.dr-event-feature h2),
+html[data-dr-theme="light"] .section-title{color:#26313b}
+html[data-dr-theme="light"] p:not(.dr-event-feature p),html[data-dr-theme="light"] li{color:#58616d}
+html[data-dr-theme="light"] .dr-shop-categories{
+  background:linear-gradient(180deg,#fffdf8,#f3f1ec)!important;
+  border-color:#dfd6c5!important;color:#26313b!important
+}
+html[data-dr-theme="light"] .dr-shop-heading h2{color:#805b1b!important}
+html[data-dr-theme="light"] .dr-shop-heading p{color:#626a74!important}
+html[data-dr-theme="light"] a.dr-shop-tile,
+html[data-dr-theme="light"] a.dr-shop-tile:visited{
+  background:linear-gradient(145deg,#fff,#f7f4ee)!important;border-color:#d8cebd!important;
+  color:#303741!important;box-shadow:0 5px 15px rgba(62,46,20,.06)!important
+}
+html[data-dr-theme="light"] a.dr-shop-tile:hover{background:#fff9ec!important;border-color:#ae852c!important;color:#20252d!important}
+html[data-dr-theme="light"] .dr-shop-icon{background:#f5ebd0!important;color:#8d661d!important;border-color:#e7d5ae!important}
+html[data-dr-theme="light"] .dr-shop-arrow{color:#8c681e!important}
+html[data-dr-theme="light"] .section-header,
+html[data-dr-theme="light"] .catalog-container .catalog-top-bar,
+html[data-dr-theme="light"] .related-section .related-title{border-color:#ddd5c9!important}
+html[data-dr-theme="light"] .section-title,
+html[data-dr-theme="light"] .catalog-container #catalog-heading-prefix{color:#26303b!important}
+html[data-dr-theme="light"] .section-header .view-all,
+html[data-dr-theme="light"] .prod-category,
+html[data-dr-theme="light"] .rel-price{color:#8a611a!important}
+html[data-dr-theme="light"] body:not(.dr-category-page) .product-card,
+html[data-dr-theme="light"] body:not(.dr-category-page) .rel-card{
+  background:#fff!important;border-color:#dfd9ce!important;
+  box-shadow:0 6px 22px rgba(40,40,40,.055)!important
+}
+html[data-dr-theme="light"] body:not(.dr-category-page) .product-card:hover,
+html[data-dr-theme="light"] body:not(.dr-category-page) .rel-card:hover{border-color:#ae893d!important;box-shadow:0 12px 28px rgba(40,40,40,.10)!important}
+html[data-dr-theme="light"] body:not(.dr-category-page) .prod-img-wrap,
+html[data-dr-theme="light"] .main-wrapper .image-box{background:#f4f3ef!important;border-color:#e1d9cb!important}
+html[data-dr-theme="light"] body:not(.dr-category-page) .prod-title,
+html[data-dr-theme="light"] .main-wrapper .main-title,
+html[data-dr-theme="light"] .related-section .rel-title{color:#1d2530!important}
+html[data-dr-theme="light"] body:not(.dr-category-page) .prod-price,
+html[data-dr-theme="light"] .main-wrapper .buy-price{color:#7e5312!important}
+html[data-dr-theme="light"] body:not(.dr-category-page) .prod-footer{border-color:#e5ded2!important}
+html[data-dr-theme="light"] body:not(.dr-category-page) .prod-btn{background:#faf4e8!important;border-color:#e1c992!important;color:#69501f!important}
+html[data-dr-theme="light"] body:not(.dr-category-page) .product-card:hover .prod-btn{background:#d8ad49!important;color:#171307!important}
+html[data-dr-theme="light"] .catalog-container .catalog-safety,
+html[data-dr-theme="light"] .catalog-container #catalog-count,
+html[data-dr-theme="light"] .catalog-container .sort-select,
+html[data-dr-theme="light"] .catalog-container .filter-group .filter-btn,
+html[data-dr-theme="light"] .main-wrapper .desc-card,
+html[data-dr-theme="light"] .main-wrapper .buy-card,
+html[data-dr-theme="light"] .guarantee-box{
+ background:#fff!important;border-color:#dfd6c7!important;color:#2c343d!important;
+ box-shadow:0 7px 25px rgba(40,38,29,.055)!important
+}
+html[data-dr-theme="light"] .catalog-container .filter-group .filter-btn.active{
+ background:#dbb457!important;color:#201808!important;border-color:#be9234!important
+}
+html[data-dr-theme="light"] .catalog-container .catalog-safety summary{color:#805b1b!important}
+html[data-dr-theme="light"] .catalog-container #catalog-count{color:#5a5d62!important}
+html[data-dr-theme="light"] .catalog-container .page-title,
+html[data-dr-theme="light"] .catalog-container #catalog-heading-prefix{color:#25303d!important}
+html[data-dr-theme="light"] .main-wrapper .desc-content,
+html[data-dr-theme="light"] .main-wrapper .mini-spec,
+html[data-dr-theme="light"] .main-wrapper .buy-price-label,
+html[data-dr-theme="light"] .main-wrapper .breadcrumb{color:#515a66!important}
+html[data-dr-theme="light"] .main-wrapper .mini-spec span:last-child{color:#202a35!important}
+html[data-dr-theme="light"] .main-wrapper .whatsapp-btn,
+html[data-dr-theme="light"] .catalog-container .catalog-load-more{
+ background:linear-gradient(115deg,#d9b053,#f5db99)!important;color:#1c180e!important;border-color:#b8913c!important
+}
+html[data-dr-theme="light"] a[style*="color:#dfbd51"]{color:#79550d!important}
+html[data-dr-theme="light"] .dr-category-page header{background:#fff!important;border-color:#e4ddcf!important}
+html[data-dr-theme="light"] .dr-category-page header strong{color:#26303b!important}
+html[data-dr-theme="light"] .dr-category-page .lede{color:#465463!important}
+html[data-dr-theme="light"] .dr-category-page .product-card,
+html[data-dr-theme="light"] .dr-category-page .directory,
+html[data-dr-theme="light"] .dr-category-page .listing-directory,
+html[data-dr-theme="light"] .dr-category-page .dr-buying-advice{
+ background:#fff!important;border-color:#ded5c8!important;color:#202832!important;
+ box-shadow:0 6px 20px rgba(33,30,20,.05)!important
+}
+html[data-dr-theme="light"] .dr-category-page .product-card strong{color:#27313d!important}
+html[data-dr-theme="light"] .dr-category-page .product-card span,
+html[data-dr-theme="light"] .dr-category-page .directory a,
+html[data-dr-theme="light"] .dr-category-page .crumb a{color:#8b621a!important}
+html[data-dr-theme="light"] .dr-category-page .dr-buying-advice summary,
+html[data-dr-theme="light"] .dr-category-page .listing-directory summary{color:#795513!important}
+html[data-dr-theme="light"] .dr-category-page .cta{background:#d9b457!important;color:#181408!important}
+html[data-dr-theme="light"] .dr-event-feature{
+ background:radial-gradient(ellipse at 80% 100%,rgba(202,153,67,.12),transparent 56%),
+ linear-gradient(115deg,#fffdf9,#f3efe7)!important;border-color:#e0d2b4!important;
+ box-shadow:0 12px 28px rgba(40,36,27,.08)!important
+}
+html[data-dr-theme="light"] .dr-event-feature h2{color:#222e39!important}
+html[data-dr-theme="light"] .dr-event-feature h2 span{color:#8f641f!important}
+html[data-dr-theme="light"] .dr-event-feature .dr-event-eyebrow{color:#805a19!important}
+html[data-dr-theme="light"] .dr-event-feature p{color:#505c66!important}
+html[data-dr-theme="light"] .dr-event-secondary{background:#fff!important;color:#28323d!important;border-color:#c8bca3!important}
+html[data-dr-theme="light"] .dr-event-primary{background:#d5ac4c!important;color:#1d170b!important}
+html[data-dr-theme="light"] .dr-event-disclaimer{color:#626a73!important}
+html[data-dr-theme="light"] .dr-studio-feature{background:#fff!important;border-color:#e2d4b7!important}
+html[data-dr-theme="light"] .dr-studio-feature strong{color:#725117!important}
+html[data-dr-theme="light"] .dr-studio-feature p{color:#5d6470!important}
+html[data-dr-theme="light"] .dr-studio-feature a{color:#20190d;background:#ddbb6c!important}
+
+/* Editor and guidance pages that have standalone inline styles. */
+html[data-dr-theme="light"] header:not(.hero),
+html[data-dr-theme="light"] .cards a,
+html[data-dr-theme="light"] .note,
+html[data-dr-theme="light"] .directory,
+html[data-dr-theme="light"] .detail{
+ background:#fff!important;color:#28323c!important;border-color:#e4ddd0!important
+}
+html[data-dr-theme="light"] .cards a strong,
+html[data-dr-theme="light"] .cards strong,
+html[data-dr-theme="light"] .eyebrow{color:#875e1b!important}
+html[data-dr-theme="light"] .cards a span{color:#5f6872!important}
+html[data-dr-theme="light"] .note p{color:#4f5a67!important}
+html[data-dr-theme="light"] header .brand,html[data-dr-theme="light"] .brand{color:#26303b!important}
+
+/* Speed Drift: refine the independent car-card studio as well. */
+html[data-dr-theme="light"] .topbar{background:rgba(255,255,255,.94)!important;box-shadow:0 3px 17px rgba(25,26,24,.065)!important}
+html[data-dr-theme="light"] .hero:not(.dr-event-feature){background:transparent!important;color:#25303b!important}
+html[data-dr-theme="light"] .hero h1{color:#222c38!important}
+html[data-dr-theme="light"] .hero h1 span,
+html[data-dr-theme="light"] .kicker{color:#89621c!important}
+html[data-dr-theme="light"] .herodesc,
+html[data-dr-theme="light"] .muted{color:#566171!important}
+html[data-dr-theme="light"] .heroart{background:linear-gradient(145deg,#f7efd9,#e8e3d9)!important;border-color:#d6c29d!important}
+html[data-dr-theme="light"] .surface,
+html[data-dr-theme="light"] .step,
+html[data-dr-theme="light"] .walletcard,
+html[data-dr-theme="light"] .receipt,
+html[data-dr-theme="light"] .delivery-guide,
+html[data-dr-theme="light"] .vehicle,
+html[data-dr-theme="light"] .galleryitem{
+ background:#fff!important;border-color:#ded5c4!important;color:#26303b!important;
+ box-shadow:0 7px 20px rgba(45,40,29,.055)!important
+}
+html[data-dr-theme="light"] .step.active{background:#fff6e2!important;border-color:#a78036!important}
+html[data-dr-theme="light"] .step b{color:#443a23}
+html[data-dr-theme="light"] .step strong,
+html[data-dr-theme="light"] .surface h2,
+html[data-dr-theme="light"] .vehicle h3,
+html[data-dr-theme="light"] .galleryitem h3{color:#29333f!important}
+html[data-dr-theme="light"] .step small,
+html[data-dr-theme="light"] .sectionhead p,
+html[data-dr-theme="light"] .help,
+html[data-dr-theme="light"] .finish{color:#56616c!important}
+html[data-dr-theme="light"] .counter,
+html[data-dr-theme="light"] .tagdemo{background:#fff5dc!important;color:#785617!important;border-color:#dbbc78!important}
+html[data-dr-theme="light"] .note{background:#fff7e6!important;color:#5d4b2b!important;border-color:#e1c995!important}
+html[data-dr-theme="light"] .filter,
+html[data-dr-theme="light"] .btn.subtle,
+html[data-dr-theme="light"] .qtycontrol button{background:#f7f3ec!important;color:#28313b!important;border-color:#ded3c0!important}
+html[data-dr-theme="light"] .filter[aria-pressed="true"],
+html[data-dr-theme="light"] .btn.primary{background:#ddb85d!important;color:#1a170e!important;border-color:#c8a04b!important}
+html[data-dr-theme="light"] .walletline input,
+html[data-dr-theme="light"] #txHash,
+html[data-dr-theme="light"] .search{background:#fff!important;color:#27313a!important;border-color:#d7ccbd!important}
+html[data-dr-theme="light"] .gallery-price,
+html[data-dr-theme="light"] .vehicleprice{color:#845c17!important}
+html[data-dr-theme="light"] .footer{border-color:#e4dacc!important;color:#626973!important}
+@media(prefers-reduced-motion:reduce){html[data-dr-theme="light"] *,html[data-dr-theme="light"] *::before,html[data-dr-theme="light"] *::after{scroll-behavior:auto!important}}
+
