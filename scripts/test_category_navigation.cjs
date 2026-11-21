@@ -20,4 +20,12 @@ assert.ok(!catalog.includes('aria-label="Browse dedicated PUBG Mobile categories
 assert.ok(home.includes('/assets/category-nav.css') && catalog.includes('/assets/category-nav.css'), 'Missing category design');
 assert.ok(catalog.includes("currentCategory = urlParams.get('category')"), 'Catalog should read deep-link category');
 assert.ok(catalog.includes("allProducts.filter(p => p.category === currentCategory)"), 'Catalog must filter actual products');
+const bentleyHub = read('shop/pubg-mobile-car-cards/index.html');
+assert.ok(home.includes('class="dr-event-primary" href="/shop/pubg-mobile-car-cards/"'), 'Bentley launch banner must lead to its canonical, indexable shop hub, not a JS search URL');
+assert.ok(bentleyHub.includes('November 20, 2026') && bentleyHub.includes('January 12, 2027'), 'Bentley event dates must be visible to international buyers');
+assert.ok(bentleyHub.includes('rel="canonical" href="https://www.digitalracer.store/shop/pubg-mobile-car-cards/"'), 'Bentley shopping hub must retain its self-canonical');
+const bentleyFeatured = (bentleyHub.split('<div class="cards">')[1] || '').split('</div>')[0];
+const featuredCardTitles = [...bentleyFeatured.matchAll(/<strong>([^<]+)<\/strong>/g)].map(m => m[1]);
+assert.equal(featuredCardTitles.length, 12, 'Keep twelve fast, real Bentley product cards visible without JS');
+assert.ok(featuredCardTitles.every(t => /bentley/i.test(t)), 'Promoted hub must prioritize Bentley skins over other vehicle brands');
 console.log('Passed: 6 category shopping links, selected filter destinations and premium styling.');
