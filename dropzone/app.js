@@ -2,7 +2,15 @@
 (function(){
 "use strict";
 var all=Array.isArray(window.DROPZONE_CARS)?window.DROPZONE_CARS:[];
-var state={brand:"All",search:"",limit:12,selected:null,qty:1,recipient:null,txHash:"",screen:1,galleryItems:[],gallerySearch:"",galleryLimit:100};
+var state={brand:"All",search:"",limit:12,selected:null,qty:1,recipient:null,txHash:"",screen:1,galleryItems:[],gallerySearch:"",galleryLimit:12};
+/* The homepage Bentley feature deep-links visitors straight to relevant finishes. */
+if(typeof URLSearchParams==="function"&&window.location){
+  var launchBrand=new URLSearchParams(window.location.search||"").get("brand");
+  if(launchBrand&&["Bentley","Ferrari","Lamborghini","Bugatti","Pagani","Dodge","McLaren","Porsche","Koenigsegg","Aston Martin"].includes(launchBrand)){
+    state.brand=launchBrand;
+    state.gallerySearch=launchBrand.toLowerCase();
+  }
+}
 var payment=window.SPEED_DRIFT_PAYMENT||{};
 var brandImages=window.SPEED_DRIFT_BRAND_IMAGES||{};
 var unitUSD=Number(payment.unitPriceUSD)||120;
@@ -210,7 +218,7 @@ renderGallery();
 }
 $("search").addEventListener("input",function(e){state.search=e.target.value.trim().toLowerCase();state.limit=12;renderVehicles()});
 $("more").addEventListener("click",function(){state.limit+=12;renderVehicles()});
-$("catalogSearch").addEventListener("input",function(e){state.gallerySearch=String(e.target.value||"").trim().toLowerCase();state.galleryLimit=100;renderGallery()});
+$("catalogSearch").addEventListener("input",function(e){state.gallerySearch=String(e.target.value||"").trim().toLowerCase();state.galleryLimit=12;renderGallery()});
 $("galleryMore").addEventListener("click",function(){state.galleryLimit+=12;renderGallery()});
 $("next1").addEventListener("click",openPlayerDetails);
 $("back1").addEventListener("click",function(){step(1)});
