@@ -318,3 +318,143 @@ html[data-dr-theme="light"] .vehicleprice{color:#845c17!important}
 html[data-dr-theme="light"] .footer{border-color:#e4dacc!important;color:#626973!important}
 @media(prefers-reduced-motion:reduce){html[data-dr-theme="light"] *,html[data-dr-theme="light"] *::before,html[data-dr-theme="light"] *::after{scroll-behavior:auto!important}}
 
+
+
+/* SPEED DRIFT · ACCESSIBLE DAY THEME (WCAG AA target)
+   Scoped to the gift studio. All ordinary dark-mode colors remain untouched.
+   Existing generic light rules changed outer surfaces but left many nested labels
+   in pale gold / dark-surface colors, making them unreadable on white cards. */
+html[data-dr-theme="light"] body.dr-speed-drift{
+  --green:#146b39;
+  --dr-studio-ink:#25313d;
+  --dr-studio-muted:#525f6e;
+  --dr-studio-gold:#79551a;
+  --dr-studio-line:#d8d0c2;
+  --dr-studio-panel:#ffffff;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .surface,
+html[data-dr-theme="light"] body.dr-speed-drift .receipt,
+html[data-dr-theme="light"] body.dr-speed-drift .preview,
+html[data-dr-theme="light"] body.dr-speed-drift .qtybar,
+html[data-dr-theme="light"] body.dr-speed-drift .walletcard,
+html[data-dr-theme="light"] body.dr-speed-drift .delivery-guide{
+  background:#fff!important;color:var(--dr-studio-ink)!important;border-color:var(--dr-studio-line)!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .qtybar{background:#faf8f3!important}
+html[data-dr-theme="light"] body.dr-speed-drift .preview{background:#f9f7f1!important}
+html[data-dr-theme="light"] body.dr-speed-drift .delivery-guide{background:#fff7e6!important;border-color:#dac08c!important}
+html[data-dr-theme="light"] body.dr-speed-drift .delivery-guide h3,
+html[data-dr-theme="light"] body.dr-speed-drift .delivery-guide p,
+html[data-dr-theme="light"] body.dr-speed-drift .delivery-guide strong,
+html[data-dr-theme="light"] body.dr-speed-drift .preview h3,
+html[data-dr-theme="light"] body.dr-speed-drift .qtybar strong,
+html[data-dr-theme="light"] body.dr-speed-drift .wallethead{
+  color:var(--dr-studio-ink)!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .delivery-guide small,
+html[data-dr-theme="light"] body.dr-speed-drift .preview p,
+html[data-dr-theme="light"] body.dr-speed-drift .field .help,
+html[data-dr-theme="light"] body.dr-speed-drift .step small,
+html[data-dr-theme="light"] body.dr-speed-drift .walletcard .muted,
+html[data-dr-theme="light"] body.dr-speed-drift .walletlabel,
+html[data-dr-theme="light"] body.dr-speed-drift .vehbody .type,
+html[data-dr-theme="light"] body.dr-speed-drift .vehbody .finish,
+html[data-dr-theme="light"] body.dr-speed-drift .summaryline span,
+html[data-dr-theme="light"] body.dr-speed-drift .galleryitem p,
+html[data-dr-theme="light"] body.dr-speed-drift .timeline li,
+html[data-dr-theme="light"] body.dr-speed-drift .actionbar .selection{
+  color:var(--dr-studio-muted)!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .field label,
+html[data-dr-theme="light"] body.dr-speed-drift .catalog-tools .catalog-label,
+html[data-dr-theme="light"] body.dr-speed-drift .summaryline strong,
+html[data-dr-theme="light"] body.dr-speed-drift .qtycontrol output,
+html[data-dr-theme="light"] body.dr-speed-drift .step.active strong,
+html[data-dr-theme="light"] body.dr-speed-drift .step.done strong,
+html[data-dr-theme="light"] body.dr-speed-drift .gallery-info h3{
+  color:var(--dr-studio-ink)!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .vehbody .category,
+html[data-dr-theme="light"] body.dr-speed-drift .vehiclehint,
+html[data-dr-theme="light"] body.dr-speed-drift .gallery-cta,
+html[data-dr-theme="light"] body.dr-speed-drift .gallery-price,
+html[data-dr-theme="light"] body.dr-speed-drift .vehicleprice,
+html[data-dr-theme="light"] body.dr-speed-drift .pending,
+html[data-dr-theme="light"] body.dr-speed-drift .dr-studio-catalog-link,
+html[data-dr-theme="light"] body.dr-speed-drift .footer a,
+html[data-dr-theme="light"] body.dr-speed-drift .heroart::after{
+  color:var(--dr-studio-gold)!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .dr-studio-catalog-link{
+  font-size:12px;font-weight:750;text-underline-offset:3px;
+}
+body.dr-speed-drift .dr-studio-catalog-link{color:#f2d57c;font-size:12px;font-weight:700}
+html[data-dr-theme="light"] body.dr-speed-drift .gallery-cta{font-weight:900}
+html[data-dr-theme="light"] body.dr-speed-drift .vehiclehint{border-top-color:#ddd4c4!important}
+html[data-dr-theme="light"] body.dr-speed-drift .gallery-price-row,
+html[data-dr-theme="light"] body.dr-speed-drift .summaryline{
+  border-color:#ddd5c9!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .field input,
+html[data-dr-theme="light"] body.dr-speed-drift .field select,
+html[data-dr-theme="light"] body.dr-speed-drift .search,
+html[data-dr-theme="light"] body.dr-speed-drift .walletline input,
+html[data-dr-theme="light"] body.dr-speed-drift #txHash{
+  background:#fff!important;color:#25313d!important;border-color:#bdb8aa!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .field input::placeholder,
+html[data-dr-theme="light"] body.dr-speed-drift .search::placeholder,
+html[data-dr-theme="light"] body.dr-speed-drift .walletline input::placeholder{
+  color:#596372!important;opacity:1;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .field input:focus-visible,
+html[data-dr-theme="light"] body.dr-speed-drift .field select:focus-visible,
+html[data-dr-theme="light"] body.dr-speed-drift .search:focus-visible{
+  outline:3px solid #916823!important;outline-offset:2px;border-color:#916823!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .step{
+  color:#525f6e!important;background:#fff!important;border-color:#d8d0c2!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .step.active{
+  color:#25313d!important;background:#fff3d5!important;border-color:#9b762b!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .step.done{
+  color:#25313d!important;background:#f0f6ed!important;border-color:#8ba98e!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .step b{
+  color:#25313d!important;border-color:#9c906e!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .step.active b,
+html[data-dr-theme="light"] body.dr-speed-drift .step.done b{
+  color:#241b0b!important;background:#dbb457!important;border-color:#aa812b!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .filter[aria-pressed="true"]{
+  color:#251c0b!important;background:#efcf82!important;border-color:#a17725!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .vehicle[aria-pressed="true"]{
+  background:#fffaf0!important;border:2px solid #8d671f!important;box-shadow:0 0 0 2px #d5b36666!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .galleryitem:focus-visible,
+html[data-dr-theme="light"] body.dr-speed-drift .vehicle:focus-visible{
+  outline:3px solid #946a1e!important;outline-offset:3px;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .btn:disabled{
+  opacity:.65!important;color:#303846!important;border-color:#c4bbac!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .progresscircle::before{
+  background:#fff!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .progresscircle span{
+  color:#6e5118!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .timeline li.done{
+  color:#176737!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .timeline li.done i{
+  color:#124f2e!important;background:#e4f4e7!important;border-color:#67a97c!important;
+}
+html[data-dr-theme="light"] body.dr-speed-drift .status{color:#146b39!important}
+html[data-dr-theme="light"] body.dr-speed-drift .error{color:#a12b23!important}
+html[data-dr-theme="light"] body.dr-speed-drift .receipt::after{
+  color:rgba(107,77,25,.11)!important;
+}
