@@ -136,3 +136,25 @@ html { text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
   .catalog-directory-links>a{flex:0 0 auto;min-height:44px;scroll-snap-align:start}
   .catalog-directory-links>span{font-size:.68rem;flex:0 0 auto}
 }
+
+/* MOBILE PRODUCT SCROLL VISIBILITY FIX (2026-11-21)
+   The global inline `nav` rule is sticky on home, catalog and product pages.
+   On narrow screens it occupies two rows over product content. Keep the layout
+   and search controls but let the navigation scroll away naturally. */
+@media (max-width: 850px) {
+  body > nav {
+    position: relative;
+    top: auto;
+  }
+}
+
+/* The catalog directory was also a `nav`, unintentionally inheriting
+   position:sticky; top:0; z-index:100 from the global header selector.
+   The directory should never float over item cards at any viewport width. */
+.catalog-container > nav.catalog-directory-links {
+  position: static;
+  top: auto;
+  z-index: auto;
+  backdrop-filter: none;
+  box-shadow: none;
+}
