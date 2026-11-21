@@ -1,4 +1,5 @@
 name: Rebuild lean mobile catalog preview
+# Re-run after completing simulated browser interaction test environment.
 on:
   push:
     branches: [perf/mobile-catalog-lightweight-20261121]
