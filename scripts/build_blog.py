@@ -127,6 +127,12 @@ def build_blog(root, write, check_only=False, changed=None):
     root = Path(root)
     template = (root / "scripts" / "blog_template.html.txt").read_text(encoding="utf-8")
     posts = load_posts(root)
+    # Hand-reviewed SEO title overrides: concise search headings only.
+    # Original article H1, publisher metadata and supplier inventory remain untouched.
+    override_file = root / "content" / "blog-search-titles.json"
+    seo_titles = json.loads(override_file.read_text(encoding="utf-8"))
+    assert set(seo_titles).issubset({p["slug"] for p in posts})
+    assert all(isinstance(t, str) and 15 <= len(t) <= 60 for t in seo_titles.values())
     def category_group(item):
         category = item["category"].lower()
         if category.startswith("pubg"):
@@ -155,9 +161,15 @@ def build_blog(root, write, check_only=False, changed=None):
     hub = "\n".join(hub_parts)
     write("blog/index.html", render(template, "Gaming Blog", "Original gaming articles and practical PC gaming insights from Digital Racer.", "Gaming articles", BASE + "/blog/", hub, False))
     for p in posts:
-        write("blog/" + p["slug"] + "/index.html",
-              article_context(render(template, p["title"], p["summary"], p["category"],
-                                     BASE + "/blog/" + p["slug"] + "/", article_body(p), True), p))
+        markup = article_context(render(template, p["title"], p["summary"], p["category"],
+                                        BASE + "/blog/" + p["slug"] + "/", article_body(p), True), p)
+        if p["slug"] in seo_titles:
+            old_title = "<title>" + html.escape(p["title"]) + " | Digital Racer</title>"
+            new_title = "<title>" + html.escape(seo_titles[p["slug"]]) + "</title>"
+            if markup.count(old_title) != 1:
+                raise ValueError("Expected one original title for " + p["slug"])
+            markup = markup.replace(old_title, new_title, 1)
+        write("blog/" + p["slug"] + "/index.html", markup)
     expected = {p["slug"] for p in posts}
     for page in (root / "blog").glob("*/index.html"):
         if page.parent.name not in expected and MARKER in page.read_text(encoding="utf-8"):

@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Checks for useful, indexable, reachable editorial pages; not an AdSense approval test."""
 from html.parser import HTMLParser
+import json
 from pathlib import Path
 import re
 
@@ -63,6 +64,17 @@ print("Passed: four indexable guide pages, canonical URLs, sitemap, substantive 
 # Blog posts are generated from independent source files, never from inventory.json.
 from build_blog import load_posts
 blog_posts = load_posts(ROOT)
+# Search metadata can be concise while the visible article headline remains complete.
+search_titles = json.loads((ROOT / "content/blog-search-titles.json").read_text(encoding="utf-8"))
+assert set(search_titles).issubset({p["slug"] for p in blog_posts})
+for post in blog_posts:
+    if post["slug"] not in search_titles:
+        continue
+    source = (ROOT / "blog" / post["slug"] / "index.html").read_text(encoding="utf-8")
+    assert "<title>" + search_titles[post["slug"]].replace("&", "&amp;") + "</title>" in source
+    from html import escape as _html_escape
+    assert "<h1>" + _html_escape(post["title"]) + "</h1>" in source
+    assert 15 <= len(search_titles[post["slug"]]) <= 60
 blog_urls = ["blog/"] + ["blog/" + p["slug"] + "/" for p in blog_posts]
 for url in blog_urls:
     page = (ROOT / url / "index.html").read_text(encoding="utf-8")
