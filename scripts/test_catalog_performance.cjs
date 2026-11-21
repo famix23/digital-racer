@@ -68,6 +68,7 @@ class Element {
 async function scenario(search){
   const ids=Object.fromEntries(["catalog-load-wrap","catalog-load-more","full-catalog","catalog-count",
     "search-input","search-btn","sort-select","catalog-heading-prefix","catalog-heading-focus"].map(x=>[x,new Element()]));
+  ids["full-catalog"].innerHTML=preview; // Model the server-rendered first 24 cards.
   const filters=["all","Account","Car Card","Popularity","UC Top-Up","In-Game Items","Rank Boosting"].map(x=>{
     const n=new Element();n.attrs["data-filter"]=x;return n;
   });
