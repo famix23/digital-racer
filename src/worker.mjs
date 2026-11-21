@@ -6,6 +6,8 @@
  * for unknown or ambiguous titles. Redirect ONLY recognized GET/HEAD titles.
  */
 const CANONICAL_ORIGIN = "https://www.digitalracer.store";
+// Explicit ads.txt response: no dependency on static asset availability or fallback HTML.
+const ADS_TXT_CONTENT = "google.com, pub-3636750354534911, DIRECT, f08c47fec0942fa0\n";
 const LEGACY_TITLES = new Map([
   [
     "X ULTIMATES 👑 ANUKHARA X-SUIT (⭐⭐⭐) ❄️ M416 ROARING IMMOLATION MAXX + UMP ANIVERSARRY COMBO (2x LOOT CRATE) 🏎️ LOTUS EMIRA SPORTS",
@@ -38,6 +40,18 @@ export function canonicalProductRoute(title, manifest) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // The Google ads.txt crawler must see a plain-text 200 response at either host.
+    // HEAD uses identical headers without a body.
+    if (url.pathname === "/ads.txt" && (request.method === "GET" || request.method === "HEAD")) {
+      return new Response(request.method === "HEAD" ? null : ADS_TXT_CONTENT, {
+        status: 200,
+        headers: {
+          "Content-Type": "text/plain; charset=utf-8",
+          "Cache-Control": "public, max-age=300",
+          "X-Content-Type-Options": "nosniff",
+        },
+      });
+    }
     // Route both landing-page aliases to the canonical asset URL. Cloudflare
     // redirects direct /index.html requests back to /dropzone/; do not fetch
     // /dropzone/index.html from here or it would create a redirect loop.

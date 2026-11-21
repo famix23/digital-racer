@@ -54,10 +54,17 @@ if "--live" in sys.argv:
             assert response.status == 200, url
             assert "text/html" in response.headers.get("Content-Type", ""), url
             check_html(response.read().decode(), url)
-    with urlopen(public_request(host + "/ads.txt"), timeout=30) as response:
-        assert response.status == 200
-        assert "text/plain" in response.headers.get("Content-Type", "")
-        assert response.read().decode().strip() == RECORD
+    # Verify both the apex domain and www. Also test the actual ads.txt crawler identity.
+    for origin in ("https://www.digitalracer.store", "https://digitalracer.store"):
+        for agent in ("DigitalRacer-IndexabilityAudit/1.0", "Google-adstxt"):
+            req = Request(origin + "/ads.txt", headers={
+                "User-Agent": agent,
+                "Accept": "text/plain",
+            })
+            with urlopen(req, timeout=30) as response:
+                assert response.status == 200, (origin, agent, response.status)
+                assert "text/plain" in response.headers.get("Content-Type", ""), (origin, agent)
+                assert response.read().decode().strip() == RECORD, (origin, agent)
     print(f"Passed live AdSense checks for {len(urls)} pages and ads.txt.")
 else:
     pages = list(ROOT.rglob("*.html"))
