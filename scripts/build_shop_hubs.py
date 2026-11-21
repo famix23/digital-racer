@@ -31,6 +31,14 @@ def build_shop_hubs(root, products, write):
         slug = hub["slug"]
         matches = [p for p in products if p["category"] == hub["category"]]
         chosen = list(reversed(matches))[:12]
+        # During the Bentley event, ensure the Car Card hub always gives the
+        # 12 featured slots to real Bentley listings, even after new imports
+        # append unrelated Ferrari/Lamborghini/Porsche products.
+        if slug == "pubg-mobile-car-cards":
+            bentley = [p for p in reversed(matches)
+                       if "bentley" in p["display_title"].casefold()]
+            if bentley:
+                chosen = bentley[:12]
         assert matches, f"Shop category is empty: {slug}"
         featured_urls = {p["url"] for p in chosen}
         remaining = [p for p in matches if p["url"] not in featured_urls]

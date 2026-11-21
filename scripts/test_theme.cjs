@@ -41,7 +41,7 @@ const shopHubs=JSON.parse(read("content/shop-hubs.json"));
 for(const h of shopHubs)checkHTML("shop/"+h.slug+"/index.html");
 
 assert.ok(home.includes('class="dr-event-feature"') && home.includes("NOV 20, 2026"),'Live Bentley banner missing');
-assert.ok(home.includes('/catalog?category=Car%20Card&amp;search=Bentley'),'Bentley banner must lead to real Bentley products');
+assert.ok(home.includes('class="dr-event-primary" href="/shop/pubg-mobile-car-cards/"'),'Bentley banner must link directly to the canonical Bentley shopping hub');
 assert.ok(home.includes('href="/dropzone/?brand=Bentley"'),'Bentley feature must deep-link to Speed Drift');
 assert.ok(home.includes('class="dr-studio-feature"'),'Speed Drift homepage feature missing');
 assert.ok(studio.includes('name="robots" content="noindex'),'Payment UI must remain excluded from indexing');
