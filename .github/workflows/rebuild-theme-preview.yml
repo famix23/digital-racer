@@ -1,0 +1,39 @@
+name: Rebuild theme pages on design branch
+on:
+  push:
+    branches:
+      - feature/premium-day-night-bentley-speed-drift-20261121
+    paths:
+      - .github/workflows/rebuild-theme-preview.yml
+permissions:
+  contents: write
+jobs:
+  regenerate:
+    if: github.ref == 'refs/heads/feature/premium-day-night-bentley-speed-drift-20261121'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Rebuild deterministic HTML for every indexed page
+        run: python3 scripts/build_seo.py
+      - name: Commit generated pages to design branch only
+        run: |
+          git config user.name "DigitalRacer Preview Builder"
+          git config user.email "actions@users.noreply.github.com"
+          git add -A
+          if ! git diff --cached --quiet; then
+            git commit -m "Build dark/light theme across catalog, product, blog and shop pages"
+            git push origin HEAD:feature/premium-day-night-bentley-speed-drift-20261121
+          fi
+      - name: Verify generated pages are deterministic and themes are present
+        run: |
+          python3 scripts/build_seo.py --check
+          node scripts/test_theme.cjs
+          node scripts/test_dropzone_demo.cjs
+          node scripts/test_speed_drift_interactions.cjs
