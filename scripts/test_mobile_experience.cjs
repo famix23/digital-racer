@@ -24,6 +24,9 @@ assert.ok(css.includes('prefers-reduced-motion'), 'Reduced-motion support missin
 assert.ok(catalog.includes('<details class="catalog-safety"'), 'Buyer tips should be optional, not above all products.');
 assert.ok(catalog.includes('<button class="catalog-load-more" id="catalog-load-more" type="button" aria-controls="full-catalog">'), 'Accessible show-more control missing.');
 assert.ok(catalog.includes('catalogBatchSize = window.matchMedia'), 'Viewport-aware batch sizing missing.');
+assert.ok(catalog.includes("fetch('/assets/catalog-index.json')") && catalog.includes("fetch('/assets/catalog-search.json')"), 'Compact interactive catalog feeds missing.');
+assert.ok(!catalog.includes("fetch('/inventory.json')") && !catalog.includes("fetch('/p/index.json')"), 'Mobile catalog must not download full inventory or product manifest on entry.');
+assert.ok(catalog.includes('class="catalog-directory-links"'), 'HTML-accessible category directories missing.');
 assert.ok(catalog.includes('function appendCatalogBatch()'), 'Catalog incremental rendering missing.');
 assert.ok(catalog.includes("grid.insertAdjacentHTML('beforeend'"), 'Next batch must append cards, not destroy previous cards.');
 assert.ok(catalog.includes('filteredProducts = result;') && catalog.includes('renderedCount = 0;'), 'Filters must reset pagination.');
@@ -31,7 +34,13 @@ assert.ok(catalog.includes('loadWrap.hidden = renderedCount >= total;'), 'Show m
 assert.ok(catalog.includes('keeping pre-rendered product cards'), 'Failed requests must not wipe crawlable catalog cards.');
 const staticGrid = catalog.split('<!-- SEO:GRID:catalog:BEGIN -->')[1].split('<!-- SEO:GRID:catalog:END -->')[0];
 const htmlCards = [...staticGrid.matchAll(/class="product-card item-card" data-category="([^"]+)"/g)];
-assert.equal(htmlCards.length, inventory.length, 'Retain all server-rendered product links for Google and non-JS users.');
+assert.equal(htmlCards.length, Math.min(24, inventory.length), 'Keep a compact crawlable preview; full product URLs remain linked from category directories.');
+const linksAcrossHubs = new Set();
+for(const hub of JSON.parse(read('content/shop-hubs.json'))){
+  const html = read('shop/'+hub.slug+'/index.html');
+  for(const match of html.matchAll(/href="(\/p\/[^\"]+\/)"/g)) linksAcrossHubs.add(match[1]);
+}
+assert.equal(manifest.filter(p=>linksAcrossHubs.has(p.url)).length, inventory.length, 'Every listing must remain linked from crawlable shop directories.');
 assert.ok(helper.includes("window.location.pathname") && helper.includes('/assets/mobile-shopping.css'), 'Generated product pages must receive progressive mobile styling.');
 assert.ok(template.includes('@media(max-width:750px)') && template.includes('listing-directory'), 'Responsive category landing page missing.');
 for(const entry of manifest.slice(0,2).concat(manifest.slice(-2))){

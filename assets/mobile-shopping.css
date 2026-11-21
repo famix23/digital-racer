@@ -113,3 +113,26 @@ html { text-size-adjust: 100%; -webkit-text-size-adjust: 100%; }
 @media(prefers-reduced-motion:reduce){
   .product-card, .rel-card, .catalog-load-more{scroll-behavior:auto;transition:none;}
 }
+
+
+/* Lightweight catalog: real directory links remain usable without JavaScript. */
+.catalog-directory-links{
+  display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  margin:0 0 16px;padding:10px 0;border-block:1px solid var(--border,#383326);
+  color:var(--muted,#b9b4a9);font:700 .76rem/1.45 'Montserrat',system-ui,sans-serif;
+}
+.catalog-directory-links>span{margin-right:4px;white-space:nowrap}
+.catalog-directory-links>a{
+  display:inline-flex;align-items:center;justify-content:center;min-height:38px;
+  padding:7px 12px;border:1px solid var(--border,#51442c);border-radius:999px;
+  background:var(--surface,#1a1a1a);color:var(--accent,#d4af37);
+  text-decoration:none;font-size:.74rem;font-weight:750;white-space:nowrap;
+}
+.catalog-directory-links>a:hover{border-color:var(--accent,#d4af37)}
+.catalog-directory-links>a:focus-visible{outline:3px solid var(--accent,#d4af37);outline-offset:2px}
+@media(max-width:600px){
+  .catalog-directory-links{overflow-x:auto;flex-wrap:nowrap;padding:6px 0 10px;margin-bottom:12px;
+    -webkit-overflow-scrolling:touch;scroll-snap-type:x proximity;scrollbar-width:thin}
+  .catalog-directory-links>a{flex:0 0 auto;min-height:44px;scroll-snap-align:start}
+  .catalog-directory-links>span{font-size:.68rem;flex:0 0 auto}
+}

@@ -8,6 +8,8 @@ on:
       - "index.html"
       - "_headers"
       - "assets/storefront-polish.css"
+      - "assets/theme.css"
+      - "scripts/test_speed_drift_contrast.cjs"
       - ".github/workflows/dropzone-check.yml"
   push:
     branches:
@@ -30,3 +32,4 @@ jobs:
         run: |
           node scripts/test_dropzone_demo.cjs
           node scripts/test_speed_drift_interactions.cjs
+          node scripts/test_speed_drift_contrast.cjs

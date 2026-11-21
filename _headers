@@ -17,6 +17,14 @@
   Cache-Control: public, max-age=0, must-revalidate
   X-Robots-Tag: noindex
 
+/assets/catalog-index.json
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: noindex
+
+/assets/catalog-search.json
+  Cache-Control: public, max-age=0, must-revalidate
+  X-Robots-Tag: noindex
+
 /images/optimized/*
   Cache-Control: public, max-age=31536000, immutable
 
