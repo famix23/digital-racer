@@ -264,3 +264,24 @@ h1 span{color:var(--gold-bright)}
   .gallery-info{padding:8px}
   .gallery-info h3{font-size:10.5px;min-height:73px}
 }
+
+/* Premium UX refinements: featured collaboration remains visible on mobile. */
+.btn[hidden]{display:none!important}
+@media(max-width:750px){
+  .hero{padding-top:21px;gap:12px}
+  .heroart{display:grid;min-height:138px;max-height:178px;border-radius:13px}
+  .hero-cars{display:flex!important;justify-content:center;padding:9px}
+  .hero-cars img{width:30%;height:88px;object-fit:cover;border-radius:9px}
+  .hero-cars img:nth-child(2){transform:scale(1.08)}
+  .stepper{gap:6px;margin-bottom:15px}
+  .step{padding:9px 8px;gap:5px}
+  .step b{width:26px;height:26px}
+  .step strong{font-size:11px}
+  .step small{font-size:9px}
+}
+@media(max-width:420px){
+  .navright{gap:8px}
+  .navright a{font-size:11px}
+  .heroart{min-height:120px;max-height:145px}
+  .hero-cars img{height:78px}
+}

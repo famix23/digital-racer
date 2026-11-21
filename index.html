@@ -195,6 +195,9 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
 <link rel="stylesheet" href="/assets/storefront-polish.css">
 <script src="/assets/image-map.js"></script>
 <script src="/assets/storefront.js"></script>
+<script>(function(){var theme="dark";try{if(localStorage.getItem("digitalracer-theme")==="light")theme="light";}catch(e){}document.documentElement.setAttribute("data-dr-theme",theme);document.documentElement.style.colorScheme=theme;})();</script>
+<link rel="stylesheet" href="/assets/theme.css">
+<script src="/assets/theme.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to products</a>
@@ -217,6 +220,22 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
   <div class="store-badge">⚡ Global Marketplace</div>
   <h1 class="store-title">PUBG Mobile <span>Store</span></h1>
   <p class="store-sub">Browse PUBG Mobile accounts, car cards, UC top-ups, items and rank boosting. View USD prices and order directly on WhatsApp.</p>
+  <section class="dr-event-feature" aria-labelledby="dr-event-heading">
+    <div class="dr-event-copy">
+      <div class="dr-event-eyebrow"><span class="dr-event-dot" aria-hidden="true"></span> LIVE NOW · NOV 20, 2026 — JAN 12, 2027</div>
+      <h2 id="dr-event-heading">Bentley <span>× PUBG Mobile</span></h2>
+      <p>Version 4.7's luxury car collaboration is live. Explore DigitalRacer's Bentley vehicle skin and Car Card listings, including Continental GTC Mulliner, Flying Spur Mulliner and Bentayga Azure selections.</p>
+      <div class="dr-event-actions">
+        <a class="dr-event-primary" href="/catalog?category=Car%20Card&amp;search=Bentley">Explore Bentley Car Cards <span aria-hidden="true">&nbsp;↗</span></a>
+        <a class="dr-event-secondary" href="/dropzone/?brand=Bentley">Open Speed Drift Studio <span aria-hidden="true">&nbsp;→</span></a>
+      </div>
+      <p class="dr-event-disclaimer">Independent marketplace listings · Confirm exact finish, region, gifting eligibility and price before payment.</p>
+    </div>
+    <div class="dr-event-art" aria-hidden="true">
+      <img src="/images/optimized/dd838715fa57354cf4e3-480.webp" alt="" width="260" height="195" decoding="async" fetchpriority="high">
+      <img src="/images/optimized/481a81fe70b01a32e4b3-480.webp" alt="" width="260" height="195" loading="lazy" decoding="async">
+    </div>
+  </section>
   <div class="hero-ctas">
     <a href="/catalog?category=Account" class="hero-btn primary">Browse Accounts</a>
     <a href="/catalog?category=UC%20Top-Up" class="hero-btn secondary">Top-Up UC</a>
@@ -257,6 +276,10 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
     <div class="section-header">
       <h2 class="section-title">Car <span>Skins</span></h2>
       <div class="dr-car-links"><a href="/shop/pubg-mobile-car-cards/" class="view-all" aria-label="Explore PUBG Mobile Bentley event car cards">Bentley 4.7 · Nov 20</a><a href="/catalog?category=Car%20Card" class="view-all">View All →</a><a href="/dropzone/" class="dr-speed-btn">Explore Speed Drift</a></div>
+    </div>
+    <div class="dr-studio-feature" role="region" aria-label="Speed Drift vehicle gift studio">
+      <div><strong>Speed Drift · Car Card Gift Studio</strong><p>Browse real listings, choose a Bentley or another vehicle skin, and prepare a gift enquiry with player details.</p></div>
+      <a href="/dropzone/" aria-label="Open Speed Drift car skin gift studio">Open Gift Studio <span aria-hidden="true">&nbsp;→</span></a>
     </div>
     <div class="grid" id="grid-skins">
       <!-- SEO:GRID:skins:BEGIN -->
