@@ -432,7 +432,19 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
     if (!loadWrap.hidden) loadButton.textContent = 'Show more products (' + (total - renderedCount) + ' remaining)';
   }
   loadButton.addEventListener('click', appendCatalogBatch);
-  
+  // Visitors should not have to discover and repeatedly tap a button to see
+  // the other 972+ products. Reveal the next small batch near the scroll end.
+  // The manual Show more button remains a fully functional fallback.
+  if (typeof IntersectionObserver === 'function') {
+    const catalogObserver = new IntersectionObserver(entries => {
+      if (entries.some(entry => entry.isIntersecting) &&
+          !loadWrap.hidden && renderedCount < filteredProducts.length) {
+        appendCatalogBatch();
+      }
+    }, { rootMargin: '320px 0px', threshold: 0 });
+    catalogObserver.observe(loadWrap);
+  }
+
   const urlParams = new URLSearchParams(window.location.search);
   if (urlParams.has('search')) { searchQuery = urlParams.get('search').toLowerCase(); document.getElementById('search-input').value = urlParams.get('search'); }
   if (urlParams.has('category')) { 
