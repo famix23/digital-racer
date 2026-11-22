@@ -325,6 +325,8 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
 <script>(function(){var theme="dark";try{if(localStorage.getItem("digitalracer-theme")==="light")theme="light";}catch(e){}document.documentElement.setAttribute("data-dr-theme",theme);document.documentElement.style.colorScheme=theme;})();</script>
 <link rel="stylesheet" href="/assets/theme.css">
 <script src="/assets/theme.js" defer></script>
+<link rel="stylesheet" href="/assets/catalog-sidebar.css">
+<script src="/assets/catalog-sidebar.js" defer></script>
 </head>
 <body>
 <a class="skip-link" href="#main-content">Skip to products</a>
@@ -342,23 +344,19 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
   </div>
 </nav>
 
+
 <div class="catalog-container" id="main-content" role="main" tabindex="-1">
-  <details class="catalog-safety" aria-label="Buyer safety and regional information"><summary>Buying safely? Check eligibility and delivery</summary><div class="catalog-safety-copy">
-    New to the terminology? <a href="/guides/pubg-mobile-skins-explained/" style="color:#dfbd51">Understand skins and item levels</a>. Before considering a transaction, review <a href="/guides/pubg-mobile-account-safety/" style="color:#dfbd51">account-transfer restrictions</a> and <a href="/guides/pubg-mobile-uc-top-up-safety/" style="color:#dfbd51">UC purchase safety</a>.
-    <p style="margin:10px 0 0">International visitor? Catalog prices are shown in USD. Ask us to confirm server or country eligibility, actual availability, full payment amount and delivery conditions before placing an order. See the <a href="/contact/" style="color:#dfbd51">international enquiry checklist</a>.</p>
-  </div></details>
   <div class="catalog-top-bar">
-    <h1 class="page-title" id="catalog-page-title"><span id="catalog-heading-prefix">Full</span> <span id="catalog-heading-focus">Catalog</span></h1>
+    <div class="catalog-heading-wrap">
+      <h1 class="page-title" id="catalog-page-title"><span id="catalog-heading-prefix">Full</span> <span id="catalog-heading-focus">Catalog</span></h1>
+      <p id="catalog-count" role="status" aria-live="polite">996 products</p>
+    </div>
     <div class="controls-wrapper">
-      <div class="filter-group">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="Account">Accounts</button>
-        <button class="filter-btn" data-filter="UC Top-Up">UC Top-Ups</button>
-        <button class="filter-btn" data-filter="Car Card">Car Skins</button>
-        <button class="filter-btn" data-filter="Popularity">Popularity</button>
-        <button class="filter-btn" data-filter="In-Game Items">In-Game Items</button>
-        <button class="filter-btn" data-filter="Rank Boosting">Rank Boosting</button>
-      </div>
+      <button type="button" class="catalog-filter-toggle" id="catalog-filter-open"
+              aria-controls="catalog-sidebar" aria-expanded="false">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h16M7 12h10m-7 5h4"/></svg>
+        <span>Categories</span><span class="catalog-filter-current" id="catalog-filter-current">All</span>
+      </button>
       <select class="sort-select" aria-label="Sort products" id="sort-select">
         <option value="newest">Newest first</option>
         <option value="oldest">Oldest first</option>
@@ -367,10 +365,23 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
       </select>
     </div>
   </div>
-  <p id="catalog-count" role="status" aria-live="polite" style="color:var(--muted);margin-bottom:16px">996 products</p>
-  <p class="catalog-whatsapp-contact"><a href="https://wa.me/923454342911?text=Hello%20Digital%20Racer.%20I%20want%20to%20buy%20a%20PUBG%20Mobile%20product%20from%20your%20catalog.%20Please%20help%20me%20choose%20a%20listing%20and%20confirm%20the%20price%20and%20delivery." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp about buying a PUBG Mobile product">Chat to Buy on WhatsApp ↗</a> <span>No account required. Confirm the item and price with Digital Racer.</span></p>
-  <nav class="catalog-directory-links" aria-label="Browse complete product categories">
-    <span>Shop every listing:</span>
+  <div class="catalog-layout">
+    <aside class="catalog-sidebar" id="catalog-sidebar" aria-label="Browse and filter PUBG Mobile products">
+      <div class="catalog-sidebar-header">
+        <h2>Shop by category</h2>
+        <button type="button" id="catalog-filter-close" class="catalog-filter-close" aria-label="Close categories and filters">Close <span aria-hidden="true">×</span></button>
+      </div>
+      <div class="filter-group" role="group" aria-label="Filter the product grid">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="Account">Accounts</button>
+        <button class="filter-btn" data-filter="UC Top-Up">UC Top-Ups</button>
+        <button class="filter-btn" data-filter="Car Card">Car Skins</button>
+        <button class="filter-btn" data-filter="Popularity">Popularity</button>
+        <button class="filter-btn" data-filter="In-Game Items">In-Game Items</button>
+        <button class="filter-btn" data-filter="Rank Boosting">Rank Boosting</button>
+      </div>
+      <nav class="catalog-directory-links" aria-label="Browse complete product categories">
+    <span>Explore all listings:</span>
     <a href="/shop/pubg-mobile-accounts/">Accounts</a>
     <a href="/shop/pubg-mobile-car-cards/">Car Cards</a>
     <a href="/shop/pubg-mobile-uc-top-ups/">UC</a>
@@ -378,7 +389,14 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
     <a href="/shop/pubg-mobile-rank-boosting/">Rank Boosting</a>
     <a href="/shop/pubg-mobile-popularity/">Popularity</a>
   </nav>
-<div class="grid" id="full-catalog">
+      <details class="catalog-safety" aria-label="Buyer safety and regional information"><summary>Buying safely? Check eligibility and delivery</summary><div class="catalog-safety-copy">
+    New to the terminology? <a href="/guides/pubg-mobile-skins-explained/" style="color:#dfbd51">Understand skins and item levels</a>. Before considering a transaction, review <a href="/guides/pubg-mobile-account-safety/" style="color:#dfbd51">account-transfer restrictions</a> and <a href="/guides/pubg-mobile-uc-top-up-safety/" style="color:#dfbd51">UC purchase safety</a>.
+    <p style="margin:10px 0 0">International visitor? Catalog prices are shown in USD. Ask us to confirm server or country eligibility, actual availability, full payment amount and delivery conditions before placing an order. See the <a href="/contact/" style="color:#dfbd51">international enquiry checklist</a>.</p>
+  </div></details>
+      <p class="catalog-whatsapp-contact"><a href="https://wa.me/923454342911?text=Hello%20Digital%20Racer.%20I%20want%20to%20buy%20a%20PUBG%20Mobile%20product%20from%20your%20catalog.%20Please%20help%20me%20choose%20a%20listing%20and%20confirm%20the%20price%20and%20delivery." target="_blank" rel="noopener noreferrer" aria-label="Chat on WhatsApp about buying a PUBG Mobile product">Chat to Buy on WhatsApp ↗</a> <span>No account required. Confirm the item and price with Digital Racer.</span></p>
+    </aside>
+    <div class="catalog-results" id="catalog-results">
+      <div class="grid" id="full-catalog">
     <!-- SEO:GRID:catalog:BEGIN -->
     <div class="dr-product-tile"><a href="/p/inferno-mummy-2-max-red-guns-109-mythics-28-gun-labs-conqueror/" class="product-card item-card" data-category="Account"><div class="prod-img-wrap"><img src="/images/optimized/ef6b23107324004ce9b8-480.webp" class="prod-img" alt="INFERNO MUMMY + 2 MAX RED GUNS + 109 MYTHICS + 28 GUN LABS + CONQUEROR" fetchpriority="high" decoding="async" onerror="this.style.display='none'"> </div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">INFERNO MUMMY + 2 MAX RED GUNS + 109 MYTHICS + 28 GUN LABS + CONQUEROR</div><div class="prod-footer"><div class="prod-price">$249.99 USD</div><div class="prod-btn">View</div></div></div></a><a class="dr-card-whatsapp" href="https://wa.me/923454342911?text=Hello%20Digital%20Racer%21%20I%20want%20to%20buy%20INFERNO%20MUMMY%20%2B%202%20MAX%20RED%20GUNS%20%2B%20109%20MYTHICS%20%2B%2028%20GUN%20LABS%20%2B%20CONQUEROR%20%28listed%20%24249.99%20USD%29.%20Please%20confirm%20availability%20and%20delivery.%20Product%3A%20https%3A%2F%2Fwww.digitalracer.store%2Fp%2Finferno-mummy-2-max-red-guns-109-mythics-28-gun-labs-conqueror%2F" target="_blank" rel="noopener noreferrer" aria-label="Chat about this product on WhatsApp">Chat to Buy on WhatsApp ↗</a></div>
     <div class="dr-product-tile"><a href="/p/3-guns-killmsg-js9-lvl-3-lvl-57-3-mythic-set-mythic-helemt-bag-urban/" class="product-card item-card" data-category="Account"><div class="prod-img-wrap"><img src="/images/optimized/928e5659197a01f0c2e7-480.webp" class="prod-img" alt="3 Guns (KillMsg)Js9 Lvl 3&quot;Lvl 57&quot;3 Mythic Set&quot;Mythic Helemt/Bag&quot;Urban Pant&quot;Nightrose Uza&quot;Dune Daica&quot;Europe Platinum" fetchpriority="high" decoding="async" onerror="this.style.display='none'"> </div><div class="prod-content"><div class="prod-category">Account</div><div class="prod-title">3 Guns (KillMsg)Js9 Lvl 3&quot;Lvl 57&quot;3 Mythic Set&quot;Mythic Helemt/Bag&quot;Urban Pant&quot;Nightrose Uza&quot;Dune Daica&quot;Europe Platinum</div><div class="prod-footer"><div class="prod-price">$13.00 USD</div><div class="prod-btn">View</div></div></div></a><a class="dr-card-whatsapp" href="https://wa.me/923454342911?text=Hello%20Digital%20Racer%21%20I%20want%20to%20buy%203%20Guns%20%28KillMsg%29Js9%20Lvl%203%22Lvl%2057%223%20Mythic%20Set%22Mythic%20Helemt%2FBag%22Urban%20Pant%22Nightrose%20Uza%22Dune%20Daica%22Europe%20Platinum%20%28listed%20%2413.00%20USD%29.%20Please%20confirm%20availability%20and%20delivery.%20Product%3A%20https%3A%2F%2Fwww.digitalracer.store%2Fp%2F3-guns-killmsg-js9-lvl-3-lvl-57-3-mythic-set-mythic-helemt-bag-urban%2F" target="_blank" rel="noopener noreferrer" aria-label="Chat about this product on WhatsApp">Chat to Buy on WhatsApp ↗</a></div>
@@ -409,7 +427,10 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
   <div class="catalog-load-wrap" id="catalog-load-wrap" hidden>
     <button class="catalog-load-more" id="catalog-load-more" type="button" aria-controls="full-catalog">Show more products</button>
   </div>
+    </div>
+  </div>
 </div>
+<button class="catalog-sidebar-backdrop" type="button" id="catalog-sidebar-backdrop" aria-label="Close category menu" hidden></button>
 <a href="https://wa.me/923454342911?text=Hello%20Digital%20Racer%21%20I%20want%20to%20buy%20a%20PUBG%20Mobile%20item%20from%20your%20store." class="wa-float" id="wa-float" target="_blank" rel="noopener" aria-label="Chat with Digital Racer on WhatsApp"><svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.487-1.761-1.66-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg><span class="wa-float-text">WhatsApp Us</span></a>
 <footer><p>© 2026 Digital Racer. All rights reserved.</p><p style="margin-top:12px;display:flex;justify-content:center;gap:16px;flex-wrap:wrap;"><a href="/guides/" style="color:var(--accent)">Guides</a><a href="/blog/" style="color:var(--accent)">Blog</a><a href="/about/" style="color:var(--accent)">About</a><a href="/contact/" style="color:var(--accent)">Contact</a><a href="/terms/" style="color:var(--accent)">Terms</a><a href="/privacy/" style="color:var(--accent)">Privacy</a></p></footer>
 
