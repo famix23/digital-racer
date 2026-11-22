@@ -78,7 +78,7 @@ def main():
         assert "noindex" not in page.lower(), (slug, "unexpected noindex")
         for linked in config:
             if linked["slug"] != slug:
-                assert 'href="/catalog?category=' + quote(linked["category"], safe="") + '"' in page, (slug, "missing category shopping link")
+                assert 'href="/shop/' + linked["slug"] + '/">' in page, (slug, "missing canonical category link")
     print(f"Passed: {len(config)} canonical category hubs, metadata, internal navigation, real products and sitemap links.")
 
 if __name__ == "__main__":
