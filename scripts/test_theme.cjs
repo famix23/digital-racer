@@ -82,7 +82,7 @@ const documentMock={
 };
 const windowMock={addEventListener(){}};
 const storageMock={getItem:key=>stored.get(key)||null,setItem:(key,value)=>stored.set(key,value)};
-vm.runInNewContext(script,{document:documentMock,window:windowMock,localStorage:storageMock});
+vm.runInNewContext(script,{document:documentMock,window:windowMock,localStorage:storageMock,URL});
 assert.equal(htmlRoot.getAttribute("data-dr-theme"),"light","Restored light theme");
 assert.equal(themeButton.attrs["aria-pressed"],"true");
 assert.equal(host.child,themeButton,"Navigation must own switch");
