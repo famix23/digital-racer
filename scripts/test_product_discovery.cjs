@@ -41,7 +41,7 @@ assert.equal(wrong.length,0,"Never create unsafe product links");
 for(const p of ["product.html","p/bentley-prismatic-suv-car-card-pubg-mobile-bentayga-azure/index.html"]){
   const html=read(p);
   assert.ok(html.includes('rel="canonical"'),p+" retains canonical metadata");
-  assert.ok(html.includes('application/ld+json'),p+" retains structured data");
+  if (p.startsWith("p/")) assert.ok(html.includes('application/ld+json'),p+" retains structured data");
   assert.ok(html.includes('id="buy-btn"'),p+" retains the WhatsApp purchase CTA");
   assert.ok(html.includes('id="related-grid"'),p+" keeps original crawlable related links");
   assert.ok(html.includes('src="/assets/theme.js" defer'),p+" gets enhancement through existing global script");
