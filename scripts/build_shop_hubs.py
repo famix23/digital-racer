@@ -108,9 +108,39 @@ def build_shop_hubs(root, products, write):
             '<strong>' + esc(p["display_title"]) + '</strong><span>$' +
             esc(p["price"]) + ' USD</span></a>' for p in chosen
         )
+        features = ""
+        if slug in FEATURE_GROUPS:
+            groups = []
+            for feature_id, name, advice, title_matches in FEATURE_GROUPS[slug]:
+                found = [p for p in reversed(matches)
+                         if title_matches(p["display_title"].casefold())]
+                if not found:
+                    continue
+                items = "".join(
+                    '<li><a href="' + esc(p["url"]) + '">' +
+                    esc(p["display_title"]) + '</a><span>$' + esc(p["price"]) +
+                    ' USD</span></li>' for p in found[:4]
+                )
+                groups.append(
+                    '<section class="dr-feature-card" id="' + feature_id + '">'
+                    '<h3>' + esc(name) + '</h3><p>' + esc(advice) + '</p>'
+                    '<p class="dr-feature-count">' + str(len(found)) +
+                    ' matching catalog titles</p><ul>' + items + '</ul></section>'
+                )
+            if groups:
+                features = (
+                    '<section class="dr-feature-groups" aria-labelledby="dr-feature-title">'
+                    '<h2 id="dr-feature-title">Browse by named PUBG Mobile collectible</h2>'
+                    '<p>These links lead to product pages whose listing titles mention '
+                    'the named feature. Check screenshots, levels, price and current availability '
+                    'before ordering.</p><div class="dr-feature-grid">' +
+                    "".join(groups) + '</div></section>'
+                )
+        # The canonical category hubs are independently indexable; a filter
+        # query on /catalog is not a distinct indexable category landing page.
         links = " ".join(
-            '<a href="/catalog?category=' + esc(quote(other["category"], safe="")) + '">' +
-            esc(other["category"]) + '</a>' for other in hubs if other["slug"] != slug
+            '<a href="/shop/' + esc(other["slug"]) + '/">' +
+            esc(other["title"]) + '</a>' for other in hubs if other["slug"] != slug
         )
         tokens = {
             "TITLE": esc(hub["seo_title"] + " | Digital Racer"),
@@ -118,6 +148,7 @@ def build_shop_hubs(root, products, write):
             "CANONICAL": esc(canonical), "SCHEMA": json.dumps(schema, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/"),
             "CATEGORY": esc(hub["category"]), "HEADING": esc(hub["title"]),
             "INTRO": esc(hub["intro"]), "SECTIONS": sections, "CARDS": cards,
+            "FEATURES": features,
             "COUNT": str(len(matches)), "DIRECTORY": directory, "HUBLINKS": links,
             "QUERY": esc(quote(hub["category"], safe="")),
             "WHATSAPP_URL": esc("https://wa.me/923454342911?text=" + quote(
