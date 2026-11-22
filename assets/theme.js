@@ -115,3 +115,18 @@
     document.addEventListener("DOMContentLoaded", preserveNotes);
   } else preserveNotes();
 })();
+
+/* Product-page marketplace enhancement: load only on product views.
+   Script and styles are intentionally outside the generated SEO HTML so
+   canonical, JSON-LD, title and static related links cannot be rewritten. */
+(function () {
+  "use strict";
+  if (typeof document === "undefined" || !document.querySelector(".product-grid-layout") ||
+      !document.querySelector(".related-section")) return;
+  if (document.querySelector('script[data-dr-product-discovery]')) return;
+  var script = document.createElement("script");
+  script.src = "/assets/product-discovery.js";
+  script.defer = true;
+  script.setAttribute("data-dr-product-discovery", "true");
+  document.head.appendChild(script);
+})();
