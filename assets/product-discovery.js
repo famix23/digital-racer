@@ -163,6 +163,14 @@
       var link = el("a", "dr-discovery-category-link", "All " + mainLink[1]);
       link.href = mainLink[0]; footer.appendChild(link);
     }
+    footer.appendChild(el("div", "dr-discovery-rail-subhead", "Browse more categories"));
+    Object.keys(CATEGORY_LINKS).forEach(function (name) {
+      if (name === category) return;
+      var dest = CATEGORY_LINKS[name];
+      var link = el("a", "dr-discovery-category-link", dest[1]);
+      link.href = dest[0];
+      footer.appendChild(link);
+    });
     var catalog = el("a", "dr-discovery-category-link", "Entire catalog");
     catalog.href = "/catalog"; footer.appendChild(catalog);
   }
