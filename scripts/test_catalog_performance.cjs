@@ -86,12 +86,20 @@ async function scenario(search){
     getElementById:id=>ids[id]||null,
     querySelectorAll:selector=>selector===".filter-btn"?filters:[],
   };
-  const ctx={window,document,fetch,URL,URLSearchParams,console,Promise};
+  let catalogObserver=null;
+  class FakeIntersectionObserver {
+    constructor(callback, options){this.callback=callback;this.options=options;catalogObserver=this;}
+    observe(target){this.target=target;}
+    trigger(isIntersecting=true){this.callback([{target:this.target,isIntersecting}]);}
+  }
+  const ctx={window,document,fetch,URL,URLSearchParams,console,Promise,
+    IntersectionObserver:FakeIntersectionObserver};
   vm.createContext(ctx);
   vm.runInContext(read("assets/storefront.js"),ctx,{filename:"storefront.js"});
   vm.runInContext(inline,ctx,{filename:"catalog.html"});
   for(let i=0;i<8;i++)await new Promise(r=>setImmediate(r));
-  return {ids,filters,feedLoads,descriptionLoads:()=>descriptionLoads};
+  return {ids,filters,feedLoads,descriptionLoads:()=>descriptionLoads,
+    observer:()=>catalogObserver};
 }
 (async()=>{
   const initial=await scenario("");
@@ -101,6 +109,14 @@ async function scenario(search){
   assert.equal(initial.ids["catalog-load-wrap"].hidden,false,"Show-more must be available");
   initial.ids["catalog-load-more"].click();
   assert.equal((initial.ids["full-catalog"].innerHTML.match(/class="product-card item-card"/g)||[]).length,Math.min(48,feed.length));
+  const observer=initial.observer();
+  assert.ok(observer && observer.target===initial.ids["catalog-load-wrap"],
+    "Progressive scroll discovery must observe the product loading control");
+  observer.trigger(false); // Offscreen must not append more products.
+  assert.equal((initial.ids["full-catalog"].innerHTML.match(/class="product-card item-card"/g)||[]).length,Math.min(48,feed.length));
+  observer.trigger(true); // Buyer approaches the next products while scrolling.
+  assert.equal((initial.ids["full-catalog"].innerHTML.match(/class="product-card item-card"/g)||[]).length,Math.min(72,feed.length),
+    "Scrolling near the end should reveal products without another button press");
   const query=await scenario("?category=Car%20Card&search=Bentley");
   assert.equal(query.feedLoads,1,"One compact initial feed");
   assert.equal(query.descriptionLoads(),1,"Fetch descriptions only for keyword searches");
