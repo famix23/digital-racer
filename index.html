@@ -228,6 +228,7 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
       <div class="dr-event-actions">
         <a class="dr-event-primary" href="/shop/pubg-mobile-car-cards/">Shop Bentley Car Cards <span aria-hidden="true">&nbsp;↗</span></a>
         <a class="dr-event-secondary" href="/dropzone/?brand=Bentley">Open Speed Drift Studio <span aria-hidden="true">&nbsp;→</span></a>
+        <a class="dr-event-secondary dr-whatsapp-conversion" href="https://wa.me/923454342911?text=Hello%20Digital%20Racer.%20I%20want%20to%20buy%20a%20PUBG%20Mobile%20Bentley%20Car%20Card.%20Please%20help%20me%20choose%20the%20exact%20model%20and%20finish%2C%20confirm%20the%20USD%20price%20and%20delivery%20requirements." target="_blank" rel="noopener noreferrer">Buy Bentley on WhatsApp <span aria-hidden="true">&nbsp;↗</span></a>
       </div>
       <p class="dr-event-disclaimer">Independent marketplace listings · Confirm exact finish, region, gifting eligibility and price before payment.</p>
     </div>
@@ -419,7 +420,8 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
       renderGrid(boostProducts, 'grid-boosting', 'Rank Boosting Service');
     })
     .catch(error => {
-      document.getElementById('grid-accounts').innerHTML = `<div style="color: #ff4d4d;">System Error</div>`;
+      // Retain rendered cards and their product links if inventory fetch fails.
+      console.warn('Homepage inventory refresh unavailable; keeping crawlable product cards.', error);
     });
 </script>
 </body>

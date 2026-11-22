@@ -90,7 +90,11 @@ def build_shop_hubs(root, products, write):
             "CATEGORY": esc(hub["category"]), "HEADING": esc(hub["title"]),
             "INTRO": esc(hub["intro"]), "SECTIONS": sections, "CARDS": cards,
             "COUNT": str(len(matches)), "DIRECTORY": directory, "HUBLINKS": links,
-            "QUERY": esc(quote(hub["category"], safe=""))
+            "QUERY": esc(quote(hub["category"], safe="")),
+            "WHATSAPP_URL": esc("https://wa.me/923454342911?text=" + quote(
+                "Hello Digital Racer. I want to buy " + hub["category"] +
+                " products from " + canonical +
+                ". Please confirm available listings, the USD price and delivery.", safe=""))
         }
         page = template
         for key, value in tokens.items():

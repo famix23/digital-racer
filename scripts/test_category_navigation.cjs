@@ -28,4 +28,15 @@ const bentleyFeatured = (bentleyHub.split('<div class="cards">')[1] || '').split
 const featuredCardTitles = [...bentleyFeatured.matchAll(/<strong>([^<]+)<\/strong>/g)].map(m => m[1]);
 assert.equal(featuredCardTitles.length, 12, 'Keep twelve fast, real Bentley product cards visible without JS');
 assert.ok(featuredCardTitles.every(t => /bentley/i.test(t)), 'Promoted hub must prioritize Bentley skins over other vehicle brands');
-console.log('Passed: 6 category shopping links, selected filter destinations and premium styling.');
+// Every buyer-facing funnel must have a direct WhatsApp option; no checkout steps required.
+const waNumber = 'https://wa.me/923454342911?text=';
+assert.ok(home.includes('class="dr-event-secondary dr-whatsapp-conversion" href="' + waNumber), 'Bentley hero must offer immediate WhatsApp contact');
+assert.ok(home.includes('keeping crawlable product cards.'), 'Homepage must preserve SSR sales links if inventory request fails');
+assert.ok(catalog.includes('class="catalog-whatsapp-contact"') && catalog.includes(waNumber), 'Catalog must offer direct WhatsApp buying');
+assert.ok(read('dropzone/index.html').includes('Chat on WhatsApp before payment') && read('dropzone/index.html').includes(waNumber), 'Speed Drift must offer WhatsApp before payment steps');
+for (const hub of hubs) {
+  const page = read('shop/' + hub.slug + '/index.html');
+  assert.ok(page.includes('class="cta wa-shop-cta" href="' + waNumber), 'Missing direct WhatsApp button on ' + hub.slug);
+  assert.ok(page.includes('href="/catalog?category=' + encodeURIComponent(hub.category) + '"'), 'Keep original shop browsing link on ' + hub.slug);
+}
+console.log('Passed: 6 category links, crawlable landing pages and direct WhatsApp sales CTAs.');
