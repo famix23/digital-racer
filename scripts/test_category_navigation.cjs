@@ -39,4 +39,9 @@ for (const hub of hubs) {
   assert.ok(page.includes('class="cta wa-shop-cta" href="' + waNumber), 'Missing direct WhatsApp button on ' + hub.slug);
   assert.ok(page.includes('href="/catalog?category=' + encodeURIComponent(hub.category) + '"'), 'Keep original shop browsing link on ' + hub.slug);
 }
+// Buyers can enquire directly from every homepage product preview, not only the floating button.
+const homeProductPreviews=[...home.matchAll(/<div class="dr-product-tile"><a href="\/p\//g)];
+const homeProductWhatsApp=[...home.matchAll(/class="dr-card-whatsapp" href="https:\/\/wa\.me\/923454342911\?text=/g)];
+assert.equal(homeProductPreviews.length,homeProductWhatsApp.length,'Homepage preview needs one WhatsApp purchase route per product');
+assert.ok(homeProductPreviews.length >= 20,'Keep all original homepage product previews accessible');
 console.log('Passed: 6 category links, crawlable landing pages and direct WhatsApp sales CTAs.');

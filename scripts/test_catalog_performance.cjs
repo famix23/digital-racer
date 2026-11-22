@@ -36,6 +36,14 @@ for(let i=0;i<feed.length;i++){
   assert.ok(!p.thumbnail || p.thumbnail.startsWith("/images/")||p.thumbnail.startsWith("https://"),"Invalid image route");
 }
 assert.deepEqual(staticCards,feed.slice(0,count).map(p=>p.url),"Initial HTML must show newest real products");
+const staticBuyLinks=[...preview.matchAll(/<a class="dr-card-whatsapp" href="(https:\/\/wa\.me\/923454342911\?text=[^"]+)"/g)].map(x=>x[1]);
+assert.equal(staticBuyLinks.length,count,"Every first-screen catalog card needs its own WhatsApp enquiry");
+for(let i=0;i<count;i++){
+  const message=new URL(staticBuyLinks[i]).searchParams.get("text");
+  assert.ok(message.includes(feed[i].title) && message.includes(feed[i].url) &&
+    message.includes("$"+feed[i].price+" USD"),"WhatsApp enquiries must identify exact product, URL and USD price");
+}
+assert.equal((preview.match(/class="dr-product-tile"/g)||[]).length,count,"No invalid nested links: separate detail and purchase anchors");
 assert.ok(Buffer.byteLength(html,"utf8")<190000,"Catalog HTML is too large for the mobile performance budget");
 assert.ok(Buffer.byteLength(feedRaw,"utf8")<Buffer.byteLength(inventoryRaw,"utf8")*.55,
   "Compact feed too large compared with old full inventory payload");
@@ -107,6 +115,8 @@ async function scenario(search){
   assert.equal(initial.descriptionLoads(),0,"Do not fetch detailed inventory before user searches");
   assert.equal((initial.ids["full-catalog"].innerHTML.match(/class="product-card item-card"/g)||[]).length,Math.min(24,feed.length));
   assert.equal(initial.ids["catalog-load-wrap"].hidden,false,"Show-more must be available");
+  assert.equal((initial.ids["full-catalog"].innerHTML.match(/class="dr-card-whatsapp"/g)||[]).length,count,
+    "Server-rendered card WhatsApp enquiries must survive hydration");
   initial.ids["catalog-load-more"].click();
   assert.equal((initial.ids["full-catalog"].innerHTML.match(/class="product-card item-card"/g)||[]).length,Math.min(48,feed.length));
   const observer=initial.observer();

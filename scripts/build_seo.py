@@ -327,11 +327,18 @@ def card_html(p, indent, eager=False):
     badge = f'<div class="prod-badge">{esc(p["raw"].get("badge"))}</div>' if p["raw"].get("badge") else ""
     extra = f' item-card" data-category="{esc(p["category"])}' if indent == "catalog" else ""
     image_html = (f'<img src="{esc(img)}" class="prod-img" alt="{esc(p["display_title"])}" {'fetchpriority="high"' if eager else 'loading="lazy"'} decoding="async" onerror="this.style.display=\'none\'">' if img else '<span style="color: var(--muted); padding: 1rem; display: block;">No image available</span>')
-    return (f'<a href="{p["url"]}" class="product-card{extra}">'
+    message = (f"Hello Digital Racer! I want to buy {p['display_title']} "
+               f"(listed ${p['price']} USD). Please confirm availability and delivery. "
+               f"Product: {SITE_URL}{p['url']}")
+    whatsapp = "https://wa.me/" + WHATSAPP + "?text=" + quote(message, safe="")
+    return ('<div class="dr-product-tile">'
+            + f'<a href="{p["url"]}" class="product-card{extra}">'
             f'<div class="prod-img-wrap">{image_html} {badge}</div>'
             f'<div class="prod-content"><div class="prod-category">{esc(p["category"])}</div>'
             f'<div class="prod-title">{esc(p["display_title"])}</div>'
-            f'<div class="prod-footer"><div class="prod-price">${esc(p["price"])} USD</div><div class="prod-btn">View</div></div></div></a>')
+            f'<div class="prod-footer"><div class="prod-price">${esc(p["price"])} USD</div><div class="prod-btn">View</div></div></div></a>'
+            + f'<a class="dr-card-whatsapp" href="{esc(whatsapp)}" target="_blank" rel="noopener noreferrer" '
+              'aria-label="Chat about this product on WhatsApp">Chat to Buy on WhatsApp ↗</a></div>')
 
 
 def head_tags(title, desc, canonical, image=None, og_type="website", extra_meta="", ld=()):
