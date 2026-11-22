@@ -209,7 +209,7 @@
         if (!Array.isArray(feed)) return;
         var current = productFromFeed(feed);
         if (!current || !validUrl(current.url)) return;
-        var ranked = rankSimilar(current,feed,40);
+        var ranked = rankSimilar(current,feed,Math.min(200,feed.length-1));
         var sameCategory = ranked.filter(function (p) { return p.category === current.category; });
         var relatedSource = new Set([current.url]);
         // Preserve static, SEO-crawlable related products; avoid duplicates
