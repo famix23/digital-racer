@@ -94,3 +94,24 @@
     } catch (_) { /* A reporting error must never interrupt the buyer's click. */ }
   }, { passive: true });
 })();
+
+/* Preserve built, factual buyer guidance if the product data API re-renders
+   the description after hydration. Avoid new network requests or duplicates. */
+(function () {
+  "use strict";
+  function preserveNotes() {
+    var desc = document.getElementById("prod-desc");
+    var original = desc && desc.querySelector(".dr-buyer-verification");
+    if (!original || typeof MutationObserver !== "function") return;
+    var safeCopy = original.cloneNode(true);
+    var observer = new MutationObserver(function () {
+      if (!desc.querySelector(".dr-buyer-verification")) {
+        desc.appendChild(safeCopy.cloneNode(true));
+      }
+    });
+    observer.observe(desc, {childList:true});
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", preserveNotes);
+  } else preserveNotes();
+})();
