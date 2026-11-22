@@ -68,7 +68,7 @@ assert.ok(home.includes('href="/shop/pubg-mobile-uc-top-ups/">PUBG Mobile UC top
 for(const hub of hubs){
   const page=read('shop/'+hub.slug+'/index.html');
   for(const other of hubs.filter(x=>x.slug!==hub.slug)){
-    assert.ok(page.includes('href="/shop/'+other.slug+'/">'+other.title+'</a>'),
+    assert.ok(page.includes('href="/shop/'+other.slug+'/">'+other.title.replace(/&/g,'&amp;')+'</a>'),
       'Other category links should lead to indexable, canonical shop hubs');
   }
 }
