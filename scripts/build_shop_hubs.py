@@ -38,6 +38,17 @@ FEATURE_GROUPS = {
          "Inspect the named Flying Spur finishes, screenshots and details.",
          lambda t: "flying spur" in t),
     ],
+    "pubg-mobile-in-game-items": [
+        ("karambit-cards", "Karambit skin and gift cards",
+         "Compare exact Karambit card names, listed prices and transfer requirements.",
+         lambda t: "karambit" in t),
+        ("sixtino-seventino", "Sixtino Seventino cards",
+         "Compare Sixtino Seventino offers and verify the exact quantity and gifting terms.",
+         lambda t: "sixtino" in t and "seventino" in t),
+        ("taurino-assassino", "Taurino Assassino collectibles",
+         "Explore Taurino Assassino variants and inspect the listed rarity or upgrade level.",
+         lambda t: "taurino" in t and ("assassino" in t or "assasino" in t)),
+    ],
 }
 
 def esc(value):
