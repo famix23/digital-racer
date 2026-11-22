@@ -564,6 +564,66 @@ else:
     raise ValueError("Cannot resolve SEO title collisions")
 
 
+# Human-useful on-page buyer checks for very brief reseller descriptions.
+# Keep the original supplier description and title exactly as provided.
+def buyer_verification_notes(p):
+    source = re.sub(r"\s+", " ", html.unescape(p["desc_raw"])).strip()
+    if len(source) >= 100:
+        return ""
+    category = p["category"]
+    name = p["display_title"].casefold()
+    questions = {
+        "Account": [
+            "Request current inventory screenshots showing the named cosmetics, weapon stages and account level.",
+            "Review linked-login, recovery and publisher account-transfer restrictions before paying.",
+        ],
+        "Car Card": [
+            "Confirm the exact vehicle model and finish shown on the card, not just its brand.",
+            "Check current stock, supported game region and gifting or friend-waiting conditions.",
+        ],
+        "In-Game Items": [
+            "Confirm the exact item name, quantity, game mode and supported transfer method.",
+            "Check player ID, gift eligibility and any active event requirements for this item.",
+        ],
+        "Popularity": [
+            "Confirm the number of points or cards and the exact sending method.",
+            "Check the event eligibility, player ID requirements and fulfillment timeframe.",
+        ],
+        "UC Top-Up": [
+            "Verify the stated UC amount, supported version and target account region.",
+            "Double-check the player ID; never share passwords or one-time login codes.",
+        ],
+        "Rank Boosting": [
+            "Confirm the target rank, server and season and proposed timeframe.",
+            "Review publisher rules and account-access risks before agreeing to the service.",
+        ],
+    }.get(category, [
+        "Confirm the exact item and delivery conditions before ordering.",
+        "Compare the current photos and check any publisher restrictions.",
+    ])
+    if category == "Account":
+        if "glacier" in name and "m416" in name:
+            questions.append("The title names M416 Glacier; verify its actual upgrade stage in the gallery.")
+        if "x-suit" in name or "xsuit" in name or "x suit" in name:
+            questions.append("The title mentions an X-Suit; confirm its exact name and stage.")
+    elif category == "Car Card" and "bentley" in name:
+        questions.append("For the Bentley finish, compare the named vehicle model with the card image.")
+    elif category == "In-Game Items":
+        if "karambit" in name:
+            questions.append("For Karambit offers, confirm the exact knife or gift-card variant.")
+        if "sixtino" in name or "taurino" in name:
+            questions.append("For this named collectible, verify its variant and upgrade level.")
+    entries = "".join("<li>" + esc(q) + "</li>" for q in questions)
+    return ('<section class="dr-buyer-verification" aria-label="Listing verification questions">'
+            '<h3>Before buying this listing</h3>'
+            '<p><strong>Listed item:</strong> ' + esc(p["display_title"]) +
+            ' · <strong>Listed price:</strong> $' + esc(p["price"]) +
+            ' USD. This is supplier-provided listing information, not verified current stock.</p>'
+            '<ul>' + entries + '</ul>'
+            '<p>Review product photographs and confirm availability, region and delivery terms '
+            'with Digital Racer before payment.</p></section>')
+
+
 # ---------------------------------------------------------------- product pages
 def product_page(p, others):
     it = p["raw"]
@@ -639,7 +699,7 @@ def product_page(p, others):
                    "method via WhatsApp +923454342911 before payment.</strong></p><br>"
                    if it.get("availability_unverified") is True
                    else "<p><strong>Buy now on whatsapp number +923454342911</strong></p><br>")
-    desc_html = ("" if reference_only else desc_prefix) + parse_description(p["desc_raw"])
+    desc_html = ("" if reference_only else desc_prefix) + parse_description(p["desc_raw"]) + buyer_verification_notes(p)
     s = replace_one(s, r'(<div class="desc-content" id="prod-desc">)(</div>)',
                     lambda m: m.group(1) + desc_html + m.group(2), f, "description")
     if image:

@@ -67,8 +67,10 @@ const host=element("nav");
 const themeButton=element("button");
 const htmlRoot=element("html");htmlRoot.style={};
 const browserBar=element("meta");
+const browserEvents={};
 const documentMock={
   readyState:"complete",documentElement:htmlRoot,
+  addEventListener(name,fn){browserEvents[name]=fn;},
   getElementById(){return null;},
   createElement(type){assert.equal(type,"button");return themeButton;},
   querySelector(css){
@@ -80,7 +82,7 @@ const documentMock={
 };
 const windowMock={addEventListener(){}};
 const storageMock={getItem:key=>stored.get(key)||null,setItem:(key,value)=>stored.set(key,value)};
-vm.runInNewContext(script,{document:documentMock,window:windowMock,localStorage:storageMock});
+vm.runInNewContext(script,{document:documentMock,window:windowMock,localStorage:storageMock,URL});
 assert.equal(htmlRoot.getAttribute("data-dr-theme"),"light","Restored light theme");
 assert.equal(themeButton.attrs["aria-pressed"],"true");
 assert.equal(host.child,themeButton,"Navigation must own switch");
@@ -92,4 +94,29 @@ assert.equal(browserBar.attrs.content,"#050505");
 themeButton.events.click();
 assert.equal(htmlRoot.getAttribute("data-dr-theme"),"light");
 assert.equal(browserBar.attrs.content,"#f8f7f4");
+// Delegated WhatsApp clicks must report only non-sensitive context to an
+// already configured GA4 tag without intercepting outbound navigation.
+const events=[];
+const fakeCategory={textContent:"Car Card"};
+const fakeDetail={getAttribute(){return "/p/sample-bentley-card/";}};
+const fakeTile={querySelector(sel){return sel.startsWith("a.product-card")?fakeDetail:fakeCategory;}};
+const fakeLink={
+  href:"https://wa.me/923454342911?text=PRIVATE-MESSAGE-MUST-NOT-BE-SENT",
+  id:"",classList:{contains(cls){return cls==="dr-card-whatsapp";}},
+  closest(sel){return sel===".dr-product-tile"?fakeTile:null}
+};
+const fakeTarget={closest(){return fakeLink;}};
+windowMock.location={href:"https://www.digitalracer.store/catalog",pathname:"/catalog"};
+windowMock.gtag=(...args)=>events.push(args);
+browserEvents.click({target:fakeTarget});
+assert.equal(events.length,1,"An existing GA4 setup must receive a WhatsApp click");
+assert.equal(events[0][0],"event");
+assert.equal(events[0][1],"whatsapp_click");
+assert.equal(events[0][2].click_area,"product_card");
+assert.equal(events[0][2].product_path,"/p/sample-bentley-card/");
+assert.equal(events[0][2].item_category,"Car Card");
+assert.ok(!JSON.stringify(events).includes("PRIVATE-MESSAGE"),"Never send prefilled WhatsApp text to analytics");
+delete windowMock.gtag;
+browserEvents.click({target:fakeTarget});
+assert.equal(events.length,1,"Absent GA4 must not throw or fabricate events");
 console.log("Appearance toggle interactive tests passed.");

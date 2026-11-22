@@ -54,3 +54,64 @@
     if (event.key === KEY) apply(event.newValue === "light" ? "light" : "dark", false);
   });
 })();
+
+/* Sales funnel instrumentation: event delegation covers dynamically loaded cards,
+   homepage, product pages, category hubs and Speed Drift WhatsApp links.
+   This emits a GA4 event only when a real GA4 tag has been configured; no
+   visitor identifiers or prefilled WhatsApp message text are collected here. */
+(function () {
+  "use strict";
+  function findWhatsApp(el) {
+    if (!el || !el.closest) return null;
+    var a = el.closest("a[href]");
+    if (!a) return null;
+    try {
+      var u = new URL(a.href, window.location.href);
+      return u.protocol === "https:" &&
+        (u.hostname === "wa.me" || u.hostname === "api.whatsapp.com" || u.hostname === "web.whatsapp.com") ? a : null;
+    } catch (_) { return null; }
+  }
+  document.addEventListener("click", function (e) {
+    var a = findWhatsApp(e.target);
+    if (!a || typeof window.gtag !== "function") return;
+    var tile = a.closest(".dr-product-tile");
+    var detail = tile && tile.querySelector('a.product-card[href^="/p/"]');
+    var productPath = detail ? detail.getAttribute("href") :
+      (/^\/p\/[^/]+\/$/.test(window.location.pathname) ? window.location.pathname : "");
+    var clickArea = a.id === "buy-btn" ? "product_buy" :
+      a.classList.contains("dr-card-whatsapp") ? "product_card" :
+      a.classList.contains("wa-float") ? "floating" :
+      document.body.classList.contains("dr-category-page") ? "category_hub" : "other";
+    var category = tile && tile.querySelector(".prod-category");
+    try {
+      window.gtag("event", "whatsapp_click", {
+        click_area: clickArea,
+        product_path: productPath || undefined,
+        item_category: category ? category.textContent.trim() : undefined,
+        page_path: window.location.pathname,
+        destination: "whatsapp"
+      });
+    } catch (_) { /* A reporting error must never interrupt the buyer's click. */ }
+  }, { passive: true });
+})();
+
+/* Preserve built, factual buyer guidance if the product data API re-renders
+   the description after hydration. Avoid new network requests or duplicates. */
+(function () {
+  "use strict";
+  function preserveNotes() {
+    var desc = document.getElementById("prod-desc");
+    var original = desc && desc.querySelector(".dr-buyer-verification");
+    if (!original || typeof MutationObserver !== "function") return;
+    var safeCopy = original.cloneNode(true);
+    var observer = new MutationObserver(function () {
+      if (!desc.querySelector(".dr-buyer-verification")) {
+        desc.appendChild(safeCopy.cloneNode(true));
+      }
+    });
+    observer.observe(desc, {childList:true});
+  }
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", preserveNotes);
+  } else preserveNotes();
+})();
