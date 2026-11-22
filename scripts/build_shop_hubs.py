@@ -11,6 +11,35 @@ import json
 
 SITE = "https://www.digitalracer.store"
 
+# Real listing-title matches only; no doorway pages or invented inventory.
+FEATURE_GROUPS = {
+    "pubg-mobile-accounts": [
+        ("glacier-m416", "Glacier M416 accounts",
+         "Compare the listed M416 Glacier weapon stage and Gun Lab details on each account page.",
+         lambda t: "m416" in t and "glacier" in t),
+        ("x-suits", "X-Suit collections",
+         "Compare named X-Suits, their stated stages and other listed items.",
+         lambda t: "xsuit" in t.replace("-", "").replace(" ", "")),
+        ("conqueror", "Conqueror account collections",
+         "Compare historic Conqueror achievements alongside the listed inventory.",
+         lambda t: "conqueror" in t),
+        ("mummy-sets", "Mummy outfit collections",
+         "Check the named Mummy outfit and accompanying items in each listing.",
+         lambda t: "mummy" in t),
+    ],
+    "pubg-mobile-car-cards": [
+        ("bentley-bentayga", "Bentley Bentayga Azure cards",
+         "Browse Bentayga vehicle finishes and confirm the exact car card before ordering.",
+         lambda t: "bentayga" in t),
+        ("bentley-continental", "Bentley Continental GTC Mulliner cards",
+         "Compare the stated GTC and Continental finishes and listed prices.",
+         lambda t: "gtc" in t or "continental" in t),
+        ("bentley-flying-spur", "Bentley Flying Spur cards",
+         "Inspect the named Flying Spur finishes, screenshots and details.",
+         lambda t: "flying spur" in t),
+    ],
+}
+
 def esc(value):
     return html.escape(str(value), quote=True)
 
