@@ -94,6 +94,10 @@ def build_shop_hubs(root, products, write):
             "WHATSAPP_URL": esc("https://wa.me/923454342911?text=" + quote(
                 "Hello Digital Racer. I want to buy " + hub["category"] +
                 " products from " + canonical +
+                ". Please confirm available listings, the USD price and delivery.", safe="")),
+            "WHATSAPP_URL": esc("https://wa.me/923454342911?text=" + quote(
+                "Hello Digital Racer. I want to buy " + hub["category"] +
+                " products from " + canonical +
                 ". Please confirm available listings, the USD price and delivery.", safe=""))
         }
         page = template
