@@ -107,7 +107,7 @@ html[data-dr-theme="light"] .catalog-container .catalog-sidebar .catalog-safety{
     border-radius:16px 0 0 16px;background:var(--surface);box-shadow:-10px 0 45px rgba(0,0,0,.5)
   }
   body.catalog-filters-open .catalog-sidebar{display:block}
-  body.catalog-filters-open{overflow:hidden;touch-action:none}
+  body.catalog-filters-open{overflow:hidden}
   body.catalog-filters-open .catalog-sidebar{touch-action:auto}
   .catalog-filter-close{
     display:inline-flex;align-items:center;gap:7px;justify-content:center;
