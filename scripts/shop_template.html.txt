@@ -20,6 +20,7 @@ main{max-width:1120px;margin:auto;padding:32px max(24px,5vw) 65px}
 h1{font-size:clamp(1.7rem,2.9vw,2.35rem);line-height:1.17;max-width:840px;margin:10px 0 18px}h2{font-size:1.35rem;line-height:1.25;color:var(--gold);margin:30px 0 12px}
 p{color:var(--muted);margin:0 0 14px}.lede{font-size:1.12rem;color:var(--text);max-width:920px}
 .cta{display:inline-block;background:var(--gold);color:#111;text-decoration:none;padding:11px 19px;border-radius:5px;font-weight:750;margin:12px 0}
+.cta.wa-shop-cta{background:#25D366;color:#07301c;margin-left:12px;min-height:44px}.cta.wa-shop-cta:hover,.cta.wa-shop-cta:focus-visible{background:#32eb77;outline:2px solid var(--gold);outline-offset:2px}
 .detail{max-width:920px}.listing-head{margin-top:44px;border-top:1px solid var(--line);padding-top:12px}.count{color:var(--muted);font-size:.9rem}
 .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(255px,1fr));gap:12px;margin:20px 0}
 .product-card{display:flex;flex-direction:column;justify-content:space-between;gap:12px;background:var(--panel);border:1px solid var(--line);border-radius:7px;padding:16px;text-decoration:none;color:var(--text)}
@@ -80,6 +81,7 @@ footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var
 <p class="eyebrow">Digital Racer • Category storefront</p><h1>%%HEADING%%</h1>
 <p class="lede">%%INTRO%%</p>
 <a class="cta" href="/catalog?category=%%QUERY%%">Browse all %%CATEGORY%% listings</a>
+<a class="cta wa-shop-cta" href="%%WHATSAPP_URL%%" target="_blank" rel="noopener noreferrer">Buy %%CATEGORY%% on WhatsApp ↗</a>
 <section class="listing-head"><h2>Explore available products</h2><p class="count">%%COUNT%% listings in this category. Showing up to 12 examples; visit the full catalog for every entry. Verify current availability and regional eligibility before ordering.</p>
 <div class="cards">%%CARDS%%</div>
 %%DIRECTORY%%
