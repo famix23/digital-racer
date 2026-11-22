@@ -565,6 +565,7 @@ html.dr-product-showcase .related-grid{
   display:flex;flex-direction:column;gap:7px;
   margin-top:14px;padding-top:14px;border-top:1px solid var(--border)
 }
+.dr-discovery-rail-subhead{margin:5px 0 2px;color:var(--muted);font:800 .67rem/1.35 'Montserrat',system-ui,sans-serif;text-transform:uppercase;letter-spacing:.07em}
 .dr-discovery-category-link{
   display:flex;align-items:center;justify-content:space-between;
   padding:9px 10px;min-height:40px;border:1px solid var(--border);
