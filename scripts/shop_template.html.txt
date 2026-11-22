@@ -74,6 +74,20 @@ p{color:var(--muted);margin:0 0 14px}.lede{font-size:1.12rem;color:var(--text);m
 }
 @media(max-width:350px){.cards{grid-template-columns:1fr;}.product-card{min-height:96px;}}
 footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var(--muted);font-size:.85rem}
+/* Named collections: useful deep links without separate thin keyword pages. */
+.dr-feature-groups{margin:25px 0 18px;padding:17px;border:1px solid var(--line);border-radius:11px;background:#11100e}
+.dr-feature-groups>h2{margin:0 0 9px;font-size:1.12rem}
+.dr-feature-groups>p{font-size:.88rem;line-height:1.55}
+.dr-feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:12px}
+.dr-feature-card{min-width:0;padding:15px;border:1px solid #4d4230;border-radius:9px;background:var(--panel);scroll-margin-top:20px}
+.dr-feature-card h3{color:#eaca76;font-size:1rem;line-height:1.4;margin:0 0 9px}
+.dr-feature-card p{font-size:.85rem;line-height:1.5;margin-bottom:7px}
+.dr-feature-count{font-size:.75rem!important;color:#c7d4c6}
+.dr-feature-card ul{list-style:none;padding:0;margin:10px 0 0}
+.dr-feature-card li{border-top:1px solid var(--line);padding:8px 0}
+.dr-feature-card li a{display:block;color:#efd99b;font-weight:650;font-size:.84rem;line-height:1.4;overflow-wrap:anywhere}
+.dr-feature-card li span{font-size:.78rem;color:#d4ded2}
+@media(max-width:750px){.dr-feature-grid{grid-template-columns:1fr}.dr-feature-groups{padding:12px;margin:17px 0}.dr-feature-card{padding:12px}}
 </style><link rel="stylesheet" href="/assets/storefront-polish.css"></head><body class="dr-category-page">
 <header><a href="/"><strong>Digital Racer</strong></a><nav aria-label="Main navigation"><a href="/catalog">Catalog</a><a href="/guides/">Guides</a><a href="/blog/">Blog</a><a href="/contact/">Contact</a></nav></header>
 <main id="content">
@@ -84,6 +98,7 @@ footer{border-top:1px solid var(--line);padding:24px;text-align:center;color:var
 <a class="cta wa-shop-cta" href="%%WHATSAPP_URL%%" target="_blank" rel="noopener noreferrer">Buy %%CATEGORY%% on WhatsApp ↗</a>
 <section class="listing-head"><h2>Explore available products</h2><p class="count">%%COUNT%% listings in this category. Showing up to 12 examples; visit the full catalog for every entry. Verify current availability and regional eligibility before ordering.</p>
 <div class="cards">%%CARDS%%</div>
+%%FEATURES%%
 %%DIRECTORY%%
 <a href="/catalog?category=%%QUERY%%">See all %%CATEGORY%% entries in the full catalog</a></section>
 <details class="detail dr-buying-advice"><summary>Buying guide and item details</summary>%%SECTIONS%%</details>
