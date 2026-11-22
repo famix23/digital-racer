@@ -28,6 +28,7 @@ class Page(HTMLParser):
         self.metas = defaultdict(list)
         self.canonicals = []
         self.headings = []
+        self.buyer_verification_sections = 0
         self.images = []
         self.buy_links = []
         self.related = []
@@ -49,6 +50,8 @@ class Page(HTMLParser):
             self.images.append(attrs)
         if tag == "h1":
             self.headings.append(attrs)
+        if tag == "section" and "dr-buyer-verification" in attrs.get("class", "").split():
+            self.buyer_verification_sections += 1
         if tag == "a":
             if attrs.get("id") == "buy-btn":
                 self.buy_links.append(attrs.get("href", ""))
@@ -196,6 +199,10 @@ def main():
         raw_description = plain(item.get("description", ""))
         if len(raw_description) < 100:
             warnings.append(f"{label}: source description is brief ({len(raw_description)} chars)")
+            if page.buyer_verification_sections != 1:
+                failures.append(f"{label}: brief supplier listing lacks one visible, source-grounded buying guide")
+        elif page.buyer_verification_sections:
+            failures.append(f"{label}: unexpected buyer guide on full seller description")
         counts[item.get("category", "unknown")] += 1
 
     for title, count in title_count.items():
