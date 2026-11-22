@@ -1,0 +1,133 @@
+/* DigitalRacer product-first catalog, scoped to /catalog.
+   Desktop: compact sticky category rail. Phone/tablet: accessible drawer.
+   Keep the actual pre-rendered product grid high in the page. */
+.catalog-container{padding-top:18px}
+.catalog-container .catalog-top-bar{
+  display:flex;align-items:center;justify-content:space-between;gap:16px;
+  flex-wrap:wrap;margin:0 0 17px;padding:0 0 14px;border-bottom:1px solid var(--border);
+}
+.catalog-container .catalog-heading-wrap{display:flex;align-items:baseline;gap:15px;flex-wrap:wrap;min-width:0}
+.catalog-container .page-title{font-size:clamp(1.32rem,2.5vw,2rem);line-height:1.2;letter-spacing:-.4px;margin:0}
+.catalog-container #catalog-count{margin:0;padding:6px 10px;border-radius:7px;font-size:.78rem;line-height:1.3;color:var(--muted);white-space:normal}
+.catalog-container .catalog-top-bar .controls-wrapper{
+  display:flex;align-items:center;gap:10px;width:auto;flex:0 0 auto;
+}
+.catalog-container .catalog-top-bar .sort-select{width:auto;min-width:187px;max-width:100%;min-height:46px;font-size:.86rem}
+.catalog-layout{display:grid;grid-template-columns:minmax(215px,240px) minmax(0,1fr);align-items:start;gap:20px}
+.catalog-results{min-width:0}
+.catalog-results .grid{min-width:0;gap:18px;grid-template-columns:repeat(auto-fill,minmax(215px,1fr))}
+.catalog-container .catalog-sidebar{
+  min-width:0;position:sticky;top:16px;max-height:calc(100vh - 32px);overflow-y:auto;
+  overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:var(--border) transparent;
+  padding:16px 13px;border:1px solid var(--border);border-radius:13px;
+  background:var(--surface);box-shadow:0 8px 25px rgba(0,0,0,.12);
+}
+.catalog-sidebar-header{display:flex;justify-content:space-between;gap:10px;align-items:center;margin-bottom:13px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+.catalog-sidebar-header h2{margin:0;font:800 .91rem/1.35 'Montserrat',system-ui,sans-serif;color:var(--text)}
+.catalog-container .catalog-sidebar .filter-group{
+  display:flex;flex-direction:column;flex-wrap:nowrap;gap:6px;overflow:visible;
+  width:auto;margin:0;padding:0;scroll-snap-type:none;
+}
+.catalog-container .catalog-sidebar .filter-group .filter-btn{
+  display:flex;align-items:center;justify-content:space-between;min-width:0;width:100%;
+  min-height:43px;padding:9px 12px;border-radius:8px;text-align:left;white-space:normal;
+  font-size:.77rem;line-height:1.4;letter-spacing:.02em;scroll-snap-align:none;
+}
+.catalog-container .catalog-sidebar .filter-group .filter-btn.active::after{
+  content:"✓";margin-left:10px;font-size:1rem;font-weight:900
+}
+.catalog-container .catalog-sidebar .catalog-directory-links{
+  display:flex;flex-direction:column;align-items:stretch;flex-wrap:nowrap;
+  gap:3px;overflow:visible;margin:16px 0 0;padding:13px 0 0;
+  border-top:1px solid var(--border);border-bottom:0;scroll-snap-type:none;
+}
+.catalog-container .catalog-sidebar .catalog-directory-links>span{
+  margin:0 0 5px;font-size:.71rem;letter-spacing:.04em;text-transform:uppercase;
+  color:var(--muted);white-space:normal
+}
+.catalog-container .catalog-sidebar .catalog-directory-links>a{
+  justify-content:flex-start;min-width:0;width:100%;min-height:37px;padding:7px 9px;
+  border:0;border-radius:7px;background:transparent;color:var(--text);
+  font-size:.76rem;line-height:1.35;white-space:normal;text-decoration:none;
+}
+.catalog-container .catalog-sidebar .catalog-directory-links>a:hover,
+.catalog-container .catalog-sidebar .catalog-directory-links>a:focus-visible{
+  color:var(--accent);background:var(--surface2)
+}
+.catalog-container .catalog-sidebar .catalog-safety{
+  display:block;margin:16px 0 0;padding:10px 11px;border:1px solid var(--border);
+  border-radius:9px;background:var(--surface2);color:var(--text);
+  font-size:.77rem;line-height:1.55
+}
+.catalog-container .catalog-sidebar .catalog-safety summary{color:var(--accent);font-size:.78rem;line-height:1.55;cursor:pointer}
+.catalog-container .catalog-sidebar .catalog-safety-copy{color:var(--text)}
+.catalog-container .catalog-sidebar .catalog-whatsapp-contact{
+  display:flex;flex-direction:column;align-items:stretch;gap:6px;
+  margin:14px 0 0;padding:0
+}
+.catalog-container .catalog-sidebar .catalog-whatsapp-contact a{
+  display:flex;width:100%;min-height:46px;padding:10px;font-size:.77rem
+}
+.catalog-container .catalog-sidebar .catalog-whatsapp-contact span{font-size:.73rem;line-height:1.45;color:var(--muted)}
+.catalog-filter-toggle,.catalog-filter-close,.catalog-sidebar-backdrop{display:none}
+html[data-dr-theme="light"] .catalog-container .catalog-sidebar{
+  background:var(--surface);border-color:var(--border)
+}
+html[data-dr-theme="light"] .catalog-container .catalog-sidebar .filter-btn:not(.active){
+  background:var(--surface2);color:var(--text);border-color:var(--border)
+}
+html[data-dr-theme="light"] .catalog-container .catalog-sidebar .catalog-safety{
+  background:var(--surface2);color:var(--text)
+}
+@media(max-width:930px){
+  .catalog-container{padding:13px 4vw 36px}
+  .catalog-container .catalog-top-bar{align-items:stretch;gap:10px;margin-bottom:10px;padding-bottom:10px}
+  .catalog-container .catalog-heading-wrap{gap:8px;align-items:center;justify-content:space-between;width:100%}
+  .catalog-container .page-title{font-size:clamp(1.22rem,5vw,1.75rem)}
+  .catalog-container #catalog-count{font-size:.74rem;padding:5px 8px}
+  .catalog-container .catalog-top-bar .controls-wrapper{
+    display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+    gap:8px;width:100%;margin:0;align-items:stretch
+  }
+  .catalog-container .catalog-top-bar .sort-select{width:100%;min-width:0;font-size:14px;min-height:45px}
+  .catalog-filter-toggle{
+    display:flex;align-items:center;justify-content:center;gap:7px;
+    width:100%;min-width:0;min-height:45px;padding:8px;border:1px solid var(--accent);
+    background:var(--surface2);color:var(--text);border-radius:9px;
+    font:800 .76rem/1.2 'Montserrat',system-ui,sans-serif;cursor:pointer
+  }
+  .catalog-filter-toggle svg{flex:none;width:18px;height:18px;color:var(--accent)}
+  .catalog-filter-current{display:inline-block;max-width:77px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:var(--accent);font-size:.67rem}
+  .catalog-layout{display:block}
+  .catalog-results .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .catalog-container .catalog-sidebar{
+    display:none;position:fixed;z-index:10025;top:0;right:0;bottom:0;
+    width:min(360px,calc(100vw - 32px));height:100vh;height:100dvh;max-height:none;
+    margin:0;padding:18px 16px 26px;overflow-y:auto;overscroll-behavior:contain;
+    border-radius:16px 0 0 16px;background:var(--surface);box-shadow:-10px 0 45px rgba(0,0,0,.5)
+  }
+  body.catalog-filters-open .catalog-sidebar{display:block}
+  body.catalog-filters-open{overflow:hidden;touch-action:none}
+  body.catalog-filters-open .catalog-sidebar{touch-action:auto}
+  .catalog-filter-close{
+    display:inline-flex;align-items:center;gap:7px;justify-content:center;
+    min-height:44px;padding:6px 12px;border:1px solid var(--border);
+    border-radius:8px;background:var(--surface2);color:var(--text);font-size:.77rem;font-weight:800;cursor:pointer
+  }
+  .catalog-filter-close span{font-size:1.3rem;line-height:1}
+  body.catalog-filters-open .catalog-sidebar-backdrop{
+    display:block;position:fixed;inset:0;z-index:10024;border:0;
+    background:rgba(0,0,0,.73);cursor:pointer
+  }
+  .catalog-container .catalog-sidebar .filter-group{gap:7px}
+  .catalog-container .catalog-sidebar .filter-group .filter-btn{min-height:48px;font-size:.86rem}
+  .catalog-container .catalog-sidebar .catalog-directory-links>a{min-height:43px;font-size:.86rem}
+  .catalog-container .catalog-sidebar .catalog-whatsapp-contact a{font-size:.86rem}
+}
+@media(max-width:390px){
+  .catalog-filter-toggle{font-size:.72rem;gap:4px}
+  .catalog-filter-toggle svg{width:15px;height:15px}
+  .catalog-filter-current{max-width:58px}
+  .catalog-container .catalog-top-bar .sort-select{font-size:13px;padding:6px}
+}
+@media(prefers-reduced-motion:reduce){.catalog-sidebar{scroll-behavior:auto}}
