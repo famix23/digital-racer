@@ -49,6 +49,9 @@ const collectionPaths = [
   ['pubg-mobile-car-cards','bentley-bentayga','Bentley Bentayga cards'],
   ['pubg-mobile-car-cards','bentley-continental','Continental GTC cards'],
   ['pubg-mobile-car-cards','bentley-flying-spur','Flying Spur cards'],
+  ['pubg-mobile-in-game-items','karambit-cards','Karambit skin cards'],
+  ['pubg-mobile-in-game-items','sixtino-seventino','Sixtino Seventino cards'],
+  ['pubg-mobile-in-game-items','taurino-assassino','Taurino Assassino items'],
 ];
 const manifestLinks = new Set(JSON.parse(read('assets/catalog-index.json')).map(p=>p.url));
 for (const [slug,anchor,label] of collectionPaths) {
@@ -63,6 +66,8 @@ for (const [slug,anchor,label] of collectionPaths) {
     'Feature section needs real product listings: '+anchor);
   for(const url of destinations)assert.ok(manifestLinks.has(url),'Feature points at non-product URL: '+url);
 }
+assert.ok(read('shop/pubg-mobile-car-cards/index.html').includes('PUBG Mobile Car Cards for Sale | Bentley | Digital Racer'),
+  'Car card SEO title must match real buying intent without altering product titles');
 assert.ok(home.includes('href="/shop/pubg-mobile-uc-top-ups/">PUBG Mobile UC top-ups</a>'),
   'High-intent UC shoppers must reach canonical UC category');
 for(const hub of hubs){
