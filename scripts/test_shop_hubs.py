@@ -57,7 +57,17 @@ def main():
         breadcrumb = schema.get("breadcrumb", {}).get("itemListElement", [])
         assert [part.get("name") for part in breadcrumb] == ["Home", "Catalog", hub["category"]], (slug, "breadcrumb schema")
         assert breadcrumb[0].get("item") == HOST + "/" and breadcrumb[1].get("item") == HOST + "/catalog", (slug, "breadcrumb URLs")
-        expected = [manifest[i]["url"] for i, item in enumerate(items) if item["category"] == hub["category"]][-12:][::-1]
+        featured = [(manifest[i], item) for i, item in enumerate(items)
+                    if item["category"] == hub["category"]][::-1]
+        if slug == "pubg-mobile-car-cards":
+            # The existing Bentley event policy pins Bentley offers, while
+            # other car-card offers remain available in the full directory.
+            bentley = [(entry, item) for entry, item in featured
+                       if "bentley" in (item.get("original_title") or
+                           item.get("source_title") or item["title"]).casefold()]
+            if bentley:
+                featured = bentley
+        expected = [entry["url"] for entry, _ in featured[:12]]
         # All current category products have direct HTML links from the hub.
         all_category = [manifest[i] for i, item in enumerate(items) if item["category"] == hub["category"]]
         featured_set = set(expected)
