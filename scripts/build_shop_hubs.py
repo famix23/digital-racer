@@ -209,10 +209,7 @@ def build_shop_hubs(root, products, write):
                 fast_cards.append(
                     '<article class="dr-bentley-fast-card"><a class="dr-bentley-fast-title" href="' +
                     esc(entry["url"]) + '">' + esc(entry["display_title"]) +
-                    '</a><div class="dr-bentley-fast-details"><span>
-        slugs.append(slug)
-    return slugs
- + esc(entry["price"]) +
+                    '</a><div class="dr-bentley-fast-details"><span>$' + esc(entry["price"]) +
                     ' USD</span><a href="' + esc(chat) +
                     '" target="_blank" rel="noopener noreferrer">Ask on WhatsApp</a></div></article>'
                 )
