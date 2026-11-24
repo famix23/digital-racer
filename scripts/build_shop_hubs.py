@@ -185,6 +185,49 @@ def build_shop_hubs(root, products, write):
                            '<meta name="twitter:card" content="summary_large_image">\n'
                            '<meta name="twitter:image" content="' + esc(social_url) + '">\n')
             page = page.replace('<meta name="theme-color"', social_meta + '<meta name="theme-color"', 1)
+        # Direct links to real Bentley models with demonstrated buyer search interest.
+        # Keep titles and prices inventory-backed; removed listings disappear on rebuild.
+        if slug == "pubg-mobile-car-cards":
+            preferred_urls = (
+                "/p/pubg-mobile-v4-7-bentley-car-card-flying-spur-nebula-showcase/",
+                "/p/pubg-mobile-v4-7-bentley-car-card-batur-holoprism-collection/",
+                "/p/pubg-mobile-v4-7-bentley-car-card-black-gold-luxury-showcase/",
+                "/p/pubg-mobile-bentley-2026-car-card-for-sale-model-selection/",
+                "/p/pubg-mobile-v4-7-bentley-car-skin-card-flying-spur-luxury-sedan/",
+                "/p/bentley-prismatic-suv-car-card-pubg-mobile-bentayga-azure/",
+            )
+            by_url = {p["url"]: p for p in matches}
+            fast_cards = []
+            for target in preferred_urls:
+                entry = by_url.get(target)
+                if not entry:
+                    continue
+                message = ("Hello Digital Racer. I am interested in " + entry["display_title"] +
+                           " (" + SITE + entry["url"] + ") listed at $" + str(entry["price"]) +
+                           " USD. Please confirm the model, finish, region eligibility and final price.")
+                chat = "https://wa.me/923454342911?text=" + quote(message, safe="")
+                fast_cards.append(
+                    '<article class="dr-bentley-fast-card"><a class="dr-bentley-fast-title" href="' +
+                    esc(entry["url"]) + '">' + esc(entry["display_title"]) +
+                    '</a><div class="dr-bentley-fast-details"><span>
+        slugs.append(slug)
+    return slugs
+ + esc(entry["price"]) +
+                    ' USD</span><a href="' + esc(chat) +
+                    '" target="_blank" rel="noopener noreferrer">Ask on WhatsApp</a></div></article>'
+                )
+            if fast_cards:
+                fast_section = (
+                    '<section class="dr-bentley-fast" aria-labelledby="dr-bentley-fast-heading">'
+                    '<h2 id="dr-bentley-fast-heading">Explore Bentley 4.7 car cards by model</h2>'
+                    '<p>Compare exact vehicle finishes and USD listing prices, or ask about a specific '
+                    'card directly on WhatsApp. Confirm gifting and regional eligibility before paying.</p>'
+                    '<div class="dr-bentley-fast-grid">' + "".join(fast_cards) +
+                    '</div></section>'
+                )
+                page = page.replace('<section class="listing-head">',
+                                    fast_section + '<section class="listing-head">', 1)
+                page = page.replace('</style>', ".dr-bentley-fast{margin:24px 0 14px;padding:17px;border:1px solid #65512d;border-radius:11px;background:#12100c}.dr-bentley-fast h2{margin:0 0 7px;font-size:1.19rem}.dr-bentley-fast>p{font-size:.9rem;margin-bottom:12px}.dr-bentley-fast-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.dr-bentley-fast-card{display:flex;flex-direction:column;justify-content:space-between;gap:9px;min-width:0;background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:13px}.dr-bentley-fast-title{color:#f0d797;text-decoration:underline;text-underline-offset:3px;font-weight:700;font-size:.88rem;line-height:1.4;overflow-wrap:anywhere}.dr-bentley-fast-details{display:flex;align-items:center;justify-content:space-between;gap:8px;flex-wrap:wrap}.dr-bentley-fast-details span{font-size:.9rem;color:var(--gold);font-weight:750}.dr-bentley-fast-details a{display:inline-flex;min-height:42px;align-items:center;justify-content:center;border-radius:5px;background:#166a43;color:#fff;text-decoration:none;font-size:.83rem;font-weight:750;padding:7px 10px}.dr-bentley-fast-details a:hover,.dr-bentley-fast-details a:focus-visible{background:#228b57;color:#fff;outline:2px solid var(--gold);outline-offset:2px}@media(max-width:800px){.dr-bentley-fast-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.dr-bentley-fast{padding:12px;margin:16px 0 10px}.dr-bentley-fast-card{padding:11px}}@media(max-width:370px){.dr-bentley-fast-grid{grid-template-columns:1fr}}" + '</style>', 1)
         write("shop/" + slug + "/index.html", page)
         slugs.append(slug)
     return slugs
