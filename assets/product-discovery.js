@@ -221,12 +221,12 @@
         var seller = document.getElementById("buy-btn");
         if (current.category === "Account" && seller && /\bbuy\s+now\b/i.test(seller.textContent) &&
             !document.getElementById("dr-usdt-buy") && Number.isFinite(Number(current.price)) && Number(current.price)>0) {
-          var checkout = el("a", "whatsapp-btn", "Buy Now — USDT");
+          var checkout = el("a", "whatsapp-btn", "Buy Now");
           checkout.id = "dr-usdt-buy";
           checkout.href = "/checkout-preview/?product=" + encodeURIComponent(current.url);
           checkout.style.marginBottom = "10px";
           seller.insertAdjacentElement("beforebegin",checkout);
-          seller.textContent = "Chat with Seller — WhatsApp";
+          seller.textContent = "Chat with Seller";
           seller.style.background = "#155d39";
           seller.style.color = "#ffffff";
           seller.style.boxShadow = "none";
