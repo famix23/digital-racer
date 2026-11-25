@@ -9,7 +9,7 @@
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    "run_worker_first": ["/ads.txt", "/product", "/product.html", "/dropzone", "/dropzone/*", "/speed-drift", "/speed-drift/*"],
+    "run_worker_first": ["/ads.txt", "/product", "/product.html", "/dropzone", "/dropzone/*", "/speed-drift", "/speed-drift/*", "/checkout-preview", "/checkout-preview/*"],
     // Serve /404.html with a real 404 status for unknown URLs
     "not_found_handling": "404-page"
   }

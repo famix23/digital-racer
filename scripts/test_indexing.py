@@ -111,12 +111,14 @@ def main():
                     f"Redirect fallback canonical wrong: {source}")
 
     # Deliberate exclusions: utility pages and legacy redirect fallbacks.
-    for path in ("404.html", "product.html", "dropzone/index.html"):
+    for path in ("404.html", "product.html", "dropzone/index.html", "checkout-preview/index.html"):
         require(any("noindex" in tag for tag in parse(ROOT / path).robots),
                 f"Expected noindex missing on {path}")
     headers = (ROOT / "_headers").read_text(encoding="utf-8")
     require("/admin/*\n  X-Robots-Tag: noindex" in headers, "Admin X-Robots-Tag missing")
     require("/dropzone/*\n  X-Robots-Tag: noindex" in headers, "DropZone demo X-Robots-Tag missing")
+    require("/checkout-preview/*\n  X-Robots-Tag: noindex" in headers, "Checkout preview X-Robots-Tag missing")
+    require("/checkout-preview/" not in routes, "Checkout preview must not appear in sitemap")
     for endpoint in ("/inventory.json", "/p/index.json", "/assets/catalog-index.json", "/assets/catalog-search.json"):
         require(endpoint + "\n  Cache-Control: public, max-age=0, must-revalidate\n  X-Robots-Tag: noindex" in headers,
                 f"JSON API excluded from indexing: {endpoint}")
@@ -125,7 +127,7 @@ def main():
     require("Disallow: /\n" not in robots, "Global robots.txt block")
 
     utility = {ROOT / "404.html", ROOT / "product.html", ROOT / "admin/index.html",
-               ROOT / "dropzone/index.html"}
+               ROOT / "dropzone/index.html", ROOT / "checkout-preview/index.html"}
     fallback = {page_for(src) for src in rules if src.endswith("/")}
     known = {page_for(route) for route in routes} | utility | fallback
     html_files = [p for p in ROOT.rglob("*.html")

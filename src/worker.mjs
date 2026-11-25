@@ -40,6 +40,16 @@ export function canonicalProductRoute(title, manifest) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    // Checkout prototype: handle the directory route explicitly; never cache it.
+    if (["/checkout-preview", "/checkout-preview/", "/checkout-preview/index.html"].includes(url.pathname) &&
+        (request.method === "GET" || request.method === "HEAD")) {
+      const asset = await env.ASSETS.fetch(new Request(new URL("/checkout-preview/", url.origin), {method: request.method}));
+      const headers = new Headers(asset.headers);
+      headers.set("Cache-Control", "no-store");
+      headers.set("X-Robots-Tag", "noindex, nofollow, noarchive");
+      headers.set("Referrer-Policy", "no-referrer");
+      return new Response(request.method === "HEAD" ? null : asset.body, {status: asset.status, headers});
+    }
     // The Google ads.txt crawler must see a plain-text 200 response at either host.
     // HEAD uses identical headers without a body.
     if (url.pathname === "/ads.txt" && (request.method === "GET" || request.method === "HEAD")) {
