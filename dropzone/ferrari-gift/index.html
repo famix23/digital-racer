@@ -21,14 +21,14 @@
 <div class="layout">
 <article class="panel product"><img src="/images/uploads/digitalracer-eldorado-358fd1da-9b62-464e-c6be-08dede4d0c02-01.png" alt="Ferrari Sports Car Card listing artwork" width="640" height="420"><div class="content"><div class="kicker">Selected gift · 1 card</div><h2>Ferrari Sports Car Card</h2><p class="muted">PUBG MOBILE · In-game gifting</p><a href="/p/1x-ferrari-sports-car-card-available-for-sale-pubg-mobile/">View original product</a></div></article>
 <section class="panel content" aria-labelledby="details"><h2 id="details">Player information</h2><p class="muted">All four fields are required.</p>
-<form id="giftForm" autocomplete="off">
+<form id="giftForm" method="post" autocomplete="off">
 <div class="fields">
 <div><label for="uid">Player ID number (UID)</label><input id="uid" name="uid" type="text" inputmode="numeric" pattern="[0-9]{5,20}" maxlength="20" placeholder="Enter your numeric PUBG MOBILE ID" required title="Enter 5 to 20 digits"></div>
 <div><label for="nick">Player ID name (nickname)</label><input id="nick" name="nickname" maxlength="64" placeholder="Exact in-game name" required></div>
 <div><label for="region">Region / server</label><select id="region" name="region" required><option value="">Select your region</option><option>Asia</option><option>Middle East</option><option>Europe</option><option>North America</option><option>South America</option><option>KRJP</option><option>Other</option></select></div>
 <div><label for="country">Country</label><input id="country" name="country" maxlength="80" placeholder="Enter your country" required></div>
 </div>
-<button class="btn" type="submit">Review gifting details</button>
+<button class="btn" id="reviewButton" type="submit" disabled>Review gifting details</button>
 <p class="note">Your information stays in this page until you choose to share it via WhatsApp. No password, payment or login details are required.</p>
 </form>
 <div class="review" id="review" hidden><h2>Review your details</h2><dl><div><dt>Gift</dt><dd>1 × Ferrari Sports Car Card</dd></div><div><dt>Player ID number</dt><dd id="rUid"></dd></div><div><dt>Player ID name</dt><dd id="rNick"></dd></div><div><dt>Region / server</dt><dd id="rRegion"></dd></div><div><dt>Country</dt><dd id="rCountry"></dd></div></dl><a class="btn" id="send" rel="noopener noreferrer" target="_blank">Send gifting details to DigitalRacer</a><button class="btn secondary" type="button" id="edit">Edit details</button><p class="note">WhatsApp opens with the prepared message. Press Send there to submit it. DigitalRacer will arrange delivery manually; submitting does not confirm a gift has been delivered.</p></div>
@@ -52,6 +52,7 @@ send.href="https://wa.me/923454342911?text="+encodeURIComponent(message);
 form.hidden=true;review.hidden=false;send.focus();
 });
 edit.addEventListener("click",function(){send.removeAttribute("href");review.hidden=true;form.hidden=false;uid.focus();});
+document.getElementById("reviewButton").disabled=false;
 })();
 </script>
 </body></html>
