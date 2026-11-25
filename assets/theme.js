@@ -131,14 +131,33 @@
   document.head.appendChild(script);
 })();
 
-/* Shared purchase actions for catalog, homepage, category and related cards.
+/* Shared purchase actions for catalog, homepage and category cards; compact View only for recommendations.
    Eligibility is rechecked against the actual product page before checkout
    displays a wallet; no price or availability is trusted from URL parameters. */
 (function () {
   "use strict";
   if (typeof document === "undefined" || typeof document.querySelectorAll !== "function" ||
       typeof MutationObserver !== "function") return;
-  var selector = '.dr-product-tile, .dr-category-page a.product-card[href^="/p/"], .dr-bentley-fast-card, a.rel-card[href^="/p/"], a.dr-discovery-card[href^="/p/"], a.dr-discovery-mini[href^="/p/"]';
+  var selector = '.dr-product-tile, .dr-category-page a.product-card[href^="/p/"], .dr-bentley-fast-card';
+  var recommendationSelector = 'a.rel-card[href^="/p/"], a.dr-discovery-card[href^="/p/"], a.dr-discovery-mini[href^="/p/"]';
+  function enhanceRecommendation(node) {
+    if (!node || node.nodeType !== 1 || node.dataset.drViewReady) return;
+    var path = node.getAttribute("href");
+    if (!path || !/^\/p\/[a-z0-9-]+\/$/.test(path)) return;
+    node.dataset.drViewReady = "1";
+    // The original card remains the sole, crawlable product link. The view
+    // label is inside that link, never a nested anchor or separate purchase action.
+    if (node.querySelector(".dr-recommendation-view")) return;
+    var host = node.querySelector(".rel-content, .dr-discovery-mini-copy, .dr-discovery-card-copy") || node;
+    var existing = host.querySelector(".dr-discovery-card-action");
+    if (existing) { existing.textContent = "View"; existing.classList.add("dr-recommendation-view"); }
+    else {
+      var view = document.createElement("span");
+      view.className = "dr-recommendation-view";
+      view.textContent = "View";
+      host.appendChild(view);
+    }
+  }
   function action(path, label, className, href) {
     var a = document.createElement("a");
     a.className = className;
@@ -181,6 +200,8 @@
   function scan(root) {
     if (root.nodeType === 1 && root.matches(selector)) enhance(root);
     if (root.querySelectorAll) root.querySelectorAll(selector).forEach(enhance);
+    if (root.nodeType === 1 && root.matches(recommendationSelector)) enhanceRecommendation(root);
+    if (root.querySelectorAll) root.querySelectorAll(recommendationSelector).forEach(enhanceRecommendation);
   }
   function install() {
     if (!document.body) return;

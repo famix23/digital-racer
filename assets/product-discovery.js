@@ -107,7 +107,7 @@
     var copy = el("span", compact ? "dr-discovery-mini-copy" : "dr-discovery-card-copy");
     copy.appendChild(el("span", compact ? "dr-discovery-mini-title" : "dr-discovery-card-title", p.title));
     copy.appendChild(el("span", compact ? "dr-discovery-mini-price" : "dr-discovery-card-price", priceText(p)));
-    if (!compact) copy.appendChild(el("span", "dr-discovery-card-action", "View item"));
+    copy.appendChild(el("span", "dr-recommendation-view" + (compact ? "" : " dr-discovery-card-action"), "View"));
     a.appendChild(copy);
     return a;
   }

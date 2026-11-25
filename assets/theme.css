@@ -690,3 +690,19 @@ html[data-dr-theme="light"] .dr-discovery-mini:hover{border-color:#956a23}
 .dr-card-purchase-actions .dr-card-chat,.dr-card-purchase-actions .dr-card-buy{margin:0}
 .dr-bentley-fast-details{flex-wrap:wrap}.dr-bentley-fast-details .dr-card-buy,.dr-bentley-fast-details .dr-card-chat{flex:1 1 100%}
 @media(max-width:600px){.dr-card-buy,.dr-card-chat,.dr-card-whatsapp.dr-card-chat{min-height:44px;font-size:.72rem!important}}
+
+/* Recommendation cards are for browsing, not checkout. Keep the purchase
+   controls on the selected product and the main shopping catalog. */
+.rel-card .dr-recommendation-view,.dr-discovery-card .dr-recommendation-view{
+  display:block;align-self:stretch;text-align:center;margin-top:9px;
+  padding:7px 10px;border:1px solid var(--border);border-radius:6px;
+  color:var(--accent);background:var(--surface2);font-size:.76rem;font-weight:750;line-height:1.3
+}
+.dr-discovery-card .dr-recommendation-view{margin-top:auto}
+.dr-discovery-mini .dr-recommendation-view{
+  display:inline-flex;align-self:flex-start;align-items:center;
+  padding:2px 9px;border:1px solid var(--border);border-radius:4px;
+  color:var(--accent);font-size:.66rem;font-weight:750;line-height:1.3
+}
+.rel-card:hover .dr-recommendation-view,.dr-discovery-card:hover .dr-recommendation-view,.dr-discovery-mini:hover .dr-recommendation-view{border-color:var(--accent)}
+html[data-dr-theme="light"] .dr-recommendation-view{color:#725019;background:#f6f3ee;border-color:#d8cfbf}
