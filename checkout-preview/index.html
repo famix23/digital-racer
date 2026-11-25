@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; script-src 'unsafe-inline'; base-uri 'none'; form-action 'none'; connect-src 'none'">
+<title>DigitalRacer | Checkout demonstration</title>
+<style>
+:root{color-scheme:dark;--bg:#0a0b0e;--panel:#14161b;--line:#30333b;--text:#f3f3f5;--muted:#b8bbc6;--gold:#e1bd59}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#242015,var(--bg) 55%);color:var(--text);font:15px/1.55 system-ui,sans-serif}main{max-width:1140px;margin:auto;padding:24px 18px 48px}header{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}h1,h2,h3,p{margin:0 0 12px}h1{font-size:clamp(24px,4vw,34px);letter-spacing:.07em;color:var(--gold)}h2{font-size:22px}h3{font-size:16px}.muted,small{color:var(--muted)}.notice{border:1px solid #927235;background:#282215;padding:14px 16px;border-radius:12px;margin:16px 0 24px}.layout{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:20px;padding:22px;min-width:0}.row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:12px 0;border-bottom:1px solid var(--line)}.row:last-child{border-bottom:0}.row label{flex:1}.row small{display:block}.switch{appearance:none;flex:none;width:48px;height:27px;border:1px solid #626775;border-radius:30px;background:#41454d;cursor:pointer;position:relative;margin:0}.switch:before{content:"";position:absolute;width:19px;height:19px;border-radius:50%;background:white;top:3px;left:4px}.switch:checked{background:#16834b;border-color:#47b978}.switch:checked:before{left:23px}.switch:focus-visible,button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible{outline:3px solid var(--gold);outline-offset:3px}button,select,input:not(.switch){font:inherit;border-radius:9px;padding:11px;color:var(--text);background:#1e2128;border:1px solid #454955}button{cursor:pointer;font-weight:700}button.primary{background:var(--gold);color:#13120d;border-color:var(--gold);width:100%;margin-top:14px}button:disabled{opacity:.45;cursor:not-allowed}button.secondary{width:100%;margin-top:10px}.field{display:grid;gap:5px;margin:12px 0}.field input,.field select{width:100%}.amount{font-size:32px;color:var(--gold);font-weight:800}.tag{font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--gold);font-weight:700}.summary{background:#1d2026;border:1px solid var(--line);border-radius:13px;padding:16px;margin:15px 0}.method{display:flex;align-items:center;gap:12px;width:100%;text-align:left;margin:8px 0;background:#1d2026}.method[aria-pressed=true]{border-color:var(--gold);background:#29261b}.method span{flex:1}.method small{display:block;font-weight:400}.mark{font-size:12px;color:var(--gold)}.status{margin-top:16px;padding:14px;border:1px dashed #555b68;border-radius:10px;overflow-wrap:anywhere}a{color:var(--gold)}footer{margin-top:24px;text-align:center;color:var(--muted)}[hidden]{display:none!important}@media(max-width:760px){.layout{grid-template-columns:1fr}.panel{padding:17px}main{padding:16px 12px 32px}}@media(prefers-reduced-motion:no-preference){.switch:before{transition:left .15s}}
+</style>
+</head>
+<body><main>
+<header><div><div class="tag">Digital gaming marketplace</div><h1>DIGITALRACER</h1></div><a href="/">Back to storefront</a></header>
+<div class="notice" role="note"><strong>Interactive demonstration only.</strong> No money can be transferred, no card or bank details are requested, and no customer orders are created. Controls operate only in this browser tab. This is not a real admin login or private checkout.</div>
+<div class="layout">
+<section class="panel" aria-labelledby="admin-title"><div class="tag">01 / Seller simulation</div><h2 id="admin-title">Payment Control Center</h2><p class="muted">Try the controls exactly as a seller would on mobile.</p>
+<div class="row"><label for="master"><strong>Master checkout switch</strong><small>Disabling revokes the demo order.</small></label><input class="switch" id="master" type="checkbox" checked></div>
+<h3 style="margin-top:18px">Payment methods</h3><div id="switches"></div>
+<h3 style="margin-top:20px">Create a sample checkout</h3>
+<div class="field"><label for="product">Sample product</label><select id="product"><option>PUBG Mobile Bentley Car Skin</option><option>PUBG Mobile Account</option><option>UC Top-Up</option><option>Custom order</option></select></div>
+<div class="field"><label for="price">Agreed price (USD)</label><input id="price" type="number" min="0.01" max="100000" step=".01" required value="150.00"></div>
+<div class="field"><label for="expiry">Access validity</label><select id="expiry"><option value="1">1 hour</option><option value="6" selected>6 hours</option><option value="24">24 hours</option><option value="48">48 hours</option></select></div>
+<button class="primary" id="approve" type="button">Generate demo checkout</button>
+<button class="secondary" id="revoke" type="button" disabled>Revoke demo access</button>
+<div id="admin-status" class="status" role="status">No customer authorized.</div>
+</section>
+<section class="panel" aria-labelledby="buyer-title"><div class="tag">02 / Customer simulation</div><h2 id="buyer-title">International checkout</h2><div class="summary"><div class="tag">Sample order</div><h3 id="buyer-product">Awaiting approval</h3><div class="amount" id="buyer-price">—</div><small id="buyer-ref">No active demo order</small></div>
+<div id="locked" class="status"><strong>Private checkout locked</strong><p class="muted">Contact the seller to request access. No banking details are visible.</p></div>
+<div id="approved" hidden><h3>Available methods</h3><div id="buyer-methods"></div><div class="status" id="instructions" role="status">Select a payment method to preview its instructions.</div><button class="primary" id="simulate" type="button" disabled>Simulate receipt submission</button><div id="buyer-status" role="status" class="status" hidden></div></div>
+</section></div><footer>DigitalRacer · Prototype only · No payment processing · No data transmitted</footer>
+</main>
+<script>
+"use strict";
+const methods=[
+ {name:"Visa / Mastercard",type:"Card",note:"Authorized processor required",ready:false},
+ {name:"Apple Pay",type:"Wallet",note:"Authorized processor required",ready:false},
+ {name:"Google Pay",type:"Wallet",note:"Authorized processor required",ready:false},
+ {name:"UBL USD Bank Transfer",type:"Bank",note:"Manual transfer, subject to bank eligibility",ready:true},
+ {name:"Remitly",type:"Transfer",note:"Commercial eligibility required",ready:true},
+ {name:"Wise",type:"Transfer",note:"Commercial eligibility required",ready:true},
+ {name:"Western Union",type:"Transfer",note:"Commercial eligibility required",ready:true},
+ {name:"USDT / Binance",type:"Crypto",note:"Subject to applicable rules; manual verification",ready:true},
+ {name:"JazzCash",type:"Pakistan",note:"Eligible account and manual verification",ready:true},
+ {name:"Easypaisa",type:"Pakistan",note:"Eligible account and manual verification",ready:true}
+];
+const $=id=>document.getElementById(id);
+let flags=methods.map((_,i)=>i===3||i===7), order=null, selected=-1, submitted=false;
+const currency=new Intl.NumberFormat("en-US",{style:"currency",currency:"USD"});
+methods.forEach((m,i)=>{
+ const row=document.createElement("div");row.className="row";
+ const label=document.createElement("label");label.htmlFor="method-"+i;
+ const strong=document.createElement("strong");strong.textContent=m.name;
+ const note=document.createElement("small");note.textContent=m.note;
+ label.append(strong,note);
+ const input=document.createElement("input");input.type="checkbox";input.className="switch";input.id=label.htmlFor;input.checked=flags[i];
+ input.addEventListener("change",()=>{flags[i]=input.checked;if(selected===i&&!flags[i]){selected=-1;submitted=false}render()});
+ row.append(label,input);$("switches").append(row);
+});
+function render(){
+ if(order&&Date.now()>=order.until){order=null;selected=-1;submitted=false}
+ const allowed=$("master").checked&&order!==null;
+ $("approve").disabled=!$("master").checked;
+ $("revoke").disabled=!order;
+ $("locked").hidden=allowed;$("approved").hidden=!allowed;
+ $("buyer-product").textContent=allowed?order.product:"Awaiting approval";
+ $("buyer-price").textContent=allowed?currency.format(order.price):"—";
+ $("buyer-ref").textContent=allowed?"DEMO-"+order.ref+" · Expires "+new Date(order.until).toLocaleString():"No active demo order";
+ $("admin-status").textContent=allowed?(submitted?"Demo receipt received — payment NOT verified.":"Demo checkout authorized for "+order.product+" at "+currency.format(order.price)+"."):"No customer authorized. Payment instructions hidden.";
+ $("buyer-methods").replaceChildren();
+ if(!allowed){$("buyer-status").hidden=true;return}
+ if(!flags.some(Boolean)){const p=document.createElement("p");p.textContent="No methods enabled. Contact seller.";$("buyer-methods").append(p)}
+ methods.forEach((m,i)=>{if(!flags[i])return;
+  const btn=document.createElement("button");btn.type="button";btn.className="method";btn.setAttribute("aria-pressed",String(selected===i));
+  const label=document.createElement("span");label.textContent=m.name;const note=document.createElement("small");note.textContent=m.note;label.append(note);
+  const mark=document.createElement("strong");mark.className="mark";mark.textContent=m.ready?"DEMO":"NOT LIVE";btn.append(label,mark);
+  btn.addEventListener("click",()=>{selected=i;submitted=false;render();$("instructions").focus?.()});$("buyer-methods").append(btn);
+ });
+ if(selected>=0&&flags[selected]){
+ const m=methods[selected];$("instructions").textContent=m.ready?"Sample instructions for "+m.name+": approved recipient details would appear here only on a real authorized checkout. Never transfer money based on this demonstration.":"This method is not connected to a payment processor. No card details are accepted and no payment can be made.";
+ }else $("instructions").textContent="Select an enabled payment method to preview its instructions.";
+ $("simulate").disabled=selected<0||!flags[selected]||!methods[selected].ready||submitted;
+ $("buyer-status").hidden=!submitted;$("buyer-status").textContent=submitted?"Demo receipt submitted. No actual payment was made or verified.":"";
+}
+$("master").addEventListener("change",()=>{if(!$("master").checked){order=null;selected=-1;submitted=false}render()});
+$("approve").addEventListener("click",()=>{const price=$("price").valueAsNumber;if(!$("master").checked||!$("price").checkValidity()||!Number.isFinite(price)||price<=0){$("price").reportValidity();return}order={product:$("product").value,price,until:Date.now()+Number($("expiry").value)*3600000,ref:Math.random().toString(36).slice(2,8).toUpperCase()};selected=-1;submitted=false;render();if(innerWidth<760)$("buyer-title").scrollIntoView({block:"start"})});
+$("revoke").addEventListener("click",()=>{order=null;selected=-1;submitted=false;render()});
+$("simulate").addEventListener("click",()=>{if(order&&$("master").checked&&selected>=0&&flags[selected]&&methods[selected].ready&&Date.now()<order.until){submitted=true;render()}});
+setInterval(()=>{if(order&&Date.now()>=order.until)render()},1000);render();
+</script></body></html>
