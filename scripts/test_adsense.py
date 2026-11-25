@@ -70,7 +70,16 @@ else:
     pages = list(ROOT.rglob("*.html"))
     pages = [p for p in pages if not any(x in p.parts for x in (".git", "node_modules", ".wrangler", "dropzone"))]
     # DropZone is a noindex, non-commercial presentation demo (no AdSense or checkout).
+    # Checkout preview is deliberately ad-free and excluded from indexing.
     for page in pages:
-        check_html(page.read_text(encoding="utf-8"), str(page.relative_to(ROOT)))
+        label = str(page.relative_to(ROOT))
+        html = page.read_text(encoding="utf-8")
+        if label == "checkout-preview/index.html":
+            parser = HeadCheck()
+            parser.feed(html)
+            assert not parser.loaders, (label, "checkout preview must remain ad-free")
+            assert 'name="robots" content="noindex,nofollow,noarchive"' in html, (label, "checkout preview must remain noindex")
+            continue
+        check_html(html, label)
     assert (ROOT / "ads.txt").read_text().strip() == RECORD
     print(f"Passed AdSense checks for {len(pages)} HTML files and ads.txt.")
