@@ -130,3 +130,67 @@
   script.setAttribute("data-dr-product-discovery", "true");
   document.head.appendChild(script);
 })();
+
+/* Shared purchase actions for catalog, homepage, category and related cards.
+   Eligibility is rechecked against the actual product page before checkout
+   displays a wallet; no price or availability is trusted from URL parameters. */
+(function () {
+  "use strict";
+  if (typeof document === "undefined" || typeof document.querySelectorAll !== "function" ||
+      typeof MutationObserver !== "function") return;
+  var selector = '.dr-product-tile, .dr-category-page a.product-card[href^="/p/"], .dr-bentley-fast-card, a.rel-card[href^="/p/"], a.dr-discovery-card[href^="/p/"], a.dr-discovery-mini[href^="/p/"]';
+  function action(path, label, className, href) {
+    var a = document.createElement("a");
+    a.className = className;
+    a.textContent = label;
+    a.href = href;
+    a.setAttribute("aria-label", label + " — " + path);
+    return a;
+  }
+  function enhance(node) {
+    if (!node || node.nodeType !== 1 || node.dataset.drPurchaseReady) return;
+    var detail = node.matches('a[href^="/p/"]') ? node :
+      node.querySelector('a[href^="/p/"]');
+    var path = detail && detail.getAttribute("href");
+    if (!path || !/^\/p\/[a-z0-9-]+\/$/.test(path)) return;
+    node.dataset.drPurchaseReady = "1";
+    var seller = node.matches("a") ? null : node.querySelector('a[href^="https://wa.me/923454342911"]');
+    var buy = action(path, "Buy Now", "dr-card-buy", "/checkout-preview/?product=" + encodeURIComponent(path));
+    if (seller) {
+      seller.textContent = "Chat with Seller";
+      seller.classList.add("dr-card-chat");
+      seller.parentNode.insertBefore(buy, seller);
+    } else {
+      seller = action(path, "Chat with Seller", "dr-card-chat",
+        "https://wa.me/923454342911?text=" + encodeURIComponent("Hello DigitalRacer, I am interested in this product: https://www.digitalracer.store" + path));
+      seller.target = "_blank";
+      seller.rel = "noopener noreferrer";
+      var group = document.createElement("div");
+      group.className = "dr-card-purchase-actions";
+      group.appendChild(buy);
+      group.appendChild(seller);
+      if (node.matches("a")) {
+        var wrapper = document.createElement("div");
+        wrapper.className = "dr-card-purchase-wrapper";
+        node.parentNode.insertBefore(wrapper,node);
+        wrapper.appendChild(node);
+        wrapper.appendChild(group);
+      } else node.appendChild(group);
+    }
+  }
+  function scan(root) {
+    if (root.nodeType === 1 && root.matches(selector)) enhance(root);
+    if (root.querySelectorAll) root.querySelectorAll(selector).forEach(enhance);
+  }
+  function install() {
+    if (!document.body) return;
+    scan(document.body);
+    new MutationObserver(function (records) {
+      records.forEach(function (record) {
+        record.addedNodes.forEach(function (node) { if (node.nodeType === 1) scan(node); });
+      });
+    }).observe(document.body, {childList:true, subtree:true});
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", install);
+  else install();
+})();

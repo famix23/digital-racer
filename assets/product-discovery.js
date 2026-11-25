@@ -217,9 +217,9 @@
         if (!Array.isArray(feed)) return;
         var current = productFromFeed(feed);
         if (!current || !validUrl(current.url)) return;
-        // Account checkout: keep the original WhatsApp link and add a real USDT purchase link above it.
+        // Catalog checkout: keep the original WhatsApp link and add a real USDT purchase link above it.
         var seller = document.getElementById("buy-btn");
-        if (current.category === "Account" && seller && /\bbuy\s+now\b/i.test(seller.textContent) &&
+        if (seller && /\bbuy\s+now\b/i.test(seller.textContent) &&
             !document.getElementById("dr-usdt-buy") && Number.isFinite(Number(current.price)) && Number(current.price)>0) {
           var checkout = el("a", "whatsapp-btn", "Buy Now");
           checkout.id = "dr-usdt-buy";

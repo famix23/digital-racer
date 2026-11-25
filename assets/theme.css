@@ -677,3 +677,16 @@ html[data-dr-theme="light"] .dr-discovery-mini:hover{border-color:#956a23}
 @media(prefers-reduced-motion:reduce){
   .dr-discovery-mini,.dr-discovery-card{transition:none;transform:none!important}
 }
+
+/* Shared card purchase controls; retain original product links and grid layout. */
+.dr-card-buy,.dr-card-chat,.dr-card-whatsapp.dr-card-chat{display:flex!important;align-items:center;justify-content:center;box-sizing:border-box;text-align:center;min-height:40px;padding:9px 8px!important;border-radius:6px;font:700 .78rem/1.3 system-ui,sans-serif!important;text-decoration:none!important;white-space:normal;letter-spacing:.02em}
+.dr-card-buy{background:#d4af37!important;color:#111!important;border:1px solid #d4af37!important;margin-top:6px}
+.dr-card-chat,.dr-card-whatsapp.dr-card-chat{background:#155d39!important;color:#fff!important;border:1px solid #247849!important;margin-top:5px}
+.dr-card-buy:hover{background:#edcd73!important}.dr-card-chat:hover{background:#1d784a!important}
+.dr-card-buy:focus-visible,.dr-card-chat:focus-visible{outline:2px solid #e1bd59;outline-offset:2px}
+.dr-card-purchase-wrapper{min-width:0;display:flex;flex-direction:column;gap:2px}
+.dr-card-purchase-wrapper>a:first-child{flex:1;min-width:0;width:100%;box-sizing:border-box}
+.dr-card-purchase-actions{display:grid;gap:4px}
+.dr-card-purchase-actions .dr-card-chat,.dr-card-purchase-actions .dr-card-buy{margin:0}
+.dr-bentley-fast-details{flex-wrap:wrap}.dr-bentley-fast-details .dr-card-buy,.dr-bentley-fast-details .dr-card-chat{flex:1 1 100%}
+@media(max-width:600px){.dr-card-buy,.dr-card-chat,.dr-card-whatsapp.dr-card-chat{min-height:44px;font-size:.72rem!important}}
