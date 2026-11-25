@@ -72,7 +72,7 @@ else:
     # DropZone is a noindex, non-commercial presentation demo (no AdSense or checkout).
     # Checkout preview is deliberately ad-free and excluded from indexing.
     for page in pages:
-        label = str(page.relative_to(ROOT))
+        label = page.relative_to(ROOT).as_posix()
         html = page.read_text(encoding="utf-8")
         if label == "checkout-preview/index.html":
             parser = HeadCheck()
