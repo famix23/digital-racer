@@ -6,10 +6,12 @@
   "observability": {
     "enabled": true
   },
+  "durable_objects": {"bindings": [{"name": "GIFT_STORE", "class_name": "GiftStore"}]},
+  "migrations": [{"tag": "gifting-v1", "new_sqlite_classes": ["GiftStore"]}],
   "assets": {
     "directory": ".",
     "binding": "ASSETS",
-    "run_worker_first": ["/ads.txt", "/product", "/product.html", "/dropzone", "/dropzone/*", "/speed-drift", "/speed-drift/*", "/checkout-preview", "/checkout-preview/*"],
+    "run_worker_first": ["/ads.txt", "/product", "/product.html", "/dropzone", "/dropzone/*", "/speed-drift", "/speed-drift/*", "/checkout-preview", "/checkout-preview/*", "/admin/gifting", "/admin/gifting/*", "/gift", "/gift/*"],
     // Serve /404.html with a real 404 status for unknown URLs
     "not_found_handling": "404-page"
   }

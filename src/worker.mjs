@@ -1,3 +1,5 @@
+import { giftRoute } from "./gifting.mjs";
+export { GiftStore } from "./gifting.mjs";
 /**
  * Canonicalize legacy /product?item= and /product.html?item= links.
  *
@@ -40,6 +42,9 @@ export function canonicalProductRoute(title, manifest) {
 export default {
   async fetch(request, env) {
     const url = new URL(request.url);
+    if (url.pathname === '/gift' || url.pathname.startsWith('/gift/') || url.pathname === '/admin/gifting' || url.pathname.startsWith('/admin/gifting/')) {
+      return giftRoute(request, env);
+    }
     // Checkout prototype: handle the directory route explicitly; never cache it.
     if (["/checkout-preview", "/checkout-preview/", "/checkout-preview/index.html"].includes(url.pathname) &&
         (request.method === "GET" || request.method === "HEAD")) {
