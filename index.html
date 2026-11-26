@@ -398,7 +398,9 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
     const m = matchingProduct(productUrls, p);
     return m ? m.url : `/product.html?item=${encodeURIComponent(p.title)}`;
   }
-  const productUrlsReady = fetch('/p/index.json').then(r => r.ok ? r.json() : []).then(d => { productUrls = Array.isArray(d) ? d : []; }).catch(() => {});
+  function loadProductUrls() {
+    return fetch('/p/index.json').then(r => r.ok ? r.json() : []).then(d => { productUrls = Array.isArray(d) ? d : []; }).catch(() => {});
+  }
 
   function formatImagePath(rawPath) { return safeImagePath(rawPath); }
 
@@ -425,7 +427,10 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
       </div>`;
   }
 
-  Promise.all([fetch('/inventory.json'), productUrlsReady]).then(([response]) => response)
+  // The build already provides crawlable, usable product cards. Refresh only after
+  // initial page load so large catalog feeds do not compete with the first paint.
+  function refreshHomepageInventory() {
+    Promise.all([fetch('/inventory.json'), loadProductUrls()]).then(([response]) => response)
     .then(async response => {
       if (!response.ok) throw new Error(`File Not Found (HTTP ${response.status}).`);
       const text = await response.text();
@@ -460,6 +465,9 @@ a, button, select, input { -webkit-tap-highlight-color: rgba(212, 175, 55, 0.25)
       // Retain rendered cards and their product links if inventory fetch fails.
       console.warn('Homepage inventory refresh unavailable; keeping crawlable product cards.', error);
     });
+  }
+  if (document.readyState === 'complete') refreshHomepageInventory();
+  else window.addEventListener('load', refreshHomepageInventory, { once: true });
 </script>
 </body>
 </html>
