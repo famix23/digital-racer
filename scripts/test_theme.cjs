@@ -127,3 +127,16 @@ assert.ok(stylesheet.includes('html[data-dr-theme="light"] .dr-category-page .dr
 assert.ok(stylesheet.includes(".main-wrapper .desc-content table"), "Wide product description content must scroll inside its own region");
 assert.ok(script.includes('fetch("/assets/catalog-index.json")') && script.includes("IntersectionObserver"), "Deep category photos must load progressively");
 assert.ok(script.includes('directory.addEventListener("toggle"'), "Closed directories must not fetch product photos");
+
+
+/* Selected integrated action-bar regression guards. */
+assert.ok(script.includes("drActionsReady"),"Action bar must enhance each card once");
+assert.ok(script.includes("bar.appendChild(view); bar.appendChild(buy); bar.appendChild(seller);"),"Three sibling actions");
+assert.ok(script.includes('node.parentNode.insertBefore(wrapper, node)'),"Category cards must not nest anchors");
+assert.ok(script.includes('"/checkout-preview/?product=" + encodeURIComponent(path)'),"Keep product checkout route");
+assert.ok(script.includes('seller.innerHTML = waIcon'),"Local WhatsApp logo");
+assert.ok(stylesheet.includes(".dr-integrated-card .dr-integrated-actions"),"Actions belong inside card");
+assert.ok(stylesheet.includes("@container (max-width:150px)"),"Narrow cards must reflow");
+assert.ok(stylesheet.includes(".container .prod-img,.catalog-container .prod-img{object-fit:contain"),"Preserve whole product screenshots");
+assert.ok(stylesheet.includes("@media(min-width:1920px)"),"Constrain ultra-wide shopping grids");
+assert.ok(stylesheet.includes('html[data-dr-theme="light"] .dr-integrated-actions .dr-integrated-buy'),"Light theme action contrast");
