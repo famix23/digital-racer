@@ -73,7 +73,20 @@ def main():
         featured_set = set(expected)
         remaining = [x for x in all_category if x["url"] not in featured_set]
         directory_urls = re.findall(r'<a class="directory-product" href="([^"]+)"', page)
-        assert directory_urls == [x["url"] for x in remaining], (slug, "full directory out of date")
+        from build_shop_hubs import DIRECTORY_PAGE_SIZE
+        total_pages = max(1, (len(remaining) + DIRECTORY_PAGE_SIZE - 1) // DIRECTORY_PAGE_SIZE)
+        assert len(directory_urls) <= DIRECTORY_PAGE_SIZE, (slug, "oversized first directory")
+        for number in range(2, total_pages + 1):
+            route = target + "page/" + str(number) + "/"
+            assert 'href="' + route + '"' in page, (slug, "pagination link missing", number)
+            subpage = (ROOT / "shop" / slug / "page" / str(number) / "index.html").read_text(encoding="utf-8")
+            assert '<link rel="canonical" href="' + HOST + route + '">' in subpage
+            assert '<meta name="robots" content="index,follow">' in subpage
+            assert 'href="' + target + '"' in subpage
+            sublinks = re.findall(r'<a class="directory-product" href="([^"]+)"', subpage)
+            assert 0 < len(sublinks) <= DIRECTORY_PAGE_SIZE, (slug, number, "invalid page size")
+            directory_urls.extend(sublinks)
+        assert directory_urls == [x["url"] for x in remaining], (slug, "paginated directory out of date")
         assert len(set(expected + directory_urls)) == len(all_category), (slug, "directory missing product")
         actual = re.findall(r'<a class="product-card" href="([^"]+)"', page)
         assert expected == actual, (slug, "stale product list", expected, actual)

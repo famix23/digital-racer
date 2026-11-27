@@ -50,7 +50,11 @@ assert.ok(Buffer.byteLength(feedRaw,"utf8")<Buffer.byteLength(inventoryRaw,"utf8
 const hubs=JSON.parse(read("content/shop-hubs.json"));
 assert.equal(hubs.length,6);
 for(const hub of hubs)assert.ok(html.includes('href="/shop/'+hub.slug+'/"'),"Full department link missing");
-const dirs=Object.fromEntries(hubs.map(h=>[h.category,read("shop/"+h.slug+"/index.html")]));
+const dirs=Object.fromEntries(hubs.map(h=>{
+  const first=read("shop/"+h.slug+"/index.html");
+  const extra=[...first.matchAll(/href="(\/shop\/[^"]+\/page\/\d+\/)"/g)].map(m=>read(m[1].slice(1)+"index.html"));
+  return [h.category,[first,...extra].join("\n")];
+}));
 for(const item of feed)assert.ok(dirs[item.category]?.includes('href="'+item.url+'"'),"Product not crawlable in category directory: "+item.url);
 assert.ok(!html.includes("fetch('/inventory.json')")&&!html.includes("fetch('/p/index.json')"),
   "Never download huge inventory and manifest for browsing");

@@ -824,7 +824,7 @@ x += [f"  <url><loc>{SITE_URL}/{page}/</loc></url>" for page in ("about", "conta
 from build_blog import build_blog, load_posts
 from build_related_guides import build_related_guides
 from build_shop_hubs import build_shop_hubs
-shop_slugs = build_shop_hubs(ROOT, products, write)
+shop_slugs = build_shop_hubs(ROOT, products, write, CHECK_ONLY, changed)
 blog_slugs = build_blog(ROOT, write, CHECK_ONLY, changed)
 blog_posts = {p["slug"]: p for p in load_posts(ROOT)}
 build_related_guides(ROOT, write, list(blog_posts.values()))

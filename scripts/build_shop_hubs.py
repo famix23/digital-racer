@@ -37,6 +37,12 @@ FEATURE_GROUPS = {
         ("bentley-flying-spur", "Bentley Flying Spur cards",
          "Inspect the named Flying Spur finishes, screenshots and details.",
          lambda t: "flying spur" in t),
+        ("bentley-batur", "Bentley Batur car cards",
+         "Compare the listed Batur variants, including named finishes, and confirm in-game gifting eligibility.",
+         lambda t: "batur" in t),
+        ("ferrari-car-cards", "Ferrari car cards",
+         "Compare the exact Ferrari model, card quantity and listed USD price; check current gifting eligibility.",
+         lambda t: "ferrari" in t),
     ],
     "pubg-mobile-in-game-items": [
         ("karambit-cards", "Karambit skin and gift cards",
@@ -60,7 +66,70 @@ def load_hubs(root):
     assert len(data) == 6 and len({x["slug"] for x in data}) == 6, "Expected six unique shop hubs"
     return data
 
-def build_shop_hubs(root, products, write):
+
+DIRECTORY_PAGE_SIZE = 200
+
+def directory_nav(slug, total, current):
+    if total <= 1:
+        return ""
+    base = "/shop/" + slug + "/"
+    links = []
+    for number in range(1, total + 1):
+        url = base if number == 1 else base + "page/" + str(number) + "/"
+        active = ' aria-current="page"' if number == current else ""
+        links.append('<a href="' + url + '"' + active + '>Page ' + str(number) + '</a>')
+    return '<nav class="directory-pagination" aria-label="Listing pages" style="display:flex;flex-wrap:wrap;gap:12px;padding:16px 0">' + " ".join(links) + '</nav>'
+
+def directory_markup(entries, category, slug, number, total):
+    if not entries:
+        return ""
+    summary = ('Browse the remaining ' + str(len(entries)) + ' ' + esc(category) + ' listings'
+               if total == 1 else 'Browse ' + esc(category) + ' listings — page ' + str(number) + ' of ' + str(total))
+    return ('<details class="listing-directory"' + (' open' if number > 1 else '') +
+            '><summary>' + summary + '</summary><ul class="directory-list">' +
+            "".join(entries) + '</ul></details>')
+
+def directory_page(hub, entries, number, total):
+    slug = hub["slug"]
+    category = hub["category"]
+    base = "/shop/" + slug + "/"
+    canonical = SITE + base + "page/" + str(number) + "/"
+    title = "PUBG Mobile " + category + " Listings – Page " + str(number) + " | Digital Racer"
+    description = "Browse " + category + " listings with individual product links and USD prices. Page " + str(number) + " of " + str(total) + "."
+    return (
+        '<!DOCTYPE html>\n<html lang="en">\n<head>\n<meta charset="UTF-8">\n<meta name="viewport" content="width=device-width, initial-scale=1.0">\n'
+        '<title>' + esc(title) + '</title>\n<meta name="description" content="' + esc(description) + '">\n'
+        '<meta name="robots" content="index,follow">\n<link rel="canonical" href="' + canonical + '">\n'
+        '<style>body{background:#101010;color:#eee;font:16px/1.55 system-ui;margin:0}main{max-width:1080px;margin:auto;padding:24px}a{color:#e7c661}li{padding:8px;overflow-wrap:anywhere}small{display:block;color:inherit}.directory-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;list-style:none;padding:0}html[data-dr-theme="light"] body{background:#fff;color:#222}html[data-dr-theme="light"] a{color:#795600}</style>\n'
+        '</head><body class="dr-category-page"><main><p><a href="/">Digital Racer</a> / <a href="/catalog">Catalog</a> / <a href="' + base + '">' + esc(hub["title"]) + '</a></p>'
+        '<h1>' + esc(hub["title"]) + ' — Page ' + str(number) + '</h1><p>' + esc(description) + ' Confirm item details and availability before paying.</p>'
+        + directory_nav(slug, total, number) + directory_markup(entries, category, slug, number, total) +
+        '</main></body></html>\n'
+    )
+
+def paginated_directory(root, hub, remaining, write, check_only=False, changed=None):
+    slug = hub["slug"]
+    category = hub["category"]
+    entries = [
+        '<li><a class="directory-product" href="' + esc(p["url"]) + '">' +
+        esc(p["display_title"]) + '</a><small>' + chr(36) + esc(p["price"]) +
+        ' USD</small></li>' for p in remaining
+    ]
+    total = max(1, (len(entries) + DIRECTORY_PAGE_SIZE - 1) // DIRECTORY_PAGE_SIZE)
+    for number in range(2, total + 1):
+        subset = entries[(number - 1) * DIRECTORY_PAGE_SIZE:number * DIRECTORY_PAGE_SIZE]
+        write("shop/" + slug + "/page/" + str(number) + "/index.html",
+              directory_page(hub, subset, number, total))
+    # Remove only stale files owned by this generated pagination directory.
+    for old in (root / "shop" / slug / "page").glob("*/index.html"):
+        if old.parent.name.isdigit() and int(old.parent.name) > total:
+            if changed is not None:
+                changed.append(str(old.relative_to(root)) + " (deleted)")
+            if not check_only:
+                old.unlink()
+    return directory_markup(entries[:DIRECTORY_PAGE_SIZE], category, slug, 1, total) + directory_nav(slug, total, 1)
+
+def build_shop_hubs(root, products, write, check_only=False, changed=None):
     root = Path(root)
     template = (root / "scripts" / "shop_template.html.txt").read_text(encoding="utf-8")
     hubs = load_hubs(root)
@@ -82,16 +151,7 @@ def build_shop_hubs(root, products, write):
         assert matches, f"Shop category is empty: {slug}"
         featured_urls = {p["url"] for p in chosen}
         remaining = [p for p in matches if p["url"] not in featured_urls]
-        directory = (
-            '<details class="listing-directory"><summary>Browse the remaining ' +
-            str(len(remaining)) + ' ' + esc(hub["category"]) +
-            ' listings</summary><ul class="directory-list">' +
-            "".join(
-                '<li><a class="directory-product" href="' + esc(p["url"]) + '">' +
-                esc(p["display_title"]) + '</a><small>' + chr(36) + esc(p["price"]) +
-                ' USD</small></li>' for p in remaining
-            ) + '</ul></details>'
-        ) if remaining else ""
+        directory = paginated_directory(root, hub, remaining, write, check_only, changed)
         canonical = SITE + "/shop/" + slug + "/"
         schema = {
             "@context": "https://schema.org", "@type": "CollectionPage",
