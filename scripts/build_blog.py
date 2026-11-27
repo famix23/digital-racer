@@ -120,6 +120,14 @@ def article_body(post):
             parts.append("<p>" + html.escape(p) + "</p>")
         if section.get("points"):
             parts.append("<ul>" + "".join("<li>" + html.escape(p) + "</li>" for p in section["points"]) + "</ul>")
+    # Curated, topic-specific paths from high-visibility search landing pages.
+    contextual = {
+        "pubg-mobile-metro-royale-seal-city-boss-encounters-guide": "<p>Continue with the <a href=\"/blog/pubg-mobile-metro-royale-seal-city-pve-november-2026/\">Seal City PvE map guide</a>. For item terminology and listing examples, see the <a href=\"/guides/pubg-mobile-skins-explained/\">PUBG Mobile skins guide</a> and <a href=\"/shop/pubg-mobile-in-game-items/\">in-game item directory</a>; purchases do not change boss mechanics or guarantee rewards.</p>",
+        "pubg-mobile-metro-royale-seal-city-pve-november-2026": "<p>Read the <a href=\"/blog/pubg-mobile-metro-royale-seal-city-boss-encounters-guide/\">Seal City boss and enemy guide</a> for encounter preparation. The <a href=\"/shop/pubg-mobile-in-game-items/\">in-game item directory</a> is separate from the game mode; check current publisher restrictions and item eligibility.</p>",
+        "pubg-mobile-47-glyph-skills-six-passives-explained": "<p>For other 4.7 topics, see the <a href=\"/blog/pubg-mobile-47-ancient-beast-seal-aurora-realm-preview/\">Ancient Beast Seal and Aurora Realm preview</a>. The <a href=\"/guides/pubg-mobile-skins-explained/\">PUBG Mobile skins guide</a> explains how collectible cosmetics differ from gameplay abilities.</p>",
+    }.get(post["slug"])
+    if contextual:
+        parts.append(contextual)
     parts.append('<section class="more"><h2>Explore more on Digital Racer</h2><p><a href="/blog/">More gaming articles</a> · <a href="/guides/">Gaming guides</a> · <a href="/catalog">Gaming catalog</a></p></section>')
     return "\n".join(parts)
 
