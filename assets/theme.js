@@ -131,13 +131,14 @@
   document.head.appendChild(script);
 })();
 
-/* Ordinary browsing cards link to product details. Keep purchase actions on
-   the detail page, and preserve dedicated campaign actions. */
+/* Integrated card actions: preserve the static product link and use sibling
+   anchors, never nested anchors. Dedicated campaign and detail routes stay intact. */
 (function () {
   "use strict";
   if (typeof document === "undefined" || typeof document.querySelectorAll !== "function" ||
       typeof MutationObserver !== "function") return;
-  var recommendationSelector = 'a.rel-card[href^="/p/"], a.dr-discovery-card[href^="/p/"], a.dr-discovery-mini[href^="/p/"], .dr-category-page a.product-card[href^="/p/"]';
+  var tileSelector = '.container .dr-product-tile, .catalog-container .dr-product-tile, .dr-category-page .cards > a.product-card[href^="/p/"]';
+  var recommendationSelector = 'a.rel-card[href^="/p/"], a.dr-discovery-card[href^="/p/"], a.dr-discovery-mini[href^="/p/"]';
   function enhanceRecommendation(node) {
     if (!node || node.nodeType !== 1 || node.dataset.drViewReady) return;
     var path = node.getAttribute("href");
@@ -156,7 +157,52 @@
       host.appendChild(view);
     }
   }
+
+  function makeAction(path, label, className, href) {
+    var a = document.createElement("a");
+    a.className = className;
+    a.href = href;
+    a.textContent = label;
+    a.setAttribute("aria-label", label + " — " + path);
+    return a;
+  }
+  // Local inline SVG: no icon CDN, external script or additional request.
+  var waIcon = '<svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2a9.84 9.84 0 0 0-8.45 14.89L2 22l5.25-1.48A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.12 15.08l-.33-.19-3.04.85.86-2.95-.21-.35A8.1 8.1 0 0 1 12.04 3.8Zm-3.5 4.1c-.2 0-.52.08-.78.36-.27.29-1.02 1-1.02 2.43s1.04 2.81 1.18 3c.14.2 2.04 3.28 5.05 4.38 2.5.92 3.01.74 3.55.69.54-.05 1.74-.71 1.98-1.4.24-.68.24-1.26.17-1.38-.07-.12-.27-.2-.56-.35-.3-.14-1.74-.86-2.01-.96-.27-.1-.46-.14-.66.15-.19.29-.75.95-.92 1.15-.17.19-.34.22-.63.07-.3-.15-1.24-.46-2.36-1.46-.87-.77-1.46-1.73-1.63-2.02-.17-.3-.02-.45.13-.6.13-.13.29-.34.44-.51.14-.17.19-.29.29-.49.1-.19.05-.36-.03-.51-.07-.14-.65-1.61-.9-2.2-.24-.57-.48-.48-.66-.49h-.62Z"/></svg>';
+  function enhanceTile(node) {
+    if (!node || node.nodeType !== 1 || node.dataset.drActionsReady) return;
+    var detail = node.matches("a.product-card") ? node : node.querySelector('a.product-card[href^="/p/"]');
+    var path = detail && detail.getAttribute("href");
+    if (!path || !/^\/p\/[a-z0-9-]+\/$/.test(path)) return;
+    node.dataset.drActionsReady = "1";
+    var seller = node === detail ? null : node.querySelector('a.dr-card-whatsapp[href^="https://wa.me/923454342911"]');
+    var view = makeAction(path, "View", "dr-integrated-view", path);
+    var buy = makeAction(path, "Buy Now", "dr-integrated-buy", "/checkout-preview/?product=" + encodeURIComponent(path));
+    if (!seller) {
+      seller = makeAction(path, "Chat with Seller on WhatsApp", "dr-card-whatsapp", "https://wa.me/923454342911?text=" + encodeURIComponent("Hello DigitalRacer, I am interested in this product: https://www.digitalracer.store" + path));
+      seller.target = "_blank";
+      seller.rel = "noopener noreferrer";
+    }
+    seller.classList.add("dr-integrated-whatsapp");
+    seller.setAttribute("aria-label", "Chat with Seller on WhatsApp — " + path);
+    seller.setAttribute("title", "Chat with Seller on WhatsApp");
+    seller.innerHTML = waIcon;
+    var bar = document.createElement("div");
+    bar.className = "dr-integrated-actions";
+    bar.appendChild(view); bar.appendChild(buy); bar.appendChild(seller);
+    if (node === detail) {
+      var wrapper = document.createElement("div");
+      wrapper.className = "dr-integrated-card";
+      node.parentNode.insertBefore(wrapper, node);
+      wrapper.appendChild(node);
+      wrapper.appendChild(bar);
+    } else {
+      node.classList.add("dr-integrated-card");
+      node.appendChild(bar);
+    }
+  }
   function scan(root) {
+    if (root.nodeType === 1 && root.matches(tileSelector)) enhanceTile(root);
+    if (root.querySelectorAll) root.querySelectorAll(tileSelector).forEach(enhanceTile);
     if (root.nodeType === 1 && root.matches(recommendationSelector)) enhanceRecommendation(root);
     if (root.querySelectorAll) root.querySelectorAll(recommendationSelector).forEach(enhanceRecommendation);
   }

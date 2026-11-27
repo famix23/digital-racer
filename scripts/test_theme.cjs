@@ -128,12 +128,15 @@ assert.ok(stylesheet.includes(".main-wrapper .desc-content table"), "Wide produc
 assert.ok(script.includes('fetch("/assets/catalog-index.json")') && script.includes("IntersectionObserver"), "Deep category photos must load progressively");
 assert.ok(script.includes('directory.addEventListener("toggle"'), "Closed directories must not fetch product photos");
 
-/* Preserve the browsing/detail boundary: a product card is a crawlable link,
-   not an additional checkout. Keep static source links and payment routes. */
-assert.ok(!script.includes("drPurchaseReady"),"Browsing cards must not inject purchase controls");
-assert.ok(script.includes('.dr-category-page a.product-card[href^="/p/"]'),"Category cards get a View label");
-assert.ok(stylesheet.includes(".catalog-container .dr-product-tile > .dr-card-whatsapp{display:none!important}"),"Keep normal browsing cards compact");
+
+/* Selected integrated action-bar regression guards. */
+assert.ok(script.includes("drActionsReady"),"Action bar must enhance each card once");
+assert.ok(script.includes("bar.appendChild(view); bar.appendChild(buy); bar.appendChild(seller);"),"Three sibling actions");
+assert.ok(script.includes('node.parentNode.insertBefore(wrapper, node)'),"Category cards must not nest anchors");
+assert.ok(script.includes('"/checkout-preview/?product=" + encodeURIComponent(path)'),"Keep product checkout route");
+assert.ok(script.includes('seller.innerHTML = waIcon'),"Local WhatsApp logo");
+assert.ok(stylesheet.includes(".dr-integrated-card .dr-integrated-actions"),"Actions belong inside card");
+assert.ok(stylesheet.includes("@container (max-width:150px)"),"Narrow cards must reflow");
 assert.ok(stylesheet.includes(".container .prod-img,.catalog-container .prod-img{object-fit:contain"),"Preserve whole product screenshots");
 assert.ok(stylesheet.includes("@media(min-width:1920px)"),"Constrain ultra-wide shopping grids");
-assert.ok(stylesheet.includes("@media(max-width:360px)"),"Small-screen shopping layout");
-assert.ok(stylesheet.includes('html[data-dr-theme="light"] .dr-category-page a.product-card .dr-recommendation-view'),"View label contrast in light mode");
+assert.ok(stylesheet.includes('html[data-dr-theme="light"] .dr-integrated-actions .dr-integrated-buy'),"Light theme action contrast");
