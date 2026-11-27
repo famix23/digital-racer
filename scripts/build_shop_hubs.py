@@ -37,6 +37,12 @@ FEATURE_GROUPS = {
         ("bentley-flying-spur", "Bentley Flying Spur cards",
          "Inspect the named Flying Spur finishes, screenshots and details.",
          lambda t: "flying spur" in t),
+        ("bentley-batur", "Bentley Batur car cards",
+         "Compare the listed Batur variants, including named finishes, and confirm in-game gifting eligibility.",
+         lambda t: "batur" in t),
+        ("ferrari-car-cards", "Ferrari car cards",
+         "Compare the exact Ferrari model, card quantity and listed USD price; check current gifting eligibility.",
+         lambda t: "ferrari" in t),
     ],
     "pubg-mobile-in-game-items": [
         ("karambit-cards", "Karambit skin and gift cards",
