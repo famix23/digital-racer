@@ -120,3 +120,10 @@ delete windowMock.gtag;
 browserEvents.click({target:fakeTarget});
 assert.equal(events.length,1,"Absent GA4 must not throw or fabricate events");
 console.log("Appearance toggle interactive tests passed.");
+
+/* Storefront-only responsive and deep directory photo regression guards. */
+assert.ok(stylesheet.includes(".dr-category-page .cta.wa-shop-cta{margin-left:0}"), "Mobile category CTA must not overflow");
+assert.ok(stylesheet.includes('html[data-dr-theme="light"] .dr-category-page .dr-feature-card'), "Light-mode named collections must remain legible");
+assert.ok(stylesheet.includes(".main-wrapper .desc-content table"), "Wide product description content must scroll inside its own region");
+assert.ok(script.includes('fetch("/assets/catalog-index.json")') && script.includes("IntersectionObserver"), "Deep category photos must load progressively");
+assert.ok(script.includes('directory.addEventListener("toggle"'), "Closed directories must not fetch product photos");
