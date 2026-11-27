@@ -8,6 +8,7 @@ from pathlib import Path
 from urllib.parse import quote
 import html
 import json
+import unicodedata
 
 SITE = "https://www.digitalracer.store"
 
@@ -54,6 +55,9 @@ FEATURE_GROUPS = {
         ("taurino-assassino", "Taurino Assassino collectibles",
          "Explore Taurino Assassino variants and inspect the listed rarity or upgrade level.",
          lambda t: "taurino" in t and ("assassino" in t or "assasino" in t)),
+        ("brainrot-items", "Brainrot Battle and Royale items",
+         "Compare the exact Brainrot Battle or Royale collectible, stated stars, variant and price. Confirm the requested item and gifting eligibility before payment.",
+         lambda t: "brainrot" in unicodedata.normalize("NFKC", t).casefold()),
     ],
 }
 
