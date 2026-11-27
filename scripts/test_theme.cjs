@@ -140,3 +140,14 @@ assert.ok(stylesheet.includes("@container (max-width:150px)"),"Narrow cards must
 assert.ok(stylesheet.includes(".container .prod-img,.catalog-container .prod-img{object-fit:contain"),"Preserve whole product screenshots");
 assert.ok(stylesheet.includes("@media(min-width:1920px)"),"Constrain ultra-wide shopping grids");
 assert.ok(stylesheet.includes('html[data-dr-theme="light"] .dr-integrated-actions .dr-integrated-buy'),"Light theme action contrast");
+
+/* Motion is CSS only, opt-in to normal motion preferences, and never loops. */
+const motion = stylesheet.split("/* DigitalRacer premium micro-motion:")[1];
+assert.ok(motion,"Premium micro-motion stylesheet");
+for (const effect of ["dr-motion-shine","dr-motion-wa","translateY(-3px)","scale(.96)","dr-integrated-view:hover::after","nav-links a.nav-link:hover::after","dr-event-feature:hover"]) {
+  assert.ok(motion.includes(effect),"Missing motion: "+effect);
+}
+assert.ok(motion.includes("@media(prefers-reduced-motion:no-preference)") && motion.includes("@media(prefers-reduced-motion:reduce)"),"Reduced motion must be respected");
+assert.ok(motion.includes("@media(hover:hover) and (pointer:fine)"),"Avoid hover lift on touchscreens");
+assert.ok(!/\binfinite\b|url\s*\(|@import/.test(motion),"No continuous animations or network dependencies");
+assert.ok(motion.includes("@container (max-width:185px)"),"Keep View button readable on narrow cards");
