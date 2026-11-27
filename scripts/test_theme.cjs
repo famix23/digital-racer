@@ -127,3 +127,13 @@ assert.ok(stylesheet.includes('html[data-dr-theme="light"] .dr-category-page .dr
 assert.ok(stylesheet.includes(".main-wrapper .desc-content table"), "Wide product description content must scroll inside its own region");
 assert.ok(script.includes('fetch("/assets/catalog-index.json")') && script.includes("IntersectionObserver"), "Deep category photos must load progressively");
 assert.ok(script.includes('directory.addEventListener("toggle"'), "Closed directories must not fetch product photos");
+
+/* Preserve the browsing/detail boundary: a product card is a crawlable link,
+   not an additional checkout. Keep static source links and payment routes. */
+assert.ok(!script.includes("drPurchaseReady"),"Browsing cards must not inject purchase controls");
+assert.ok(script.includes('.dr-category-page a.product-card[href^="/p/"]'),"Category cards get a View label");
+assert.ok(stylesheet.includes(".catalog-container .dr-product-tile > .dr-card-whatsapp{display:none!important}"),"Keep normal browsing cards compact");
+assert.ok(stylesheet.includes(".container .prod-img,.catalog-container .prod-img{object-fit:contain"),"Preserve whole product screenshots");
+assert.ok(stylesheet.includes("@media(min-width:1920px)"),"Constrain ultra-wide shopping grids");
+assert.ok(stylesheet.includes("@media(max-width:360px)"),"Small-screen shopping layout");
+assert.ok(stylesheet.includes('html[data-dr-theme="light"] .dr-category-page a.product-card .dr-recommendation-view'),"View label contrast in light mode");
