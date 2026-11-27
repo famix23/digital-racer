@@ -310,6 +310,9 @@ def original_product_meta(p):
     if len(summary) < 100 and p["clean_display_title"].casefold() not in summary.casefold():
         summary = f"{p['clean_display_title']} — {summary}"
     lead = f"{p['cat_label']} · {price_text} · {delivery}. "
+    # Search-only copy for a specific, source-verified collectible.
+    if p["url"] == "/p/brainrot-battle-67-crystal-pristige-comet-6-stars/":
+        summary = "Brainrot Battle 67 Crystal Comet, 6 stars. One item; confirm gifting eligibility and availability."
     return truncate(lead + summary, 158)
 
 
@@ -531,6 +534,9 @@ for p in products:
     original = SEO_ORIGINAL_TITLES[url]
     if p["raw"].get("seo_title"):
         SEO_META_TITLES[url] = truncate(p["raw"]["seo_title"], MAX_SEARCH_TITLE_LENGTH)
+        continue
+    if url == "/p/brainrot-battle-67-crystal-pristige-comet-6-stars/":
+        SEO_META_TITLES[url] = "PUBG Mobile Brainrot Battle 67 Crystal Comet (6 Stars)"
         continue
     if len(original) > MAX_SEARCH_TITLE_LENGTH:
         SEO_META_TITLES[url] = (

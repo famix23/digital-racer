@@ -211,6 +211,9 @@ def build_shop_hubs(root, products, write, check_only=False, changed=None):
                     'before ordering.</p><div class="dr-feature-grid">' +
                     "".join(groups) + '</div></section>'
                 )
+        # Keep an editorially relevant direct link while the listing exists.
+        if slug == "pubg-mobile-in-game-items" and any(p["url"] == "/p/brainrot-battle-67-crystal-pristige-comet-6-stars/" for p in matches):
+            sections = sections.replace("For broader information about cosmetics and upgrade stages, the dedicated skins guide can help you distinguish item identity from a promotional claim.", "For broader information about cosmetics and upgrade stages, the dedicated skins guide can help you distinguish item identity from a promotional claim. For a specific example of star-level and finish terminology, see the <a href=\"/p/brainrot-battle-67-crystal-pristige-comet-6-stars/\">Brainrot Battle 67 Crystal Comet 6-star listing</a>.", 1)
         # The canonical category hubs are independently indexable; a filter
         # query on /catalog is not a distinct indexable category landing page.
         links = " ".join(
