@@ -111,7 +111,7 @@ def main():
                     f"Redirect fallback canonical wrong: {source}")
 
     # Deliberate exclusions: utility pages and legacy redirect fallbacks.
-    for path in ("404.html", "product.html", "dropzone/index.html", "dropzone/ferrari-gift/index.html", "dropzone/brainrot-gift/index.html", "checkout-preview/index.html"):
+    for path in ("404.html", "product.html", "dropzone/index.html", "dropzone/ferrari-gift/index.html", "dropzone/brainrot-gift/index.html", "dropzone/bentley-holocrystal-gift/index.html", "checkout-preview/index.html"):
         require(any("noindex" in tag for tag in parse(ROOT / path).robots),
                 f"Expected noindex missing on {path}")
     headers = (ROOT / "_headers").read_text(encoding="utf-8")
@@ -128,9 +128,25 @@ def main():
     require("Disallow: /\n" not in robots, "Global robots.txt block")
 
     utility = {ROOT / "404.html", ROOT / "product.html", ROOT / "admin/index.html",
-               ROOT / "dropzone/index.html", ROOT / "dropzone/ferrari-gift/index.html", ROOT / "dropzone/brainrot-gift/index.html", ROOT / "checkout-preview/index.html"}
+               ROOT / "dropzone/index.html", ROOT / "dropzone/ferrari-gift/index.html", ROOT / "dropzone/brainrot-gift/index.html", ROOT / "dropzone/bentley-holocrystal-gift/index.html", ROOT / "checkout-preview/index.html"}
     fallback = {page_for(src) for src in rules if src.endswith("/")}
-    known = {page_for(route) for route in routes} | utility | fallback
+    # Numbered category discovery pages are linked from their canonical hub.
+    # Product URLs remain in the XML sitemap; pagination need not be listed there.
+    pagination = set()
+    for hub in json.loads((ROOT / "content/shop-hubs.json").read_text(encoding="utf-8")):
+        base = "/shop/" + hub["slug"] + "/"
+        hub_links = parse(page_for(base)).links
+        for href in hub_links:
+            if not re.fullmatch(re.escape(base) + r"page/(?:[2-9]|[1-9][0-9]+)/", href):
+                continue
+            filename = page_for(href)
+            require(filename.is_file(), f"Missing pagination page: {href}")
+            tags = parse(filename)
+            require(tags.canonicals == [HOST + href], f"Wrong pagination canonical: {href}")
+            require(not any(re.search(r"\bnoindex\b|\bnone\b", tag) for tag in tags.robots), f"Pagination noindex: {href}")
+            require(base in tags.links, f"Missing parent category link: {href}")
+            pagination.add(filename)
+    known = {page_for(route) for route in routes} | utility | fallback | pagination
     html_files = [p for p in ROOT.rglob("*.html")
                   if not any(part.startswith(".") for part in p.relative_to(ROOT).parts)]
     checked_links = 0
