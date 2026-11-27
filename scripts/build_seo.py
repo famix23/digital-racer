@@ -529,6 +529,9 @@ for p in products:
     url = p["url"]
     suffix = _title_suffix(p)
     original = SEO_ORIGINAL_TITLES[url]
+    if p["raw"].get("seo_title"):
+        SEO_META_TITLES[url] = truncate(p["raw"]["seo_title"], MAX_SEARCH_TITLE_LENGTH)
+        continue
     if len(original) > MAX_SEARCH_TITLE_LENGTH:
         SEO_META_TITLES[url] = (
             truncate(SEO_SHORT_TITLES[url], MAX_SEARCH_TITLE_LENGTH - len(suffix))

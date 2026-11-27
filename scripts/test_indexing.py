@@ -128,7 +128,8 @@ def main():
     require("Disallow: /\n" not in robots, "Global robots.txt block")
 
     utility = {ROOT / "404.html", ROOT / "product.html", ROOT / "admin/index.html",
-               ROOT / "dropzone/index.html", ROOT / "dropzone/ferrari-gift/index.html", ROOT / "dropzone/brainrot-gift/index.html", ROOT / "checkout-preview/index.html"}
+               ROOT / "dropzone/index.html", ROOT / "dropzone/ferrari-gift/index.html", ROOT / "dropzone/brainrot-gift/index.html", ROOT / "dropzone/bentley-holocrystal-gift/index.html", ROOT / "checkout-preview/index.html"}
+    require("/dropzone/bentley-holocrystal-gift/" not in routes, "Bentley recipient gift page must not appear in sitemap")
     fallback = {page_for(src) for src in rules if src.endswith("/")}
     known = {page_for(route) for route in routes} | utility | fallback
     html_files = [p for p in ROOT.rglob("*.html")
