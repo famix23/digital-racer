@@ -215,3 +215,67 @@
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", install);
   else install();
 })();
+
+/* Product photos for deep category directories. The original static links,
+   titles and prices remain in HTML even when the optional feed is unavailable.
+   Load only on opening a directory, not on blogs or on initial storefront load. */
+(function () {
+  "use strict";
+  if (typeof document.querySelectorAll !== "function" || !window.location ||
+      !/^\/shop\/[^/]+\/(?:page\/[0-9]+\/)?$/.test(window.location.pathname)) return;
+  var directories = document.querySelectorAll("details.listing-directory");
+  if (!directories.length || typeof fetch !== "function") return;
+  var feed;
+  function loadFeed() {
+    if (!feed) feed = fetch("/assets/catalog-index.json").then(function (response) {
+      if (!response.ok) throw new Error("Catalog photos unavailable");
+      return response.json();
+    }).then(function (items) {
+      var byUrl = new Map();
+      if (Array.isArray(items)) items.forEach(function (item) {
+        if (item && typeof item.url === "string" && typeof item.thumbnail === "string") {
+          byUrl.set(item.url, item.thumbnail);
+        }
+      });
+      return byUrl;
+    }).catch(function () { feed = null; return null; });
+    return feed;
+  }
+  function enhance(directory) {
+    if (!directory.open || directory.dataset.drPhotosLoading) return;
+    directory.dataset.drPhotosLoading = "1";
+    loadFeed().then(function (photos) {
+      if (!photos) { delete directory.dataset.drPhotosLoading; return; }
+      var links = directory.querySelectorAll("a.directory-product");
+      function addPhoto(link) {
+        if (link.querySelector(".dr-directory-photo")) return;
+        var raw = photos.get(link.getAttribute("href"));
+        if (!raw) return;
+        var url;
+        try { url = new URL(raw, window.location.origin); } catch (_) { return; }
+        if (url.protocol !== "https:" || url.username || url.password ||
+            (url.origin !== window.location.origin && !/^https:\/\//i.test(raw))) return;
+        var img = document.createElement("img");
+        img.className = "dr-directory-photo";
+        img.alt = "";
+        img.width = 480; img.height = 360;
+        img.loading = "lazy"; img.decoding = "async";
+        img.addEventListener("error", function () { img.hidden = true; }, { once: true });
+        img.src = url.href;
+        link.insertBefore(img, link.firstChild);
+      }
+      if (typeof IntersectionObserver === "function") {
+        var observer = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) { addPhoto(entry.target); observer.unobserve(entry.target); }
+          });
+        }, { rootMargin: "200px" });
+        links.forEach(function (link) { observer.observe(link); });
+      } else links.forEach(addPhoto);
+    });
+  }
+  directories.forEach(function (directory) {
+    directory.addEventListener("toggle", function () { enhance(directory); });
+    if (directory.open) enhance(directory);
+  });
+})();
