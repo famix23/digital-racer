@@ -129,6 +129,7 @@ def main():
 
     utility = {ROOT / "404.html", ROOT / "product.html", ROOT / "admin/index.html",
                ROOT / "dropzone/index.html", ROOT / "dropzone/ferrari-gift/index.html", ROOT / "dropzone/brainrot-gift/index.html", ROOT / "dropzone/bentley-holocrystal-gift/index.html", ROOT / "checkout-preview/index.html"}
+    require("/dropzone/bentley-holocrystal-gift/" not in routes, "Bentley recipient gift page must not appear in sitemap")
     fallback = {page_for(src) for src in rules if src.endswith("/")}
     # Numbered category discovery pages are linked from their canonical hub.
     # Product URLs remain in the XML sitemap; pagination need not be listed there.

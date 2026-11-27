@@ -45,8 +45,13 @@ const htmlCards = [...staticGrid.matchAll(/class="product-card item-card" data-c
 assert.equal(htmlCards.length, Math.min(24, inventory.length), 'Keep a compact crawlable preview; full product URLs remain linked from category directories.');
 const linksAcrossHubs = new Set();
 for(const hub of JSON.parse(read('content/shop-hubs.json'))){
-  const html = read('shop/'+hub.slug+'/index.html');
-  for(const match of html.matchAll(/href="(\/p\/[^\"]+\/)"/g)) linksAcrossHubs.add(match[1]);
+  const base = 'shop/'+hub.slug+'/';
+  const first = read(base+'index.html');
+  const pages = [first];
+  for (const match of first.matchAll(/href="(\/shop\/[^"]+\/page\/\d+\/)"/g)) {
+    pages.push(read(match[1].slice(1)+'index.html'));
+  }
+  for (const html of pages) for(const match of html.matchAll(/href="(\/p\/[^\"]+\/)"/g)) linksAcrossHubs.add(match[1]);
 }
 assert.equal(manifest.filter(p=>linksAcrossHubs.has(p.url)).length, inventory.length, 'Every listing must remain linked from crawlable shop directories.');
 assert.ok(helper.includes("window.location.pathname") && helper.includes('/assets/mobile-shopping.css'), 'Generated product pages must receive progressive mobile styling.');

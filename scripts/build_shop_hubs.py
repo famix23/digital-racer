@@ -101,7 +101,7 @@ def directory_page(hub, entries, number, total):
         '<title>' + esc(title) + '</title>\n<meta name="description" content="' + esc(description) + '">\n'
         '<meta name="robots" content="index,follow">\n<link rel="canonical" href="' + canonical + '">\n'
         '<style>body{background:#101010;color:#eee;font:16px/1.55 system-ui;margin:0}main{max-width:1080px;margin:auto;padding:24px}a{color:#e7c661}li{padding:8px;overflow-wrap:anywhere}small{display:block;color:inherit}.directory-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:8px;list-style:none;padding:0}html[data-dr-theme="light"] body{background:#fff;color:#222}html[data-dr-theme="light"] a{color:#795600}</style>\n'
-        '</head><body><main><p><a href="/">Digital Racer</a> / <a href="/catalog">Catalog</a> / <a href="' + base + '">' + esc(hub["title"]) + '</a></p>'
+        '</head><body class="dr-category-page"><main><p><a href="/">Digital Racer</a> / <a href="/catalog">Catalog</a> / <a href="' + base + '">' + esc(hub["title"]) + '</a></p>'
         '<h1>' + esc(hub["title"]) + ' — Page ' + str(number) + '</h1><p>' + esc(description) + ' Confirm item details and availability before paying.</p>'
         + directory_nav(slug, total, number) + directory_markup(entries, category, slug, number, total) +
         '</main></body></html>\n'
